@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Copyright (c) 2015 onox
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<PropertyList>
+
+    <!-- Simulate the groundspeed -->
+    <filter>
+        <name>FDM Groundspeed</name>
+        <type>noise-spike</type>
+        <input>
+            <property>/carrier/fbw/target/groundspeed-kt</property>
+        </input>
+        <output>
+            <property>/velocities/groundspeed-kt</property>
+        </output>
+
+        <!-- Reaching maximum speed takes 20 minutes -->
+        <max-rate-of-change>7</max-rate-of-change>
+    </filter>
+
+    <!-- Flags use true-heading-deg because only that property is available
+         in multiplayer.
+    -->
+    <filter>
+        <name>FDM True Heading For Flags</name>
+        <type>gain</type>
+        <input>
+            <property>/orientation/heading-deg</property>
+        </input>
+        <output>
+            <property>/orientation/true-heading-deg</property>
+        </output>
+    </filter>
+
+    <!-- ================================================================== -->
+    <!-- Roll                                                               -->
+    <!-- ================================================================== -->
+
+    <!--
+    <filter>
+        <name>FDM Rudder</name>
+        <type>noise-spike</type>
+        <input>
+            <property>/controls/flight/rudder</property>
+        </input>
+        <output>
+            <property>/surface-positions/rudder-pos-norm</property>
+        </output>
+
+        <max-rate-of-change>5</max-rate-of-change>
+    </filter>-->
+
+</PropertyList>

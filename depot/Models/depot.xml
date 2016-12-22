@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+ <path>Office26x22.ac</path>
+
+	<model>
+		<path>Aircraft/depot/Models/smoke.xml</path>
+		<offsets>
+			<x-m>1.2</x-m>
+            <y-m>0.00</y-m>
+            <z-m>-0.68</z-m>
+			<pitch-deg>0</pitch-deg>
+		</offsets>
+	</model>
+
+</PropertyList>
