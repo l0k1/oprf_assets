@@ -21,7 +21,7 @@
 var frequency = 20.0;
 
 # Change in heading per second at full rudder deflection
-var heading_ps = 0.5;
+var heading_ps = 0.1;
 
 time_last = 0;
 sim_speed = 1;
@@ -47,26 +47,39 @@ var PositionUpdater = func () {
 	if (dt == 0) return;
 
 	time_last = time_now;
-	
-	var heading = getprop("/orientation/heading-deg");
-	var speed   = getprop("/velocities/groundspeed-kt");
+
 	var rudder  = getprop("/surface-positions/rudder-pos-norm");
-	
-	var distance = speed * globals.KT2MPS * dt;
-	position.apply_course_distance(heading, distance);
-	
-	# Set new position
-	setprop("/position/latitude-deg", position.lat());
-	setprop("/position/longitude-deg", position.lon());
 
 	
-	if ( getprop("/carrier/sunk") == 0 ) {
+	if ( getprop("/carrier/sunk") == 0 and getprop("/autopilot/route-manager/active") == 1 ) {
 
-	# Update heading
-	var course = heading + rudder * heading_ps * dt;
-	setprop("/orientation/heading-deg", course);
+		#for event
+		var speed = 15;
+		var cur_waypoint = getprop("/autopilot/route-manager/current-wp");
+		var cur_wp_lon = getprop("/autopilot/route-manager/route/wp[" ~ cur_waypoint ~ "]/longitude-deg");
+		var cur_wp_lat = getprop("/autopilot/route-manager/route/wp[" ~ cur_waypoint ~ "]/latitude-deg");
+		var rm_destination = geo.Coord.new().set_latlon(cur_wp_lat,cur_wp_lon);
+		
+		
+		var heading = position.course_to(rm_destination);
+		
+		var distance = speed * globals.KT2MPS * dt;
+		position.apply_course_distance(heading, distance);
+		
+		# Set new position
+		setprop("/position/latitude-deg", position.lat());
+		setprop("/position/longitude-deg", position.lon());
+		var g_alt = getprop("/position/ground-elev-ft");
+		setprop("/position/altitude-ft",g_alt);
+
+		
+		
+
+		# Update heading
+		var course = heading + rudder * heading_ps * dt;
+		setprop("/orientation/heading-deg", course);
 	
-	} else {
+	} elsif ( getprop("/carrier/sunk") == 1 ) {
 		setprop("/carrier/fbw/target/groundspeed-kt",0);
 		setprop("/controls/engines/engine/throttle",0);
 

@@ -69,7 +69,7 @@
         <aircraft-operator>KPN</aircraft-operator>
 
         <model>
-            <path>Aircraft/missile-frigate/missile-frigate.xml</path>
+            <path>Aircraft/missile-frigate/Models/missile-frigate.xml</path>
 
             <!-- Uncloak weather balloons visiting Earth -->
             <always-show-in-MP type="bool">true</always-show-in-MP>
