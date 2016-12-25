@@ -40,11 +40,6 @@ var PositionUpdater = func () {
 	
 	var position = geo.aircraft_position();
 	
-	if ( getprop("/autopilot/route-manager/wp-last/dist") < 1 ) {
-		setprop("/sim/multiplay/chat",getprop("sim/multiplay/callsign") ~ " has arrived at its route manager destination!");
-		return;
-	}
-	
 	var time_now = getprop("/sim/time/elapsed-sec");
 	var dt = (time_now - time_last) * sim_speed;
 	if (dt == 0) return;
