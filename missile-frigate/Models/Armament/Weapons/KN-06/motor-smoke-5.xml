@@ -8,7 +8,7 @@
    <lighting type="bool">false</lighting>
 
    <condition>
-         <property>payload/armament/test/flags/smoke-id-5</property>
+         <property>payload/armament/kn-06/flags/smoke-id-5</property>
    </condition>
 
    <attach>world</attach>
@@ -44,7 +44,7 @@
 
    <counter>
      <particles-per-sec>
-       <value>50</value>
+       <value>100</value>
        <spread>0</spread>
      </particles-per-sec>
    </counter>
@@ -100,7 +100,7 @@
    <lighting type="bool">false</lighting>
 
    <condition>
-         <property>payload/armament/test/flags/smoke-id-5</property>
+         <property>payload/armament/kn-06/flags/smoke-id-5</property>
    </condition>
 
    <attach>world</attach>

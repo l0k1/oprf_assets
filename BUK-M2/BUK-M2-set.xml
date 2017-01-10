@@ -123,6 +123,24 @@
                 <int n="0" type="int">0</int>
             </generic>
         </multiplay>
+
+        <menubar>
+            <default>
+                <menu n="100">
+                    <label>BUK-M2</label>
+                    <enabled type="bool">true</enabled>
+                    <item>
+                        <label>Reload</label>
+                        <binding>
+                            <command>nasal</command>
+                            <script>
+                                fire_control.reload();
+                            </script>
+                        </binding>
+                    </item>
+                </menu>
+            </default>
+        </menubar>
     </sim>
 	
 	<controls>
@@ -200,23 +218,38 @@
 					<weight-launch-lbs>1576</weight-launch-lbs>
 					<weight-warhead-lbs>145</weight-warhead-lbs>
                     <weight-fuel-lbs>900</weight-fuel-lbs>                       <!-- new -->
-					<drag-coeff type="double">0.025</drag-coeff>                 <!-- changed -->
+					<drag-coeff type="double">0.15</drag-coeff>                 <!-- changed -->
 					<drag-area type="double">‪1.312336‬</drag-area>                <!-- changed -->
 					<arming-time-sec type="double">2</arming-time-sec> 
 					<min-speed-for-guiding-mach type="double">0.35</min-speed-for-guiding-mach> 
 					<self-destruct-time-sec type="double">120</self-destruct-time-sec> 
 					<seeker-angular-speed-dps type="double">3000</seeker-angular-speed-dps>
-					<loft-altitude type="int">15000</loft-altitude>
+					<loft-altitude type="int">0</loft-altitude>
 					<min-fire-range-nm type="double">2.0</min-fire-range-nm>
                     <max-report-distance type="double">200</max-report-distance> <!-- new -->
 					<rail type="bool">true</rail>                                <!-- changed -->
 					<rail-length-m type="double">5.5</rail-length-m>             <!-- changed -->
 					<rail-point-forward type="bool">false</rail-point-forward>
+                    <rail-pitch-deg type="double">30</rail-pitch-deg>          <!-- new -->
 					<class type="string">A</class>
-					<fire-msg>Grumble</fire-msg>
+					<fire-msg>Bird away</fire-msg>
                 </m317>
             </armament>
     </payload>
+
+    <rotors>
+        <main>
+            <blade n="0">
+                <flap-deg type="double">0</flap-deg>
+            </blade>
+            <blade n="1">
+                <flap-deg type="double">0</flap-deg>
+            </blade>
+            <blade n="2">
+                <flap-deg type="double">0</flap-deg>
+            </blade>
+        </main>
+    </rotors>
 	
     <nasal>
         <carrier>
@@ -225,6 +258,15 @@
 		<damage>
 			<file>Aircraft/BUK-M2/Nasal/damage.nas</file>
 		</damage>
+		<radar_logic>
+            <file>Aircraft/BUK-M2/Nasal/radar-logic.nas</file>
+        </radar_logic>
+        <armament>
+            <file>Aircraft/BUK-M2/Nasal/guided-missiles.nas</file>
+        </armament>
+		<fire_control>
+			<file>Aircraft/BUK-M2/Nasal/fire-control.nas</file>
+		</fire_control>
     </nasal>
 
 </PropertyList>

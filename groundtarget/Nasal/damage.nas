@@ -7,14 +7,15 @@ var hp = 2500;
 var hp_max = hp;
 
 var cannon_types = {
-    " M70 rocket hit":        40.00, #Viggen rocket
-    " M55 cannon shell hit":  3.50, #Viggen gun
-    " KCA cannon shell hit":  7.00, #Viggen gunpod
-    " Gun Splash On ":        3.0, #Mirage
-    " M61A1 shell hit":       2.50, #f-14/15
-    " GAU-8/A hit":           10.00, #a-10
-    " BK27 cannon hit":       3.50, #typhoon
-    " GSh-30 hit":            3.00, #mig-21
+    " M70 rocket hit":        0.30,
+    " M55 cannon shell hit":  0.20,
+    " KCA cannon shell hit":  0.20,
+    " Gun Splash On ":        0.30,
+    " M61A1 shell hit":       0.20,
+    " GAU-8/A hit":           0.30,
+    " BK27 cannon hit":       0.20,
+    " GSh-30 hit":            0.20,
+    " 7.62 hit":              2.50, #UH-1
     " 50 BMG hit":            3.00, #p-47
 };
     
@@ -60,7 +61,8 @@ var warhead_lbs = {
     "R-60":                  6.60,
     "R-27R1":               85.98,
     "R-27T1":               85.98,
-  "FAB-500":        564.00,
+    "FAB-500":             564.00,
+    "M71R":                200.00,
 };
 
 var incoming_listener = func {
