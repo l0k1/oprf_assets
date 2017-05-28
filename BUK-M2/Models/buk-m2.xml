@@ -7,9 +7,159 @@
  <model>
     <path>Aircraft/BUK-M2/Models/smoke.xml</path>
     <offsets>
-      <x-m>1.2</x-m>
-            <y-m>0.00</y-m>
-            <z-m>-0.68</z-m>
+            <x-m> 3.26307</x-m>
+            <y-m>-0.84611</y-m>
+            <z-m> 2.85616</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+ <model>
+    <path>Aircraft/BUK-M2/Models/fire.xml</path>
+    <offsets>
+            <x-m> 3.26307</x-m>
+            <y-m>-0.84611</y-m>
+            <z-m> 2.85616</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+ <model>
+    <path>Aircraft/BUK-M2/Models/smoke.xml</path>
+    <offsets>
+            <x-m> 3.26307</x-m>
+            <y-m> 0.84611</y-m>
+            <z-m> 2.85616</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+ <model>
+    <path>Aircraft/BUK-M2/Models/fire.xml</path>
+    <offsets>
+            <x-m> 3.26307</x-m>
+            <y-m> 0.84611</y-m>
+            <z-m> 2.85616</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+ <model>
+    <path>Aircraft/BUK-M2/Models/smoke.xml</path>
+    <offsets>
+            <x-m> -0.80986</x-m>
+            <y-m> 0.00064</y-m>
+            <z-m> 3.24007</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+ <model>
+    <path>Aircraft/BUK-M2/Models/fire.xml</path>
+    <offsets>
+            <x-m> -0.80986</x-m>
+            <y-m> 0.00064</y-m>
+            <z-m> 3.24007</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+ <model>
+    <path>Aircraft/BUK-M2/Models/smoke.xml</path>
+    <offsets>
+            <x-m> -3.97300</x-m>
+            <y-m> 0.00023</y-m>
+            <z-m> 1.83017</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+ <model>
+    <path>Aircraft/BUK-M2/Models/fire.xml</path>
+    <offsets>
+            <x-m> -3.97300</x-m>
+            <y-m> 0.00023</y-m>
+            <z-m> 1.83017</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+ <model>
+    <path>Aircraft/BUK-M2/Models/smoke.xml</path>
+    <offsets>
+            <x-m> -4.26653</x-m>
+            <y-m> -1.82402</y-m>
+            <z-m> 1.44961</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+ <model>
+    <path>Aircraft/BUK-M2/Models/fire.xml</path>
+    <offsets>
+            <x-m> -4.26653</x-m>
+            <y-m> -1.82402</y-m>
+            <z-m> 1.44961</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+ <model>
+    <path>Aircraft/BUK-M2/Models/smoke.xml</path>
+    <offsets>
+            <x-m> -4.26653</x-m>
+            <y-m> 1.82402</y-m>
+            <z-m> 1.44961</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+ <model>
+    <path>Aircraft/BUK-M2/Models/fire.xml</path>
+    <offsets>
+            <x-m> -4.26653</x-m>
+            <y-m> 1.82402</y-m>
+            <z-m> 1.44961</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+ <model>
+    <path>Aircraft/BUK-M2/Models/smoke.xml</path>
+    <offsets>
+            <x-m> -0.63979</x-m>
+            <y-m> -2.14385</y-m>
+            <z-m> 0.05906</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+ <model>
+    <path>Aircraft/BUK-M2/Models/fire.xml</path>
+    <offsets>
+            <x-m> -0.63979</x-m>
+            <y-m> -2.14385</y-m>
+            <z-m> 0.05906</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+ <model>
+    <path>Aircraft/BUK-M2/Models/smoke.xml</path>
+    <offsets>
+            <x-m> -0.63979</x-m>
+            <y-m> 2.14385</y-m>
+            <z-m> 0.05906</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+ <model>
+    <path>Aircraft/BUK-M2/Models/fire.xml</path>
+    <offsets>
+            <x-m> -0.63979</x-m>
+            <y-m> 2.14385</y-m>
+            <z-m> 0.05906</z-m>
       <pitch-deg>0</pitch-deg>
     </offsets>
   </model>
