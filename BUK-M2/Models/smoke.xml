@@ -1,33 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
 <PropertyList>
-  
-  <particlesystem>
-    <name>smoke</name>
 
-    <texture>smoke.png</texture>
-
-    <condition>
-	  <equals>
-  		<property>sim/multiplay/generic/int[0]</property>
-  		<value>1</value>
-  	</equals>
-    </condition>
-
+		<particlesystem>
+		<texture>smoke.png</texture>
+	    <condition>
+		  <equals>
+ 	 		<property>sim/multiplay/generic/int[0]</property>
+	  		<value>1</value>
+ 	 	  </equals>
+	    </condition>
     <emissive>false</emissive>
     <lighting>false</lighting>
     <align>billboard</align> <!-- billboard / fixed -->
     <attach>world</attach> <!-- world / local-->
 
     <placer>
-      <type>point</type>
+      <type>point</type>damage.fail_systems(10000);
     </placer>
     <shooter>
-      <theta-min-deg>20</theta-min-deg>
+      <theta-min-deg>65</theta-min-deg>
       <theta-max-deg>35</theta-max-deg>
-      <phi-min-deg>-15</phi-min-deg>
-      <phi-max-deg> 15</phi-max-deg>
+      <phi-min-deg>-20</phi-min-deg>
+      <phi-max-deg> 20</phi-max-deg>
       <speed-mps>
-        <value>0</value>
-        <spread>0</spread>
+        <value>500</value>
+        <spread>10</spread>
       </speed-mps>
       <rotation-speed>
         <x-min-deg-sec>0</x-min-deg-sec>
@@ -35,13 +33,13 @@
         <z-min-deg-sec>-180</z-min-deg-sec>
         <x-max-deg-sec>0</x-max-deg-sec>
         <y-max-deg-sec>0</y-max-deg-sec>
-        <z-max-deg-sec>180</z-max-deg-sec>
+        <z-max-deg-sec>360</z-max-deg-sec>
       </rotation-speed>
     </shooter>
     <counter>
       <particles-per-sec>
-        <value>1</value>
-        <spread>20</spread>
+        <value>50</value>
+        <spread>1</spread>
       </particles-per-sec>
     </counter>
     <particle>
@@ -50,10 +48,10 @@
           <red><value>0.0</value></red>
           <green><value>0.0</value></green>
           <blue><value>0.0</value></blue>
-          <alpha><value>1</value></alpha>
+          <alpha><value>0.08</value></alpha>
         </color>
         <size>
-          <value>3.0</value>
+          <value>5</value>
         </size>
       </start>
       <end>
@@ -64,21 +62,20 @@
           <alpha><value>0.0</value></alpha>
         </color>
         <size>
-          <value>20.0</value>
+          <value>15.0</value>
         </size>
       </end>
       <life-sec>
-        <value>30</value>
+        <value>4</value>
       </life-sec>
-      <mass-kg>0.025</mass-kg>
-      <radius-m>0.40</radius-m>
+      <mass-kg>0.0085</mass-kg>
+      <radius-m>0.50</radius-m>
     </particle>
     <program>
       <fluid>air</fluid>
-      <gravity>true</gravity>
-      <wind>true</wind>
+      <gravity type="bool">true</gravity>
+      <wind type="bool">true</wind>
     </program>
   </particlesystem>
 
-  
 </PropertyList>
