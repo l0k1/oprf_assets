@@ -58,7 +58,7 @@
     </carrier>
 
     <sim include="Sim/views.xml">
-        <author>pinto and onox</author>
+        <author>pinto and onox, J Maverick 16</author>
         <description>groundtarget</description>
         <status>alpha</status>
         <aircraft-version>0.1</aircraft-version>

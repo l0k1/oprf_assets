@@ -2,7 +2,7 @@
 
 <PropertyList>
 
- <path>towerSnowy1.ac</path>
+ <path>tower-usaf-40m.ac</path>
 
 	<model>
 		<path>Aircraft/tower/Models/smoke.xml</path>
