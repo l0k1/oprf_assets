@@ -36,11 +36,20 @@ setprop("/carrier/roll-deg",0);
 setprop("/carrier/roll-offset",0);
 setprop("/carrier/sunk",0);
 
+var arrived = 0;
+
 var PositionUpdater = func () {
 	
 	settimer( PositionUpdater, 1/frequency );
-	
+
 	var position = geo.aircraft_position();
+
+	if ( arrived == 0 and getprop("/carrier/sunk") == 0 and getprop("/autopilot/route-manager/wp-last/dist") != nil and getprop("/autopilot/route-manager/wp-last/dist") < 1 ) {
+		setprop("/sim/multiplay/chat",getprop("sim/multiplay/callsign") ~ " has arrived safely!");
+		print("arrived");
+		arrived = 1;
+		#return;
+	}	
 	
 	var time_now = getprop("/sim/time/elapsed-sec");
 	var dt = (time_now - time_last) * sim_speed;
@@ -91,6 +100,8 @@ var PositionUpdater = func () {
 		setprop("/position/altitude-ft",getprop("/position/altitude-ft") - ( sink_rate ));
 		setprop("/carrier/pitch-offset",getprop("/carrier/pitch-offset") + ( pitch_rate ));
 		setprop("/carrier/roll-offset",getprop("/carrier/roll-offset") + ( roll_rate ));
+
+		print("sunk");
 	}
 	
 	#set pitch

@@ -317,6 +317,9 @@
 		<damage>
 			<file>Aircraft/Frigate/Nasal/damage.nas</file>
 		</damage>
+        <gci>
+            <file>Aircraft/Frigate/Nasal/gci.nas</file>
+        </gci>
     </nasal>
 
     <input>

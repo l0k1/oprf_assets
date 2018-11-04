@@ -81,6 +81,7 @@ var incoming_listener = func {
     var last_vector = split(":", last);
     var author = last_vector[0];
     var callsign = getprop("sim/multiplay/callsign");
+    callsign = size(callsign) < 8 ? callsign : left(callsign,7);
     if (size(last_vector) > 1 and author != callsign) {
       # not myself
       #print("not me");
@@ -197,6 +198,11 @@ var incoming_listener = func {
           print("cannon");
           if (size(last_vector) > 2 and last_vector[2] == " "~callsign) {
             print("cannon hit us");
+            if (size(last_vector) < 4) {
+                          # msg is either missing number of hits, or has no trailing dots from spam filter.
+                          print('"'~last~'"   is not a legal hit message, tell the shooter to upgrade his OPRF plane :)');
+                          return;
+                        }
               var last3 = split(" ", last_vector[3]);
             #print("last3[2]: " ~ last3[2]);
             #print("last3[1]: " ~ last3[1]);
@@ -211,12 +217,12 @@ var incoming_listener = func {
             var probability = cannon_types[last_vector[1]];
             for (var i = 1; i <= hit_count; i = i + 1) {
               var failed = fail_systems(probability);
-              damaged_sys = damaged_sys + failed;
+              #damaged_sys = damaged_sys + failed;
             }
             # that someone is me!
             #print("hitting me");
 
-            printf("Took %.1f%% damage from cannon! %s systems was hit.", probability*hit_count*100, damaged_sys);
+            #printf("Took %.1f%% damage from cannon! %s systems was hit.", probability*hit_count*100, damaged_sys);
           }
         }
       }
