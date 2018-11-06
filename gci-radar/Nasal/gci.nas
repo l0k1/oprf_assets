@@ -86,7 +86,7 @@ var gci_contact = {
         return m;
     },
     getValid: func() {
-        if (me.valid.getNode() == 0 and me.callsign != me.node.getNode("callsign").getValue()) {
+        if (me.valid.getValue() == 0 or me.callsign != me.node.getNode("callsign").getValue()) {
             return 0;
         } else {
             return 1;
@@ -224,6 +224,7 @@ var gather_contacts = func() {
     for (var i = 0; i < size(cx_master_list); i = i + 1) {
         if (cx_master_list[i] == nil) { break; }
         if (!cx_master_list[i].getValid()) {
+            print("purging contact: " ~ cx_master_list[i].contact.get_Callsign());
             cx_master_list = purge_from_vector(cx_master_list, i);
         }
     }
@@ -232,7 +233,7 @@ var gather_contacts = func() {
         if (mp.getNode("valid").getValue() == 1) {
             matching = false;
             foreach(var cx; cx_master_list) {
-                if ( mp.getPath() == cx.contact.getNode().getPath() ) {
+                if ( mp.getPath() == cx.contact.getNode().getPath() and mp.getNode("callsign").getValue() == cx.callsign) {
                     matching = true;
                     break;
                 }
@@ -494,5 +495,11 @@ var remove_suffix = func(s, x) {
         return substr(s, 0, size(s) - len);
     return s;
 }
+
+# visibility function
+settimer( func{
+    setprop("/sim/multiplay/visibility-range-nm",1200);
+    print("set mp visibility to " ~ 1200);
+}, 15);
 
 main_loop();
