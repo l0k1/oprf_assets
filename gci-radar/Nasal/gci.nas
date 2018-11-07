@@ -19,7 +19,8 @@ var damage_prop = props.globals.getNode("/carrier/sunk");
 var prop_watch = {
     "MiG-21bis": [0,1,2],
     "MiG-21MF-75": [0,1,2],
-    "QF-4E": [0,1,2]
+    "QF-4E": [0,1,2],
+    "F-16": [50,51,52],
 };
 
 var radar_stations = [
