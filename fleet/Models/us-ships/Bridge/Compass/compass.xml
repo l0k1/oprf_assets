@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <path>compass.ac</path>
+
+  <animation>
+    <object-name>fond</object-name>
+    <object-name>feuille</object-name>
+    <object-name>rose</object-name>
+
+    <object-name>vitre</object-name>
+  </animation>
+
+  <animation>
+    <type>noshadow</type>
+    <object-name>vitre</object-name>
+  </animation>
+
+  <animation>
+    <type>shader</type>
+    <shader>chrome</shader>
+    <texture>Aircraft/Generic/Effects/glass_shader.png</texture>
+    <object-name>vitre</object-name>
+  </animation>
+
+  <animation>
+    <type>material</type>
+    <object-name>fond</object-name>
+    <object-name>feuille</object-name>
+    <object-name>rose</object-name>
+    <emission>
+      <red>   0.50 </red>
+      <green> 0.25 </green>
+      <blue>  0.25 </blue>
+      <factor-prop>controls/lighting/bridgelight</factor-prop>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>rose</object-name>
+    <property>instrumentation/magnetic-compass/indicated-heading-deg</property>
+    <center>
+      <x-m> -0.029 </x-m>
+      <y-m>  0.000 </y-m>
+      <z-m>  0.032 </z-m>
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 0 </y>
+      <z> 22 </z>
+    </axis>
+  </animation>
+
+</PropertyList>

@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+    <name>Vinson HUD</name>
+
+    <enable3d>false</enable3d>
+
+    <!-- <tape>
+        <name>Rel Brg</name>
+        <x>-100</x>
+        <y>190</y>
+        <width>200</width>
+        <height>28</height>
+
+        <input>
+            <property>/sim/current-view/heading-offset-rel-deg</property>
+        </input>
+        <display-span>25.0</display-span>
+
+        <option>top</option>
+
+        <major-divisions>5</major-divisions>
+        <minor-divisions>1</minor-divisions>
+        <tick-bottom>false</tick-bottom>
+        <tick-top>false</tick-top>
+        <tick-right>true</tick-right>
+        <tick-left>true</tick-left>
+        <cap-bottom>true</cap-bottom>
+        <cap-top>false</cap-top>
+        <cap-right>false</cap-right>
+        <cap-left>false</cap-left>
+        <marker-offset>0.0</marker-offset>
+        <enable-pointer>true</enable-pointer>
+        <pointer-type>fixed</pointer-type>
+        <tick-type>line</tick-type>
+        <tick-length>variable</tick-length>
+    </tape> -->
+
+
+    <label>
+        <name>Heading</name>
+        <x>-300</x>
+        <y>-225</y>
+        <width>200</width>
+        <height>25</height>
+        <prefix> Heading: </prefix>
+        <postfix> deg</postfix>
+        <halign>left</halign>
+        <format>%03.0f</format>
+        <box>true</box>
+        <input>
+            <property>/orientation/heading-deg</property>
+        </input>
+    </label>
+
+ 
+    <label>
+        <name>Speed</name>
+        <x>100</x>
+        <y>-225</y>
+        <width>200</width>
+        <height>25</height>
+        <prefix> Speed: </prefix>
+        <postfix> kts</postfix>
+        <halign>left</halign>
+        <format>%2.1f</format>
+        <box>true</box>
+        <input>
+            <property>/velocities/groundspeed-kt</property>
+        </input>
+    </label>
+
+    <label>
+        <name>Target Speed</name>
+        <x>100</x>
+        <y>-200</y>
+        <width>200</width>
+        <height>25</height>
+        <prefix> Target Speed: 40</prefix>
+        <postfix> kts</postfix>
+        <halign>left</halign>
+        <format></format>
+        <box>true</box>
+        <input>
+            <property>/carrier/fbw/target/groundspeed-kt</property>
+        </input>
+    </label>
+
+</PropertyList>

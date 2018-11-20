@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <path>flash.ac</path>
+
+  <animation>
+    <!-- Objets opaques -->
+
+    <!-- Objets transparents -->
+    <object-name>flash</object-name>
+  </animation>
+
+  <animation>
+    <type>noshadow</type>
+    <object-name>flash</object-name>
+  </animation>
+
+  <animation>
+    <type>flash</type>
+    <object-name>flash</object-name>
+    <center>
+      <x-m> 0.000 </x-m>
+      <y-m> 0.000 </y-m>
+      <z-m> 0.000 </z-m>
+    </center>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+    <power>5</power>
+    <factor>1</factor>
+    <offset>0</offset>
+    <two-sides type="bool">false</two-sides>
+    <min>0.05</min>
+    <max>1</max>
+  </animation>
+
+</PropertyList>

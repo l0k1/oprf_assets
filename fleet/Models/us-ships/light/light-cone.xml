@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+	<path>light-cone.ac</path>
+
+	<effect>
+		<inherits-from>Effects/light-cone</inherits-from>
+		<object-name>Cone</object-name>
+	</effect>
+
+  <model>
+    <path>flash.xml</path>
+	<offsets>
+	  <x-m> -0.025 </x-m>    
+    </offsets>
+  </model>
+	
+</PropertyList>

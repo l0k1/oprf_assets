@@ -1,0 +1,1654 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- Boeing 717-200 for FlightGear -->
+<!-- Multi-Function Display -->
+
+<PropertyList>
+
+	<path>MFD.ac</path>
+
+	<!-- 3D TEXT -->
+	<text>
+		<name>HDG</name>
+		<offsets>
+			<x-m>0.0002</x-m>
+			<y-m>-0.024</y-m>
+			<z-m>0.092</z-m>
+		</offsets>
+		<alignment>center-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<format type="string">HDG</format>
+		<property>ai/models/aircraft[0]/velocities/true-airspeed-kt</property>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.008</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+	<text>
+		<name>MAG</name>
+		<offsets>
+			<x-m>0.0002</x-m>
+			<y-m>0.024</y-m>
+			<z-m>0.092</z-m>
+		</offsets>
+		<alignment>center-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<format type="string">MAG</format>
+		<property>systems/electrical/outputs/efis</property>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.008</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+
+	<text>
+		<name>GS</name>
+		<offsets>
+			<x-m>0.0002</x-m>
+			<y-m>-0.09</y-m>
+			<z-m>0.095</z-m>
+		</offsets>
+		<alignment>left-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">number-value</type>
+		<format type="string">GS %3.0f</format>
+		<property>velocities/groundspeed-kt</property>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.008</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+	<text>
+		<name>TAS</name>
+		<offsets>
+			<x-m>0.0002</x-m>
+			<y-m>-0.09</y-m>
+			<z-m>0.085</z-m>
+		</offsets>
+		<alignment>left-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">number-value</type>
+		<format type="string">TAS %3.0f</format>
+		<property>velocities/uBody-fps</property>
+		<scale>0.5924838</scale>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.008</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+
+	<text>
+		<name>Waypoint ID</name>
+		<offsets>
+			<x-m>0.0002</x-m>
+			<y-m>-0.1</y-m>
+			<z-m>-0.05</z-m>
+		</offsets>
+		<alignment>left-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<format type="string">%s</format>
+		<property>autopilot/route-manager/wp[0]/id</property>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.008</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+	<text>
+		<name>Waypoint distance</name>
+		<offsets>
+			<x-m>0.0002</x-m>
+			<y-m>-0.1</y-m>
+			<z-m>-0.06</z-m>
+		</offsets>
+		<alignment>left-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">number-value</type>
+		<format type="string">%3.1f NM</format>
+		<property>autopilot/route-manager/wp[0]/dist</property>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.008</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+	<text>
+		<name>Waypoint ETA</name>
+		<offsets>
+			<x-m>0.0002</x-m>
+			<y-m>-0.1</y-m>
+			<z-m>-0.07</z-m>
+		</offsets>
+		<alignment>left-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<format type="string">%s</format>
+		<property>autopilot/route-manager/wp[0]/eta</property>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.008</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+	<text>
+		<name>Map waypoint ID</name>
+		<offsets>
+			<x-m>0.0002</x-m>
+			<y-m>0.007</y-m>
+			<z-m>-0.065</z-m>
+		</offsets>
+		<alignment>left-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<format type="string">%s</format>
+		<property>autopilot/route-manager/wp[0]/id</property>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.008</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+
+	<text>
+		<name>VOR L ID</name>
+		<offsets>
+			<x-m>0.0003</x-m>
+			<y-m>-0.1</y-m>
+			<z-m>-0.1</z-m>
+		</offsets>
+		<alignment>left-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<format type="string">%s</format>
+		<property>instrumentation/nav[0]/nav-id</property>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.008</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+	<text>
+		<name>VOR L DEG</name>
+		<offsets>
+			<x-m>0.0003</x-m>
+			<y-m>-0.075</y-m>
+			<z-m>-0.1</z-m>
+		</offsets>
+		<alignment>left-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">number-value</type>
+		<format type="string">%3.0f°</format>
+		<property>instrumentation/nav[0]/radials/selected-deg</property>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.008</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+	<text>
+		<name>VOR L DME</name>
+		<offsets>
+			<x-m>0.0003</x-m>
+			<y-m>-0.05</y-m>
+			<z-m>-0.1</z-m>
+		</offsets>
+		<alignment>left-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">number-value</type>
+		<format type="string">%3.1fNM</format>
+		<property>instrumentation/nav[0]/nav-distance</property>
+		<scale>0.000539</scale>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.008</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+
+	<text>
+		<name>VOR R DME</name>
+		<offsets>
+			<x-m>0.0003</x-m>
+			<y-m>0.1</y-m>
+			<z-m>-0.1</z-m>
+		</offsets>
+		<alignment>right-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">number-value</type>
+		<format type="string">%3.1fNM</format>
+		<property>instrumentation/nav[1]/nav-distance</property>
+		<scale>0.000539</scale>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.008</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+	<text>
+		<name>VOR R DEG</name>
+		<offsets>
+			<x-m>0.0003</x-m>
+			<y-m>0.075</y-m>
+			<z-m>-0.1</z-m>
+		</offsets>
+		<alignment>right-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">number-value</type>
+		<format type="string">%3.0f°</format>
+		<property>instrumentation/nav[1]/radials/selected-deg</property>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.008</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+	<text>
+		<name>VOR R ID</name>
+		<offsets>
+			<x-m>0.0003</x-m>
+			<y-m>0.05</y-m>
+			<z-m>-0.1</z-m>
+		</offsets>
+		<alignment>right-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<format type="string">%s</format>
+		<property>instrumentation/nav[1]/nav-id</property>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.008</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+
+	<!-- Moving map text -->
+	<!-- VORs -->
+	<text>
+		<name>Map VOR L</name>
+		<offsets>
+			<x-m>0.0002</x-m>
+			<y-m>0.012</y-m>
+			<z-m>-0.055</z-m>
+		</offsets>
+		<alignment>left-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<format type="string">%s</format>
+		<property>instrumentation/nav[0]/nav-id</property>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.008</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+	<text>
+		<name>Map VOR R</name>
+		<offsets>
+			<x-m>0.0002</x-m>
+			<y-m>0.012</y-m>
+			<z-m>-0.055</z-m>
+		</offsets>
+		<alignment>left-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<format type="string">%s</format>
+		<property>instrumentation/nav[1]/nav-id</property>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.008</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+
+	<!-- Multiplayer traffic -->
+	<text>
+		<name>Map MP 1 callsign</name>
+		<offsets>
+			<x-m>0.0002</x-m>
+			<y-m>0.008</y-m>
+			<z-m>-0.057</z-m>
+		</offsets>
+		<alignment>left-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<format type="string">%s</format>
+		<property>ai/models/multiplayer[0]/callsign</property>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.006</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+	<text>
+		<name>Map MP 1 distance</name>
+		<offsets>
+			<x-m>0.0002</x-m>
+			<y-m>0.008</y-m>
+			<z-m>-0.062</z-m>
+		</offsets>
+		<alignment>left-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">number-value</type>
+		<format type="string">%3.1f NM</format>
+		<property>sim/model/B717/multiplayer-distance[0]</property>
+		<scale>0.00054</scale>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.006</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+	<text>
+		<name>Map MP 1 altitude</name>
+		<offsets>
+			<x-m>0.0002</x-m>
+			<y-m>0.008</y-m>
+			<z-m>-0.067</z-m>
+		</offsets>
+		<alignment>left-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">number-value</type>
+		<format type="string">%5.0f</format>
+		<property>ai/models/multiplayer[0]/position/altitude-ft</property>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.006</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+
+	<text>
+		<name>Map MP 2 callsign</name>
+		<offsets>
+			<x-m>0.0002</x-m>
+			<y-m>0.008</y-m>
+			<z-m>-0.057</z-m>
+		</offsets>
+		<alignment>left-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<format type="string">%s</format>
+		<property>ai/models/multiplayer[1]/callsign</property>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.006</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+	<text>
+		<name>Map MP 2 distance</name>
+		<offsets>
+			<x-m>0.0002</x-m>
+			<y-m>0.008</y-m>
+			<z-m>-0.062</z-m>
+		</offsets>
+		<alignment>left-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">number-value</type>
+		<format type="string">%3.1f NM</format>
+		<property>sim/model/B717/multiplayer-distance[1]</property>
+		<scale>0.00054</scale>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.006</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+	<text>
+		<name>Map MP 2 altitude</name>
+		<offsets>
+			<x-m>0.0002</x-m>
+			<y-m>0.008</y-m>
+			<z-m>-0.067</z-m>
+		</offsets>
+		<alignment>left-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">number-value</type>
+		<format type="string">%5.0f</format>
+		<property>ai/models/multiplayer[1]/position/altitude-ft</property>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.006</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+
+	<text>
+		<name>Map MP 3 callsign</name>
+		<offsets>
+			<x-m>0.0002</x-m>
+			<y-m>0.008</y-m>
+			<z-m>-0.057</z-m>
+		</offsets>
+		<alignment>left-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<format type="string">%s</format>
+		<property>ai/models/multiplayer[2]/callsign</property>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.006</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+	<text>
+		<name>Map MP 3 distance</name>
+		<offsets>
+			<x-m>0.0002</x-m>
+			<y-m>0.008</y-m>
+			<z-m>-0.062</z-m>
+		</offsets>
+		<alignment>left-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">number-value</type>
+		<format type="string">%3.1f NM</format>
+		<property>sim/model/B717/multiplayer-distance[2]</property>
+		<scale>0.00054</scale>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.006</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+	<text>
+		<name>Map MP 3 altitude</name>
+		<offsets>
+			<x-m>0.0002</x-m>
+			<y-m>0.008</y-m>
+			<z-m>-0.067</z-m>
+		</offsets>
+		<alignment>left-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">number-value</type>
+		<format type="string">%5.0f</format>
+		<property>ai/models/multiplayer[2]/position/altitude-ft</property>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.006</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+
+	<text>
+		<name>Map MP 4 callsign</name>
+		<offsets>
+			<x-m>0.0002</x-m>
+			<y-m>0.008</y-m>
+			<z-m>-0.057</z-m>
+		</offsets>
+		<alignment>left-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<format type="string">%s</format>
+		<property>ai/models/multiplayer[3]/callsign</property>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.006</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+	<text>
+		<name>Map MP 4 distance</name>
+		<offsets>
+			<x-m>0.0002</x-m>
+			<y-m>0.008</y-m>
+			<z-m>-0.062</z-m>
+		</offsets>
+		<alignment>left-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">number-value</type>
+		<format type="string">%3.1f NM</format>
+		<property>sim/model/B717/multiplayer-distance[3]</property>
+		<scale>0.00054</scale>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.006</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+	<text>
+		<name>Map MP 4 altitude</name>
+		<offsets>
+			<x-m>0.0002</x-m>
+			<y-m>0.008</y-m>
+			<z-m>-0.067</z-m>
+		</offsets>
+		<alignment>left-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">number-value</type>
+		<format type="string">%5.0f</format>
+		<property>ai/models/multiplayer[3]/position/altitude-ft</property>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.006</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+
+	<text>
+		<name>Map MP 5 callsign</name>
+		<offsets>
+			<x-m>0.0002</x-m>
+			<y-m>0.008</y-m>
+			<z-m>-0.057</z-m>
+		</offsets>
+		<alignment>left-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<format type="string">%s</format>
+		<property>ai/models/multiplayer[4]/callsign</property>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.006</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+	<text>
+		<name>Map MP 5 distance</name>
+		<offsets>
+			<x-m>0.0002</x-m>
+			<y-m>0.008</y-m>
+			<z-m>-0.062</z-m>
+		</offsets>
+		<alignment>left-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">number-value</type>
+		<format type="string">%3.1f NM</format>
+		<property>sim/model/B717/multiplayer-distance[4]</property>
+		<scale>0.00054</scale>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.006</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+	<text>
+		<name>Map MP 5 altitude</name>
+		<offsets>
+			<x-m>0.0002</x-m>
+			<y-m>0.008</y-m>
+			<z-m>-0.067</z-m>
+		</offsets>
+		<alignment>left-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">number-value</type>
+		<format type="string">%5.0f</format>
+		<property>ai/models/multiplayer[4]/position/altitude-ft</property>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.006</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+
+	<text>
+		<name>Map MP 6 callsign</name>
+		<offsets>
+			<x-m>0.0002</x-m>
+			<y-m>0.008</y-m>
+			<z-m>-0.057</z-m>
+		</offsets>
+		<alignment>left-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<format type="string">%s</format>
+		<property>ai/models/multiplayer[5]/callsign</property>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.006</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+	<text>
+		<name>Map MP 6 distance</name>
+		<offsets>
+			<x-m>0.0002</x-m>
+			<y-m>0.008</y-m>
+			<z-m>-0.062</z-m>
+		</offsets>
+		<alignment>left-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">number-value</type>
+		<format type="string">%3.1f NM</format>
+		<property>sim/model/B717/multiplayer-distance[5]</property>
+		<scale>0.00054</scale>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.006</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+	<text>
+		<name>Map MP 6 altitude</name>
+		<offsets>
+			<x-m>0.0002</x-m>
+			<y-m>0.008</y-m>
+			<z-m>-0.067</z-m>
+		</offsets>
+		<alignment>left-center</alignment>
+		<axis-alignment>yz-plane</axis-alignment>
+		<type type="string">number-value</type>
+		<format type="string">%5.0f</format>
+		<property>ai/models/multiplayer[5]/position/altitude-ft</property>
+		<font>helvetica_bold.txf</font>
+		<character-size>0.006</character-size>
+		<character-aspect-ratio type="double">1.5</character-aspect-ratio>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+
+	<!-- Emission animations -->
+	<animation>
+		<name>White text</name>
+		<type>material</type>
+		<object-name>GS</object-name>
+		<object-name>TAS</object-name>
+		<object-name>HDG</object-name>
+		<object-name>MAG</object-name>
+		<object-name>Map MP 1 callsign</object-name>
+		<object-name>Map MP 1 distance</object-name>
+		<object-name>Map MP 1 altitude</object-name>
+		<object-name>Map MP 2 callsign</object-name>
+		<object-name>Map MP 2 distance</object-name>
+		<object-name>Map MP 2 altitude</object-name>
+		<object-name>Map MP 3 callsign</object-name>
+		<object-name>Map MP 3 distance</object-name>
+		<object-name>Map MP 3 altitude</object-name>
+		<object-name>Map MP 4 callsign</object-name>
+		<object-name>Map MP 4 distance</object-name>
+		<object-name>Map MP 4 altitude</object-name>
+		<object-name>Map MP 5 callsign</object-name>
+		<object-name>Map MP 5 distance</object-name>
+		<object-name>Map MP 5 altitude</object-name>
+		<object-name>Map MP 6 callsign</object-name>
+		<object-name>Map MP 6 distance</object-name>
+		<object-name>Map MP 6 altitude</object-name>
+		<emission>
+			<red>1</red>
+			<green>1</green>
+			<blue>1</blue>
+		</emission>
+	</animation>
+	<animation>
+		<name>Blue text</name>
+		<type>material</type>
+		<object-name>VOR L ID</object-name>
+		<object-name>VOR L DEG</object-name>
+		<object-name>VOR L DME</object-name>
+		<object-name>Map VOR L</object-name>
+		<emission>
+			<red>0.32</red>
+			<green>0.66</green>
+			<blue>0.91</blue>
+		</emission>
+	</animation>
+	<animation>
+		<name>Green text</name>
+		<type>material</type>
+		<object-name>VOR R ID</object-name>
+		<object-name>VOR R DEG</object-name>
+		<object-name>VOR R DME</object-name>
+		<object-name>Map VOR R</object-name>
+		<emission>
+			<red>0.28</red>
+			<green>0.81</green>
+			<blue>0.21</blue>
+		</emission>
+	</animation>
+	<animation>
+		<name>Pink text</name>
+		<type>material</type>
+		<object-name>Waypoint ID</object-name>
+		<object-name>Waypoint distance</object-name>
+		<object-name>Waypoint ETA</object-name>
+		<object-name>Map waypoint ID</object-name>
+		<emission>
+			<red>1</red>
+			<green>0</green>
+			<blue>1</blue>
+		</emission>
+	</animation>
+
+	<!-- Select animations -->
+	<animation>
+		<name>Waypoint display</name>
+		<type>select</type>
+		<object-name>Waypoint ID</object-name>
+		<object-name>Waypoint distance</object-name>
+		<object-name>Waypoint ETA</object-name>
+		<condition>
+			<greater-than>
+				<property>autopilot/route-manager/route/num</property>
+				<value>0</value>
+			</greater-than>
+		</condition>
+	</animation>
+
+	<!-- ANIMATIONS -->
+	<!-- Lighting -->
+	<animation>
+		<name>Cockpit illumination</name>
+		<type>material</type>
+		<object-name>Border</object-name>
+		<object-name>Off</object-name>
+		<emission>
+			<red>0.5</red>
+			<green>0.5</green>
+			<blue>0.5</blue>
+			<factor-prop>controls/lighting/dome-norm</factor-prop>
+		</emission>
+	</animation>
+
+	<!-- Power on/off -->
+	<animation>
+		<name>Power on/off</name>
+		<type>select</type>
+		<object-name>Off</object-name>
+		<condition>
+			<less-than>
+				<property>systems/electrical/outputs/efis</property>
+				<value>15</value>
+			</less-than>
+		</condition>
+	</animation>
+
+	<!-- Heading display -->
+	<animation>
+		<name>Heading readout 100's</name>
+		<type>textranslate</type>
+		<object-name>Hdg100</object-name>
+		<property>orientation/heading-magnetic-deg</property>
+		<factor>0.001</factor>
+		<step>100</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<name>Heading readout 10's</name>
+		<type>textranslate</type>
+		<object-name>Hdg10</object-name>
+		<property>orientation/heading-magnetic-deg</property>
+		<factor>0.01</factor>
+		<step>10</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+	<animation>
+		<name>Heading readout 1's</name>
+		<type>textranslate</type>
+		<object-name>Hdg1</object-name>
+		<property>orientation/heading-magnetic-deg</property>
+		<factor>0.1</factor>
+		<step>1</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+		</axis>
+	</animation>
+
+	<!-- HSI arc -->
+	<animation>
+		<name>HSI arc</name>
+		<type>texrotate</type>
+		<object-name>HSI</object-name>
+		<property>orientation/heading-magnetic-deg</property>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>-1</z>
+		</axis>
+		<center>
+			<x>0.5</x>
+			<y>0.5</y>
+		</center>
+	</animation>
+
+	<!-- HSI heading bug -->
+	<animation>
+		<name>Heading bug</name>
+		<type>rotate</type>
+		<object-name>HdgAP</object-name>
+		<property>sim/model/B717/heading-bug-deg</property>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+			<z-m>-0.065</z-m>
+		</center>
+	</animation>
+
+	<!-- HSI NAV bugs -->
+	<animation>
+		<name>NAV1 TO select</name>
+		<type>select</type>
+		<object-name>NAV1BugTO</object-name>
+		<condition>
+			<and>
+				<property>instrumentation/nav[0]/to-flag</property>
+				<property>instrumentation/nav[0]/in-range</property>
+			</and>
+		</condition>
+	</animation>
+	<animation>
+		<name>NAV1 FROM select</name>
+		<type>select</type>
+		<object-name>NAV1BugFROM</object-name>
+		<condition>
+			<and>
+				<property>instrumentation/nav[0]/from-flag</property>
+				<property>instrumentation/nav[0]/in-range</property>
+			</and>
+		</condition>
+	</animation>
+	<animation>
+		<name>NAV1 bug</name>
+		<type>rotate</type>
+		<object-name>NAV1BugTO</object-name>
+		<object-name>NAV1BugFROM</object-name>
+		<property>sim/model/B717/nav1-bug-deg</property>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+			<z-m>-0.065</z-m>
+		</center>
+	</animation>
+
+	<animation>
+		<name>NAV2 TO select</name>
+		<type>select</type>
+		<object-name>NAV2BugTO</object-name>
+		<condition>
+			<and>
+				<property>instrumentation/nav[1]/to-flag</property>
+				<property>instrumentation/nav[1]/in-range</property>
+			</and>
+		</condition>
+	</animation>
+	<animation>
+		<name>NAV2 FROM select</name>
+		<type>select</type>
+		<object-name>NAV2BugFROM</object-name>
+		<condition>
+			<and>
+				<property>instrumentation/nav[1]/from-flag</property>
+				<property>instrumentation/nav[1]/in-range</property>
+			</and>
+		</condition>
+	</animation>
+	<animation>
+		<name>NAV2 bug</name>
+		<type>rotate</type>
+		<object-name>NAV2BugTO</object-name>
+		<object-name>NAV2BugFROM</object-name>
+		<property>sim/model/B717/nav2-bug-deg</property>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+			<z-m>-0.065</z-m>
+		</center>
+	</animation>
+
+	<!-- HSI ADF bug -->
+	<animation>
+		<name>ADF bug select</name>
+		<type>select</type>
+		<object-name>ADFBug</object-name>
+		<condition>
+			<property>instrumentation/adf/in-range</property>
+		</condition>
+	</animation>
+	<animation>
+		<name>ADF bug</name>
+		<type>rotate</type>
+		<object-name>ADFBug</object-name>
+		<property>sim/model/B717/adf-bug-deg</property>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+			<z-m>-0.065</z-m>
+		</center>
+	</animation>
+
+	<!-- MOVING MAP DISPLAY -->
+	<!-- VORs -->
+	<animation>
+		<name>Map VOR L select</name>
+		<type>select</type>
+		<object-name>VORL</object-name>
+		<object-name>Map VOR L</object-name>
+		<condition>
+			<less-than>
+				<property>instrumentation/nav[0]/nav-distance</property>
+				<value>92600</value>
+			</less-than>
+		</condition>
+	</animation>
+	<animation>
+		<name>Map VOR L rotate</name>
+		<type>rotate</type>
+		<object-name>VORL</object-name>
+		<object-name>Map VOR L</object-name>
+		<property>sim/model/B717/nav1-bug-deg</property>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+			<z-m>-0.065</z-m>
+		</center>
+	</animation>
+	<animation>
+		<name>Map VOR L translate</name>
+		<type>translate</type>
+		<object-name>VORL</object-name>
+		<object-name>Map VOR L</object-name>
+		<property>instrumentation/nav[0]/nav-distance</property>
+		<factor>0.00000149</factor>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>1</z>
+		</axis>
+	</animation>
+	<animation>
+		<name>Map VOR L counter-rotate</name>
+		<type>rotate</type>
+		<object-name>VORL</object-name>
+		<object-name>Map VOR L</object-name>
+		<property>sim/model/B717/nav1-bug-deg</property>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+			<z-m>-0.065</z-m>
+		</center>
+	</animation>
+
+	<animation>
+		<name>Map VOR R select</name>
+		<type>select</type>
+		<object-name>VORR</object-name>
+		<object-name>Map VOR R</object-name>
+		<condition>
+			<less-than>
+				<property>instrumentation/nav[1]/nav-distance</property>
+				<value>92600</value>
+			</less-than>
+		</condition>
+	</animation>
+	<animation>
+		<name>Map VOR R rotate</name>
+		<type>rotate</type>
+		<object-name>VORR</object-name>
+		<object-name>Map VOR R</object-name>
+		<property>sim/model/B717/nav2-bug-deg</property>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+			<z-m>-0.065</z-m>
+		</center>
+	</animation>
+	<animation>
+		<name>Map VOR R translate</name>
+		<type>translate</type>
+		<object-name>VORR</object-name>
+		<object-name>Map VOR R</object-name>
+		<property>instrumentation/nav[1]/nav-distance</property>
+		<factor>0.000001493</factor>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>1</z>
+		</axis>
+	</animation>
+	<animation>
+		<name>Map VOR R counter-rotate</name>
+		<type>rotate</type>
+		<object-name>VORR</object-name>
+		<object-name>Map VOR R</object-name>
+		<property>sim/model/B717/nav2-bug-deg</property>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+			<z-m>-0.065</z-m>
+		</center>
+	</animation>
+
+	<!-- Route manager waypoint -->
+	<animation>
+		<name>Map waypoint select</name>
+		<type>select</type>
+		<object-name>WP</object-name>
+		<object-name>WPCrs</object-name>
+		<object-name>Map waypoint ID</object-name>
+		<condition>
+			<greater-than>
+				<property>autopilot/route-manager/route/num</property>
+				<value>0</value>
+			</greater-than>
+		</condition>
+	</animation>
+	<animation>
+		<name>Map waypoint range select</name>
+		<type>select</type>
+		<object-name>WP</object-name>
+		<object-name>Map waypoint ID</object-name>
+		<condition>
+			<less-than>
+				<property>autopilot/route-manager/wp[0]/dist</property>
+				<value>50</value>
+			</less-than>
+		</condition>
+	</animation>
+	<animation>
+		<name>Map waypoint rotate</name>
+		<type>rotate</type>
+		<object-name>WP</object-name>
+		<object-name>WPCrs</object-name>
+		<object-name>Map waypoint ID</object-name>
+		<property>sim/model/B717/wp-bearing-deg</property>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+			<z-m>-0.065</z-m>
+		</center>
+	</animation>
+	<animation>
+		<name>Map waypoint translate</name>
+		<type>translate</type>
+		<object-name>WP</object-name>
+		<object-name>Map waypoint ID</object-name>
+		<property>autopilot/route-manager/wp[0]/dist</property>
+		<factor>0.00276</factor>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>1</z>
+		</axis>
+	</animation>
+	<animation>
+		<name>Map waypoint counter-rotate</name>
+		<type>rotate</type>
+		<object-name>WP</object-name>
+		<object-name>Map waypoint ID</object-name>
+		<property>sim/model/B717/wp-bearing-deg</property>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+			<z-m>-0.065</z-m>
+		</center>
+	</animation>
+	<animation>
+		<name>Map waypoint course scale</name>
+		<type>scale</type>
+		<object-name>WPCrs</object-name>
+		<property>autopilot/route-manager/wp[0]/dist</property>
+		<interpolation>
+			<entry><ind>0</ind><dep>0</dep></entry>
+			<entry><ind>50</ind><dep>0.936</dep></entry>
+		</interpolation>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+			<z-m>-0.065</z-m>
+		</center>
+	</animation>
+
+	<!-- Multiplayer traffic -->
+	<animation>
+		<name>MP 1 select</name>
+		<type>select</type>
+		<object-name>MP1</object-name>
+		<object-name>Map MP 1 callsign</object-name>
+		<object-name>Map MP 1 distance</object-name>
+		<object-name>Map MP 1 altitude</object-name>
+		<condition>
+			<and>
+				<property>ai/models/multiplayer[0]/valid</property>
+				<less-than>
+					<property>sim/model/B717/multiplayer-distance[0]</property>
+					<value>92600</value>
+				</less-than>
+			</and>
+		</condition>
+	</animation>
+	<animation>
+		<name>MP 1 rotate</name>
+		<type>rotate</type>
+		<object-name>MP1</object-name>
+		<object-name>Map MP 1 callsign</object-name>
+		<object-name>Map MP 1 distance</object-name>
+		<object-name>Map MP 1 altitude</object-name>
+		<property>sim/model/B717/multiplayer-bearing[0]</property>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+			<z-m>-0.065</z-m>
+		</center>
+	</animation>
+	<animation>
+		<name>MP 1 translate</name>
+		<type>translate</type>
+		<object-name>MP1</object-name>
+		<object-name>Map MP 1 callsign</object-name>
+		<object-name>Map MP 1 distance</object-name>
+		<object-name>Map MP 1 altitude</object-name>
+		<property>sim/model/B717/multiplayer-distance[0]</property>
+		<factor>0.000001493</factor>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>1</z>
+		</axis>
+	</animation>
+	<animation>
+		<name>MP 1 counter-rotate</name>
+		<type>rotate</type>
+		<object-name>MP1</object-name>
+		<object-name>Map MP 1 callsign</object-name>
+		<object-name>Map MP 1 distance</object-name>
+		<object-name>Map MP 1 altitude</object-name>
+		<property>sim/model/B717/multiplayer-bearing[0]</property>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+			<z-m>-0.065</z-m>
+		</center>
+	</animation>
+
+	<animation>
+		<name>MP 2 select</name>
+		<type>select</type>
+		<object-name>MP2</object-name>
+		<object-name>Map MP 2 callsign</object-name>
+		<object-name>Map MP 2 distance</object-name>
+		<object-name>Map MP 2 altitude</object-name>
+		<condition>
+			<and>
+				<property>ai/models/multiplayer[1]/valid</property>
+				<less-than>
+					<property>sim/model/B717/multiplayer-distance[1]</property>
+					<value>92600</value>
+				</less-than>
+			</and>
+		</condition>
+	</animation>
+	<animation>
+		<name>MP 2 rotate</name>
+		<type>rotate</type>
+		<object-name>MP2</object-name>
+		<object-name>Map MP 2 callsign</object-name>
+		<object-name>Map MP 2 distance</object-name>
+		<object-name>Map MP 2 altitude</object-name>
+		<property>sim/model/B717/multiplayer-bearing[1]</property>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+			<z-m>-0.065</z-m>
+		</center>
+	</animation>
+	<animation>
+		<name>MP 2 translate</name>
+		<type>translate</type>
+		<object-name>MP2</object-name>
+		<object-name>Map MP 2 callsign</object-name>
+		<object-name>Map MP 2 distance</object-name>
+		<object-name>Map MP 2 altitude</object-name>
+		<property>sim/model/B717/multiplayer-distance[1]</property>
+		<factor>0.000001493</factor>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>1</z>
+		</axis>
+	</animation>
+	<animation>
+		<name>MP 2 counter-rotate</name>
+		<type>rotate</type>
+		<object-name>MP2</object-name>
+		<object-name>Map MP 2 callsign</object-name>
+		<object-name>Map MP 2 distance</object-name>
+		<object-name>Map MP 2 altitude</object-name>
+		<property>sim/model/B717/multiplayer-bearing[1]</property>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+			<z-m>-0.065</z-m>
+		</center>
+	</animation>
+
+	<animation>
+		<name>MP 3 select</name>
+		<type>select</type>
+		<object-name>MP3</object-name>
+		<object-name>Map MP 3 callsign</object-name>
+		<object-name>Map MP 3 distance</object-name>
+		<object-name>Map MP 3 altitude</object-name>
+		<condition>
+			<and>
+				<property>ai/models/multiplayer[2]/valid</property>
+				<less-than>
+					<property>sim/model/B717/multiplayer-distance[2]</property>
+					<value>92600</value>
+				</less-than>
+			</and>
+		</condition>
+	</animation>
+	<animation>
+		<name>MP 3 rotate</name>
+		<type>rotate</type>
+		<object-name>MP3</object-name>
+		<object-name>Map MP 3 callsign</object-name>
+		<object-name>Map MP 3 distance</object-name>
+		<object-name>Map MP 3 altitude</object-name>
+		<property>sim/model/B717/multiplayer-bearing[2]</property>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+			<z-m>-0.065</z-m>
+		</center>
+	</animation>
+	<animation>
+		<name>MP 3 translate</name>
+		<type>translate</type>
+		<object-name>MP3</object-name>
+		<object-name>Map MP 3 callsign</object-name>
+		<object-name>Map MP 3 distance</object-name>
+		<object-name>Map MP 3 altitude</object-name>
+		<property>sim/model/B717/multiplayer-distance[2]</property>
+		<factor>0.000001493</factor>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>1</z>
+		</axis>
+	</animation>
+	<animation>
+		<name>MP 3 counter-rotate</name>
+		<type>rotate</type>
+		<object-name>MP3</object-name>
+		<object-name>Map MP 3 callsign</object-name>
+		<object-name>Map MP 3 distance</object-name>
+		<object-name>Map MP 3 altitude</object-name>
+		<property>sim/model/B717/multiplayer-bearing[2]</property>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+			<z-m>-0.065</z-m>
+		</center>
+	</animation>
+
+	<animation>
+		<name>MP 4 select</name>
+		<type>select</type>
+		<object-name>MP4</object-name>
+		<object-name>Map MP 4 callsign</object-name>
+		<object-name>Map MP 4 distance</object-name>
+		<object-name>Map MP 4 altitude</object-name>
+		<condition>
+			<and>
+				<property>ai/models/multiplayer[3]/valid</property>
+				<less-than>
+					<property>sim/model/B717/multiplayer-distance[3]</property>
+					<value>92600</value>
+				</less-than>
+			</and>
+		</condition>
+	</animation>
+	<animation>
+		<name>MP 4 rotate</name>
+		<type>rotate</type>
+		<object-name>MP4</object-name>
+		<object-name>Map MP 4 callsign</object-name>
+		<object-name>Map MP 4 distance</object-name>
+		<object-name>Map MP 4 altitude</object-name>
+		<property>sim/model/B717/multiplayer-bearing[3]</property>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+			<z-m>-0.065</z-m>
+		</center>
+	</animation>
+	<animation>
+		<name>MP 4 translate</name>
+		<type>translate</type>
+		<object-name>MP4</object-name>
+		<object-name>Map MP 4 callsign</object-name>
+		<object-name>Map MP 4 distance</object-name>
+		<object-name>Map MP 4 altitude</object-name>
+		<property>sim/model/B717/multiplayer-distance[3]</property>
+		<factor>0.000001493</factor>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>1</z>
+		</axis>
+	</animation>
+	<animation>
+		<name>MP 4 counter-rotate</name>
+		<type>rotate</type>
+		<object-name>MP4</object-name>
+		<object-name>Map MP 4 callsign</object-name>
+		<object-name>Map MP 4 distance</object-name>
+		<object-name>Map MP 4 altitude</object-name>
+		<property>sim/model/B717/multiplayer-bearing[3]</property>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+			<z-m>-0.065</z-m>
+		</center>
+	</animation>
+
+	<animation>
+		<name>MP 5 select</name>
+		<type>select</type>
+		<object-name>MP5</object-name>
+		<object-name>Map MP 5 callsign</object-name>
+		<object-name>Map MP 5 distance</object-name>
+		<object-name>Map MP 5 altitude</object-name>
+		<condition>
+			<and>
+				<property>ai/models/multiplayer[4]/valid</property>
+				<less-than>
+					<property>sim/model/B717/multiplayer-distance[4]</property>
+					<value>92600</value>
+				</less-than>
+			</and>
+		</condition>
+	</animation>
+	<animation>
+		<name>MP 5 rotate</name>
+		<type>rotate</type>
+		<object-name>MP5</object-name>
+		<object-name>Map MP 5 callsign</object-name>
+		<object-name>Map MP 5 distance</object-name>
+		<object-name>Map MP 5 altitude</object-name>
+		<property>sim/model/B717/multiplayer-bearing[4]</property>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+			<z-m>-0.065</z-m>
+		</center>
+	</animation>
+	<animation>
+		<name>MP 5 translate</name>
+		<type>translate</type>
+		<object-name>MP5</object-name>
+		<object-name>Map MP 5 callsign</object-name>
+		<object-name>Map MP 5 distance</object-name>
+		<object-name>Map MP 5 altitude</object-name>
+		<property>sim/model/B717/multiplayer-distance[4]</property>
+		<factor>0.000001493</factor>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>1</z>
+		</axis>
+	</animation>
+	<animation>
+		<name>MP 5 counter-rotate</name>
+		<type>rotate</type>
+		<object-name>MP5</object-name>
+		<object-name>Map MP 5 callsign</object-name>
+		<object-name>Map MP 5 distance</object-name>
+		<object-name>Map MP 5 altitude</object-name>
+		<property>sim/model/B717/multiplayer-bearing[4]</property>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+			<z-m>-0.065</z-m>
+		</center>
+	</animation>
+
+	<animation>
+		<name>MP 6 select</name>
+		<type>select</type>
+		<object-name>MP6</object-name>
+		<object-name>Map MP 6 callsign</object-name>
+		<object-name>Map MP 6 distance</object-name>
+		<object-name>Map MP 6 altitude</object-name>
+		<condition>
+			<and>
+				<property>ai/models/multiplayer[5]/valid</property>
+				<less-than>
+					<property>sim/model/B717/multiplayer-distance[5]</property>
+					<value>92600</value>
+				</less-than>
+			</and>
+		</condition>
+	</animation>
+	<animation>
+		<name>MP 6 rotate</name>
+		<type>rotate</type>
+		<object-name>MP6</object-name>
+		<object-name>Map MP 6 callsign</object-name>
+		<object-name>Map MP 6 distance</object-name>
+		<object-name>Map MP 6 altitude</object-name>
+		<property>sim/model/B717/multiplayer-bearing[5]</property>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+			<z-m>-0.065</z-m>
+		</center>
+	</animation>
+	<animation>
+		<name>MP 6 translate</name>
+		<type>translate</type>
+		<object-name>MP6</object-name>
+		<object-name>Map MP 6 callsign</object-name>
+		<object-name>Map MP 6 distance</object-name>
+		<object-name>Map MP 6 altitude</object-name>
+		<property>sim/model/B717/multiplayer-distance[5]</property>
+		<factor>0.000001493</factor>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>1</z>
+		</axis>
+	</animation>
+	<animation>
+		<name>MP 6 counter-rotate</name>
+		<type>rotate</type>
+		<object-name>MP6</object-name>
+		<object-name>Map MP 6 callsign</object-name>
+		<object-name>Map MP 6 distance</object-name>
+		<object-name>Map MP 6 altitude</object-name>
+		<property>sim/model/B717/multiplayer-bearing[5]</property>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+			<z-m>-0.065</z-m>
+		</center>
+	</animation>
+
+</PropertyList>

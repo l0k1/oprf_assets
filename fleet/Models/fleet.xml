@@ -1,0 +1,244 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+  
+ <path>Models/Geometry/null.ac</path>
+  
+ <model>
+    <path>Aircraft/fleet/Models/missile-frigate/missile_frigate.xml</path>
+    <offsets>
+      <x-m>-100.00</x-m>
+      <y-m>0.00</y-m>
+      <z-m>0.00</z-m>
+    </offsets>
+  </model>
+  
+  <model>
+    <path>Aircraft/fleet/Models/us-ships/USS-OliverPerry.xml</path>
+    <offsets>
+      <x-m>-50.00</x-m>
+      <y-m>200.00</y-m>
+      <z-m>0.00</z-m>
+    </offsets>
+  </model>
+  
+  <model>
+    <path>Aircraft/fleet/Models/us-ships/USS-SanAntonio.xml</path>
+    <offsets>
+      <x-m>-50.00</x-m>
+      <y-m>-200.00</y-m>
+      <z-m>0.00</z-m>
+    </offsets>
+  </model>
+  
+  <model>
+    <path>Aircraft/fleet/Models/us-ships/USS-NORMANDY.xml</path>
+    <offsets>
+      <x-m>0.00</x-m>
+      <y-m>400.00</y-m>
+      <z-m>0.00</z-m>
+    </offsets>
+  </model>
+  
+  <model>
+    <path>Aircraft/fleet/Models/us-ships/USS-LakeChamplain.xml</path>
+    <offsets>
+      <x-m>0.00</x-m>
+      <y-m>-400.00</y-m>
+      <z-m>0.00</z-m>
+    </offsets>
+  </model>
+  
+<!--  <model>
+    <path>Models/Maritime/Military/LCM6.ac</path>
+    <offsets>
+      <x-m>300.00</x-m>
+      <y-m>0.00</y-m>
+      <z-m>0.00</z-m>
+    </offsets>
+  </model>
+  
+  <model>
+    <path>Models/Maritime/Military/LHA1.ac</path>
+    <offsets>
+      <x-m>300.00</x-m>
+      <y-m>200.00</y-m>
+      <z-m>0.00</z-m>
+    </offsets>
+  </model>
+  
+  <model>
+    <path>Models/Maritime/Military/PSC9.ac</path>
+    <offsets>
+      <x-m>300.00</x-m>
+      <y-m>-200.00</y-m>
+      <z-m>0.00</z-m>
+    </offsets>
+  </model>-->
+  
+  <model>
+    <path>Models/Maritime/Civilian/Tanker.ac</path>
+    <offsets>
+      <x-m>300.00</x-m>
+      <y-m>-300.00</y-m>
+      <z-m>0.00</z-m>
+    </offsets>
+  </model>
+  
+  <model>
+    <path>Models/Maritime/Civilian/Tanker.ac</path>
+    <offsets>
+      <x-m>300.00</x-m>
+      <y-m>300.00</y-m>
+      <z-m>0.00</z-m>
+    </offsets>
+  </model>
+  
+  <model>
+    <path>Aircraft/fleet/Models/smoke.xml</path>
+    <name>s0</name>
+    <offsets>
+        <x-m>-100</x-m>
+        <y-m>0</y-m>
+        <z-m>0.00</z-m>
+    </offsets>
+  </model>
+  
+  <model>
+    <path>Aircraft/fleet/Models/smoke.xml</path>
+    <name>s1</name>
+    <offsets>
+        <x-m>-50</x-m>
+        <y-m>200</y-m>
+        <z-m>0.00</z-m>
+    </offsets>
+  </model>
+  
+  <model>
+    <path>Aircraft/fleet/Models/smoke.xml</path>
+    <name>s2</name>
+    <offsets>
+        <x-m>-50</x-m>
+        <y-m>-200</y-m>
+        <z-m>0.00</z-m>
+    </offsets>
+  </model>
+  
+  <model>
+    <path>Aircraft/fleet/Models/smoke.xml</path>
+    <name>s3</name>
+    <offsets>
+        <x-m>0</x-m>
+        <y-m>400</y-m>
+        <z-m>0.00</z-m>
+    </offsets>
+  </model>
+  
+  <model>
+    <path>Aircraft/fleet/Models/smoke.xml</path>
+    <name>s4</name>
+    <offsets>
+        <x-m>0</x-m>
+        <y-m>-400</y-m>
+        <z-m>0.00</z-m>
+    </offsets>
+  </model>
+  
+  <model>
+    <path>Aircraft/fleet/Models/smoke.xml</path>
+    <name>s5</name>
+    <offsets>
+        <x-m>300</x-m>
+        <y-m>-300</y-m>
+        <z-m>0.00</z-m>
+    </offsets>
+  </model>
+  
+  <model>
+    <path>Aircraft/fleet/Models/smoke.xml</path>
+    <name>s6</name>
+    <offsets>
+        <x-m>300</x-m>
+        <y-m>300</y-m>
+        <z-m>0.00</z-m>
+    </offsets>
+  </model>
+  
+  <animation>
+    <type>select</type>
+    <object-name>s0</object-name>
+    <condition>
+      <equals>
+        <property>sim/multiplay/generic/bool[40]</property>
+        <value>true</value>
+      </equals>
+    </condition>
+  </animation>
+  
+  <animation>
+    <type>select</type>
+    <object-name>s1</object-name>
+    <condition>
+      <equals>
+        <property>sim/multiplay/generic/bool[41]</property>
+        <value>true</value>
+      </equals>
+    </condition>
+  </animation>
+  
+  <animation>
+    <type>select</type>
+    <object-name>s2</object-name>
+    <condition>
+      <equals>
+        <property>sim/multiplay/generic/bool[42]</property>
+        <value>true</value>
+      </equals>
+    </condition>
+  </animation>
+  
+  <animation>
+    <type>select</type>
+    <object-name>s3</object-name>
+    <condition>
+      <equals>
+        <property>sim/multiplay/generic/bool[43]</property>
+        <value>true</value>
+      </equals>
+    </condition>
+  </animation>
+  
+  <animation>
+    <type>select</type>
+    <object-name>s4</object-name>
+    <condition>
+      <equals>
+        <property>sim/multiplay/generic/bool[44]</property>
+        <value>true</value>
+      </equals>
+    </condition>
+  </animation>
+  
+  <animation>
+    <type>select</type>
+    <object-name>s5</object-name>
+    <condition>
+      <equals>
+        <property>sim/multiplay/generic/bool[45]</property>
+        <value>true</value>
+      </equals>
+    </condition>
+  </animation>
+  
+  <animation>
+    <type>select</type>
+    <object-name>s6</object-name>
+    <condition>
+      <equals>
+        <property>sim/multiplay/generic/bool[46]</property>
+        <value>true</value>
+      </equals>
+    </condition>
+  </animation>
+  
+</PropertyList>
