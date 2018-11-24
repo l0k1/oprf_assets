@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Copyright (c) 2015 onox
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<PropertyList>
+
+    <environment>
+        <in-to-wind type="bool">false</in-to-wind>
+    </environment>
+
+    <carrier>
+        <fdm>
+            <settings>
+                <!-- The maximum bank angle during full rudder deflection -->
+                <bank-limit type="double">15.0</bank-limit>
+
+                <!-- Frequency and overshoot of the oscillator used to
+                     simulate heeling (roll).
+                -->
+                <heel-frequency type="double">0.5</heel-frequency>
+                <heel-overshoot type="double">4.0</heel-overshoot>
+
+                <!-- Frequency and overshoot of the oscillator used to
+                     simulate trimming (pitch).
+                -->
+                <trim-frequency type="double">0.32</trim-frequency>
+                <trim-overshoot type="double">0.45</trim-overshoot>
+
+                <!-- The speed of the waves plus speed of the ship in knots
+                     which generates the maximum overshoot of the trim
+                     oscillation.
+                -->
+                <max-trim-oscillation-wave-kt type="double">30.0</max-trim-oscillation-wave-kt>
+
+                <!-- The speed of the waves in knots which generates the
+                     maximum overshoot of the heel oscillation.
+                -->
+                <max-heel-oscillation-wave-kt type="double">20.0</max-heel-oscillation-wave-kt>
+
+                <movement type="bool">true</movement>
+            </settings>
+        </fdm>
+        <mode type="string">manual</mode>
+        <sunk type="bool">false</sunk>
+        <disabled type="bool">false</disabled>
+    </carrier>
+
+    <sim include="Sim/views.xml">
+        <author>pinto, onox, Nikolai V. Chr., Alexis Bory, Detlef Faber, T. Henkel</author>
+        <description>Fleet</description>
+        <long-description>
+          Battle fleet. 7 evil ships.
+        </long-description>
+        <status>alpha</status>
+        <aircraft-version>0.1</aircraft-version>
+        <minimum-fg-version>2018.1.1</minimum-fg-version>
+
+        <flight-model>null</flight-model>
+
+        <aero>KPN-D</aero>
+        <aircraft-operator>KPN</aircraft-operator>
+
+        <model>
+            <path>Aircraft/fleet/Models/fleet.xml</path>
+
+            <!-- Uncloak weather balloons visiting Earth -->
+            <always-show-in-MP type="bool">true</always-show-in-MP>
+        </model>
+
+        <presets>
+            <onground>true</onground>
+        </presets>
+
+        <startup>
+            <splash-texture>Aircraft/fleet/splash1.png</splash-texture>
+        </startup>
+        
+        <previews>
+            <preview>
+                <type>exterior</type>
+                <splash type="bool">true</splash>
+                <path>gui/fleet.png</path>
+            </preview>
+        </previews>
+
+        <current-view>
+            <deck-park type="bool">true</deck-park>
+
+            <z-offset-dec-step type="double">0.0</z-offset-dec-step>
+            <z-offset-inc-step type="double">0.0</z-offset-inc-step>
+            <can-change-z-offset type="bool">false</can-change-z-offset>
+
+            <z-offset-min-m type="float">100.0</z-offset-min-m>
+            <z-offset-max-m type="float">2000.0</z-offset-max-m>
+        </current-view>
+
+        <hud>
+            <path n="1">Aircraft/fleet/Hud/hud.xml</path>
+            <visibility n="1">true</visibility>
+            <font>
+                <size type="float">10.0</size>
+            </font>
+        </hud>
+
+        <systems>
+            <autopilot>
+                <path>Systems/fbw.xml</path>
+            </autopilot>
+            <autopilot>
+                <path>Systems/fdm.xml</path>
+            </autopilot>
+            <autopilot>
+                <path>Aircraft/fleet/autopilot.xml</path>
+            </autopilot>
+
+            <property-rule n="100">
+                <path>Systems/views.xml</path>
+            </property-rule>
+        </systems>
+        <multiplay>
+        	<generic>
+        		<int n="0" alias="/carrier/sunk"/>
+                <int n="2" type="int">0</int>
+                <bool n="40" type="bool">false</bool><!-- smoke -->
+                <bool n="41" type="bool">false</bool>
+                <bool n="42" type="bool">false</bool>
+                <bool n="43" type="bool">false</bool>
+                <bool n="44" type="bool">false</bool>
+                <bool n="45" type="bool">false</bool>
+                <bool n="46" type="bool">false</bool>
+        	</generic>
+        </multiplay>
+
+        <aircraft-data>
+            <!-- Properties that get saved to persist locally between FG sessions -->
+            <path>enemies/e1</path>
+            <path>enemies/e2</path>
+            <path>enemies/e3</path>
+            <path>enemies/e4</path>
+            <path>enemies/e5</path>
+            <path>enemies/e6</path>
+            <path>enemies/e7</path>
+            <path>enemies/e8</path>
+            <path>enemies/e9</path>
+            <path>enemies/e10</path>
+            <path>enemies/e11</path>
+            <path>enemies/e12</path>
+        </aircraft-data>
+
+    </sim>
+	
+	<!-- need to adjust this (probably) -->
+	
+	<controls>
+        <armament>
+            <station-select type="int">0</station-select>
+            <trigger type="bool">false</trigger>
+            <station n="1">
+                <offsets>
+                    <x-m type="double">  4.15986</x-m>
+                    <y-m type="double"> -2.70311</y-m>
+                    <z-m type="double"> -0.67645</z-m>
+                </offsets>
+                <trigger type="bool">false</trigger>
+            </station>
+            <station n="2">
+                <offsets>
+                    <x-m type="double"> -0.02697</x-m>
+                    <y-m type="double"> -0.98148</y-m>
+                    <z-m type="double"> -0.94307</z-m>
+                </offsets>
+                <trigger type="bool">false</trigger>
+            </station>
+            <station n="3">
+                <offsets>
+                    <x-m type="double">  4.15986</x-m>
+                    <y-m type="double">  2.70311</y-m>
+                    <z-m type="double"> -0.67645</z-m>
+                </offsets>
+                <trigger type="bool">false</trigger>
+            </station>
+            <station n="4">
+                <offsets>
+                    <x-m type="double"> -0.02697</x-m>
+                    <y-m type="double">  0.98148</y-m>
+                    <z-m type="double"> -0.94307</z-m>
+                </offsets>
+                <trigger type="bool">false</trigger>
+            </station>
+            <station n="5"><!-- left outer wing -->
+                <offsets>
+                    <x-m type="double">  4.05216</x-m>
+                    <y-m type="double"> -3.94417</y-m>
+                    <z-m type="double"> -0.73722</z-m>
+                </offsets>
+                <trigger type="bool">false</trigger>
+            </station>
+            <station n="6"><!-- right outer wing -->
+                <offsets>
+                    <x-m type="double">  4.05216</x-m>
+                    <y-m type="double">  3.94417</y-m>
+                    <z-m type="double"> -0.73722</z-m>
+                </offsets>
+                <trigger type="bool">false</trigger>
+            </station>
+			<station n="7"><!-- right outer wing -->
+                <offsets>
+                    <x-m type="double">  4.05216</x-m>
+                    <y-m type="double">  3.94417</y-m>
+                    <z-m type="double"> -0.73722</z-m>
+                </offsets>
+                <trigger type="bool">false</trigger>
+            </station>
+			<station n="8"><!-- right outer wing -->
+                <offsets>
+                    <x-m type="double">  4.05216</x-m>
+                    <y-m type="double">  3.94417</y-m>
+                    <z-m type="double"> -0.73722</z-m>
+                </offsets>
+                <trigger type="bool">false</trigger>
+            </station>
+            <station n="9">
+                <offsets>
+                    <x-m type="double">  4.15986</x-m>
+                    <y-m type="double"> -2.70311</y-m>
+                    <z-m type="double"> -0.67645</z-m>
+                </offsets>
+                <trigger type="bool">false</trigger>
+            </station>
+            <station n="10">
+                <offsets>
+                    <x-m type="double"> -0.02697</x-m>
+                    <y-m type="double"> -0.98148</y-m>
+                    <z-m type="double"> -0.94307</z-m>
+                </offsets>
+                <trigger type="bool">false</trigger>
+            </station>
+            <station n="11">
+                <offsets>
+                    <x-m type="double">  4.15986</x-m>
+                    <y-m type="double">  2.70311</y-m>
+                    <z-m type="double"> -0.67645</z-m>
+                </offsets>
+                <trigger type="bool">false</trigger>
+            </station>
+            <station n="12">
+                <offsets>
+                    <x-m type="double"> -0.02697</x-m>
+                    <y-m type="double">  0.98148</y-m>
+                    <z-m type="double"> -0.94307</z-m>
+                </offsets>
+                <trigger type="bool">false</trigger>
+            </station>
+            <station n="13"><!-- left outer wing -->
+                <offsets>
+                    <x-m type="double">  4.05216</x-m>
+                    <y-m type="double"> -3.94417</y-m>
+                    <z-m type="double"> -0.73722</z-m>
+                </offsets>
+                <trigger type="bool">false</trigger>
+            </station>
+            <station n="14"><!-- right outer wing -->
+                <offsets>
+                    <x-m type="double">  4.05216</x-m>
+                    <y-m type="double">  3.94417</y-m>
+                    <z-m type="double"> -0.73722</z-m>
+                </offsets>
+                <trigger type="bool">false</trigger>
+            </station>
+            <station n="15"><!-- right outer wing -->
+                <offsets>
+                    <x-m type="double">  4.05216</x-m>
+                    <y-m type="double">  3.94417</y-m>
+                    <z-m type="double"> -0.73722</z-m>
+                </offsets>
+                <trigger type="bool">false</trigger>
+            </station>
+            <station n="16"><!-- right outer wing -->
+                <offsets>
+                    <x-m type="double">  4.05216</x-m>
+                    <y-m type="double">  3.94417</y-m>
+                    <z-m type="double"> -0.73722</z-m>
+                </offsets>
+                <trigger type="bool">false</trigger>
+            </station>
+        </armament>
+	</controls>
+
+	
+    <rotors>
+        <main>
+            <blade n="0">
+                <flap-deg type="double">0</flap-deg>
+            </blade>
+            <blade n="1">
+                <flap-deg type="double">0</flap-deg>
+            </blade>
+            <blade n="2">
+                <flap-deg type="double">0</flap-deg>
+            </blade>
+        </main>
+    </rotors>
+
+    <enemies>
+        <e1 userarchive="y" type="string">Leto</e1>
+        <e2 userarchive="y" type="string">swamp</e2>
+        <e3 userarchive="y" type="string">pinto</e3>
+        <e4 userarchive="y" type="string">fb237</e4>
+        <e5 userarchive="y" type="string">Wilco-1</e5>
+        <e6 userarchive="y" type="string">Kokos</e6>
+        <e7 userarchive="y" type="string">J-Mav16</e7>
+        <e8 userarchive="y" type="string">S</e8>
+        <e9 userarchive="y" type="string">Raider1</e9>
+        <e10 userarchive="y" type="string">Slobb</e10>
+        <e11 userarchive="y" type="string">5H1N0B1</e11>
+        <e12 userarchive="y" type="string">SNOWY1</e12>
+    </enemies>
+	
+    <input>
+        <mice include="Sim/mice.xml"/>
+    </input>
+
+</PropertyList>

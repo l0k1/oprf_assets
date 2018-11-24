@@ -1,0 +1,338 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+
+
+<!--  -->	<path>Models/Maritime/Military/OliverPerryFFG.ac</path>
+
+
+
+
+<animation>
+		<type>rotate</type>
+		<object-name>SPS-49-Antenna</object-name>
+		<property>/sim/time/elapsed-sec</property>
+		<factor>50</factor>
+		<center><x-m>-14.7</x-m></center>
+		<axis><z>1</z></axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>radar-1b</object-name>
+		<property>/sim/time/elapsed-sec</property>
+		<factor>65</factor>
+		<center><x-m>-7.48</x-m></center>
+		<axis><z>1</z></axis>
+	</animation>
+
+	<!-- *** LoD *** -->
+	<animation>
+		<type>range</type>
+		<max-m>50000</max-m>
+	</animation>
+
+	<animation>
+		<type>range</type>
+		<object-name>4000m</object-name>
+		<object-name>SPS-49-Antenna</object-name>
+		<max-m>1000m</max-m>
+	</animation>
+	<animation>
+		<type>range</type>
+		<object-name>1000m</object-name>
+		<max-m>1000</max-m>
+	</animation>
+	<animation>
+		<type>range</type>
+		<object-name>railing</object-name>
+		<object-name>nets</object-name>
+		<max-m>400</max-m>
+	</animation>
+
+
+
+
+
+
+
+<!-- Ship adjustment (negativ is down) -->
+<offsets><z-m>-0.582</z-m></offsets>
+
+
+
+
+
+
+<!-- roll adjustment (rolls by rudder angel) -->
+<animation><type>rotate</type>
+<property>sim/multiplay/generic/float[0]</property>
+<factor>1</factor>
+	  <condition>
+        		    <not-equals>
+							<property>sim/multiplay/generic/int[0]</property>
+							<value>true</value>
+					</not-equals>	  
+	  </condition>
+<center><x-m>0</x-m><y-m>0</y-m><z-m>-0.2</z-m></center>
+<axis><x>0.2</x><y>0.0</y><z>0.0</z></axis>
+</animation>
+
+
+
+
+
+
+
+<!-- Spray # -->
+<model><path>Aircraft/fleet/Models/us-ships/Effects/sprays.xml</path> 
+<offsets><x-m>-44.0</x-m><y-m>0.0</y-m><z-m>1.2</z-m></offsets>
+</model>
+<model><path>Aircraft/fleet/Models/us-ships/Effects/sprayF.xml</path> 
+<offsets><x-m>-46.0</x-m><y-m>0.0</y-m><z-m>0.8</z-m></offsets></model>
+
+
+<!-- 
+<model><name>Pushback</name><path>Models/Airport/Pushback/Military.
+xml</path><offsets><x-m> -50.441 </x-m><y-m>   0.000 </y-m><z-m>  -5.377 </z-m></offsets></model>
+
+
+# LIGHTING #
+
+
+
+nav lights -->
+
+
+
+
+<model><name>Navigation-Lights</name><path>Aircraft/fleet/Models/us-ships/light/RedLight.xml</path>
+<offsets><x-m>   -24.97</x-m><y-m> -5.98 </y-m><z-m>  13.316 </z-m></offsets></model>
+
+<model><path>Aircraft/fleet/Models/us-ships/light/GreenLight.xml</path>
+<offsets><x-m>  -24.97 </x-m><y-m> 5.98 </y-m><z-m> 13.316 </z-m></offsets></model>
+
+
+
+<!-- pole -->
+
+
+
+
+ 
+ <model><name>Mast</name><path>Aircraft/fleet/Models/us-ships/light/Monitor.xml</path>
+ <condition>
+  <property>controls/lighting/monitor-light</property>
+ </condition>
+ <offsets><x-m>   -6 </x-m><y-m>    0</y-m><z-m>  32 </z-m><heading-deg>0</heading-deg>
+ <pitch-deg>    0</pitch-deg></offsets></model>
+ 
+ 
+<model><name>Coord-Light-Mast</name><path>Aircraft/fleet/Models/us-ships/light/RedLight.xml</path>
+<condition>		
+  <greater-than>		
+   <property>/sim/time/sun-angle-rad</property>
+   <value>1.57</value>
+  </greater-than>
+ </condition>
+<offsets><x-m>   -5.5 </x-m><y-m> 0.7</y-m><z-m>  33.7 </z-m></offsets></model>
+
+<model><name>Coord-Light-Mast</name><path>Aircraft/fleet/Models/us-ships/light/RedLight.xml</path>
+<condition>		
+  <greater-than>		
+   <property>/sim/time/sun-angle-rad</property>
+   <value>1.57</value>
+  </greater-than>
+ </condition>
+<offsets><x-m>   -5.5 </x-m><y-m> -0.7 </y-m><z-m>  33.7 </z-m></offsets></model>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- landing area -->
+<!--model><name>Landing-Zone-left-monitor</name>
+<path>Aircraft/fleet/Models/us-ships/light/WhiteLight.xml</path>
+<condition>
+  <property>controls/lighting/monitor-light</property>
+ </condition>
+ <offsets><x-m> 40.9 </x-m><y-m>  -6.2 </y-m><z-m> 11.80 </z-m></offsets>
+ </model>
+ 
+<model><name>Landing Cone left monitor </name>
+<path>Aircraft/fleet/Models/us-ships/light/light-cone.xml</path>
+<condition>
+  <property>controls/lighting/monitor-light</property>
+ </condition>
+ <offsets><x-m> 40.9 </x-m><y-m> -6.2 </y-m><z-m> 11.80 </z-m>
+ <heading-deg>  -160 </heading-deg><pitch-deg>    -25.55 </pitch-deg></offsets>
+ </model-->
+
+
+
+
+
+<model><name>LandDeck</name><path>Aircraft/fleet/Models/us-ships/light/light-cone2.xml</path>
+<condition>
+  <property>controls/lighting/landzone</property>
+ </condition>
+ <offsets><x-m>  40.90 </x-m><y-m>  -3</y-m><z-m> 12 </z-m><heading-deg> 11 </heading-deg>
+ <pitch-deg>  -140.5 </pitch-deg></offsets>
+ </model>
+ 
+ <model><name>LandDeck</name><path>Aircraft/fleet/Models/us-ships/light/light-cone2.xml</path>
+ <condition>
+  <property>controls/lighting/landzone</property>
+ </condition>
+ <offsets><x-m> 40.90 </x-m><y-m>  3</y-m><z-m> 12 </z-m><heading-deg> -11 </heading-deg>
+ <pitch-deg> -140.5 </pitch-deg></offsets>
+ </model>
+ 
+<model><name>LandDeck</name><path>Aircraft/fleet/Models/us-ships/light/landzone.ac</path>
+<condition>
+  <property>controls/lighting/landzone</property>
+ </condition>
+ <offsets><x-m>  75.90 </x-m><y-m>   0</y-m><z-m> 5.83 </z-m><heading-deg> 0 </heading-deg>
+ <pitch-deg> 0 </pitch-deg></offsets>
+ </model>
+
+
+
+
+<model><name>Coord-Light</name><path>Aircraft/fleet/Models/us-ships/light/WhiteLight.xml</path>
+<condition>		
+  <greater-than>		
+   <property>/sim/time/sun-angle-rad</property>
+   <value>1.57</value>
+  </greater-than>
+</condition>
+ <offsets><x-m>   62.5 </x-m><y-m> -5.5 </y-m><z-m>  6.51 </z-m></offsets></model>
+ <model><name>Coord-Light</name><path>Aircraft/fleet/Models/us-ships/light/WhiteLight.xml</path>
+<condition>		
+  <greater-than>		
+   <property>/sim/time/sun-angle-rad</property>
+   <value>1.57</value>
+  </greater-than>
+ </condition>
+ <offsets><x-m>  62.5 </x-m><y-m> 5.5 </y-m><z-m> 6.51 </z-m></offsets></model>
+
+
+
+<!-- Deck -->
+<model><name>Deck</name><path>Aircraft/fleet/Models/us-ships/light/WhiteLight.xml</path><condition>
+  <property>controls/lighting/decklight</property>
+ </condition><offsets><x-m>   9 </x-m><y-m> -4.5 </y-m><z-m>  9.55 </z-m></offsets></model>
+ <model><name>Deck</name><path>Aircraft/fleet/Models/us-ships/light/WhiteLight.xml</path><condition>
+  <property>controls/lighting/decklight</property>
+ </condition><offsets><x-m>  9 </x-m><y-m> 4.5 </y-m><z-m> 9.55 </z-m></offsets></model>
+<model><name>Deck</name><path>Aircraft/fleet/Models/us-ships/light/WhiteLight.xml</path><condition>
+  <property>controls/lighting/decklight</property>
+ </condition><offsets><x-m>   0.5 </x-m><y-m> -5.2 </y-m><z-m>  9.55 </z-m></offsets></model>
+ <model><name>Deck</name><path>Aircraft/fleet/Models/us-ships/light/WhiteLight.xml</path><condition>
+  <property>controls/lighting/decklight</property>
+ </condition><offsets><x-m>  0.5 </x-m><y-m> 5.2 </y-m><z-m> 9.55 </z-m></offsets></model>
+<model><name>Deck</name><path>Aircraft/fleet/Models/us-ships/light/WhiteLight.xml</path><condition>
+  <property>controls/lighting/decklight</property>
+ </condition><offsets><x-m>   -14.5 </x-m><y-m> -4.98 </y-m><z-m>  10 </z-m></offsets></model>
+ <model><name>Deck</name><path>Aircraft/fleet/Models/us-ships/light/WhiteLight.xml</path><condition>
+  <property>controls/lighting/decklight</property>
+ </condition><offsets><x-m>  -14.5 </x-m><y-m> 4.98 </y-m><z-m> 10 </z-m></offsets></model>
+<model><name>Deck</name><path>Aircraft/fleet/Models/us-ships/light/WhiteLight.xml</path><condition>
+  <property>controls/lighting/decklight</property>
+ </condition><offsets><x-m>   -19.5 </x-m><y-m> -5.2 </y-m><z-m>  15.55 </z-m></offsets></model>
+ <model><name>Deck</name><path>Aircraft/fleet/Models/us-ships/light/WhiteLight.xml</path><condition>
+  <property>controls/lighting/decklight</property>
+ </condition><offsets><x-m>  -19.5 </x-m><y-m> 5.2 </y-m><z-m> 15.55 </z-m></offsets></model>
+<model><name>Deck</name><path>Aircraft/fleet/Models/us-ships/light/WhiteLight.xml</path><condition>
+  <property>controls/lighting/decklight</property>
+ </condition><offsets><x-m>   -13.5 </x-m><y-m> 0 </y-m><z-m>  15.55 </z-m></offsets></model>
+ <model><name>Deck</name><path>Aircraft/fleet/Models/us-ships/light/WhiteLight.xml</path><condition>
+  <property>controls/lighting/decklight</property>
+ </condition><offsets><x-m>  -4.5 </x-m><y-m> 0 </y-m><z-m> 15.55 </z-m></offsets></model>
+
+
+
+
+
+
+
+<animation>
+<name>All-Light</name>
+<object-name>Monitor-Light</object-name>
+<object-name>Landing-Zone</object-name>
+</animation>
+
+
+
+
+
+
+<!-- #  Bridge  # -->
+
+
+
+<model><path>Aircraft/fleet/Models/us-ships/Bridge/switcher/landing-lights.xml</path>
+<offsets><x-m> -26.346 </x-m><y-m> -4.59 </y-m><z-m>  14.67 </z-m></offsets></model>
+<model><path>Aircraft/fleet/Models/us-ships/Bridge/switcher/Decklight.xml</path>
+<offsets><x-m> -26.346 </x-m><y-m>  -4.520 </y-m><z-m>  14.67</z-m></offsets></model>
+<model><path>Aircraft/fleet/Models/us-ships/Bridge/switcher/Bridgelight.xml</path>
+<offsets><x-m> -26.346 </x-m><y-m>  -4.45 </y-m><z-m>  14.67 </z-m></offsets></model>
+<model><path>Aircraft/fleet/Models/us-ships/Bridge/switcher/MFD.xml</path>
+<offsets><x-m> -26.346 </x-m><y-m>  -4.38 </y-m><z-m>  14.67 </z-m></offsets></model>
+
+<model><path>Aircraft/fleet/Models/us-ships/Bridge/Compass/compass.xml</path>
+<offsets><x-m>  -26.15 </x-m><y-m>  -4.89 </y-m><z-m>  14.76 </z-m>
+<pitch-deg>   -18 </pitch-deg>   <heading-deg>  16</heading-deg> </offsets></model>
+
+
+<model><path>Aircraft/fleet/Models/us-ships/Bridge/seats/seat.xml</path>
+<offsets><x-m> -24.62 </x-m><y-m> -5 </y-m><z-m> 14.52 </z-m>
+<pitch-deg> 3.2 </pitch-deg></offsets></model>
+<model><path>Aircraft/fleet/Models/us-ships/Bridge/seats/pedest.ac</path>
+<offsets><x-m> -24.9 </x-m><y-m> -5 </y-m><z-m> 13.85 </z-m>
+<pitch-deg>   8 </pitch-deg></offsets></model>
+
+
+
+
+<!-- instruments (dont work)  ###
+
+<model><path>Aircraft/SR71-BlackBird/Instruments/Radar2d-bb.xml</path>
+<offsets><x-m>  -25.85 </x-m><y-m>  0 </y-m>
+<z-m>  14.76 </z-m><pitch-deg>   -68 </pitch-deg>
+ <heading-deg>  0</heading-deg> </offsets></model>
+
+<model><name>Pilot Multi-Function Display</name>
+<path>Aircraft/fleet/Models/us-ships/Bridge/MFD/MFD.xml</path>
+<offsets><x-m>-26.385</x-m><y-m>-1</y-m><z-m>14.6</z-m><pitch-deg>-24</pitch-deg></offsets></model>
+
+
+
+
+ taken from Vinson 
+####(i dont know how to proof the parking, but the heli works.... 
+menu-> US naval.....-> AI -> Mary ondeck checkbox)###
+
+<parking-pos><name>park-1</name><heading-offset-deg>-9</heading-offset-deg><x-offset-m>55</x-offset-m>
+<y-offset-m>0</y-offset-m><z-offset-m>9.5</z-offset-m></parking-pos>
+-->
+
+<model><path>Models/Aircraft/H-60.xml</path><condition>
+  <property>controls/Mary-ondeck</property>
+</condition><offsets><x-m>  55 </x-m><y-m>  0 </y-m><z-m>  9.5</z-m><pitch-deg>   2 </pitch-deg>
+   
+<heading-deg>  9</heading-deg> </offsets></model>
+
+
+
+
+
+</PropertyList>

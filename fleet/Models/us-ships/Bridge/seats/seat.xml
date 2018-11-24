@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <path>seat.ac</path>
+
+  <animation>
+    <object-name>siege</object-name>
+    <object-name>accoudoirs</object-name>
+    <object-name>tablette</object-name>
+    <object-name>reposetete</object-name>
+  </animation>
+
+  <animation>
+    <type>material</type>
+    <object-name>siege</object-name>
+    <object-name>accoudoirs</object-name>
+    <object-name>tablette</object-name>
+    <object-name>reposetete</object-name>
+    <emission>
+      <factor-prop>controls/lighting/bridgelight</factor-prop>
+      <red>   0.20 </red>
+      <green> 0.25 </green>
+      <blue>  0.25 </blue>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>range</type>
+    <min-m>0</min-m>
+    <max-property>sim/rendering/static-lod/bare</max-property>
+  </animation>
+	
+</PropertyList>
+
