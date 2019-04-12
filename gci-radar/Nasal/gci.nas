@@ -17,6 +17,7 @@
 # request a BRAA, then it will receive it.
 var damage_prop = props.globals.getNode("/carrier/sunk");
 var prop_watch = {
+    "MiG-15bis": [0,1,2],
     "MiG-21bis": [0,1,2],
     "MiG-21MF-75": [0,1,2],
     "QF-4E": [0,1,2],
