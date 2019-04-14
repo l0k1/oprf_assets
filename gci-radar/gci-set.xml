@@ -102,6 +102,12 @@
     <carrier>
         <sunk type="bool">false</sunk>
     </carrier>
+    
+    <payload>
+        <armament>
+            <msg type="bool">true</msg>
+        </armament>
+    </payload>
 	
     <nasal>
 		<damage> <file>Aircraft/gci-radar/Nasal/damage.nas</file> </damage>

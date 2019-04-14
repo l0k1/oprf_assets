@@ -1,5 +1,5 @@
 #
-# Install: Include this code into an aircraft to make it damageable. (remember to add it to the -set file)
+# Install: Include this code into an aircraft to make it damagable. (remember to add it to the -set file)
 #
 # Authors: Nikolai V. Chr. and Pinto (with improvement by Onox)
 #
@@ -33,8 +33,8 @@ var hp = hp_max;
 
 var cannon_types = {
     #
-    # 0.20 means a direct hit will disable 20% of the failure modes in average.
-    # 0.20 also means a direct hit will do 20 hitpoints damage.
+    # 0.20 means a direct hit will disable 20% of the failure modes on average.
+    # or, 0.20 also means a direct hit can do 20 hitpoints damage.
     #
     " M70 rocket hit":        0.250, #135mm
     " S-5 rocket hit":        0.200, # 55mm
@@ -64,7 +64,7 @@ var warhead_lbs = {
     "AM39-Exocet":         364.00, 
     "AS-37-Martel":        330.00, 
     "AS30L":               529.00,
-    "CBU-87":                3.00,# bomblet warhead.
+    "CBU-87":               10.00,# bomblet warhead. Mix of armour piecing and HE.
     "Exocet":              364.00,
     "FAB-100":              92.59,
     "FAB-250":             202.85,
