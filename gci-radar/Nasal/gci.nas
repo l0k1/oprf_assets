@@ -17,7 +17,6 @@
 # request a BRAA, then it will receive it.
 var damage_prop = props.globals.getNode("/carrier/sunk");
 var prop_watch = {
-    "MiG-15bis": [0,1,2],
     "MiG-21bis": [0,1,2],
     "MiG-21MF-75": [0,1,2],
     "QF-4E": [0,1,2],
@@ -447,7 +446,12 @@ var get_intercept = func(bearing, dist_m, runnerHeading, runnerSpeed, chaserSpee
     }
     var t1 = (-b+math.sqrt(b*b-4*a*c))/(2*a);
     var t2 = (-b-math.sqrt(b*b-4*a*c))/(2*a);
-
+    
+    if (t1 < 0 and t2 < 0) {
+      # intercept not possible
+      return nil;
+    }
+    
     var timeToIntercept = 0;
     if (t1 > 0 and t2 > 0) {
           timeToIntercept = math.min(t1, t2);
