@@ -84,7 +84,7 @@
         <enable-hat>false</enable-hat>
     </ladder>
 
-    <label>
+    <!--<label>
         <name>Wind Angle Runway</name>
         <x>-300</x>
         <y>190</y>
@@ -98,7 +98,7 @@
         <input>
             <property>/orientation/relative-wind-deg</property>
         </input>
-    </label>
+    </label>-->
 
     <label>
         <name>Height</name>
@@ -264,7 +264,7 @@
         </input>
     </label>
 
-    <label>
+    <!--<label>
         <name>Magnetic Heading</name>
         <x>-300</x>
         <y>-225</y>
@@ -310,15 +310,15 @@
         <input>
             <property>/velocities/wind-speed-runway-kt</property>
         </input>
-    </label>
+    </label>-->
 
-    <label>
+    <!--<label>
         <name>Speed</name>
         <x>100</x>
         <y>-225</y>
         <width>200</width>
         <height>25</height>
-        <prefix> Speed: </prefix>
+        <prefix> My speed: </prefix>
         <postfix> kts</postfix>
         <halign>left</halign>
         <format>%2.1f</format>
@@ -326,9 +326,9 @@
         <input>
             <property>/velocities/groundspeed-kt</property>
         </input>
-    </label>
+    </label>-->
 
-    <label>
+    <!--<label>
         <name>Target Speed</name>
         <x>100</x>
         <y>-200</y>
@@ -341,6 +341,214 @@
         <box>true</box>
         <input>
             <property>/carrier/fbw/target/groundspeed-kt</property>
+        </input>
+    </label>-->
+
+    <label>
+        <name>Time to impact</name>
+        <x>150</x>
+        <y>50</y>
+        <width>200</width>
+        <height>25</height>
+        <prefix>1st Time to impact: </prefix>
+        <postfix> sec</postfix>
+        <halign>left</halign>
+        <format>%2.1f</format>
+        <box>true</box>
+        <input>
+            <property>sam/impact0</property>
+        </input>
+    </label>
+
+    <label>
+        <name>Time to impact</name>
+        <x>150</x>
+        <y>0</y>
+        <width>200</width>
+        <height>25</height>
+        <prefix>2nd Time to impact: </prefix>
+        <postfix> sec</postfix>
+        <halign>left</halign>
+        <format>%2.1f</format>
+        <box>true</box>
+        <input>
+            <property>sam/impact1</property>
+        </input>
+    </label>
+
+    <label>
+        <name>Time to impact</name>
+        <x>150</x>
+        <y>-50</y>
+        <width>200</width>
+        <height>25</height>
+        <prefix>3rd Time to impact: </prefix>
+        <postfix> sec</postfix>
+        <halign>left</halign>
+        <format>%2.1f</format>
+        <box>true</box>
+        <input>
+            <property>sam/impact2</property>
+        </input>
+    </label>
+
+    <label>
+        <name>Time to impact</name>
+        <x>150</x>
+        <y>-100</y>
+        <width>200</width>
+        <height>25</height>
+        <prefix>4th Time to impact: </prefix>
+        <postfix> sec</postfix>
+        <halign>left</halign>
+        <format>%2.1f</format>
+        <box>true</box>
+        <input>
+            <property>sam/impact3</property>
+        </input>
+    </label>
+
+    <label>
+        <name>Hit chance</name>
+        <x>150</x>
+        <y>25</y>
+        <width>200</width>
+        <height>25</height>
+        <prefix>1st Hit chance: </prefix>
+        <postfix> %%</postfix>
+        <halign>left</halign>
+        <format>%d</format>
+        <box>true</box>
+        <input>
+            <property>sam/hit0</property>
+        </input>
+    </label>
+
+    <label>
+        <name>Hit chance</name>
+        <x>150</x>
+        <y>-25</y>
+        <width>200</width>
+        <height>25</height>
+        <prefix>2nd Hit chance: </prefix>
+        <postfix> %%</postfix>
+        <halign>left</halign>
+        <format>%d</format>
+        <box>true</box>
+        <input>
+            <property>sam/hit1</property>
+        </input>
+    </label>
+
+    <label>
+        <name>Hit chance</name>
+        <x>150</x>
+        <y>-75</y>
+        <width>200</width>
+        <height>25</height>
+        <prefix>3rd Hit chance: </prefix>
+        <postfix> %%</postfix>
+        <halign>left</halign>
+        <format>%d</format>
+        <box>true</box>
+        <input>
+            <property>sam/hit2</property>
+        </input>
+    </label>
+
+    <label>
+        <name>Hit chance</name>
+        <x>150</x>
+        <y>-125</y>
+        <width>200</width>
+        <height>25</height>
+        <prefix>4th Hit chance: </prefix>
+        <postfix> %%</postfix>
+        <halign>left</halign>
+        <format>%d</format>
+        <box>true</box>
+        <input>
+            <property>sam/hit3</property>
+        </input>
+    </label>
+
+    <label>
+        <name>ETA</name>
+        <x>150</x>
+        <y>-175</y>
+        <width>200</width>
+        <height>25</height>
+        <prefix>Time before operational: </prefix>
+        <postfix> sec</postfix>
+        <halign>left</halign>
+        <format>%d</format>
+        <box>true</box>
+        <input>
+            <property>sam/timeleft</property>
+        </input>
+    </label>
+
+    <label>
+        <name>stores</name>
+        <x>-300</x>
+        <y>-175</y>
+        <width>125</width>
+        <height>25</height>
+        <prefix> Missiles ready: </prefix>
+        <postfix></postfix>
+        <halign>left</halign>
+        <format>%d</format>
+        <box>true</box>
+        <input>
+            <property>/sam/missiles</property>
+        </input>
+    </label>
+
+    <label>
+        <name>damage</name>
+        <x>-150</x>
+        <y>-175</y>
+        <width>125</width>
+        <height>25</height>
+        <prefix> Integrity: </prefix>
+        <postfix> %%</postfix>
+        <halign>left</halign>
+        <format>%3.1f</format>
+        <box>true</box>
+        <input>
+            <property>/sam/damage</property>
+        </input>
+    </label>
+
+    <label>
+        <name>Target info</name>
+        <x>-300</x>
+        <y>-225</y>
+        <width>375</width>
+        <height>25</height>
+        <prefix> Next target: </prefix>
+        <postfix></postfix>
+        <halign>left</halign>
+        <format>%s</format>
+        <box>true</box>
+        <input>
+            <property>/sam/info</property>
+        </input>
+    </label>
+
+    <label>
+        <name>tower</name>
+        <x>100</x>
+        <y>-225</y>
+        <width>200</width>
+        <height>25</height>
+        <prefix> Placement near: </prefix>
+        <postfix></postfix>
+        <halign>left</halign>
+        <format>%s</format>
+        <box>true</box>
+        <input>
+            <property>/sim/tower/airport-id</property>
         </input>
     </label>
 

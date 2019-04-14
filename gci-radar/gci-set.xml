@@ -93,8 +93,9 @@
         <multiplay>
             <generic>
                 <int n="0" type="int">0</int>
+                <int n="2" type="int">0</int>
             </generic>
-            <visibility-range-nm type="int">500</visibility-range-nm>
+            <!--<visibility-range-nm type="int">500</visibility-range-nm>-->
         </multiplay>
     </sim>
 

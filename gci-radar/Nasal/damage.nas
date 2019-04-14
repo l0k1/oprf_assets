@@ -29,10 +29,13 @@ var warhead_lbs = {
     "AGM-84":              488.00,
     "AGM-88":              146.00,
     "AGM65":               200.00,
+    "AGM-154A":            493.00,
+    "AGM-158":            1000.00,
     "ALARM":               450.00,
     "AM39-Exocet":         364.00, 
     "AS-37-Martel":        330.00, 
     "AS30L":               529.00,
+    "CBU-87":              128.00,
     "Exocet":              364.00,
     "FAB-100":              92.59,
     "FAB-250":             202.85,
@@ -212,12 +215,12 @@ var incoming_listener = func {
             var probability = cannon_types[last_vector[1]];
             for (var i = 1; i <= hit_count; i = i + 1) {
               var failed = fail_systems(probability);
-              damaged_sys = damaged_sys + failed;
+              #damaged_sys = damaged_sys + failed;
             }
             # that someone is me!
             #print("hitting me");
 
-            printf("Took %.1f%% damage from cannon! %s systems was hit.", probability*hit_count*100, damaged_sys);
+            #printf("Took %.1f%% damage from cannon! %s systems was hit.", probability*hit_count*100, damaged_sys);
           }
         }
       }

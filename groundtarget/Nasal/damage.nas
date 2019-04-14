@@ -3,7 +3,7 @@ var clamp = func(v, min, max) { v < min ? min : v > max ? max : v }
 var TRUE  = 1;
 var FALSE = 0;
 
-var hp = 2500;
+var hp = 5;
 var hp_max = hp;
 
 var cannon_types = {
@@ -28,10 +28,13 @@ var warhead_lbs = {
     "AGM-84":              488.00,
     "AGM-88":              146.00,
     "AGM65":               200.00,
+    "AGM-154A":            493.00,
+    "AGM-158":            1000.00,
     "ALARM":               450.00,
     "AM39-Exocet":         364.00, 
     "AS-37-Martel":        330.00, 
     "AS30L":               529.00,
+    "CBU-87":              128.00,
     "Exocet":              364.00,
     "FAB-100":              92.59,
     "FAB-250":             202.85,
@@ -73,7 +76,6 @@ var warhead_lbs = {
     "ZB-500":              473.99,
 };
 
-
 var incoming_listener = func {
   var history = getprop("/sim/multiplay/chat-history");
   var hist_vector = split("\n", history);
@@ -82,6 +84,7 @@ var incoming_listener = func {
     var last_vector = split(":", last);
     var author = last_vector[0];
     var callsign = getprop("sim/multiplay/callsign");
+    callsign = size(callsign) < 8 ? callsign : left(callsign,7);
     if (size(last_vector) > 1 and author != callsign) {
       # not myself
       #print("not me");
@@ -176,11 +179,11 @@ var incoming_listener = func {
                 return;
               }
         
+              var prob = 1;
               if (type == "M90" and distance < 300) {
                 var failed = fail_systems(warhead_lbs[type]/2);
                 return;
               } elsif (distance < 150) {
-                var prob = 1;
                 if ( distance > 50 ) {
                   distance = distance - 50;
                   prob = 1 - (distance/100);
@@ -188,7 +191,7 @@ var incoming_listener = func {
               }
         
 
-              var failed = fail_systems(warhead_lbs[type] * prob);
+              fail_systems(warhead_lbs[type] * prob);
               #ar percent = 100 * probability;
               #printf("Took %.1f%% damage from %s missile at %0.1f meters. %s systems was hit", percent,type,dist,failed);
             }
@@ -198,6 +201,11 @@ var incoming_listener = func {
           print("cannon");
           if (size(last_vector) > 2 and last_vector[2] == " "~callsign) {
             print("cannon hit us");
+            if (size(last_vector) < 4) {
+                          # msg is either missing number of hits, or has no trailing dots from spam filter.
+                          print('"'~last~'"   is not a legal hit message, tell the shooter to upgrade his OPRF plane :)');
+                          return;
+                        }
               var last3 = split(" ", last_vector[3]);
             #print("last3[2]: " ~ last3[2]);
             #print("last3[1]: " ~ last3[1]);
@@ -211,8 +219,7 @@ var incoming_listener = func {
             var damaged_sys = 0;
             var probability = cannon_types[last_vector[1]];
             for (var i = 1; i <= hit_count; i = i + 1) {
-              var failed = fail_systems(probability);
-              damaged_sys = damaged_sys + failed;
+              fail_systems(probability);
             }
             # that someone is me!
             #print("hitting me");

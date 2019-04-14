@@ -28,10 +28,13 @@ var warhead_lbs = {
     "AGM-84":              488.00,
     "AGM-88":              146.00,
     "AGM65":               200.00,
+    "AGM-154A":            493.00,
+    "AGM-158":            1000.00,
     "ALARM":               450.00,
     "AM39-Exocet":         364.00, 
     "AS-37-Martel":        330.00, 
     "AS30L":               529.00,
+    "CBU-87":              128.00,
     "Exocet":              364.00,
     "FAB-100":              92.59,
     "FAB-250":             202.85,
@@ -81,6 +84,7 @@ var incoming_listener = func {
     var last_vector = split(":", last);
     var author = last_vector[0];
     var callsign = getprop("sim/multiplay/callsign");
+    callsign = size(callsign) < 8 ? callsign : left(callsign,7);
     if (size(last_vector) > 1 and author != callsign) {
       # not myself
       #print("not me");
@@ -175,11 +179,11 @@ var incoming_listener = func {
                 return;
               }
         
+              var prob = 1;
               if (type == "M90" and distance < 300) {
                 var failed = fail_systems(warhead_lbs[type]/2);
                 return;
               } elsif (distance < 150) {
-                var prob = 1;
                 if ( distance > 50 ) {
                   distance = distance - 50;
                   prob = 1 - (distance/100);
@@ -197,6 +201,14 @@ var incoming_listener = func {
           print("cannon");
           if (size(last_vector) > 2 and last_vector[2] == " "~callsign) {
             print("cannon hit us");
+
+            #"Leto: Gun Splash On : SA-11" 
+            #"Leto: KCA cannon shell hit: SA-11: 4 hits:..."
+            if (size(last_vector) < 4) {
+              # msg is either missing number of hits, or has no trailing dots from spam filter.
+              print('"'~last~'"   is not a legal hit message, tell the shooter to upgrade his OPRF plane :)');
+              return;
+            }
               var last3 = split(" ", last_vector[3]);
             #print("last3[2]: " ~ last3[2]);
             #print("last3[1]: " ~ last3[1]);
@@ -211,12 +223,12 @@ var incoming_listener = func {
             var probability = cannon_types[last_vector[1]];
             for (var i = 1; i <= hit_count; i = i + 1) {
               var failed = fail_systems(probability);
-              damaged_sys = damaged_sys + failed;
+             # damaged_sys = damaged_sys + failed;
             }
             # that someone is me!
             #print("hitting me");
 
-            printf("Took %.1f%% damage from cannon! %s systems was hit.", probability*hit_count*100, damaged_sys);
+            #printf("Took %.1f%% damage from cannon! %s systems was hit.", probability*hit_count*100, damaged_sys);
           }
         }
       }
@@ -234,10 +246,12 @@ var maxDamageDistFromWarhead = func (lbs) {
 var fail_systems = func (damage) {
 	hp = hp - damage;
 	print("HP: " ~ hp ~ "/" ~ hp_max);
-	
+	setprop("sam/damage", math.max(0,100*hp/hp_max));
 	if ( hp < 0 ) {
 		setprop("/carrier/sunk/",1);
+    setprop("/sim/multiplay/generic/int[2]",1);
     setprop("/sim/multiplay/generic/int[0]",1);
+    setprop("/sim/messages/copilot", "SAM dead.");
 	}
 };
 

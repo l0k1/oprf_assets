@@ -3,8 +3,9 @@ var clamp = func(v, min, max) { v < min ? min : v > max ? max : v }
 var TRUE  = 1;
 var FALSE = 0;
 
-var hp = 200;
-var hp_max = hp;
+var hp_max = 200;
+var hp = [hp_max,hp_max,hp_max,hp_max,hp_max,hp_max,hp_max];
+
 
 var cannon_types = {
     " M70 rocket hit":        0.25, #135mm
@@ -151,7 +152,7 @@ var incoming_listener = func {
             }
           }
         }
-      } elsif (1==1) { # mirage: getprop("/controls/armament/mp-messaging")
+      } elsif (1 == 1) { # mirage: getprop("/controls/armament/mp-messaging")
         # latest version of failure manager and taking damage enabled
         #print("damage enabled");
         var last1 = split(" ", last_vector[1]);
@@ -179,11 +180,11 @@ var incoming_listener = func {
                 return;
               }
         
+              var prob = 1;
               if (type == "M90" and distance < 300) {
                 var failed = fail_systems(warhead_lbs[type]/2);
                 return;
               } elsif (distance < 150) {
-                var prob = 1;
                 if ( distance > 50 ) {
                   distance = distance - 50;
                   prob = 1 - (distance/100);
@@ -241,13 +242,36 @@ var maxDamageDistFromWarhead = func (lbs) {
 }
 
 var fail_systems = func (damage) {
-	hp = hp - damage;
-	print("HP: " ~ hp ~ "/" ~ hp_max);
+  var no = 7;
+  while (no > 6 or hp[no] < 0) {
+    no = int(rand()*7);
+    if (hp[no] < 0) {
+      if (rand() > 0.8) {
+        armament.defeatSpamFilter("You shot one of our already sinking ships, you are just mean.");
+        hp[no] = hp[no] - damage;
+        print("HP["~no~"]: " ~ hp[no] ~ "/" ~ hp_max);
+        return;
+      }
+    }
+  }
+	hp[no] = hp[no] - damage;
+	print("HP["~no~"]: " ~ hp[no] ~ "/" ~ hp_max);
 	
-	if ( hp < 0 ) {
-		setprop("/carrier/sunk/",1);
-    setprop("/sim/multiplay/generic/int[0]",1);
-	}
+	if ( hp[no] < 0 ) {
+    setprop("/sim/multiplay/generic/bool["~(no+40)~"]",1);
+    armament.defeatSpamFilter("So you sank one of our ships, we will get you for that!");
+    if (!getprop("/carrier/disabled") and hp[0]<0 and hp[1]<0 and hp[2]<0) {
+      setprop("/carrier/disabled",1);
+      armament.defeatSpamFilter("Captain our offensive capability is crippled!");
+    }
+    if (hp[0]<0 and hp[1]<0 and hp[2]<0 and hp[3]<0 and hp[4]<0 and hp[5]<0 and hp[6]<0) {
+      setprop("/carrier/sunk",1);
+      armament.defeatSpamFilter("S.O.S. Heeelp");
+    } else {
+      armament.defeatSpamFilter("This is not over yet..");
+    }
+  }
+
 };
 
 var playIncomingSound = func (clock) {

@@ -33,12 +33,19 @@ setprop("/carrier/pitch-offset",0);
 setprop("/carrier/roll-deg",0);
 setprop("/carrier/roll-offset",0);
 setprop("/carrier/sunk",0);
-
+var arrived = 0;
 var PositionUpdater = func () {
 	
 	settimer( PositionUpdater, 1/frequency );
 	
 	var position = geo.aircraft_position();
+
+	if ( arrived == 0 and getprop("/carrier/sunk") == 0 and getprop("/autopilot/route-manager/wp-last/dist") != nil and getprop("/autopilot/route-manager/wp-last/dist") < 1 ) {
+		setprop("/sim/multiplay/chat",getprop("sim/multiplay/callsign") ~ " has arrived safely!");
+		print("arrived");
+		arrived = 1;
+		#return;
+	}
 	
 	var time_now = getprop("/sim/time/elapsed-sec");
 	var dt = (time_now - time_last) * sim_speed;
@@ -53,7 +60,7 @@ var PositionUpdater = func () {
 	if ( getprop("/carrier/sunk") == 0 and getprop("/autopilot/route-manager/active") == 1 ) {
 	
 	#for event
-	var speed = 50;
+	var speed = 25;
 	var cur_waypoint = getprop("/autopilot/route-manager/current-wp");
 	var cur_wp_lon = getprop("/autopilot/route-manager/route/wp[" ~ cur_waypoint ~ "]/longitude-deg");
 	var cur_wp_lat = getprop("/autopilot/route-manager/route/wp[" ~ cur_waypoint ~ "]/latitude-deg");
@@ -68,7 +75,7 @@ var PositionUpdater = func () {
 	# Set new position
 	setprop("/position/latitude-deg", position.lat());
 	setprop("/position/longitude-deg", position.lon());
-	var g_alt = getprop("/position/ground-elev-ft");
+	var g_alt = getprop("/position/ground-elev-ft")+1;
 	setprop("/position/altitude-ft",g_alt);
 
 	

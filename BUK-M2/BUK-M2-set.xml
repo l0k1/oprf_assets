@@ -60,6 +60,7 @@
     <sim>
         <author>pinto</author>
         <description>BUK-M2</description>
+        <long-description>BUK-M2 is a modern Russian self-propelled surface to air missile system.</long-description>
         <status>alpha</status>
         <aircraft-version>0.1</aircraft-version>
 
@@ -87,6 +88,19 @@
             <splash-texture>Aircraft/BUK-M2/splash1.png</splash-texture>
         </startup>
 
+        <previews>
+            <preview>
+                <type>exterior</type>
+                <splash type="bool">true</splash>
+                <path>gui/1.png</path>
+            </preview>
+            <preview>
+                <type>exterior</type>
+                <splash type="bool">true</splash>
+                <path>gui/2.png</path>
+            </preview>
+        </previews>
+
         <current-view>
             <deck-park type="bool">true</deck-park>
 
@@ -106,6 +120,10 @@
             </font>
         </hud>
 
+        <tower>
+            <auto-position type="bool">true</auto-position>
+        </tower>
+
         <systems>
             <autopilot>
                 <path>Systems/fbw.xml</path>
@@ -119,8 +137,10 @@
             </property-rule>
         </systems>
         <multiplay>
+            <visibility-range-nm type="int">250</visibility-range-nm>
             <generic>
                 <int n="0" type="int">0</int>
+                <int n="2" type="int">0</int>
             </generic>
         </multiplay>
 
@@ -138,9 +158,41 @@
                             </script>
                         </binding>
                     </item>
+                    <item>
+                      <label>Targets</label>
+                      <name>enemies</name>
+                      <binding>
+                        <command>dialog-show</command>
+                        <dialog-name>enemies</dialog-name>
+                      </binding>
+                    </item>
+                    <item>
+                      <label>Priority</label>
+                      <name>enemies</name>
+                      <binding>
+                        <command>dialog-show</command>
+                        <dialog-name>priority</dialog-name>
+                      </binding>
+                    </item>
                 </menu>
             </default>
         </menubar>
+
+        <aircraft-data>
+            <!-- Properties that get saved to persist locally between FG sessions -->
+            <path>enemies/e1</path>
+            <path>enemies/e2</path>
+            <path>enemies/e3</path>
+            <path>enemies/e4</path>
+            <path>enemies/e5</path>
+            <path>enemies/e6</path>
+            <path>enemies/e7</path>
+            <path>enemies/e8</path>
+            <path>enemies/e9</path>
+            <path>enemies/e10</path>
+            <path>enemies/e11</path>
+            <path>enemies/e12</path>
+        </aircraft-data>
     </sim>
 	
 	<controls>
@@ -149,33 +201,33 @@
             <trigger type="bool">false</trigger>
             <station n="1">
                 <offsets>
-                    <x-m type="double">  4.15986</x-m>
-                    <y-m type="double"> -2.70311</y-m>
-                    <z-m type="double">  3.67645</z-m>
+                    <x-m type="double">  2.00744</x-m>
+                    <y-m type="double"> -1.27342</y-m>
+                    <z-m type="double">  4.26168</z-m>
                 </offsets>
                 <trigger type="bool">false</trigger>
             </station>
             <station n="2">
                 <offsets>
-                    <x-m type="double"> -0.02697</x-m>
-                    <y-m type="double"> -0.98148</y-m>
-                    <z-m type="double">  3.94307</z-m>
+                    <x-m type="double">  2.00744</x-m>
+                    <y-m type="double"> -0.42511</y-m>
+                    <z-m type="double">  4.26168</z-m>
                 </offsets>
                 <trigger type="bool">false</trigger>
             </station>
             <station n="3">
                 <offsets>
-                    <x-m type="double">  4.15986</x-m>
-                    <y-m type="double">  2.70311</y-m>
-                    <z-m type="double">  3.67645</z-m>
+                    <x-m type="double">  2.00744</x-m>
+                    <y-m type="double">  0.42511</y-m>
+                    <z-m type="double">  4.26168</z-m>
                 </offsets>
                 <trigger type="bool">false</trigger>
             </station>
             <station n="4">
                 <offsets>
-                    <x-m type="double"> -0.02697</x-m>
-                    <y-m type="double">  0.98148</y-m>
-                    <z-m type="double">  3.94307</z-m>
+                    <x-m type="double">  2.00744</x-m>
+                    <y-m type="double">  1.27342</y-m>
+                    <z-m type="double">  4.26168</z-m>
                 </offsets>
                 <trigger type="bool">false</trigger>
             </station>
@@ -195,44 +247,54 @@
 	
         <armament>
 				<models type="string">Aircraft/BUK-M2/Models/Armament/Weapons/</models>
+                <modelsUseCase type="bool">true</modelsUseCase>
+                <modelsUpperCase type="bool">true</modelsUpperCase>
+                <MP-lat type="string">rotors/main/blade[0]/flap-deg</MP-lat>
+                <MP-lon type="string">rotors/main/blade[1]/flap-deg</MP-lon>
+                <MP-alt type="string">rotors/main/blade[2]/flap-deg</MP-alt>
+                <hit-interpolation type="bool">true</hit-interpolation>
+                <pylon-offset type="int">1</pylon-offset>
+                <pylon-stations>controls/armament</pylon-stations>
+                <station-name type="string">station</station-name>
 				<msg type="bool">true</msg>
 				<damage type="bool">true</damage>
-                <!-- speed: M4  diameter: 0.4m  lenght: 5.5-->
+                <!-- speed: Mach 4   length: 5.5m -->
 				<m317>
-                    <sound-on-off type="bool">false</sound-on-off>
-					<sound-volume type="double">0.0</sound-volume>
 					<vol-search type="double">0.00</vol-search>
                     <vol-track type="double">0.15</vol-track>
-                    <vol-track-weak type="double">0.1</vol-track-weak>
 					<guidance type="string">radar</guidance>
-                    <navigation type="string">APN</navigation>                   <!-- new -->
+                    <navigation type="string">APN0506</navigation>                   <!-- horizontal APN, vertical aim 5 degrees above for 6 seconds -->
 					<all-aspect type="bool">true</all-aspect>
-					<max-fire-range-nm type="int">31</max-fire-range-nm>
+					<max-fire-range-nm type="int">31</max-fire-range-nm>      <!--  -->
 					<FCS-field-deg type="int">360</FCS-field-deg>
-					<seeker-field-deg type="int">360</seeker-field-deg>
-					<max-g type="int">24</max-g>
-					<thrust-lbf-stage-1 type="double">18000</thrust-lbf-stage-1> <!-- changed -->
-					<thrust-lbf-stage-2 type="double">6000</thrust-lbf-stage-2>  <!-- changed -->
-					<stage-1-duration-sec type="double">8</stage-1-duration-sec> <!-- changed -->
-					<stage-2-duration-sec type="double">18</stage-2-duration-sec><!-- changed -->
-					<weight-launch-lbs>1576</weight-launch-lbs>
-					<weight-warhead-lbs>145</weight-warhead-lbs>
-                    <weight-fuel-lbs>900</weight-fuel-lbs>                       <!-- new -->
-					<drag-coeff type="double">0.15</drag-coeff>                 <!-- changed -->
-					<drag-area type="double">‪1.312336‬</drag-area>                <!-- changed -->
+					<seeker-field-deg type="int">170</seeker-field-deg>
+					<max-g type="int">24</max-g>                                <!-- wikipedia -->
+					<thrust-lbf-stage-1 type="double">16500</thrust-lbf-stage-1> <!-- changed -->
+					<thrust-lbf-stage-2 type="double">0</thrust-lbf-stage-2>  <!-- authentic -->
+					<stage-1-duration-sec type="double">15</stage-1-duration-sec> <!-- http://www.whathappenedtoflightmh17.com/a-detailed-description-of-the-buk-sa-11-which-could-have-shot-down-mh17/#prettyPhoto -->
+					<stage-2-duration-sec type="double">0</stage-2-duration-sec><!--  -->
+					<weight-launch-lbs>1576</weight-launch-lbs>                      <!-- authentic -->
+					<weight-warhead-lbs>145</weight-warhead-lbs>                   <!-- authentic -->
+                    <weight-fuel-lbm>900</weight-fuel-lbm>                       <!--  -->
+					<drag-coeff type="double">0.25</drag-coeff>                 <!--  -->
+					<cross-section-sqft type="double">1.312336</cross-section-sqft>                <!-- authentic (0.4m diameter) -->
 					<arming-time-sec type="double">2</arming-time-sec> 
-					<min-speed-for-guiding-mach type="double">0.35</min-speed-for-guiding-mach> 
-					<self-destruct-time-sec type="double">120</self-destruct-time-sec> 
+					<min-speed-for-guiding-mach type="double">0.5</min-speed-for-guiding-mach> 
+					<self-destruct-time-sec type="double">60</self-destruct-time-sec> 
 					<seeker-angular-speed-dps type="double">3000</seeker-angular-speed-dps>
 					<loft-altitude type="int">0</loft-altitude>
-					<min-fire-range-nm type="double">2.0</min-fire-range-nm>
-                    <max-report-distance type="double">200</max-report-distance> <!-- new -->
-					<rail type="bool">true</rail>                                <!-- changed -->
-					<rail-length-m type="double">5.5</rail-length-m>             <!-- changed -->
+					<min-fire-range-nm type="double">1.6</min-fire-range-nm>     <!-- authentic -->
+                    <max-report-distance type="double">200</max-report-distance> <!--  -->
+					<rail type="bool">true</rail>                                <!--  -->
+					<rail-length-m type="double">5.5</rail-length-m>             <!-- authentic length-->
 					<rail-point-forward type="bool">false</rail-point-forward>
-                    <rail-pitch-deg type="double">30</rail-pitch-deg>          <!-- new -->
+                    <rail-pitch-deg type="double">24</rail-pitch-deg>          <!-- matching mount -->
+                    <chaff-resistance type="double">0.95</chaff-resistance>
+                    <proportionality-constant type="double">3</proportionality-constant>
+                    <ready-time type="int">1</ready-time>
 					<class type="string">A</class>
 					<fire-msg>Bird away</fire-msg>
+                    <telemetry type="bool">true</telemetry> 
                 </m317>
             </armament>
     </payload>
@@ -250,6 +312,38 @@
             </blade>
         </main>
     </rotors>
+
+    <sam>
+        <impact0 type="double">-1</impact0>
+        <impact1 type="double">-1</impact1>
+        <impact2 type="double">-1</impact2>
+        <impact3 type="double">-1</impact3>
+        <hit0 type="double">-1</hit0>
+        <hit1 type="double">-1</hit1>
+        <hit2 type="double">-1</hit2>
+        <hit3 type="double">-1</hit3>
+        <missiles type="double">4</missiles>
+        <timeleft type="double">600</timeleft>
+        <damage type="double">100</damage>
+    </sam>
+
+    <enemies>
+        <e1 userarchive="y" type="string">Leto</e1>
+        <e2 userarchive="y" type="string">swamp</e2>
+        <e3 userarchive="y" type="string">pinto</e3>
+        <e4 userarchive="y" type="string">fb237</e4>
+        <e5 userarchive="y" type="string">Wilco-1</e5>
+        <e6 userarchive="y" type="string">Kokos</e6>
+        <e7 userarchive="y" type="string">J-Mav16</e7>
+        <e8 userarchive="y" type="string">S</e8>
+        <e9 userarchive="y" type="string">Raider1</e9>
+        <e10 userarchive="y" type="string">Slobb</e10>
+        <e11 userarchive="y" type="string">5H1N0B1</e11>
+        <e12 userarchive="y" type="string">SNOWY1</e12>
+    </enemies>
+
+    <priority type="int">0</priority>
+    <priority0 type="int">1</priority0>
 	
     <nasal>
         <carrier>
@@ -261,6 +355,9 @@
 		<radar_logic>
             <file>Aircraft/BUK-M2/Nasal/radar-logic.nas</file>
         </radar_logic>
+        <vector>
+            <file>Aircraft/BUK-M2/Nasal/vector.nas</file><!-- needed by the guided-missiles -->
+        </vector>
         <armament>
             <file>Aircraft/BUK-M2/Nasal/guided-missiles.nas</file>
         </armament>
