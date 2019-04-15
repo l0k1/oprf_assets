@@ -64,7 +64,7 @@ var warhead_lbs = {
     "AM39-Exocet":         364.00, 
     "AS-37-Martel":        330.00, 
     "AS30L":               529.00,
-    "CBU-87":               10.00,# bomblet warhead. Mix of armour piecing and HE.
+    "CBU-87":              100.00,# bomblet warhead. Mix of armour piecing and HE. 100 due to need to be able to kill buk-m2.
     "Exocet":              364.00,
     "FAB-100":              92.59,
     "FAB-250":             202.85,
@@ -81,7 +81,7 @@ var warhead_lbs = {
     "LAU-68":               10.00,
     "M71":                 200.00,
     "M71R":                200.00,
-    "M90":                   3.00,# bomblet warhead.
+    "M90":                  10.00,# bomblet warhead. x3 of real mass.
     "MK-82":               192.00,
     "MK-83":               445.00,
     "MK-84":               945.00,
@@ -221,7 +221,7 @@ var incoming_listener = func {
                 # cluster munition
                 var lbs = warhead_lbs[type];
                 var maxDist = maxDamageDistFromWarhead(lbs);
-                var distance = math.max(0,rand()*2-full_damage_dist_m);#being 0 to 2 meters from a bomblet on average.
+                var distance = math.max(0,rand()*5-full_damage_dist_m);#being 0 to 5 meters from a bomblet on average.
                 var diff = maxDist-distance;
                 diff = diff * diff;
                 var probability = diff / (maxDist*maxDist);
