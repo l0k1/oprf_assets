@@ -12,11 +12,11 @@ var full_damage_dist_m =20;# Can vary from aircraft to aircraft depending on how
                            # Few modes (like F-14) ought to have larger number such as 3.
                            # For assets this should be average radius of the asset.
 var use_hitpoints_instead_of_failure_modes_bool = 1;# mainly used by assets that don't have failure modes.
-var hp_max =200;# given a direct hit, how much pounds of warhead is needed to kill. Only used if hitpoints is enabled.
+var hp_max = 200;# given a direct hit, how much pounds of warhead is needed to kill. Only used if hitpoints is enabled.
 var hitable_by_air_munitions = 0;   # if anti-air can do damage
 var hitable_by_cannon = 1;          # if cannon can do damage
 var hitable_by_ground_munitions = 1;# if anti-ground/marine can do damage
-var is_fleet = 0;  # Is really 7 ships, 3 of which has offensive missiles.
+var is_fleet = 1;  # Is really 7 ships, 3 of which has offensive missiles.
 ##########################################################################################################################
 
 ##

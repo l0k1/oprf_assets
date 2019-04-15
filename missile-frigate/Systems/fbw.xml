@@ -31,24 +31,4 @@
         </output>
     </filter>
 
-    <filter>
-        <name>Flight Deck Antennas Position</name>
-        <type>noise-spike</type>
-        <input>
-            <condition>
-                <property>/carrier/antennas/enabled</property>
-            </condition>
-            <value>0.0</value>
-        </input>
-        <input>
-            <value>1.0</value>
-        </input>
-        <output>
-            <property>/carrier/antennas/antenna-pos-norm</property>
-        </output>
-
-        <!-- Change position in 5 seconds -->
-        <max-rate-of-change>0.2</max-rate-of-change>
-    </filter>
-
 </PropertyList>

@@ -121,50 +121,6 @@
         </config>
     </view>
 
-    <view n="104">
-        <name>Landing Signal Officer View</name>
-        <type>lookfrom</type>
-        <internal type="bool">false</internal>
-        <config>
-            <from-model type="bool">true</from-model>
-            <from-model-idx type="int">0</from-model-idx>
-
-            <heading-offset-deg>180</heading-offset-deg>
-            <x-offset-m>-19.7208</x-offset-m><!-- right -->
-            <y-offset-m>21.925</y-offset-m><!-- up -->
-            <z-offset-m>100.307</z-offset-m><!-- back -->
-            <pitch-offset-deg>2.5</pitch-offset-deg>
-            <default-field-of-view-deg>60</default-field-of-view-deg>
-            <ground-level-nearplane-m type="double">0.1f</ground-level-nearplane-m>
-        </config>
-    </view>
-
-    <view n="105">
-        <name>Approach View</name>
-        <type>lookfrom</type>
-        <internal type="bool">false</internal>
-        <config>
-            <!-- All these eye-*-deg-path elements are needed because
-                 eye-heading-deg-path is overridden.
-            -->
-            <eye-lat-deg-path>/position/latitude-deg</eye-lat-deg-path>
-            <eye-lon-deg-path>/position/longitude-deg</eye-lon-deg-path>
-            <eye-alt-ft-path>/position/altitude-ft</eye-alt-ft-path>
-            <eye-heading-deg-path>/orientation/heading-runway-deg</eye-heading-deg-path>
-            <eye-pitch-deg-path>/orientation/pitch-deg</eye-pitch-deg-path>
-            <eye-roll-deg-path>/orientation/roll-deg</eye-roll-deg-path>
-
-            <x-offset-m>-15.4979</x-offset-m><!-- right -->
-            <y-offset-m>21.9</y-offset-m><!-- up -->
-            <z-offset-m>-8.315</z-offset-m><!-- back -->
-
-            <heading-offset-deg>180</heading-offset-deg>
-            <pitch-offset-deg>3</pitch-offset-deg>
-            <default-field-of-view-deg>25</default-field-of-view-deg>
-            <ground-level-nearplane-m type="double">0.1f</ground-level-nearplane-m>
-        </config>
-    </view>
-
     <view n="106">
         <name>Flight Deck Aft View</name>
         <type>lookfrom</type>
@@ -255,24 +211,6 @@
 
             <pitch-offset-deg>-5</pitch-offset-deg>
             <default-field-of-view-deg>60</default-field-of-view-deg>
-            <ground-level-nearplane-m type="double">0.1f</ground-level-nearplane-m>
-        </config>
-    </view>
-
-    <view n="111">
-        <name>Bridge View</name>
-        <type>lookfrom</type>
-        <internal type="bool">true</internal>
-        <config>
-            <from-model type="bool">true</from-model>
-            <from-model-idx type="int">0</from-model-idx>
-
-            <x-offset-m>29.2083</x-offset-m><!-- right -->
-            <y-offset-m>33.235233</y-offset-m><!-- up -->
-            <z-offset-m>19.45</z-offset-m><!-- back -->
-
-            <pitch-offset-deg>-2</pitch-offset-deg>
-            <default-field-of-view-deg>45</default-field-of-view-deg>
             <ground-level-nearplane-m type="double">0.1f</ground-level-nearplane-m>
         </config>
     </view>
