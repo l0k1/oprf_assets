@@ -222,7 +222,7 @@ var incoming_listener = func {
                 var lbs = warhead_lbs[type];
                 var maxDist = maxDamageDistFromWarhead(lbs);
                 var distance = math.max(0,rand()*5-full_damage_dist_m);#being 0 to 5 meters from a bomblet on average.
-                var diff = maxDist-distance;
+                var diff = math.max(0, maxDist-distance);
                 diff = diff * diff;
                 var probability = diff / (maxDist*maxDist);
                 if (use_hitpoints_instead_of_failure_modes_bool) {
