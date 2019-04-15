@@ -338,7 +338,7 @@ var maxDamageDistFromWarhead = func (lbs) {
 }
 
 var fail_systems = func (probability, factor = 100) {#this factor needs tuning after all asset hitpoints have been evaluated.
-    if (fleet) {
+    if (is_fleet) {
       return fail_fleet_systems(probability, factor);
     } elsif (use_hitpoints_instead_of_failure_modes_bool) {
       hp -= factor * probability*(0.75+rand()*0.25);# from 75 to 100% damage
