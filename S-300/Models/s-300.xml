@@ -1,0 +1,299 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+ <path>s-300.ac</path>
+
+ <animation>
+  <type>select</type>
+  <object-name>missile1</object-name>
+  <condition>
+      <less-than>
+        <property>active</property>
+        <value>1</value>
+      </less-than>
+  </condition>
+</animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>missile2</object-name>
+  <condition>
+      <less-than>
+        <property>active</property>
+        <value>2</value>
+      </less-than>
+  </condition>
+</animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>missile3</object-name>
+  <condition>
+      <less-than>
+        <property>active</property>
+        <value>3</value>
+      </less-than>
+  </condition>
+</animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>missile4</object-name>
+  <condition>
+      <less-than>
+        <property>active</property>
+        <value>4</value>
+      </less-than>
+  </condition>
+</animation>
+
+ <model>
+    <path>Aircraft/S-300/Models/smoke.xml</path>
+    <offsets>
+            <x-m> 3.26307</x-m>
+            <y-m>-0.84611</y-m>
+            <z-m> 2.85616</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+ <model>
+    <path>Aircraft/S-300/Models/fire.xml</path>
+    <offsets>
+            <x-m> 3.26307</x-m>
+            <y-m>-0.84611</y-m>
+            <z-m> 2.85616</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+ <model>
+    <path>Aircraft/S-300/Models/smoke.xml</path>
+    <offsets>
+            <x-m> 3.26307</x-m>
+            <y-m> 0.84611</y-m>
+            <z-m> 2.85616</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+ <model>
+    <path>Aircraft/S-300/Models/fire.xml</path>
+    <offsets>
+            <x-m> 3.26307</x-m>
+            <y-m> 0.84611</y-m>
+            <z-m> 2.85616</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+ <model>
+    <path>Aircraft/S-300/Models/smoke.xml</path>
+    <offsets>
+            <x-m> -0.80986</x-m>
+            <y-m> 0.00064</y-m>
+            <z-m> 3.24007</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+ <model>
+    <path>Aircraft/S-300/Models/fire.xml</path>
+    <offsets>
+            <x-m> -0.80986</x-m>
+            <y-m> 0.00064</y-m>
+            <z-m> 3.24007</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+ <model>
+    <path>Aircraft/S-300/Models/smoke.xml</path>
+    <offsets>
+            <x-m> -3.97300</x-m>
+            <y-m> 0.00023</y-m>
+            <z-m> 1.83017</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+ <model>
+    <path>Aircraft/S-300/Models/fire.xml</path>
+    <offsets>
+            <x-m> -3.97300</x-m>
+            <y-m> 0.00023</y-m>
+            <z-m> 1.83017</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+ <model>
+    <path>Aircraft/S-300/Models/smoke.xml</path>
+    <offsets>
+            <x-m> -4.26653</x-m>
+            <y-m> -1.82402</y-m>
+            <z-m> 1.44961</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+ <model>
+    <path>Aircraft/S-300/Models/fire.xml</path>
+    <offsets>
+            <x-m> -4.26653</x-m>
+            <y-m> -1.82402</y-m>
+            <z-m> 1.44961</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+ <model>
+    <path>Aircraft/S-300/Models/smoke.xml</path>
+    <offsets>
+            <x-m> -4.26653</x-m>
+            <y-m> 1.82402</y-m>
+            <z-m> 1.44961</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+ <model>
+    <path>Aircraft/S-300/Models/fire.xml</path>
+    <offsets>
+            <x-m> -4.26653</x-m>
+            <y-m> 1.82402</y-m>
+            <z-m> 1.44961</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+ <model>
+    <path>Aircraft/S-300/Models/smoke.xml</path>
+    <offsets>
+            <x-m> -0.63979</x-m>
+            <y-m> -2.14385</y-m>
+            <z-m> 0.05906</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+ <model>
+    <path>Aircraft/S-300/Models/fire.xml</path>
+    <offsets>
+            <x-m> -0.63979</x-m>
+            <y-m> -2.14385</y-m>
+            <z-m> 0.05906</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+ <model>
+    <path>Aircraft/S-300/Models/smoke.xml</path>
+    <offsets>
+            <x-m> -0.63979</x-m>
+            <y-m> 2.14385</y-m>
+            <z-m> 0.05906</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+ <model>
+    <path>Aircraft/S-300/Models/fire.xml</path>
+    <offsets>
+            <x-m> -0.63979</x-m>
+            <y-m> 2.14385</y-m>
+            <z-m> 0.05906</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+  <nasal>
+      <load><![CDATA[
+        var self = cmdarg();
+
+
+        var skip = 0;
+        var lat = self.getNode("rotors/main/blade[0]/flap-deg");
+        var lon = self.getNode("rotors/main/blade[1]/flap-deg");
+        var alt = self.getNode("rotors/main/blade[2]/flap-deg");
+        if (alt == nil or alt.getValue() == nil) {
+          skip = 1;
+        }
+
+        var objs = {};
+
+        var loop = func () {          
+
+          if(alt.getValue() != 0) {
+            var objModel = objs["first"];
+            if (objModel == nil) {
+              # create model
+              #print("creating missile");
+              var n = props.globals.getNode("models", 1);
+              var i = 0;
+              for (i = 0; 1==1; i += 1) {
+                if (n.getChild("model", i, 0) == nil) {
+                  break;
+                }
+              }
+              objModel = n.getChild("model", i, 1);
+
+              objModel.getNode("elevation",1).setDoubleValue(0);
+              objModel.getNode("latitude",1).setDoubleValue(0);
+              objModel.getNode("longitude",1).setDoubleValue(0);
+              objModel.getNode("elevation-ft-prop",1).setValue(objModel.getPath()~"/elevation");
+              objModel.getNode("latitude-deg-prop",1).setValue(objModel.getPath()~"/latitude");
+              objModel.getNode("longitude-deg-prop",1).setValue(objModel.getPath()~"/longitude");
+              objModel.getNode("heading-deg",1).setDoubleValue(0);
+              objModel.getNode("pitch-deg",1).setDoubleValue(0);
+              objModel.getNode("roll-deg",1).setDoubleValue(0);
+              objModel.getNode("path",1).setValue("Aircraft/JA37/Models/Armament/Weapons/MP_missile/mp_missile.xml");
+
+              var loadNode = objModel.getNode("load", 1);
+              loadNode.setBoolValue(1);
+
+              objs["first"] = objModel;
+              loadNode.remove();
+            }
+          }
+          var exist = 0;
+          if(alt.getValue() != 0) {
+            exist = 1;
+
+            var objModel = objs["first"];
+            if (objModel == nil) {
+              print("error: did not find mp missile.");
+              return;
+            }# else {
+            #  print("found a missile!");
+            #}
+            objModel.getNode("latitude").setDoubleValue(lat.getValue());
+            objModel.getNode("longitude").setDoubleValue(lon.getValue());
+            objModel.getNode("elevation").setDoubleValue(alt.getValue()*M2FT);
+
+          }
+          if (exist == 0) {
+            # remove model
+            var objModel = objs["first"];
+            if (objModel != nil) {
+              objModel.remove();
+              delete(objs, "first");
+            }
+          }
+
+          if (self.getNode("valid") == 0 or self.getNode("valid") == nil) {
+            return;
+          }
+          settimer(loop, 0.05);
+        }
+
+        if (skip == 0) {
+            loop();
+        }
+
+      ]]>
+      </load>
+  </nasal>
+
+</PropertyList>
