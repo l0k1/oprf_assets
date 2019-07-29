@@ -5,7 +5,7 @@
  <path>gci-tower.ac</path>
 
 	<model>
-		<path>Aircraft/tower/Models/smoke.xml</path>
+		<path>Aircraft/gci-radar/Models/smoke.xml</path>
 		<offsets>
 			<x-m>1.2</x-m>
             <y-m>0.00</y-m>
