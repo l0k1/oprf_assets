@@ -2,51 +2,23 @@
 
 <PropertyList>
 
- <path>s-300.ac</path>
+ <path>S-300_TEL_master.ac</path>
 
  <animation>
-  <type>select</type>
-  <object-name>missile1</object-name>
-  <condition>
-      <less-than>
-        <property>active</property>
-        <value>1</value>
-      </less-than>
-  </condition>
-</animation>
-
- <animation>
-  <type>select</type>
-  <object-name>missile2</object-name>
-  <condition>
-      <less-than>
-        <property>active</property>
-        <value>2</value>
-      </less-than>
-  </condition>
-</animation>
-
- <animation>
-  <type>select</type>
-  <object-name>missile3</object-name>
-  <condition>
-      <less-than>
-        <property>active</property>
-        <value>3</value>
-      </less-than>
-  </condition>
-</animation>
-
- <animation>
-  <type>select</type>
-  <object-name>missile4</object-name>
-  <condition>
-      <less-than>
-        <property>active</property>
-        <value>4</value>
-      </less-than>
-  </condition>
-</animation>
+  <type>rotate</type>
+  <object-name>holder</object-name>
+  <object-name>launcher</object-name>
+  <property>sim/multiplay/generic/float[5]</property>
+  <factor>1.0</factor>
+  <axis>   
+   <x1-m> -5.0437 </x1-m>
+   <y1-m> 1.54585 </y1-m>
+   <z1-m> 1.45415 </z1-m>
+   <x2-m> -5.0437 </x2-m>
+   <y2-m> -1.54585 </y2-m>
+   <z2-m> 1.45415 </z2-m>
+  </axis>
+ </animation>
 
  <model>
     <path>Aircraft/S-300/Models/smoke.xml</path>
