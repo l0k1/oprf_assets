@@ -32,11 +32,29 @@ setprop("/carrier/roll-deg",0);
 setprop("/carrier/roll-offset",0);
 setprop("/carrier/sunk",0);
 
+var last_type = getprop("sim/multiplay/generic/int[17]");
+
 var PositionUpdater = func () {
 	
 	# does a building need an FDM?
 	# nawwwwwww
-	
+	setprop("sim/multiplay/visibility-range-nm", 750);
+	var type = getprop("sim/multiplay/generic/int[17]");
+	if (type != last_type) {
+		if (damage.hp_max == damage.hp) {
+			if (type == 0) {damage.hp_max=900;damage.hp=900;}
+			if (type == 1) {damage.hp_max=1000;damage.hp=1000;}
+			if (type == 2) {damage.hp_max=200;damage.hp=200;}
+			if (type == 3) {damage.hp_max=300;damage.hp=300;}
+			if (type == 4) {damage.hp_max=900;damage.hp=900;}
+			if (type == 5) {damage.hp_max=1500;damage.hp=1500;}
+			if (type == 6) {damage.hp_max=450;damage.hp=450;}
+			last_type = type;
+		} else {
+			print("Can only switch type when not damaged!!");
+			setprop("sim/multiplay/generic/int[17]", last_type);
+		}
+	}
 	settimer( PositionUpdater, 1/frequency );
 	
 };

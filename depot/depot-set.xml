@@ -107,10 +107,38 @@
             </autopilot>
         </systems>
         <multiplay>
+            <visibility-range-nm type="int">750</visibility-range-nm>
             <generic>
                 <int n="0" type="int">0</int>
+                <int n="17" type="int">0</int>
             </generic>
         </multiplay>
+        
+        <hud>
+            <path n="1">Aircraft/depot/Hud/hud.xml</path>
+            <visibility n="1">true</visibility>
+            <font>
+                <size type="float">11.0</size>
+            </font>
+        </hud>
+        
+        <menubar>
+            <default>
+                <menu n="100">
+                    <label>Depot</label>
+                    <enabled type="bool">true</enabled>
+                    <item>
+                        <label>Type</label>
+                        <binding>
+                            <command>dialog-show</command>
+                            <dialog-name>type</dialog-name>
+                        </binding>
+                    </item>
+                </menu>
+            </default>
+        </menubar>
+        
+        <chase-distance-m type="double" archive="y">-250.0</chase-distance-m>
     </sim>
 	
     <payload>
@@ -120,12 +148,12 @@
     </payload>
     
     <nasal>
+        <damage>
+            <file>Aircraft/depot/Nasal/damage.nas</file>
+        </damage>
         <carrier>
             <file>Aircraft/depot/Nasal/fdm.nas</file>
-        </carrier>
-		<damage>
-			<file>Aircraft/depot/Nasal/damage.nas</file>
-		</damage>
+        </carrier>		
     </nasal>
 
 </PropertyList>

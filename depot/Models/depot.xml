@@ -1,8 +1,110 @@
 <?xml version="1.0"?>
 
 <PropertyList>
-
- <path>Office30x22.ac</path>
+	<model>
+ 		<path>Office30x22.ac</path>
+ 		<name>depot</name>
+ 	</model>
+ 	<animation>
+	  	<type>select</type>
+	  	<object-name>depot</object-name>
+	  	<condition>
+	      	<equals>
+	        	<property>sim/multiplay/generic/int[17]</property>
+	        	<value>0</value>
+	      	</equals>
+	  	</condition>
+	</animation>
+	
+	<model>
+ 		<path>EDAK_SHELTER1.ac</path>
+ 		<name>shelter</name>
+ 	</model>
+ 	<animation>
+	  	<type>select</type>
+	  	<object-name>shelter</object-name>
+	  	<condition>
+	      	<equals>
+	        	<property>sim/multiplay/generic/int[17]</property>
+	        	<value>1</value>
+	      	</equals>
+	  	</condition>
+	</animation>
+	
+	<model>
+ 		<path>Gasometer.ac</path>
+ 		<name>gas</name>
+ 	</model>
+ 	<animation>
+	  	<type>select</type>
+	  	<object-name>gas</object-name>
+	  	<condition>
+	      	<equals>
+	        	<property>sim/multiplay/generic/int[17]</property>
+	        	<value>2</value>
+	      	</equals>
+	  	</condition>
+	</animation>
+	
+	<model>
+ 		<path>hangar_25x25m_tan.ac</path>
+ 		<name>hangar</name>
+ 	</model>
+ 	<animation>
+	  	<type>select</type>
+	  	<object-name>hangar</object-name>
+	  	<condition>
+	      	<equals>
+	        	<property>sim/multiplay/generic/int[17]</property>
+	        	<value>3</value>
+	      	</equals>
+	  	</condition>
+	</animation>
+	
+	<model>
+ 		<path>Industrial50x100.ac</path>
+ 		<name>industry</name>
+ 	</model>
+ 	<animation>
+	  	<type>select</type>
+	  	<object-name>industry</object-name>
+	  	<condition>
+	      	<equals>
+	        	<property>sim/multiplay/generic/int[17]</property>
+	        	<value>4</value>
+	      	</equals>
+	  	</condition>
+	</animation>
+	
+	<model>
+ 		<path>Poolbeg_TurboGas.ac</path>
+ 		<name>pool</name>
+ 	</model>
+ 	<animation>
+	  	<type>select</type>
+	  	<object-name>pool</object-name>
+	  	<condition>
+	      	<equals>
+	        	<property>sim/multiplay/generic/int[17]</property>
+	        	<value>5</value>
+	      	</equals>
+	  	</condition>
+	</animation>
+	
+	<model>
+ 		<path>Quadplex_18x18.ac</path>
+ 		<name>plex</name>
+ 	</model>
+ 	<animation>
+	  	<type>select</type>
+	  	<object-name>plex</object-name>
+	  	<condition>
+	      	<equals>
+	        	<property>sim/multiplay/generic/int[17]</property>
+	        	<value>6</value>
+	      	</equals>
+	  	</condition>
+	</animation>
 
 	<model>
 		<path>Aircraft/depot/Models/smoke.xml</path>
