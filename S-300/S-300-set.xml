@@ -246,56 +246,14 @@
         </weight>
 	
         <armament>
-				<models type="string">Aircraft/S-300/Models/Armament/Weapons/</models>
-                <modelsUseCase type="bool">true</modelsUseCase>
-                <modelsUpperCase type="bool">true</modelsUpperCase>
+				
                 <MP-lat type="string">rotors/main/blade[0]/flap-deg</MP-lat>
                 <MP-lon type="string">rotors/main/blade[1]/flap-deg</MP-lon>
                 <MP-alt type="string">rotors/main/blade[2]/flap-deg</MP-alt>
-                <hit-interpolation type="bool">true</hit-interpolation>
-                <pylon-offset type="int">1</pylon-offset>
-                <pylon-stations>controls/armament</pylon-stations>
-                <station-name type="string">station</station-name>
+                
 				<msg type="bool">true</msg>
 				<damage type="bool">true</damage>
-                <kn-06>        
-                    <vol-search type="double">0.00</vol-search>
-                    <vol-track type="double">0.15</vol-track>                      <!--  -->
-                    <vol-track-weak type="double">0.1</vol-track-weak>           <!--  -->
-                    <guidance type="string">radar</guidance>
-                    <navigation type="string">APN</navigation>                   <!--  -->
-                    <all-aspect type="bool">true</all-aspect>
-                    <max-fire-range-nm type="int">85</max-fire-range-nm>
-                    <FCS-field-deg type="int">360</FCS-field-deg>
-                    <seeker-field-deg type="int">220</seeker-field-deg><!-- since launched vertical, it cannot be too small -->
-                    <max-g type="int">22</max-g>
-                    <thrust-lbf-stage-1 type="double">90000</thrust-lbf-stage-1>
-                    <thrust-lbf-stage-2 type="double">77000</thrust-lbf-stage-2> <!-- max 2000 m/s speed, 93 NM range -->
-                    <stage-1-duration-sec type="double">0.25</stage-1-duration-sec>
-                    <stage-2-duration-sec type="double">8.0</stage-2-duration-sec>
-                    <weight-launch-lbs>3920</weight-launch-lbs>
-                    <weight-warhead-lbs>315</weight-warhead-lbs>
-                    <weight-fuel-lbm>2800</weight-fuel-lbm>                       <!--  -->
-                    <drag-coeff type="double">0.20</drag-coeff>                  <!-- max 2000 m/s speed, 93 NM range -->
-                    <cross-section-sqft type="double">2.11349</cross-section-sqft>
-                    <arming-time-sec type="double">2</arming-time-sec> 
-                    <min-speed-for-guiding-mach type="double">0.25</min-speed-for-guiding-mach> 
-                    <self-destruct-time-sec type="double">160</self-destruct-time-sec> 
-                    <self-destruct-at-lock-lost type="bool">true</self-destruct-at-lock-lost>
-                    <seeker-angular-speed-dps type="double">3000</seeker-angular-speed-dps>
-                    <loft-altitude type="int">75000</loft-altitude>
-                    <min-fire-range-nm type="double">0.85</min-fire-range-nm>
-                    <max-report-distance type="double">200</max-report-distance> <!--  -->
-                    <rail type="bool">true</rail>
-                    <rail-length-m type="double">7.5</rail-length-m>
-                    <rail-point-forward type="bool">false</rail-point-forward>
-                    <rail-pitch-deg type="double">90</rail-pitch-deg>          <!-- new -->
-                    <chaff-resistance type="double">0.95</chaff-resistance>
-                    <proportionality-constant type="double">3</proportionality-constant>
-                    <class type="string">A</class>
-                    <fire-msg>Bird away</fire-msg>
-                    <telemetry type="bool">true</telemetry> 
-                </kn-06>
+                
             </armament>
     </payload>
 
@@ -352,18 +310,6 @@
 		<damage>
 			<file>Aircraft/S-300/Nasal/damage.nas</file>
 		</damage>
-		<radar_logic>
-            <file>Aircraft/S-300/Nasal/radar-logic.nas</file>
-        </radar_logic>
-        <vector>
-            <file>Aircraft/S-300/Nasal/vector.nas</file><!-- needed by the guided-missiles -->
-        </vector>
-        <armament>
-            <file>Aircraft/S-300/Nasal/guided-missiles.nas</file>
-        </armament>
-		<fire_control>
-			<file>Aircraft/S-300/Nasal/fire-control.nas</file>
-		</fire_control>
     </nasal>
 
 </PropertyList>
