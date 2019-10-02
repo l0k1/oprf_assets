@@ -347,7 +347,7 @@ var fail_systems = func (probability, factor = 100) {#this factor needs tuning a
       hp -= factor * probability*(0.75+rand()*0.25);# from 75 to 100% damage
       printf("HP: %d/%d", hp, hp_max);
       setprop("sam/damage", math.max(0,100*hp/hp_max));#used in HUD
-      if ( hp < 0 ) {
+      if ( hp < 0 and getprop("sim/multiplay/generic/int[17]") != 7) {
         setprop("/carrier/sunk/",1);#we are dead
         setprop("/sim/multiplay/generic/int[2]",1);#radar off
         setprop("/sim/multiplay/generic/int[0]",1);#smoke on

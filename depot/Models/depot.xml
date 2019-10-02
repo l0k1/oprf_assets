@@ -107,6 +107,21 @@
 	</animation>
 
 	<model>
+ 		<path>40ft_container.ac</path>
+ 		<name>container</name>
+ 	</model>
+ 	<animation>
+	  	<type>select</type>
+	  	<object-name>container</object-name>
+	  	<condition>
+	      	<equals>
+	        	<property>sim/multiplay/generic/int[17]</property>
+	        	<value>7</value>
+	      	</equals>
+	  	</condition>
+	</animation>
+
+	<model>
 		<path>Aircraft/depot/Models/smoke.xml</path>
 		<offsets>
 			<x-m>1.2</x-m>
