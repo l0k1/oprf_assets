@@ -30,6 +30,7 @@ var TRUE  = 1;
 var FALSE = 0;
 
 var hp = hp_max;
+setprop("sam/damage", math.max(0,100*hp/hp_max));#used in HUD
 
 var cannon_types = {
     #
@@ -72,7 +73,7 @@ var warhead_lbs = {
     "GBU-12":              190.00,
     "GBU-24":              945.00,
     "GBU-31":              945.00,
-    "GBU-54"               190.00,
+    "GBU-54":              190.00,
     "GBU12":               190.00,
     "GBU16":               450.00,
     "HVAR":                  7.50,#P51
@@ -231,7 +232,7 @@ var incoming_listener = func {
                   probability = (maxDist/hpDist)*probability;
                 }
                 var failed = fail_systems(probability, hp_max);
-                var percent = 100 * prob;
+                var percent = 100 * probability;
                 printf("Took %.1f%% damage from %s clusterbomb at %0.1f meters from bomblet. %s systems was hit", percent,type,distance,failed);
                 nearby_explosion();
                 return;

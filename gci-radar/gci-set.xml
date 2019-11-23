@@ -26,6 +26,14 @@
             <onground>true</onground>
         </presets>
         
+        <hud>
+            <path n="1">Aircraft/gci-radar/Hud/hud.xml</path>
+            <visibility n="1">true</visibility>
+            <font>
+                <size type="float">11.0</size>
+            </font>
+        </hud>
+        
         <menubar>
             <default>
                 <menu n="100">
@@ -89,6 +97,8 @@
             <z-offset-min-m type="float">100.0</z-offset-min-m>
             <z-offset-max-m type="float">2000.0</z-offset-max-m>
         </current-view>
+        
+        <chase-distance-m type="double" archive="y">-250.0</chase-distance-m>
 
         <multiplay>
             <generic>

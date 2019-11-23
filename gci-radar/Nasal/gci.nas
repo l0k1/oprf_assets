@@ -1,12 +1,11 @@
 # (c) 2018 pinto
 # license: gplv2+
 
-# v0.1 - just a very basic proof of concept at this point.
+# v0.2b
 # will only report the closest bad guy, does no threat assessment.
 # todo:
 # test
 # toggle radar on/off
-# all the other requests that a gci can do (only handles BRAA right now)
 
 ##########################################
 ### Variables
@@ -17,10 +16,13 @@
 # request a BRAA, then it will receive it.
 var damage_prop = props.globals.getNode("/carrier/sunk");
 var prop_watch = {
+    "MiG-15bis": [0,1,2],
     "MiG-21bis": [0,1,2],
     "MiG-21MF-75": [0,1,2],
     "QF-4E": [0,1,2],
     "F-16": [50,51,52],
+    "m2000-5B": [0,1,2],
+    "m2000-5": [0,1,2]
 };
 
 var radar_stations = [
@@ -79,6 +81,7 @@ var gci_contact = {
         m.last_request = NONE;
         m.request_status = PENDING;
         m.msg_queue = [];
+        m.last_seen = 0;
         if (m.is_radar_station) {
             m.radar_station_process_send();
         } else {
@@ -142,8 +145,6 @@ var gci_contact = {
         } elsif (systime() - me.time_from_last_message < update_rate) {
             #print("update failed");
             return false;
-        } elsif (me.request_status == SENT) {
-            return false;
         } else {
             me.time_from_last_message = systime();
             return true;
@@ -153,45 +154,33 @@ var gci_contact = {
         # messages are first in, first out order
         # updates every 1.5 seconds
         #print('in process_send()');
+        
+        # send messages
+        # if the request type changes, stop sending messages except for popups
+        
         if (damage_prop.getValue() == 0) {
 
             me.update_request();
-
-            #print('rqst: ' ~ me.request);
-            #print('last: ' ~ me.last_request);
-            #print('stat: ' ~ me.request_status);
-            #print('queue size: ' ~ size(me.msg_queue));
-
-            if (me.request == NONE) {
-                #print('setting request to none');
-                me.request_status = PENDING;
-            } elsif (me.request != NONE and me.request_status == PENDING and me.request_status != SENT and size(me.msg_queue) > 0) {
-                #print('setting status to sending');
-                me.request_status = SENDING;
-            } elsif (me.request_status == SENDING and size(me.msg_queue) == 0) {
-                #print('setting status to sent');
-                me.request_status = SENT;
+            
+            if (me.request != me.last_request or me.request == NONE) {
+                # keep popup messages, purge everything else
+                for (var i = 0; i < size(me.msg_queue); i = i + 1) {
+                    if (split(":",me.msg_queue[i])[2] != 5) {
+                        me.msg_queue = purge_from_vector(me.msg_queue, i);
+                    }
+                }
             }
-
-            if (me.request == NONE or me.request_status == SENT) {
-                #print('emptying queue');
-                me.msg_queue = [];
-            }
-
-            if (me.request != me.last_request) {
-                #print('setting status to pending and emptying queue');
-                me.request_status = PENDING;
-                me.msg_queue = [];
-            }
-
+            
             me.last_request = me.request;
-
-            if (size(me.msg_queue) > 0 and me.request_status == SENDING) {
+            
+            if (size(me.msg_queue) > 0) {
                 #print("msg_queue: " ~ debug.dump(me.msg_queue));
                 setprop("/sim/multiplay/generic/string["~output_prop~"]",me.msg_queue[0]);
+                screen.log.write(me.msg_queue[0],1.0,0.2,0.2);
                 output_prop = output_prop > 9 ? 0 : output_prop + 1;
                 me.msg_queue = purge_from_vector(me.msg_queue,0);
             }
+
         }
 
         settimer(func(){me.process_send();},1.3);
@@ -250,10 +239,27 @@ var gather_contacts = func() {
 
 var check_requests = func(){
     foreach (var cx; cx_master_list) {
+        if (check_visible(cx)) {
+            #print('cx is visible');
+            #print('cx last seen time is ' ~ cx.last_seen ~ ' | ' ~ (systime() - cx.last_seen));
+            #print('iff: ' ~ cx.check_foe());
+            #print('node: ' ~ cx.check_node());
+            if (systime() - cx.last_seen > 30 and (cx.check_foe() == true or cx.check_node() == false)) {
+                foreach (var tx; cx_master_list) {
+                    if (cx.check_foe() == true) { continue; }
+                    var bearing = math.round(tx.contact.get_Coord().course_to(cx.contact.get_Coord()),1);
+                    var range = math.round(cx.contact.get_Coord().distance_to(tx.contact.get_Coord()));
+                    var altitude = math.round(cx.contact.get_altitude(),1);
+                    var aspect = math.round(math.periodic(-180,180,cx.contact.get_heading() - cx.contact.get_Coord().course_to(tx.contact.get_Coord())));
+                    print(tx.callsign ~ ":" ~ get_random() ~ ":5:" ~ bearing ~ ":" ~ range ~ ":" ~ altitude ~ ":" ~ aspect);
+                    append(tx.msg_queue, tx.callsign ~ ":" ~ get_random() ~ ":5:" ~ bearing ~ ":" ~ range ~ ":" ~ altitude ~ ":" ~ aspect);
+                }
+            }
+            cx.last_seen = systime();
+        }
         if (cx.check_foe() == true or cx.check_node() == false) { continue; }
         if (size(cx.msg_queue) > 0) { continue; } # msg queue should be reset or emptied when request changes.
         if (cx.request == NONE) {
-            #print('reqest is none in check_requests');
             continue;
         } elsif (cx.request == PICTURE) {
             var blue_coords = [];
@@ -444,6 +450,7 @@ var get_intercept = func(bearing, dist_m, runnerHeading, runnerSpeed, chaserSpee
       # intercept not possible
       return nil;
     }
+    
     var t1 = (-b+math.sqrt(b*b-4*a*c))/(2*a);
     var t2 = (-b-math.sqrt(b*b-4*a*c))/(2*a);
     
