@@ -49,6 +49,7 @@ var cannon_types = {
     " M61A1 shell hit":       0.050, # 20mm
     " 50 BMG hit":            0.015, # 12.7mm (non-explosive)    
     " 7.62 hit":              0.005, # 7.62mm (non-explosive)    
+    " Hydra-70 hit":          0.25, #  
 };    
 
 # lbs of warheads is explosive+fragmentation+fuse, so total warhead mass.
