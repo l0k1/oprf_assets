@@ -110,6 +110,7 @@
             <visibility-range-nm type="int">750</visibility-range-nm>
             <generic>
                 <int n="0" type="int">0</int>
+                <int n="2" type="int">1</int>
                 <int n="17" type="int">0</int>
             </generic>
         </multiplay>

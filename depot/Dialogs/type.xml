@@ -109,14 +109,6 @@
                 <value>6</value>
             </binding>
         </button>
-        <button>
-            <legend>Container</legend>
-            <binding>
-                <command>property-assign</command>
-                <property>sim/multiplay/generic/int[17]</property>
-                <value>7</value>
-            </binding>
-        </button>
 
 
     </group>
