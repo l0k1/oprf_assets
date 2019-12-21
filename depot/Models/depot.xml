@@ -15,7 +15,7 @@
 	      	</equals>
 	  	</condition>
 	</animation>
-	
+
 	<model>
  		<path>EDAK_SHELTER1.ac</path>
  		<name>shelter</name>
@@ -30,7 +30,7 @@
 	      	</equals>
 	  	</condition>
 	</animation>
-	
+
 	<model>
  		<path>Gasometer.ac</path>
  		<name>gas</name>
@@ -45,7 +45,7 @@
 	      	</equals>
 	  	</condition>
 	</animation>
-	
+
 	<model>
  		<path>hangar_25x25m_tan.ac</path>
  		<name>hangar</name>
@@ -60,7 +60,7 @@
 	      	</equals>
 	  	</condition>
 	</animation>
-	
+
 	<model>
  		<path>Industrial50x100.ac</path>
  		<name>industry</name>
@@ -75,7 +75,7 @@
 	      	</equals>
 	  	</condition>
 	</animation>
-	
+
 	<model>
  		<path>Poolbeg_TurboGas.ac</path>
  		<name>pool</name>
@@ -90,7 +90,7 @@
 	      	</equals>
 	  	</condition>
 	</animation>
-	
+
 	<model>
  		<path>Quadplex_18x18.ac</path>
  		<name>plex</name>
@@ -117,6 +117,36 @@
 	      	<equals>
 	        	<property>sim/multiplay/generic/int[17]</property>
 	        	<value>7</value>
+	      	</equals>
+	  	</condition>
+	</animation>
+
+	<model>
+ 		<path>Axalp_Target.ac</path>
+ 		<name>hilltarget</name>
+ 	</model>
+ 	<animation>
+	  	<type>select</type>
+	  	<object-name>hilltarget</object-name>
+	  	<condition>
+	      	<equals>
+	        	<property>sim/multiplay/generic/int[17]</property>
+	        	<value>8</value>
+	      	</equals>
+	  	</condition>
+	</animation>
+
+	<model>
+ 		<path>Axalp_CliffTarget.ac</path>
+ 		<name>clifftarget</name>
+ 	</model>
+ 	<animation>
+	  	<type>select</type>
+	  	<object-name>clifftarget</object-name>
+	  	<condition>
+	      	<equals>
+	        	<property>sim/multiplay/generic/int[17]</property>
+	        	<value>9</value>
 	      	</equals>
 	  	</condition>
 	</animation>
