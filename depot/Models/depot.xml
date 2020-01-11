@@ -122,36 +122,6 @@
 	</animation>
 
 	<model>
- 		<path>Axalp_Target.ac</path>
- 		<name>hilltarget</name>
- 	</model>
- 	<animation>
-	  	<type>select</type>
-	  	<object-name>hilltarget</object-name>
-	  	<condition>
-	      	<equals>
-	        	<property>sim/multiplay/generic/int[17]</property>
-	        	<value>8</value>
-	      	</equals>
-	  	</condition>
-	</animation>
-
-	<model>
- 		<path>Axalp_CliffTarget.ac</path>
- 		<name>clifftarget</name>
- 	</model>
- 	<animation>
-	  	<type>select</type>
-	  	<object-name>clifftarget</object-name>
-	  	<condition>
-	      	<equals>
-	        	<property>sim/multiplay/generic/int[17]</property>
-	        	<value>9</value>
-	      	</equals>
-	  	</condition>
-	</animation>
-
-	<model>
 		<path>Aircraft/depot/Models/smoke.xml</path>
 		<offsets>
 			<x-m>1.2</x-m>
