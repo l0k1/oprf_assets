@@ -31,4 +31,19 @@
 	  	</condition>
 	</animation>
 
+	<model>
+ 		<path>Tugged_Target.ac</path>
+ 		<name>tuggedtarget</name>
+ 	</model>
+ 	<animation>
+	  	<type>select</type>
+	  	<object-name>tuggedtarget</object-name>
+	  	<condition>
+	      	<equals>
+	        	<property>sim/multiplay/generic/int[17]</property>
+	        	<value>2</value>
+	      	</equals>
+	  	</condition>
+	</animation>
+
 </PropertyList>
