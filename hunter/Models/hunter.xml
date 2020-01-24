@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+	<model>
+ 		<path>Axalp_HillTarget.ac</path>
+ 		<name>hilltarget</name>
+ 	</model>
+ 	<animation>
+	  	<type>select</type>
+	  	<object-name>hilltarget</object-name>
+	  	<condition>
+	      	<equals>
+	        	<property>sim/multiplay/generic/int[17]</property>
+	        	<value>0</value>
+	      	</equals>
+	  	</condition>
+	</animation>
+
+	<model>
+ 		<path>Axalp_CliffTarget.ac</path>
+ 		<name>clifftarget</name>
+ 	</model>
+ 	<animation>
+	  	<type>select</type>
+	  	<object-name>clifftarget</object-name>
+	  	<condition>
+	      	<equals>
+	        	<property>sim/multiplay/generic/int[17]</property>
+	        	<value>1</value>
+	      	</equals>
+	  	</condition>
+	</animation>
+
+	<model>
+ 		<path>Tugged_Target.ac</path>
+ 		<name>tuggedtarget</name>
+ 	</model>
+ 	<animation>
+	  	<type>select</type>
+	  	<object-name>tuggedtarget</object-name>
+	  	<condition>
+	      	<equals>
+	        	<property>sim/multiplay/generic/int[17]</property>
+	        	<value>2</value>
+	      	</equals>
+	  	</condition>
+	</animation>
+
+</PropertyList>
