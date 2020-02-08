@@ -59,32 +59,34 @@ var PositionUpdater = func () {
 	
 	if ( getprop("/carrier/sunk") == 0 and getprop("/autopilot/route-manager/active") == 1 ) {
 	
-	#for event
-	var speed = 25;
-	var cur_waypoint = getprop("/autopilot/route-manager/current-wp");
-	var cur_wp_lon = getprop("/autopilot/route-manager/route/wp[" ~ cur_waypoint ~ "]/longitude-deg");
-	var cur_wp_lat = getprop("/autopilot/route-manager/route/wp[" ~ cur_waypoint ~ "]/latitude-deg");
-	var rm_destination = geo.Coord.new().set_latlon(cur_wp_lat,cur_wp_lon);
-	
-	
-	var heading = position.course_to(rm_destination);
-	
-	var distance = speed * globals.KT2MPS * dt;
-	position.apply_course_distance(heading, distance);
-	
-	# Set new position
-	setprop("/position/latitude-deg", position.lat());
-	setprop("/position/longitude-deg", position.lon());
-	var g_alt = getprop("/position/ground-elev-ft")+1;
-	setprop("/position/altitude-ft",g_alt);
+		#for event
+		var speed = 25;
+		var cur_waypoint = getprop("/autopilot/route-manager/current-wp");
+		var cur_wp_lon = getprop("/autopilot/route-manager/route/wp[" ~ cur_waypoint ~ "]/longitude-deg");
+		var cur_wp_lat = getprop("/autopilot/route-manager/route/wp[" ~ cur_waypoint ~ "]/latitude-deg");
+		var rm_destination = geo.Coord.new().set_latlon(cur_wp_lat,cur_wp_lon);
+		
+		
+		var heading = position.course_to(rm_destination);
+		
+		var distance = speed * globals.KT2MPS * dt;
+		position.apply_course_distance(heading, distance);
+		
+		# Set new position
+		setprop("/position/latitude-deg", position.lat());
+		setprop("/position/longitude-deg", position.lon());
+		var g_alt = getprop("/position/ground-elev-ft")+1;
+		setprop("/position/altitude-ft",g_alt);
 
-	
-	
+		
+		
 
-	# Update heading
-	var course = heading + rudder * heading_ps * dt;
-	setprop("/orientation/heading-deg", course);
-	
+		# Update heading
+		var course = heading + rudder * heading_ps * dt;
+		setprop("/orientation/heading-deg", course);
+		setprop("velocities/groundspeed-kt",speed);
+	} else {
+		setprop("velocities/groundspeed-kt",0);
 	}
 	
 	#set pitch

@@ -38,7 +38,7 @@ var PositionUpdater = func () {
 	
 	var time_now = getprop("/sim/time/elapsed-sec");
 	var dt = (time_now - time_last) * sim_speed;
-	if (dt == 0) return;
+	if (dt == 0) {settimer( PositionUpdater, 1/frequency ); return;}
 
 	time_last = time_now;
 	
@@ -75,4 +75,4 @@ var PositionUpdater = func () {
 	
 };
 
-PositionUpdater();
+#PositionUpdater();

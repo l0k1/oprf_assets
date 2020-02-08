@@ -97,6 +97,8 @@
             <z-offset-min-m type="float">100.0</z-offset-min-m>
             <z-offset-max-m type="float">2000.0</z-offset-max-m>
         </current-view>
+        
+        <chase-distance-m type="double" archive="y">-450.0</chase-distance-m>
 
         <hud>
             <path n="1">Aircraft/Frigate/Hud/hud.xml</path>

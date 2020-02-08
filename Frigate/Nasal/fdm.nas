@@ -87,7 +87,7 @@ var PositionUpdater = func () {
 		# Update heading
 		var course = heading + rudder * heading_ps * dt;
 		setprop("/orientation/heading-deg", course);
-	
+		setprop("velocities/groundspeed-kt",speed);
 	} elsif ( getprop("/carrier/sunk") == 1 ) {
 		setprop("/carrier/fbw/target/groundspeed-kt",0);
 		setprop("/controls/engines/engine/throttle",0);
@@ -100,7 +100,7 @@ var PositionUpdater = func () {
 		setprop("/position/altitude-ft",getprop("/position/altitude-ft") - ( sink_rate ));
 		setprop("/carrier/pitch-offset",getprop("/carrier/pitch-offset") + ( pitch_rate ));
 		setprop("/carrier/roll-offset",getprop("/carrier/roll-offset") + ( roll_rate ));
-
+		setprop("velocities/groundspeed-kt",0);
 		print("sunk");
 	}
 	

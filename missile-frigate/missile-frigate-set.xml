@@ -94,6 +94,8 @@
             <z-offset-min-m type="float">100.0</z-offset-min-m>
             <z-offset-max-m type="float">2000.0</z-offset-max-m>
         </current-view>
+        
+        <chase-distance-m type="double" archive="y">-500.0</chase-distance-m>
 
         <hud>
             <path n="1">Aircraft/missile-frigate/Hud/hud.xml</path>
@@ -302,6 +304,7 @@
                     <proportionality-constant type="double">3</proportionality-constant>
 					<class type="string">A</class>
 					<fire-msg>Bird away</fire-msg>
+                    <telemetry type="bool">true</telemetry> 
                 </kn-06>
                 <!-- test: SAM -->
                 <test>        
@@ -396,6 +399,28 @@
         <e11 userarchive="y" type="string">5H1N0B1</e11>
         <e12 userarchive="y" type="string">SNOWY1</e12>
     </enemies>
+    
+    <sam>
+        <impact0 type="double">-1</impact0>
+        <impact1 type="double">-1</impact1>
+        <impact2 type="double">-1</impact2>
+        <impact3 type="double">-1</impact3>
+        <hit0 type="double">-1</hit0>
+        <hit1 type="double">-1</hit1>
+        <hit2 type="double">-1</hit2>
+        <hit3 type="double">-1</hit3>
+        <impact4 type="double">-1</impact4>
+        <impact5 type="double">-1</impact5>
+        <impact6 type="double">-1</impact6>
+        <impact7 type="double">-1</impact7>
+        <hit4 type="double">-1</hit4>
+        <hit5 type="double">-1</hit5>
+        <hit6 type="double">-1</hit6>
+        <hit7 type="double">-1</hit7>
+        <missiles type="double">8</missiles>
+        <timeleft type="double">0</timeleft>
+        <damage type="double">100</damage>
+    </sam>
 	
     <nasal>
         <carrier>

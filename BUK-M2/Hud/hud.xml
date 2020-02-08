@@ -519,6 +519,22 @@
             <property>/sam/damage</property>
         </input>
     </label>
+    
+    <label>
+        <name>cs</name>
+        <x>0</x>
+        <y>-175</y>
+        <width>125</width>
+        <height>25</height>
+        <prefix> Callsign: </prefix>
+        <postfix></postfix>
+        <halign>left</halign>
+        <format>%s</format>
+        <box>true</box>
+        <input>
+            <property>/sim/multiplay/callsign</property>
+        </input>
+    </label>
 
     <label>
         <name>Target info</name>

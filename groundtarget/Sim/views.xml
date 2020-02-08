@@ -25,7 +25,7 @@
         <view-number type="int">1</view-number>
     </current-view>
 
-    <chase-distance-m type="double">-400.0</chase-distance-m>
+    <chase-distance-m type="double">-200.0</chase-distance-m>
 
     <view n="0">
         <name>Cockpit View</name>

@@ -102,7 +102,7 @@
             <path n="1">Aircraft/groundtarget/Hud/hud.xml</path>
             <visibility n="1">true</visibility>
             <font>
-                <size type="float">10.0</size>
+                <size type="float">11.0</size>
             </font>
         </hud>
 

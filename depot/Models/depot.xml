@@ -15,7 +15,7 @@
 	      	</equals>
 	  	</condition>
 	</animation>
-
+	
 	<model>
  		<path>EDAK_SHELTER1.ac</path>
  		<name>shelter</name>
@@ -30,7 +30,7 @@
 	      	</equals>
 	  	</condition>
 	</animation>
-
+	
 	<model>
  		<path>Gasometer.ac</path>
  		<name>gas</name>
@@ -45,7 +45,7 @@
 	      	</equals>
 	  	</condition>
 	</animation>
-
+	
 	<model>
  		<path>hangar_25x25m_tan.ac</path>
  		<name>hangar</name>
@@ -60,7 +60,7 @@
 	      	</equals>
 	  	</condition>
 	</animation>
-
+	
 	<model>
  		<path>Industrial50x100.ac</path>
  		<name>industry</name>
@@ -75,7 +75,7 @@
 	      	</equals>
 	  	</condition>
 	</animation>
-
+	
 	<model>
  		<path>Poolbeg_TurboGas.ac</path>
  		<name>pool</name>
@@ -90,7 +90,7 @@
 	      	</equals>
 	  	</condition>
 	</animation>
-
+	
 	<model>
  		<path>Quadplex_18x18.ac</path>
  		<name>plex</name>
