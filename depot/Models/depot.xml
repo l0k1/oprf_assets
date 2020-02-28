@@ -120,6 +120,36 @@
 	      	</equals>
 	  	</condition>
 	</animation>
+	
+	<model>
+ 		<path>TourChalles.ac</path>
+ 		<name>tour</name>
+ 	</model>
+ 	<animation>
+	  	<type>select</type>
+	  	<object-name>tour</object-name>
+	  	<condition>
+	      	<equals>
+	        	<property>sim/multiplay/generic/int[17]</property>
+	        	<value>8</value>
+	      	</equals>
+	  	</condition>
+	</animation>
+	
+	<model>
+ 		<path>Bud_paliw.xml</path>
+ 		<name>pali</name>
+ 	</model>
+ 	<animation>
+	  	<type>select</type>
+	  	<object-name>pali</object-name>
+	  	<condition>
+	      	<equals>
+	        	<property>sim/multiplay/generic/int[17]</property>
+	        	<value>9</value>
+	      	</equals>
+	  	</condition>
+	</animation>
 
 	<model>
 		<path>Aircraft/depot/Models/smoke.xml</path>

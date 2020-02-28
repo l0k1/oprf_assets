@@ -50,6 +50,8 @@ var PositionUpdater = func () {
 			if (type == 5) {damage.hp_max=1500;damage.hp=1500;}
 			if (type == 6) {damage.hp_max=450;damage.hp=450;}
 			if (type == 7) {damage.hp_max=0;damage.hp=0;}
+			if (type == 8) {damage.hp_max=300;damage.hp=300;}
+			if (type == 9) {damage.hp_max=300;damage.hp=300;}
 			last_type = type;
 		} else {
 			print("Can only switch type when not damaged!!");

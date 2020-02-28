@@ -40,7 +40,7 @@
     </shooter>
     <counter>
       <particles-per-sec>
-        <value>1</value>
+        <value>2</value>
         <spread>20</spread>
       </particles-per-sec>
     </counter>
@@ -64,7 +64,7 @@
           <alpha><value>0.0</value></alpha>
         </color>
         <size>
-          <value>60.0</value>
+          <value>140.0</value>
         </size>
       </end>
       <life-sec>
@@ -75,8 +75,8 @@
     </particle>
     <program>
       <fluid>air</fluid>
-      <gravity>true</gravity>
-      <wind>true</wind>
+      <gravity type="bool">true</gravity>
+      <wind type="bool">true</wind>
     </program>
   </particlesystem>
 

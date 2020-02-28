@@ -62,11 +62,11 @@
           <alpha><value>0.0</value></alpha>
         </color>
         <size>
-          <value>15.0</value>
+          <value>50.0</value>
         </size>
       </end>
       <life-sec>
-        <value>4</value>
+        <value>5</value>
       </life-sec>
       <mass-kg>0.0085</mass-kg>
       <radius-m>0.50</radius-m>
