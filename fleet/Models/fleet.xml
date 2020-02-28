@@ -170,7 +170,7 @@
     <condition>
       <equals>
         <property>sim/multiplay/generic/bool[40]</property>
-        <value>true</value>
+        <value>1</value>
       </equals>
     </condition>
   </animation>
@@ -181,7 +181,7 @@
     <condition>
       <equals>
         <property>sim/multiplay/generic/bool[41]</property>
-        <value>true</value>
+        <value>1</value>
       </equals>
     </condition>
   </animation>
@@ -192,7 +192,7 @@
     <condition>
       <equals>
         <property>sim/multiplay/generic/bool[42]</property>
-        <value>true</value>
+        <value>1</value>
       </equals>
     </condition>
   </animation>
@@ -203,7 +203,7 @@
     <condition>
       <equals>
         <property>sim/multiplay/generic/bool[43]</property>
-        <value>true</value>
+        <value>1</value>
       </equals>
     </condition>
   </animation>
@@ -214,7 +214,7 @@
     <condition>
       <equals>
         <property>sim/multiplay/generic/bool[44]</property>
-        <value>true</value>
+        <value>1</value>
       </equals>
     </condition>
   </animation>
@@ -225,7 +225,7 @@
     <condition>
       <equals>
         <property>sim/multiplay/generic/bool[45]</property>
-        <value>true</value>
+        <value>1</value>
       </equals>
     </condition>
   </animation>
@@ -236,7 +236,7 @@
     <condition>
       <equals>
         <property>sim/multiplay/generic/bool[46]</property>
-        <value>true</value>
+        <value>1</value>
       </equals>
     </condition>
   </animation>
