@@ -21,7 +21,7 @@
 var frequency = 20.0;
 
 # Change in heading per second at full rudder deflection
-var heading_ps = 0.1;
+var heading_ps = 5.0;
 
 time_last = 0;
 sim_speed = 1;
@@ -50,28 +50,30 @@ var PositionUpdater = func () {
 	if (dt == 0) return;
 
 	time_last = time_now;
-
 	var heading = getprop("/orientation/heading-deg");
 	var speed   = getprop("/velocities/groundspeed-kt");
 	var rudder  = getprop("/surface-positions/rudder-pos-norm");
 
 	var aground_pos = geo.Coord.new().set_latlon(position.lat(),position.lon());
 	aground_pos.apply_course_distance(heading,25);
-	var aground = geodinfo(aground_pos.lat(), aground_pos.lon())[1].solid;
-	if ( aground == 0 ) {
-		aground_pos.apply_course_distance(heading,-50);
-		aground = geodinfo(aground_pos.lat(), aground_pos.lon())[1].solid;
-	}
-	if ( aground == 1 ) {
-		setprop("/carrier/aground",1);
-		setprop("/carrier/sunk",1);
-	}
 
-	if ( aground == 1 ) {
-		speed = 0;
+	var aground = geodinfo(aground_pos.lat(), aground_pos.lon());
+	if (aground != nil) {
+		if (aground[1] != nil){
+			aground = aground[1].solid;
+			if ( aground == 0 ) {
+				aground_pos.apply_course_distance(heading,-50);
+				aground = geodinfo(aground_pos.lat(), aground_pos.lon())[1].solid;
+			}
+			if ( aground == 1 ) {
+				setprop("/carrier/aground",1);
+				setprop("/carrier/sunk",1);
+				speed = 0;
+			}
+		}
 	}
 	#print(speed);
-	var distance = speed * globals.KT2MPS * dt;
+	var distance = speed * globals.KT2MPS * dt; 
 	position.apply_course_distance(heading, distance);
 	
 	# check if we've ran aground
