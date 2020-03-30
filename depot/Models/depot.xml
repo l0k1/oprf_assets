@@ -49,7 +49,7 @@
 	</animation>
 	
 	<model>
- 		<path>Powerplant/powerplant.ac</path>
+ 		<path>Powerplant/Powerplant.ac</path>
  		<name>pool</name>
  	</model>
  	<animation>
