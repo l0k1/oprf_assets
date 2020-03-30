@@ -1,0 +1,165 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+	
+	<model>
+ 		<path>EDAK_SHELTER1.ac</path>
+ 		<name>shelter</name>
+ 	</model>
+ 	<animation>
+	  	<type>select</type>
+	  	<object-name>shelter</object-name>
+	  	<condition>
+	      	<equals>
+	        	<property>sim/multiplay/generic/int[17]</property>
+	        	<value>1</value>
+	      	</equals>
+	  	</condition>
+	</animation>
+	
+	
+	<model>
+ 		<path>hangar_25x25m_tan.ac</path>
+ 		<name>hangar</name>
+ 	</model>
+ 	<animation>
+	  	<type>select</type>
+	  	<object-name>hangar</object-name>
+	  	<condition>
+	      	<equals>
+	        	<property>sim/multiplay/generic/int[17]</property>
+	        	<value>3</value>
+	      	</equals>
+	  	</condition>
+	</animation>
+	
+	
+	
+
+	
+	<model>
+ 		<path>AptTower/AptTower.ac</path>
+ 		<name>tour</name>
+ 	</model>
+ 	<animation>
+	  	<type>select</type>
+	  	<object-name>tour</object-name>
+	  	<condition>
+	      	<equals>
+	        	<property>sim/multiplay/generic/int[17]</property>
+	        	<value>8</value>
+	      	</equals>
+	  	</condition>
+	</animation>
+	
+	
+	<model>
+ 		<path>Bunker/Bunker.ac</path>
+ 		<name>bunk</name>
+ 	</model>
+ 	<animation>
+	  	<type>select</type>
+	  	<object-name>bunk</object-name>
+	  	<condition>
+	      	<equals>
+	        	<property>sim/multiplay/generic/int[17]</property>
+	        	<value>10</value>
+	      	</equals>
+	  	</condition>
+	</animation>
+	
+	
+	<model>
+ 		<path>ContainerTarget/ContainerTarget.ac</path>
+ 		<name>tgt</name>
+ 	</model>
+ 	<animation>
+	  	<type>select</type>
+	  	<object-name>tgt</object-name>
+	  	<condition>
+	      	<equals>
+	        	<property>sim/multiplay/generic/int[17]</property>
+	        	<value>12</value>
+	      	</equals>
+	  	</condition>
+	</animation>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<model>
+ 		<path>DoubleShelter/DoubleShelter.ac</path>
+ 		<name>double</name>
+ 	</model>
+ 	<animation>
+	  	<type>select</type>
+	  	<object-name>double</object-name>
+	  	<condition>
+	      	<equals>
+	        	<property>sim/multiplay/generic/int[17]</property>
+	        	<value>14</value>
+	      	</equals>
+	  	</condition>
+	</animation>
+	
+	
+	
+	<model>
+ 		<path>HardShelter/HardShelter.ac</path>
+ 		<name>hard</name>
+ 	</model>
+ 	<animation>
+	  	<type>select</type>
+	  	<object-name>hard</object-name>
+	  	<condition>
+	      	<equals>
+	        	<property>sim/multiplay/generic/int[17]</property>
+	        	<value>17</value>
+	      	</equals>
+	  	</condition>
+	</animation>
+	
+		
+	<model>
+ 		<path>RadarStation/RadarStation.xml</path>
+ 		<name>rdr</name>
+ 	</model>
+ 	<animation>
+	  	<type>select</type>
+	  	<object-name>rdr</object-name>
+	  	<condition>
+	      	<equals>
+	        	<property>sim/multiplay/generic/int[17]</property>
+	        	<value>20</value>
+	      	</equals>
+	  	</condition>
+	</animation>
+	
+	
+
+	<model>
+		<path>Aircraft/depot/Models/smoke.xml</path>
+		<offsets>
+			<x-m>1.2</x-m>
+            <y-m>0.00</y-m>
+            <z-m>18.0</z-m>
+			<pitch-deg>0</pitch-deg>
+		</offsets>
+	</model>
+
+	<model>
+		<path>Aircraft/depot/Models/fire.xml</path>
+		<offsets>
+			<x-m>1.2</x-m>
+            <y-m>0.00</y-m>
+            <z-m>2.0</z-m>
+			<pitch-deg>0</pitch-deg>
+		</offsets>
+	</model>
+
+</PropertyList>

@@ -2,7 +2,7 @@
 
 <PropertyList>
 	<model>
- 		<path>Office30x22.ac</path>
+ 		<path>Depot/Depot.ac</path>
  		<name>depot</name>
  	</model>
  	<animation>
@@ -16,23 +16,9 @@
 	  	</condition>
 	</animation>
 	
-	<model>
- 		<path>EDAK_SHELTER1.ac</path>
- 		<name>shelter</name>
- 	</model>
- 	<animation>
-	  	<type>select</type>
-	  	<object-name>shelter</object-name>
-	  	<condition>
-	      	<equals>
-	        	<property>sim/multiplay/generic/int[17]</property>
-	        	<value>1</value>
-	      	</equals>
-	  	</condition>
-	</animation>
 	
 	<model>
- 		<path>Gasometer.ac</path>
+ 		<path>Tank/Gasometer.ac</path>
  		<name>gas</name>
  	</model>
  	<animation>
@@ -46,23 +32,9 @@
 	  	</condition>
 	</animation>
 	
-	<model>
- 		<path>hangar_25x25m_tan.ac</path>
- 		<name>hangar</name>
- 	</model>
- 	<animation>
-	  	<type>select</type>
-	  	<object-name>hangar</object-name>
-	  	<condition>
-	      	<equals>
-	        	<property>sim/multiplay/generic/int[17]</property>
-	        	<value>3</value>
-	      	</equals>
-	  	</condition>
-	</animation>
 	
 	<model>
- 		<path>Industrial50x100.ac</path>
+ 		<path>Warehouse/Warehouse.ac</path>
  		<name>industry</name>
  	</model>
  	<animation>
@@ -77,7 +49,7 @@
 	</animation>
 	
 	<model>
- 		<path>Poolbeg_TurboGas.ac</path>
+ 		<path>Powerplant/powerplant.ac</path>
  		<name>pool</name>
  	</model>
  	<animation>
@@ -92,7 +64,7 @@
 	</animation>
 	
 	<model>
- 		<path>Quadplex_18x18.ac</path>
+ 		<path>Bridge/Bridge.ac</path>
  		<name>plex</name>
  	</model>
  	<animation>
@@ -122,21 +94,6 @@
 	</animation>
 	
 	<model>
- 		<path>TourChalles.ac</path>
- 		<name>tour</name>
- 	</model>
- 	<animation>
-	  	<type>select</type>
-	  	<object-name>tour</object-name>
-	  	<condition>
-	      	<equals>
-	        	<property>sim/multiplay/generic/int[17]</property>
-	        	<value>8</value>
-	      	</equals>
-	  	</condition>
-	</animation>
-	
-	<model>
  		<path>Bud_paliw.xml</path>
  		<name>pali</name>
  	</model>
@@ -150,13 +107,81 @@
 	      	</equals>
 	  	</condition>
 	</animation>
+	
+	
+	<model>
+ 		<path>Flat/Flat.ac</path>
+ 		<name>flat</name>
+ 	</model>
+ 	<animation>
+	  	<type>select</type>
+	  	<object-name>flat</object-name>
+	  	<condition>
+	      	<equals>
+	        	<property>sim/multiplay/generic/int[17]</property>
+	        	<value>11</value>
+	      	</equals>
+	  	</condition>
+	</animation>
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	<model>
+ 		<path>Factory/Factory.ac</path>
+ 		<name>fact2</name>
+ 	</model>
+ 	<animation>
+	  	<type>select</type>
+	  	<object-name>fact2</object-name>
+	  	<condition>
+	      	<equals>
+	        	<property>sim/multiplay/generic/int[17]</property>
+	        	<value>15</value>
+	      	</equals>
+	  	</condition>
+	</animation>
+	
+	<model>
+ 		<path>FuelFarm/FuelFarm.ac</path>
+ 		<name>farm</name>
+ 	</model>
+ 	<animation>
+	  	<type>select</type>
+	  	<object-name>farm</object-name>
+	  	<condition>
+	      	<equals>
+	        	<property>sim/multiplay/generic/int[17]</property>
+	        	<value>16</value>
+	      	</equals>
+	  	</condition>
+	</animation>
+	
+	
+	
+	
 
 	<model>
 		<path>Aircraft/depot/Models/smoke.xml</path>
 		<offsets>
 			<x-m>1.2</x-m>
             <y-m>0.00</y-m>
-            <z-m>-0.68</z-m>
+            <z-m>18.0</z-m>
+			<pitch-deg>0</pitch-deg>
+		</offsets>
+	</model>
+
+	<model>
+		<path>Aircraft/depot/Models/fire.xml</path>
+		<offsets>
+			<x-m>1.2</x-m>
+            <y-m>0.00</y-m>
+            <z-m>2.0</z-m>
 			<pitch-deg>0</pitch-deg>
 		</offsets>
 	</model>

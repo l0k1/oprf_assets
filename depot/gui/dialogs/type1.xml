@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<PropertyList>
+
+    <name>type1</name>
+    <layout>vbox</layout>
+    <width>250</width>
+    <resizable>false</resizable>
+
+    <group>
+        <layout>hbox</layout>
+
+        <empty><stretch>true</stretch></empty>
+        <text>
+            <label>Type</label>
+        </text>
+        <empty><stretch>true</stretch></empty>
+
+        <button>
+            <legend/>
+            <keynum>27</keynum>
+            <pref-width>16</pref-width>
+            <pref-height>16</pref-height>
+            <border>2</border>
+            <binding>
+                <command>dialog-close</command>
+            </binding>
+        </button>
+    </group>
+
+    <hrule/>
+
+    <group>
+        <layout>hbox</layout>
+        <group>
+            <layout>vbox</layout>
+            <default-padding>6</default-padding>
+
+            <empty><stretch>true</stretch></empty>
+
+            <button>
+                <legend>Shelter</legend>
+                <binding>
+                    <command>property-assign</command>
+                    <property>sim/multiplay/generic/int[17]</property>
+                    <value>1</value>
+                </binding>
+            </button>
+            <button>
+                <legend>Small Hangar</legend>
+                <binding>
+                    <command>property-assign</command>
+                    <property>sim/multiplay/generic/int[17]</property>
+                    <value>3</value>
+                </binding>
+            </button>
+            <button>
+                <legend>Tower</legend>
+                <binding>
+                    <command>property-assign</command>
+                    <property>sim/multiplay/generic/int[17]</property>
+                    <value>8</value>
+                </binding>
+            </button>
+            <button>
+                <legend>Bunker</legend>
+                <binding>
+                    <command>property-assign</command>
+                    <property>sim/multiplay/generic/int[17]</property>
+                    <value>10</value>
+                </binding>
+            </button>
+            
+        </group>
+        
+        <group>
+            <layout>vbox</layout>
+            <default-padding>6</default-padding>
+
+            <empty><stretch>true</stretch></empty>
+
+            <button>
+                <legend>ConTarget</legend>
+                <binding>
+                    <command>property-assign</command>
+                    <property>sim/multiplay/generic/int[17]</property>
+                    <value>12</value>
+                </binding>
+            </button>
+            
+            
+            
+            
+            
+            
+            <button>
+                <legend>DoubleShelter</legend>
+                <binding>
+                    <command>property-assign</command>
+                    <property>sim/multiplay/generic/int[17]</property>
+                    <value>14</value>
+                </binding>
+            </button>
+            <button>
+                <legend>Hardshelter</legend>
+                <binding>
+                    <command>property-assign</command>
+                    <property>sim/multiplay/generic/int[17]</property>
+                    <value>17</value>
+                </binding>
+            </button>
+            <button>
+                <legend>RadarStation</legend>
+                <binding>
+                    <command>property-assign</command>
+                    <property>sim/multiplay/generic/int[17]</property>
+                    <value>20</value>
+                </binding>
+            </button>
+            
+        </group>
+        
+    </group>
+
+</PropertyList>

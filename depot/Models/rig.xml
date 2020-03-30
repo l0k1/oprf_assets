@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+	
+	<model>
+ 		<path>OilRig/oilrig09.xml</path>
+ 		<name>rig</name>
+ 	</model>
+ 	<animation>
+	  	<type>select</type>
+	  	<object-name>rig</object-name>
+	  	<condition>
+	      	<equals>
+	        	<property>sim/multiplay/generic/int[17]</property>
+	        	<value>19</value>
+	      	</equals>
+	  	</condition>
+	</animation>
+		
+	
+	
+
+	<model>
+		<path>Aircraft/depot/Models/smoke.xml</path>
+		<offsets>
+			<x-m>1.2</x-m>
+            <y-m>0.00</y-m>
+            <z-m>18.0</z-m>
+			<pitch-deg>0</pitch-deg>
+		</offsets>
+	</model>
+
+	<model>
+		<path>Aircraft/depot/Models/fire.xml</path>
+		<offsets>
+			<x-m>1.2</x-m>
+            <y-m>0.00</y-m>
+            <z-m>2.0</z-m>
+			<pitch-deg>0</pitch-deg>
+		</offsets>
+	</model>
+
+</PropertyList>

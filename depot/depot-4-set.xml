@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList include="depot-common.xml">
+
+    <sim>
+        <description>Checkpoint</description>
+        
+        <variant-of>depot-1</variant-of>
+
+        <model>
+            <path>Aircraft/depot/Models/point.xml</path>
+
+            <!-- Uncloak weather balloons visiting Earth -->
+            <always-show-in-MP type="bool">true</always-show-in-MP>
+        </model>
+
+        <startup>
+            <splash-texture>Aircraft/depot/splash1.png</splash-texture>
+        </startup>
+        
+        <multiplay>
+            <visibility-range-nm type="int">750</visibility-range-nm>
+            <generic>
+                <int n="0" type="int">0</int>
+                <int n="2" type="int">1</int>
+                <int n="17" type="int">18</int>
+            </generic>
+        </multiplay>
+        
+        <chase-distance-m type="double" archive="y">-250.0</chase-distance-m>
+    </sim>
+</PropertyList>
