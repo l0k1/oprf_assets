@@ -32,7 +32,7 @@ setprop("/carrier/roll-deg",0);
 setprop("/carrier/roll-offset",0);
 setprop("/carrier/sunk",0);
 
-var last_type = getprop("sim/multiplay/generic/int[17]");
+var last_type = -1;
 
 var PositionUpdater = func () {
 	
