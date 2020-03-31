@@ -19,7 +19,7 @@ name "Cube.002"
 loc -2.72891 -0.099999 34.8418
 data 8
 Cube.002
-texture "HardShelter2.png"
+texture "Hardshelter2.png"
 crease 30.000000
 numvert 287
 -25.8546 1.39106 2.56523
@@ -2220,7 +2220,7 @@ name "Cube.002"
 loc -2.72891 -0.099999 -34.9582
 data 8
 Cube.002
-texture "HardShelter2.png"
+texture "Hardshelter2.png"
 crease 30.000000
 numvert 287
 -24.6948 1.6256 2.80113
@@ -4421,7 +4421,7 @@ name "Cube.002"
 loc -26.9129 -0.0999988 -0.00583428
 data 8
 Cube.002
-texture "HardShelter2.png"
+texture "Hardshelter2.png"
 crease 30.000000
 numvert 287
 -2.56523 1.39106 -36.9965
@@ -83560,7 +83560,7 @@ name "DoorL"
 loc -9.25942 0.554663 7.60004
 data 4
 Cube
-texture "HardShelter3.png"
+texture "Hardshelter3.png"
 crease 30.000000
 numvert 8
 20.8872 6.74167 -0.950791
@@ -83620,7 +83620,7 @@ name "DoorR"
 loc -9.25942 0.554663 -5.77924
 data 8
 Cube.001
-texture "HardShelter3.png"
+texture "Hardshelter3.png"
 crease 30.000000
 numvert 8
 20.8872 6.74167 -10.574
@@ -83680,7 +83680,7 @@ name "Cube"
 loc 0.0696993 4.33163 -0.209606
 data 4
 Cube
-texture "HardShelter.png"
+texture "Hardshelter.png"
 crease 30.000000
 numvert 40
 -10.8504 -4.26431 9.62321
@@ -83940,7 +83940,7 @@ name "Plane.001"
 loc -4.35083 0.554663 0.7604
 data 9
 Plane.001
-texture "HardShelter2.png"
+texture "Hardshelter2.png"
 crease 30.000000
 numvert 18
 15.1103 -0.81217 21.1289
@@ -84064,7 +84064,7 @@ name "Plane"
 loc -7.48418 0.554663 0.7604
 data 5
 Plane
-texture "HardShelter.png"
+texture "Hardshelter.png"
 crease 30.000000
 numvert 16
 19.208 10.8029 -10.5644
