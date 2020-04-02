@@ -2,36 +2,7 @@
 
 <PropertyList>
 	
-	<model>
- 		<path>EDAK_SHELTER1.ac</path>
- 		<name>shelter</name>
- 	</model>
- 	<animation>
-	  	<type>select</type>
-	  	<object-name>shelter</object-name>
-	  	<condition>
-	      	<equals>
-	        	<property>sim/multiplay/generic/int[17]</property>
-	        	<value>1</value>
-	      	</equals>
-	  	</condition>
-	</animation>
 	
-	
-	<model>
- 		<path>hangar_25x25m_tan.ac</path>
- 		<name>hangar</name>
- 	</model>
- 	<animation>
-	  	<type>select</type>
-	  	<object-name>hangar</object-name>
-	  	<condition>
-	      	<equals>
-	        	<property>sim/multiplay/generic/int[17]</property>
-	        	<value>3</value>
-	      	</equals>
-	  	</condition>
-	</animation>
 	
 	
 	

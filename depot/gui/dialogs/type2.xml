@@ -87,14 +87,7 @@
                     <value>7</value>
                 </binding>
             </button>
-            <button>
-                <legend>Pali</legend>
-                <binding>
-                    <command>property-assign</command>
-                    <property>sim/multiplay/generic/int[17]</property>
-                    <value>9</value>
-                </binding>
-            </button>
+            
             
         </group>
         

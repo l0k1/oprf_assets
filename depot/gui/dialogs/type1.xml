@@ -39,22 +39,7 @@
 
             <empty><stretch>true</stretch></empty>
 
-            <button>
-                <legend>Shelter</legend>
-                <binding>
-                    <command>property-assign</command>
-                    <property>sim/multiplay/generic/int[17]</property>
-                    <value>1</value>
-                </binding>
-            </button>
-            <button>
-                <legend>Small Hangar</legend>
-                <binding>
-                    <command>property-assign</command>
-                    <property>sim/multiplay/generic/int[17]</property>
-                    <value>3</value>
-                </binding>
-            </button>
+            
             <button>
                 <legend>Tower</legend>
                 <binding>
