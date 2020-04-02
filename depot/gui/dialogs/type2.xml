@@ -48,6 +48,14 @@
                 </binding>
             </button>
             <button>
+                <legend>Compound</legend>
+                <binding>
+                    <command>property-assign</command>
+                    <property>sim/multiplay/generic/int[17]</property>
+                    <value>1</value>
+                </binding>
+            </button>
+            <button>
                 <legend>Fuel</legend>
                 <binding>
                     <command>property-assign</command>

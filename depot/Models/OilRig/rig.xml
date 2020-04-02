@@ -3,7 +3,7 @@
 <PropertyList>
 	
 	<model>
- 		<path>OilRig/rig.xml</path>
+ 		<path>oilrig09.xml</path>
  		<name>rig</name>
  	</model>
  	<animation>
@@ -18,26 +18,26 @@
 	</animation>
 		
 	
-	<!--
+	
 
 	<model>
-		<path>Aircraft/depot/Models/smoke.xml</path>
+		<path>Aircraft/depot/Models/OilRig/smoke-rig.xml</path>
 		<offsets>
 			<x-m>1.2</x-m>
             <y-m>0.00</y-m>
-            <z-m>18.0</z-m>
+            <z-m>90.0</z-m>
 			<pitch-deg>0</pitch-deg>
 		</offsets>
 	</model>
 
 	<model>
-		<path>Aircraft/depot/Models/fire.xml</path>
+		<path>Aircraft/depot/Models/OilRig/fire-rig.xml</path>
 		<offsets>
 			<x-m>1.2</x-m>
             <y-m>0.00</y-m>
-            <z-m>2.0</z-m>
+            <z-m>40.0</z-m>
 			<pitch-deg>0</pitch-deg>
 		</offsets>
-	</model>-->
+	</model>
 
 </PropertyList>

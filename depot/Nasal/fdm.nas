@@ -43,7 +43,7 @@ var PositionUpdater = func () {
 	if (type != last_type) {
 		if (damage.hp_max == damage.hp) {
 			if (type == 0) {damage.hp_max=900;damage.hp=900;}
-			if (type == 1) {damage.hp_max=1000;damage.hp=1000;}
+			if (type == 1) {damage.hp_max=500;damage.hp=500;}
 			if (type == 2) {damage.hp_max=200;damage.hp=200;}
 			if (type == 3) {damage.hp_max=300;damage.hp=300;}
 			if (type == 4) {damage.hp_max=900;damage.hp=900;}

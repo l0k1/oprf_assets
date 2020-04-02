@@ -16,6 +16,20 @@
 	  	</condition>
 	</animation>
 	
+	<model>
+ 		<path>Compound/Compound.ac</path>
+ 		<name>comp</name>
+ 	</model>
+ 	<animation>
+	  	<type>select</type>
+	  	<object-name>comp</object-name>
+	  	<condition>
+	      	<equals>
+	        	<property>sim/multiplay/generic/int[17]</property>
+	        	<value>1</value>
+	      	</equals>
+	  	</condition>
+	</animation>
 	
 	<model>
  		<path>Tank/Gasometer.ac</path>
