@@ -23,6 +23,21 @@
 	  	</condition>
 	</animation>
 	
+	<model>
+ 		<path>LightHangar/LightHangar.ac</path>
+ 		<name>lh</name>
+ 	</model>
+ 	<animation>
+	  	<type>select</type>
+	  	<object-name>lh</object-name>
+	  	<condition>
+	      	<equals>
+	        	<property>sim/multiplay/generic/int[17]</property>
+	        	<value>9</value>
+	      	</equals>
+	  	</condition>
+	</animation>
+	
 	
 	<model>
  		<path>Bunker/Bunker.ac</path>
