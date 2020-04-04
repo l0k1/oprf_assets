@@ -46,4 +46,19 @@
 	  	</condition>
 	</animation>
 
+	<model>
+ 		<path>Speedboat/Speedboat.ac</path>
+ 		<name>speedboat</name>
+ 	</model>
+ 	<animation>
+	  	<type>select</type>
+	  	<object-name>speedboat</object-name>
+	  	<condition>
+	      	<equals>
+	        	<property>sim/multiplay/generic/int[17]</property>
+	        	<value>10</value>
+	      	</equals>
+	  	</condition>
+	</animation>
+
 </PropertyList>
