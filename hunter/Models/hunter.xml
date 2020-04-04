@@ -46,6 +46,22 @@
 	  	</condition>
 	</animation>
 
+
+	<model>
+ 		<path>Forel_WaterTarget.ac</path>
+ 		<name>watertarget</name>
+ 	</model>
+ 	<animation>
+	  	<type>select</type>
+	  	<object-name>watertarget</object-name>
+	  	<condition>
+	      	<equals>
+	        	<property>sim/multiplay/generic/int[17]</property>
+	        	<value>3</value>
+	      	</equals>
+	  	</condition>
+	</animation>
+
 	<model>
  		<path>Speedboat/Speedboat.ac</path>
  		<name>speedboat</name>
