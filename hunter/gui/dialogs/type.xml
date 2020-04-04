@@ -77,6 +77,22 @@
                 <value>2</value>
             </binding>
         </button>
+        <button>
+            <legend>Water Target</legend>
+            <binding>
+                <command>property-assign</command>
+                <property>sim/multiplay/generic/int[17]</property>
+                <value>3</value>
+            </binding>
+        </button>
+        <button>
+            <legend>Speedboat</legend>
+            <binding>
+                <command>property-assign</command>
+                <property>sim/multiplay/generic/int[17]</property>
+                <value>10</value>
+            </binding>
+        </button>
 
     </group>
 
