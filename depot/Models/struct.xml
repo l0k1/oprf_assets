@@ -4,6 +4,20 @@
 	
 	
 	
+	<model>
+ 		<path>Hanger/hangar_25x25m_tan.ac</path>
+ 		<name>hg25</name>
+ 	</model>
+ 	<animation>
+	  	<type>select</type>
+	  	<object-name>hg25</object-name>
+	  	<condition>
+	      	<equals>
+	        	<property>sim/multiplay/generic/int[17]</property>
+	        	<value>3</value>
+	      	</equals>
+	  	</condition>
+	</animation>
 	
 	
 

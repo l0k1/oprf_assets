@@ -37,7 +37,15 @@
             <layout>vbox</layout>
             <default-padding>6</default-padding>
 
-            <empty><stretch>true</stretch></empty>
+            
+            <button>
+                <legend>Hangar</legend>
+                <binding>
+                    <command>property-assign</command>
+                    <property>sim/multiplay/generic/int[17]</property>
+                    <value>3</value>
+                </binding>
+            </button>
 
             
             <button>
