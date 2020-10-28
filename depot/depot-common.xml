@@ -68,11 +68,16 @@
 	
     <payload>
         <armament>
+            <models type="string">Aircraft/depot/Models/emesary/</models>
             <msg type="bool">true</msg>
         </armament>
     </payload>
     
     <nasal>
+        <notifications>
+            <file>Aircraft/depot/Nasal/ArmamentNotification.nas</file>
+            <file>Aircraft/depot/Nasal/GeoBridgedTransmitter.nas</file>
+        </notifications>
         <damage>
             <file>Aircraft/depot/Nasal/damage.nas</file>
         </damage>

@@ -126,15 +126,36 @@
                 <path>Systems/views.xml</path>
             </property-rule>
         </systems>
+        
+        <menubar>
+            <default>
+                <menu n="100">
+                    <label>Truck</label>
+                    <enabled type="bool">true</enabled>
+                    <item>
+                        <label>Event Log</label>
+                        <binding>
+                            <command>dialog-show</command>
+                            <dialog-name>flightlog</dialog-name>
+                        </binding>
+                    </item>
+                </menu>
+            </default>
+        </menubar>
     </sim>
     
     <payload>
         <armament>
+            <models type="string">Aircraft/groundtarget/Models/emesary/</models>
             <msg type="bool">true</msg>
         </armament>
     </payload>
 	
     <nasal>
+        <notifications>
+            <file>Aircraft/groundtarget/Nasal/ArmamentNotification.nas</file>
+            <file>Aircraft/groundtarget/Nasal/GeoBridgedTransmitter.nas</file>
+        </notifications>
         <carrier>
             <file>Aircraft/groundtarget/Nasal/fdm.nas</file>
         </carrier>

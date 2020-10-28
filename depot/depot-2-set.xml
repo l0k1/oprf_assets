@@ -39,6 +39,13 @@
                             <dialog-name>type2</dialog-name>
                         </binding>
                     </item>
+                    <item>
+                        <label>Event Log</label>
+                        <binding>
+                            <command>dialog-show</command>
+                            <dialog-name>flightlog</dialog-name>
+                        </binding>
+                    </item>
                 </menu>
             </default>
         </menubar>

@@ -27,6 +27,21 @@
             </generic>
         </multiplay>
         
+        <menubar>
+            <default>
+                <menu n="100">
+                    <label>Depot</label>
+                    <item>
+                        <label>Event Log</label>
+                        <binding>
+                            <command>dialog-show</command>
+                            <dialog-name>flightlog</dialog-name>
+                        </binding>
+                    </item>
+                </menu>
+            </default>
+        </menubar>
+        
         <chase-distance-m type="double" archive="y">-250.0</chase-distance-m>
     </sim>
 </PropertyList>

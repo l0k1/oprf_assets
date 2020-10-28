@@ -125,6 +125,22 @@
                 <int n="0" type="int">0</int>
             </generic>
         </multiplay>
+        
+        <menubar>
+            <default>
+                <menu n="100">
+                    <label>Frigate</label>
+                    <enabled type="bool">true</enabled>
+                    <item>
+                        <label>Event Log</label>
+                        <binding>
+                            <command>dialog-show</command>
+                            <dialog-name>flightlog</dialog-name>
+                        </binding>
+                    </item>
+                </menu>
+            </default>
+        </menubar>
     </sim>
 	
 	<!-- need to adjust this (probably) -->
@@ -213,7 +229,7 @@
         </weight>
 
         <armament>
-				<models type="string">Aircraft/Frigate/Models/Armament/Weapons/</models>
+				<models type="string">Aircraft/Frigate/Models/emesary/</models>
 				<msg type="bool">true</msg>
 				<damage type="bool">true</damage>
 				<kn-06>        
@@ -313,6 +329,10 @@
 	
 	
     <nasal>
+        <notifications>
+            <file>Aircraft/Frigate/Nasal/ArmamentNotification.nas</file>
+            <file>Aircraft/Frigate/Nasal/GeoBridgedTransmitter.nas</file>
+        </notifications>
         <carrier>
             <file>Aircraft/Frigate/Nasal/fdm.nas</file>
         </carrier>

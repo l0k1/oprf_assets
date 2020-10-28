@@ -47,6 +47,13 @@
                         <dialog-name>enemies</dialog-name>
                       </binding>
                     </item>
+                    <item>
+                        <label>Event Log</label>
+                        <binding>
+                            <command>dialog-show</command>
+                            <dialog-name>flightlog</dialog-name>
+                        </binding>
+                    </item>
                 </menu>
             </default>
         </menubar>
@@ -115,11 +122,16 @@
     
     <payload>
         <armament>
+            <models type="string">Aircraft/gci-radar/Models/emesary/</models>
             <msg type="bool">true</msg>
         </armament>
     </payload>
 	
     <nasal>
+        <notifications>
+            <file>Aircraft/gci-radar/Nasal/ArmamentNotification.nas</file>
+            <file>Aircraft/gci-radar/Nasal/GeoBridgedTransmitter.nas</file>
+        </notifications>
 		<damage> <file>Aircraft/gci-radar/Nasal/damage.nas</file> </damage>
         <radar_logic> <file>Aircraft/gci-radar/Nasal/radar-logic.nas</file> </radar_logic>
         <gci> <file>Aircraft/gci-radar/Nasal/gci.nas</file> </gci>
