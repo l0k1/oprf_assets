@@ -111,6 +111,55 @@
             <z-offset-min-m type="float">100.0</z-offset-min-m>
             <z-offset-max-m type="float">2000.0</z-offset-max-m>
         </current-view>
+        
+        <view n="101">
+            <name>Balcon</name>
+            <type>lookfrom</type>
+            <internal>false</internal>
+            <config>
+                <from-model type="bool">true</from-model>
+                <pitch-offset-deg>-33.0</pitch-offset-deg>
+                <heading-offset-deg>42</heading-offset-deg>
+                <x-offset-m>50</x-offset-m>
+                <y-offset-m>50</y-offset-m>
+                <z-offset-m>50</z-offset-m>
+                <default-field-of-view-deg>70</default-field-of-view-deg>
+                <limits>
+                    <enabled type="bool">false</enabled>
+                </limits>
+            </config>
+        </view>
+        <view n="102">
+            <name>Follow</name>
+            <type>lookat</type>
+            <internal>false</internal>
+            <config>
+                <!--<from-model type="bool">true</from-model>
+                <from-model-idx type="int">0</from-model-idx>-->
+                <eye-fixed type="bool">true</eye-fixed>
+                <target-lat-deg-path>rotors/main/blade[0]/flap-deg</target-lat-deg-path>
+                <target-lon-deg-path>rotors/main/blade[1]/flap-deg</target-lon-deg-path>
+                <target-alt-ft-path>rotors/main/blade[2]/position-deg</target-alt-ft-path>
+                <eye-lat-deg-path>/position/latitude-deg</eye-lat-deg-path>
+                <eye-lon-deg-path>/position/longitude-deg</eye-lon-deg-path>
+                <eye-alt-ft-path>/position/altitude-ft</eye-alt-ft-path>
+                <!--<eye-heading-deg-path>/orientation/heading-deg</eye-heading-deg-path>
+                <eye-pitch-deg-path>/orientation/pitch-deg</eye-pitch-deg-path>
+                <eye-roll-deg-path>/orientation/roll-deg</eye-roll-deg-path>-->
+                <eye-heading-deg-path>/orientation/heading-deg</eye-heading-deg-path>
+                <eye-pitch-deg>0</eye-pitch-deg>
+                <eye-roll-deg>0</eye-roll-deg>
+                <x-offset-m>50</x-offset-m>
+                <y-offset-m>50</y-offset-m>
+                <z-offset-m>25</z-offset-m>
+                <default-field-of-view-deg>70</default-field-of-view-deg>
+                <limits>
+                    <enabled type="bool">false</enabled>
+                </limits>
+            </config>
+        </view>
+        
+        <chase-distance-m type="double" archive="y">-350.0</chase-distance-m>
 
         <hud>
             <path n="1">Aircraft/S-300/Hud/hud.xml</path>
@@ -141,6 +190,7 @@
             <generic>
                 <int n="0" type="int">0</int>
                 <int n="2" type="int">0</int>
+                <string n="6" type="string"></string><!-- string 6 used by radar lock RWR warning -->
             </generic>
         </multiplay>
 
@@ -174,6 +224,33 @@
                         <dialog-name>priority</dialog-name>
                       </binding>
                     </item>
+                    <item>
+                        <label>Relocate to cursor last click</label>
+                        <binding>
+                            <command>nasal</command>
+                            <script>
+                                setprop("position/latitude-deg",getprop("sim/input/click/latitude-deg"));
+                                setprop("position/longitude-deg",getprop("sim/input/click/longitude-deg"));
+                                setprop("position/altitude-ft",getprop("sim/input/click/elevation-ft"));
+                            </script>
+                        </binding>
+                    </item>
+                    <item>
+                        <label>Print log to console</label>
+                        <binding>
+                            <command>nasal</command>
+                            <script>
+                                damage.printDamageLog();
+                            </script>
+                        </binding>
+                    </item>
+                    <item>
+                        <label>Event Log</label>
+                        <binding>
+                            <command>dialog-show</command>
+                            <dialog-name>flightlog</dialog-name>
+                        </binding>
+                    </item>
                 </menu>
             </default>
         </menubar>
@@ -201,33 +278,33 @@
             <trigger type="bool">false</trigger>
             <station n="1">
                 <offsets>
-                    <x-m type="double">  0</x-m>
-                    <y-m type="double"> 0</y-m>
-                    <z-m type="double">  0</z-m>
+                    <x-m type="double">  -5.63782</x-m>
+                    <y-m type="double"> -1.1407</y-m>
+                    <z-m type="double">  3.8</z-m>
                 </offsets>
                 <trigger type="bool">false</trigger>
             </station>
             <station n="2">
                 <offsets>
-                    <x-m type="double">  0</x-m>
-                    <y-m type="double"> 0</y-m>
-                    <z-m type="double">  0</z-m>
+                    <x-m type="double">  -6.53782</x-m>
+                    <y-m type="double"> -0.540702</y-m>
+                    <z-m type="double">  3.8</z-m>
                 </offsets>
                 <trigger type="bool">false</trigger>
             </station>
             <station n="3">
                 <offsets>
-                    <x-m type="double">  0</x-m>
-                    <y-m type="double">  0</y-m>
-                    <z-m type="double">  0</z-m>
+                    <x-m type="double">  -5.63782</x-m>
+                    <y-m type="double"> 1.1407</y-m>
+                    <z-m type="double">  3.8</z-m>
                 </offsets>
                 <trigger type="bool">false</trigger>
             </station>
             <station n="4">
                 <offsets>
-                    <x-m type="double">  0</x-m>
-                    <y-m type="double">  0</y-m>
-                    <z-m type="double">  0</z-m>
+                    <x-m type="double">  -6.53782</x-m>
+                    <y-m type="double"> 0.540702</y-m>
+                    <z-m type="double">  3.8</z-m>
                 </offsets>
                 <trigger type="bool">false</trigger>
             </station>
@@ -246,14 +323,10 @@
         </weight>
 	
         <armament>
-				
-                <MP-lat type="string">rotors/main/blade[0]/flap-deg</MP-lat>
-                <MP-lon type="string">rotors/main/blade[1]/flap-deg</MP-lon>
-                <MP-alt type="string">rotors/main/blade[2]/flap-deg</MP-alt>
-                
+				<models type="string">Aircraft/S-300/Models/Armament/Weapons/</models>
 				<msg type="bool">true</msg>
 				<damage type="bool">true</damage>
-                
+                <enable-craters type="bool">true</enable-craters>
             </armament>
     </payload>
 
@@ -266,6 +339,10 @@
                 <flap-deg type="double">0</flap-deg>
             </blade>
             <blade n="2">
+                <flap-deg type="double">0</flap-deg>
+                <position-deg type="double">0</position-deg>
+            </blade>
+            <blade n="3">
                 <flap-deg type="double">0</flap-deg>
             </blade>
         </main>
@@ -304,12 +381,30 @@
     <priority0 type="int">1</priority0>
 	
     <nasal>
+        <!--emesary><file>Aircraft/S-300/Nasal/emesary.nas</file></emesary>
+        <emesary_mp_bridge><file>Aircraft/S-300/Nasal/emesary_mp_bridge.nas</file></emesary_mp_bridge-->
+        <notifications>
+            <file>Aircraft/S-300/Nasal/ArmamentNotification.nas</file>
+            <file>Aircraft/S-300/Nasal/GeoBridgedTransmitter.nas</file>
+        </notifications>
         <carrier>
             <file>Aircraft/S-300/Nasal/fdm.nas</file>
         </carrier>
 		<damage>
 			<file>Aircraft/S-300/Nasal/damage.nas</file>
 		</damage>
+		<radar_logic>
+            <file>Aircraft/S-300/Nasal/radar-logic.nas</file>
+        </radar_logic>
+        <vector>
+            <file>Aircraft/S-300/Nasal/vector.nas</file><!-- needed by the guided-missiles -->
+        </vector>
+        <armament>
+            <file>Aircraft/S-300/Nasal/guided-missiles.nas</file>
+        </armament>
+		<fire_control>
+			<file>Aircraft/S-300/Nasal/fire-control.nas</file>
+		</fire_control>
     </nasal>
 
 </PropertyList>

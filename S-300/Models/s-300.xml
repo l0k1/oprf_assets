@@ -182,6 +182,7 @@
 
   <nasal>
       <load><![CDATA[
+        return;
         var self = cmdarg();
 
 
