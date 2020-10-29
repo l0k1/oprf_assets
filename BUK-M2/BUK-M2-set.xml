@@ -259,6 +259,13 @@
 				<models type="string">Aircraft/BUK-M2/Models/Armament/Weapons/</models>
 				<msg type="bool">true</msg>
 				<damage type="bool">true</damage>
+                <enable-craters type="bool">true</enable-craters>
+                <MLW-bearing type="double">0</MLW-bearing>
+                <MLW-count type="int">0</MLW-count>
+                <MLW-launcher type="string"></MLW-launcher>
+                <MAW-bearing type="double">0</MAW-bearing>
+                <MAW-active type="bool">false</MAW-active>
+                <spike type="bool">false</spike>
             </armament>
     </payload>
 
