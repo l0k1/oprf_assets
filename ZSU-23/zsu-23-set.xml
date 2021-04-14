@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    systems adapted from truck by onox
+    model by Jüttner Domokos aka Rudolf
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<PropertyList>
+
+    <environment>
+        <in-to-wind type="bool">false</in-to-wind>
+    </environment>
+
+    <carrier>
+        <fdm>
+            <settings>
+                <!-- The maximum bank angle during full rudder deflection -->
+                <bank-limit type="double">15.0</bank-limit>
+
+                <!-- Frequency and overshoot of the oscillator used to
+                     simulate heeling (roll).
+                -->
+                <heel-frequency type="double">0.5</heel-frequency>
+                <heel-overshoot type="double">4.0</heel-overshoot>
+
+                <!-- Frequency and overshoot of the oscillator used to
+                     simulate trimming (pitch).
+                -->
+                <trim-frequency type="double">0.32</trim-frequency>
+                <trim-overshoot type="double">0.45</trim-overshoot>
+
+                <!-- The speed of the waves plus speed of the ship in knots
+                     which generates the maximum overshoot of the trim
+                     oscillation.
+                -->
+                <max-trim-oscillation-wave-kt type="double">30.0</max-trim-oscillation-wave-kt>
+
+                <!-- The speed of the waves in knots which generates the
+                     maximum overshoot of the heel oscillation.
+                -->
+                <max-heel-oscillation-wave-kt type="double">20.0</max-heel-oscillation-wave-kt>
+
+                <movement type="bool">true</movement>
+            </settings>
+        </fdm>
+    </carrier>
+
+    <sim> <!-- include="Sim/views.xml"> -->
+        <author>pinto, onox, Rudolf</author>
+        <description>ZSU-23-4M "Shilka" AAA defence system</description>
+        <status>alpha</status>
+        <aircraft-version>0.1</aircraft-version>
+
+        <flight-model>null</flight-model>
+
+        <aero>KPN-D</aero>
+        <aircraft-operator>KPN</aircraft-operator>
+
+        <model>
+            <path>Aircraft/ZSU-23/Models/ZSU-23-4M.xml</path>
+
+            <!-- Uncloak weather balloons visiting Earth -->
+            <always-show-in-MP type="bool">true</always-show-in-MP>
+        </model>
+
+        <sound>
+            <path>Sounds/sound.xml</path>
+        </sound>
+
+        <presets>
+            <onground>true</onground>
+        </presets>
+
+
+        <current-view>
+            <deck-park type="bool">true</deck-park>
+
+            <z-offset-dec-step type="double">0.0</z-offset-dec-step>
+            <z-offset-inc-step type="double">0.0</z-offset-inc-step>
+            <can-change-z-offset type="bool">false</can-change-z-offset>
+
+            <z-offset-min-m type="float">100.0</z-offset-min-m>
+            <z-offset-max-m type="float">2000.0</z-offset-max-m>
+        </current-view>
+
+        <hud>
+            <path n="1">Aircraft/ZSU-23/Hud/hud.xml</path>
+            <visibility n="1">true</visibility>
+            <font>
+                <size type="float">11.0</size>
+            </font>
+        </hud>
+
+        <menubar include="Dialogs/menu.xml"/>
+
+        <multiplay>
+            <generic>
+                <int n="0" type="int">0</int>
+		<float n="0" type="double">0</float> <!-- Turret azimuth -->
+		<float n="1" type="double">0</float> <!-- gun elevation -->
+		<float n="2" type="double">0</float> <!-- radar azimuth -->
+		<float n="3" type="double">0</float> <!-- radar elevation -->
+		<bool n="0" type="bool" alias="/controls/armament/trigger"/>
+            </generic>
+        </multiplay>
+
+        <systems>
+            <autopilot>
+                <path>Systems/fbw.xml</path>
+            </autopilot>
+            <autopilot>
+                <path>Systems/fdm.xml</path>
+            </autopilot>
+	    <property-rule>
+		<path>Systems/radar-pos.xml</path>\
+	    </property-rule>
+	    
+        </systems>
+        
+        <menubar>
+            <default>
+                <menu n="100">
+                    <label>Truck</label>
+                    <enabled type="bool">true</enabled>
+                    <item>
+                        <label>Event Log</label>
+                        <binding>
+                            <command>dialog-show</command>
+                            <dialog-name>flightlog</dialog-name>
+                        </binding>
+                    </item>
+                </menu>
+            </default>
+        </menubar>
+	
+	<previews>
+	    <preview>
+		<type>exterior</type>
+		<splash type="bool">true</splash>
+		<path>thumbnail.png</path>
+	    </preview>
+	</previews>
+    
+    </sim>
+
+    <input>
+	<keyboard>
+	    
+            <key n="97">
+		<name>a</name>
+		<desc>Rotate Gun Left</desc>
+		<repeatable>true</repeatable>
+		<interval-sec>0.001</interval-sec>
+		<binding>
+                    <command>property-adjust</command>
+                    <property>sim/multiplay/generic/float[0]</property>
+                    <step>1</step>
+		    <min>-180</min>
+                    <max>180</max>
+		    <wrap>true</wrap>
+		</binding>
+            </key>
+
+            <key n="100">
+		<name>d</name>
+		<desc>Rotate Gun Right</desc>
+		<repeatable>true</repeatable>
+		<interval-sec>0.001</interval-sec>
+		<binding>
+                    <command>property-adjust</command>
+                    <property>sim/multiplay/generic/float[0]</property>
+                    <step>-1</step>
+                    <min>-180</min>
+                    <max>180</max>
+		    <wrap>true</wrap>
+		</binding>
+            </key>
+            
+            <key n="101">
+		<name>e</name>
+		<desc>Gun Trigger</desc> 
+		<binding>
+                    <command>property-assign</command>
+                    <property>controls/armament/trigger</property>
+                    <value>true</value>
+		</binding> 
+		<mod-up>
+		    <binding>
+			<command>property-assign</command>
+			<property>controls/armament/trigger</property>
+			<value>false</value>
+		    </binding> 
+		</mod-up>
+            </key>
+            
+            <key n="115">
+		<name>s</name>
+		<desc>Rotate Gun Down</desc>
+		<repeatable>true</repeatable>
+		<interval-sec>0.001</interval-sec>
+		<binding>
+                    <command>property-adjust</command>
+                    <property>sim/multiplay/generic/float[1]</property>
+                    <step>-1</step>
+                    <min>-10</min>
+                    <max>85</max>
+		</binding>
+            </key>
+            
+            <key n="119">
+		<name>w</name>
+		<desc>Rotate Gun Up</desc>
+		<repeatable>true</repeatable>
+		<interval-sec>0.001</interval-sec>
+		<binding>
+                    <command>property-adjust</command>
+                    <property>sim/multiplay/generic/float[1]</property>
+                    <step>1</step>
+                    <min>-10</min>
+                    <max>85</max>
+		</binding>
+            </key>
+	   	    
+	</keyboard>
+    </input>
+
+    <controls>
+	<armament>
+	    <trigger type="bool">0</trigger>
+	</armament>
+    </controls>
+    
+    <payload>
+        <armament>
+            <models type="string">Aircraft/ZSU-23/Models/emesary/</models>
+            <msg type="bool">true</msg>
+            <enable-craters type="bool">true</enable-craters>
+            <MLW-bearing type="double">0</MLW-bearing>
+            <MLW-count type="int">0</MLW-count>
+            <MLW-launcher type="string"></MLW-launcher>
+            <MAW-bearing type="double">0</MAW-bearing>
+            <MAW-active type="bool">false</MAW-active>
+            <spike type="bool">false</spike>
+        </armament>
+    </payload>
+	
+    <nasal>
+        <notifications>
+            <file>Aircraft/ZSU-23/Nasal/ArmamentNotification.nas</file>
+            <file>Aircraft/ZSU-23/Nasal/GeoBridgedTransmitter.nas</file>
+        </notifications>
+        <carrier>
+            <file>Aircraft/ZSU-23/Nasal/fdm.nas</file>
+        </carrier>
+
+	<damage>
+	    <file>Aircraft/ZSU-23/Nasal/damage.nas</file>
+	</damage>
+    </nasal>
+
+    <input>
+        <mice include="Sim/mice.xml"/>
+    </input>
+
+</PropertyList>
