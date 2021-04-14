@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<PropertyList>
+    <filter>
+	<name>radar spin</name>
+	<type>gain</type>
+	<input>
+	    <expression>
+		<mod>
+		    <product>
+			<property>/sim/time/elapsed-sec</property>
+			<value>36</value>
+		    </product>
+		    <value>360</value>
+		</mod>
+	    </expression>
+	</input>
+	<gain>1</gain>
+	<output>sim/multiplay/generic/float[2]</output>
+    </filter>
+
+    <filter>
+	<name>radar nod</name>
+	<type>gain</type>
+	<input>
+	    <property>sim/multiplay/generic/float[1]</property>
+	</input>
+	<gain>1</gain>
+	<output>sim/multiplay/generic/float[4]</output>
+    </filter>
+</PropertyList>
+    

@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Copyright (c) 2015 onox
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<PropertyList>
+
+    <name>control-panel</name>
+    <layout>vbox</layout>
+    <width>250</width>
+    <resizable>false</resizable>
+
+    <group>
+        <layout>hbox</layout>
+
+        <empty><stretch>true</stretch></empty>
+        <text>
+            <label>Control Panel</label>
+        </text>
+        <empty><stretch>true</stretch></empty>
+
+        <button>
+            <legend/>
+            <keynum>27</keynum>
+            <pref-width>16</pref-width>
+            <pref-height>16</pref-height>
+            <border>2</border>
+            <binding>
+                <command>dialog-close</command>
+            </binding>
+        </button>
+    </group>
+
+    <hrule/>
+
+    <group>
+        <layout>vbox</layout>
+        <padding>6</padding>
+        <text>
+            <label>Elevators</label>
+        </text>
+
+        <group>
+            <layout>table</layout>
+
+            <!-- 3rd -->
+            <text>
+                <row>0</row>
+                <col>1</col>
+                <label>3rd</label>
+            </text>
+
+            <!-- 3rd -->
+            <button>
+                <row>1</row>
+                <col>1</col>
+                <visible>
+                    <property>/carrier/elevators/elevator[2]/at-flight-deck</property>
+                </visible>
+                <legend>FLIGHT DECK</legend>
+                <pref-width>100</pref-width>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>property-toggle</command>
+                    <property>/carrier/elevators/elevator[2]/at-flight-deck</property>
+                </binding>
+            </button>
+            <button>
+                <row>1</row>
+                <col>1</col>
+                <visible>
+                    <not>
+                        <property>/carrier/elevators/elevator[2]/at-flight-deck</property>
+                    </not>
+                </visible>
+                <legend>HANGAR DECK</legend>
+                <pref-width>100</pref-width>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>property-toggle</command>
+                    <property>/carrier/elevators/elevator[2]/at-flight-deck</property>
+                </binding>
+            </button>
+
+            <!-- 2nd -->
+            <text>
+                <row>2</row>
+                <col>1</col>
+                <label>2nd</label>
+            </text>
+
+            <!-- 2nd -->
+            <button>
+                <row>3</row>
+                <col>1</col>
+                <visible>
+                    <property>/carrier/elevators/elevator[1]/at-flight-deck</property>
+                </visible>
+                <legend>FLIGHT DECK</legend>
+                <pref-width>100</pref-width>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>property-toggle</command>
+                    <property>/carrier/elevators/elevator[1]/at-flight-deck</property>
+                </binding>
+            </button>
+            <button>
+                <row>3</row>
+                <col>1</col>
+                <visible>
+                    <not>
+                        <property>/carrier/elevators/elevator[1]/at-flight-deck</property>
+                    </not>
+                </visible>
+                <legend>HANGAR DECK</legend>
+                <pref-width>100</pref-width>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>property-toggle</command>
+                    <property>/carrier/elevators/elevator[1]/at-flight-deck</property>
+                </binding>
+            </button>
+
+            <!-- 4th -->
+            <text>
+                <row>4</row>
+                <col>0</col>
+                <label>4th</label>
+            </text>
+            <!-- 1st -->
+            <text>
+                <row>4</row>
+                <col>1</col>
+                <label>1st</label>
+            </text>
+
+            <!-- 4th -->
+            <button>
+                <row>5</row>
+                <col>0</col>
+                <visible>
+                    <property>/carrier/elevators/elevator[3]/at-flight-deck</property>
+                </visible>
+                <legend>FLIGHT DECK</legend>
+                <pref-width>100</pref-width>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>property-toggle</command>
+                    <property>/carrier/elevators/elevator[3]/at-flight-deck</property>
+                </binding>
+            </button>
+            <button>
+                <row>5</row>
+                <col>0</col>
+                <visible>
+                    <not>
+                        <property>/carrier/elevators/elevator[3]/at-flight-deck</property>
+                    </not>
+                </visible>
+                <legend>HANGAR DECK</legend>
+                <pref-width>100</pref-width>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>property-toggle</command>
+                    <property>/carrier/elevators/elevator[3]/at-flight-deck</property>
+                </binding>
+            </button>
+
+            <!-- 1st -->
+            <button>
+                <row>5</row>
+                <col>1</col>
+                <visible>
+                    <property>/carrier/elevators/elevator[0]/at-flight-deck</property>
+                </visible>
+                <legend>FLIGHT DECK</legend>
+                <pref-width>100</pref-width>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>property-toggle</command>
+                    <property>/carrier/elevators/elevator[0]/at-flight-deck</property>
+                </binding>
+            </button>
+            <button>
+                <row>5</row>
+                <col>1</col>
+                <visible>
+                    <not>
+                        <property>/carrier/elevators/elevator[0]/at-flight-deck</property>
+                    </not>
+                </visible>
+                <legend>HANGAR DECK</legend>
+                <pref-width>100</pref-width>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>property-toggle</command>
+                    <property>/carrier/elevators/elevator[0]/at-flight-deck</property>
+                </binding>
+            </button>
+        </group>
+    </group>
+
+    <hrule/>
+
+    <group>
+        <layout>vbox</layout>
+        <padding>6</padding>
+        <text>
+            <label>Flight Deck</label>
+        </text>
+
+        <group>
+            <layout>vbox</layout>
+
+            <checkbox>
+                <halign>left</halign>
+                <label>Runway lighting</label>
+                <property>/controls/lighting/deck-lights</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>property-toggle</command>
+                </binding>
+            </checkbox>
+
+            <checkbox>
+                <halign>left</halign>
+                <label>Antennas</label>
+                <property>/carrier/antennas/enabled</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>property-toggle</command>
+                </binding>
+            </checkbox>
+        </group>
+    </group>
+
+    <hrule/>
+
+    <group>
+        <layout>vbox</layout>
+        <padding>6</padding>
+        <text>
+            <label>Debug</label>
+        </text>
+
+        <group>
+            <layout>vbox</layout>
+
+            <checkbox>
+                <halign>left</halign>
+                <label>Enable ship movememnt</label>
+                <property>/carrier/fdm/settings/movement</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>property-toggle</command>
+                </binding>
+            </checkbox>
+
+            <checkbox>
+                <halign>left</halign>
+                <label>Show Phalanx aim points</label>
+                <property>/carrier/phalanx/settings/show-debug-aim</property>
+                <live>true</live>
+                <binding>
+                    <command>dialog-apply</command>
+                </binding>
+                <binding>
+                    <command>property-toggle</command>
+                </binding>
+            </checkbox>
+        </group>
+    </group>
+
+    <hrule/>
+
+    <group>
+        <layout>hbox</layout>
+        <default-padding>6</default-padding>
+
+        <empty><stretch>true</stretch></empty>
+
+        <button>
+            <legend>Close</legend>
+            <default>true</default>
+            <binding>
+                <command>dialog-close</command>
+            </binding>
+        </button>
+    </group>
+
+</PropertyList>

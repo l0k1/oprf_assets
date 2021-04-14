@@ -1,0 +1,417 @@
+<?xml version="1.0"?>
+<PropertyList>
+    <path>Aircraft/ZSU-23/Models/zsu-23.ac</path>
+
+    
+    <!-- muzzle fire -->
+    <model>
+	<path>Aircraft/ZSU-23/Models/Effects/muzzle.xml</path>
+	<name>muzzle_LL</name>
+	<offsets>
+	    <x-m>-2.65783</x-m>
+	    <y-m>-0.21016</y-m>
+	    <z-m> 1.54514</z-m>
+	    <pitch-deg>180</pitch-deg>
+	</offsets>
+    </model>
+    
+    <model>
+	<path>Aircraft/ZSU-23/Models/Effects/muzzle.xml</path>
+	<name>muzzle_LR</name>
+	<offsets>
+	    <x-m>-2.65783</x-m>
+	    <y-m> 0.21016</y-m>
+	    <z-m> 1.54514</z-m>
+	    <pitch-deg>180</pitch-deg>
+	</offsets>
+    </model>
+    
+    <model>
+	<path>Aircraft/ZSU-23/Models/Effects/muzzle.xml</path>
+	<name>muzzle_UL</name>
+	<offsets>
+	    <x-m>-2.38544</x-m>
+	    <y-m>-0.11</y-m>
+	    <z-m> 1.88539</z-m>
+	    <pitch-deg>180</pitch-deg>
+	</offsets>
+    </model>
+    
+    <model>
+	<path>Aircraft/ZSU-23/Models/Effects/muzzle.xml</path>
+	<name>muzzle_UR</name>
+	<offsets>
+	    <x-m>-2.38544</x-m>
+	    <y-m> 0.11</y-m>
+	    <z-m> 1.88539</z-m>
+	    <pitch-deg>180</pitch-deg>
+	</offsets>
+    </model>
+
+    <animation>
+	<type>select</type>
+	<object-name>muzzle_LL</object-name>
+	<object-name>muzzle_LR</object-name>
+	<object-name>muzzle_UL</object-name>
+	<object-name>muzzle_UR</object-name>
+	<condition>
+	    <property>/sim/rendering/shaders/skydome</property><!-- als -->
+	    <property>sim/multiplay/generic/bool[0]</property><!-- gun firing -->
+	</condition>
+    </animation>
+    
+    <animation>
+	<type>rotate</type>
+	<object-name>turret</object-name>
+	<object-name>muzzle_LL</object-name>
+	<object-name>muzzle_LR</object-name>
+	<object-name>muzzle_UL</object-name>
+	<object-name>muzzle_UR</object-name>
+	<axis>
+	    <object-name>turret_axis</object-name>
+	</axis>
+	<property>sim/multiplay/generic/float[0]</property>
+    </animation>
+    
+    <animation>
+	<type>rotate</type>
+	<object-name>gun_lower</object-name>
+	<object-name>muzzle_LL</object-name>
+	<object-name>muzzle_LR</object-name>
+	<axis>
+	    <object-name>gun_lower_axis</object-name>
+	</axis>
+	<property>sim/multiplay/generic/float[1]</property>
+	<factor>-1</factor>
+    </animation>
+    
+    <animation>
+	<type>rotate</type>
+	<object-name>gun_upper</object-name>
+	<object-name>muzzle_UL</object-name>
+	<object-name>muzzle_UR</object-name>
+	<axis>
+	    <object-name>gun_upper_axis</object-name>
+	</axis>
+	<property>sim/multiplay/generic/float[1]</property>
+	<factor>-1</factor>
+    </animation>
+    
+    <animation>
+	<type>rotate</type>
+	<object-name>gun_link</object-name>
+	<axis>
+	    <object-name>gun_link_axis</object-name>
+	</axis>
+	<property>sim/multiplay/generic/float[1]</property>
+    </animation>
+
+    <animation>
+	<type>rotate</type>
+	<object-name>gun_hatch</object-name>
+	<axis>
+	    <object-name>gun_hatch_axis</object-name>
+	</axis>
+	<property>sim/multiplay/generic/float[1]</property>
+	<factor>-1</factor>
+    </animation>
+
+    <animation>
+	<type>rotate</type>
+	<object-name>radar_base</object-name>
+	<axis>
+	    <object-name>radar_az_axis</object-name>
+	</axis>
+	<property>sim/multiplay/generic/float[2]</property>
+	<offset-deg>180</offset-deg>
+	<factor>-1</factor>
+    </animation>
+    
+    <animation>
+	<type>rotate</type>
+	<object-name>radar</object-name>
+	<axis>
+	    <object-name>radar_elevation_axis</object-name>
+	</axis>
+	<property>sim/multiplay/generic/float[3]</property>
+	<factor>-1</factor>
+    </animation>
+
+    <animation>
+	<type>select</type>
+	<object-name>muzzle_LL</object-name>
+	<condition>
+	    <greater-than>
+		<expression>
+		    <sin>
+			<product>
+			    <property>/sim/time/elapsed-sec</property>
+			    <value>60</value>
+			</product>
+		    </sin>
+		</expression>
+		<value>0</value>
+	    </greater-than>
+	    <greater-than>
+		<expression>
+		    <cos>
+			<product>
+			    <property>/sim/time/elapsed-sec</property>
+			    <value>60</value>
+			</product>
+		    </cos>
+		</expression>
+		<value>0</value>
+	    </greater-than>
+	</condition>
+    </animation>
+
+    <animation>
+	<type>select</type>
+	<object-name>muzzle_UL</object-name>
+	<condition>
+	    <greater-than>
+		<expression>
+		    <sin>
+			<product>
+			    <property>/sim/time/elapsed-sec</property>
+			    <value>60</value>
+			</product>
+		    </sin>
+		</expression>
+		<value>0</value>
+	    </greater-than>
+	    <less-than>
+		<expression>
+		    <cos>
+			<product>
+			    <property>/sim/time/elapsed-sec</property>
+			    <value>60</value>
+			</product>
+		    </cos>
+		</expression>
+		<value>0</value>
+	    </less-than>
+	</condition>
+    </animation>
+    	    
+    <animation>
+	<type>select</type>
+	<object-name>muzzle_UR</object-name>
+	<condition>
+	    <less-than>
+		<expression>
+		    <sin>
+			<product>
+			    <property>/sim/time/elapsed-sec</property>
+			    <value>60</value>
+			</product>
+		    </sin>
+		</expression>
+		<value>0</value>
+	    </less-than>
+	    <less-than>
+		<expression>
+		    <cos>
+			<product>
+			    <property>/sim/time/elapsed-sec</property>
+			    <value>60</value>
+			</product>
+		    </cos>
+		</expression>
+		<value>0</value>
+	    </less-than>
+	</condition>
+    </animation>
+
+    <animation>
+	<type>select</type>
+	<object-name>muzzle_LR</object-name>
+	<condition>
+	    <less-than>
+		<expression>
+		    <sin>
+			<product>
+			    <property>/sim/time/elapsed-sec</property>
+			    <value>60</value>
+			</product>
+		    </sin>
+		</expression>
+		<value>0</value>
+	    </less-than>
+	    <greater-than>
+		<expression>
+		    <cos>
+			<product>
+			    <property>/sim/time/elapsed-sec</property>
+			    <value>60</value>
+			</product>
+		    </cos>
+		</expression>
+		<value>0</value>
+	    </greater-than>
+	</condition>
+    </animation>
+    
+    <model>
+	<path>Aircraft/S-300/Models/smoke.xml</path>
+	<offsets>
+            <x-m> 3.26307</x-m>
+            <y-m>-0.84611</y-m>
+            <z-m> 2.85616</z-m>
+	    <pitch-deg>0</pitch-deg>
+	</offsets>
+    </model>
+
+    <model>
+	<path>Aircraft/S-300/Models/fire.xml</path>
+	<offsets>
+            <x-m> 3.26307</x-m>
+            <y-m>-0.84611</y-m>
+            <z-m> 2.85616</z-m>
+	    <pitch-deg>0</pitch-deg>
+	</offsets>
+    </model>
+
+    <model>
+	<path>Aircraft/S-300/Models/smoke.xml</path>
+	<offsets>
+            <x-m> 3.26307</x-m>
+            <y-m> 0.84611</y-m>
+            <z-m> 2.85616</z-m>
+	    <pitch-deg>0</pitch-deg>
+	</offsets>
+    </model>
+
+    <model>
+	<path>Aircraft/S-300/Models/fire.xml</path>
+	<offsets>
+            <x-m> 3.26307</x-m>
+            <y-m> 0.84611</y-m>
+            <z-m> 2.85616</z-m>
+	    <pitch-deg>0</pitch-deg>
+	</offsets>
+    </model>
+
+    <model>
+	<path>Aircraft/S-300/Models/smoke.xml</path>
+	<offsets>
+            <x-m> -0.80986</x-m>
+            <y-m> 0.00064</y-m>
+            <z-m> 3.24007</z-m>
+	    <pitch-deg>0</pitch-deg>
+	</offsets>
+    </model>
+
+    <model>
+	<path>Aircraft/S-300/Models/fire.xml</path>
+	<offsets>
+            <x-m> -0.80986</x-m>
+            <y-m> 0.00064</y-m>
+            <z-m> 3.24007</z-m>
+	    <pitch-deg>0</pitch-deg>
+	</offsets>
+    </model>
+
+    <model>
+	<path>Aircraft/S-300/Models/smoke.xml</path>
+	<offsets>
+            <x-m> -3.97300</x-m>
+            <y-m> 0.00023</y-m>
+            <z-m> 1.83017</z-m>
+	    <pitch-deg>0</pitch-deg>
+	</offsets>
+    </model>
+
+    <model>
+	<path>Aircraft/S-300/Models/fire.xml</path>
+	<offsets>
+            <x-m> -3.97300</x-m>
+            <y-m> 0.00023</y-m>
+            <z-m> 1.83017</z-m>
+	    <pitch-deg>0</pitch-deg>
+	</offsets>
+    </model>
+
+    <model>
+	<path>Aircraft/S-300/Models/smoke.xml</path>
+	<offsets>
+            <x-m> -4.26653</x-m>
+            <y-m> -1.82402</y-m>
+            <z-m> 1.44961</z-m>
+	    <pitch-deg>0</pitch-deg>
+	</offsets>
+    </model>
+
+    <model>
+	<path>Aircraft/S-300/Models/fire.xml</path>
+	<offsets>
+            <x-m> -4.26653</x-m>
+            <y-m> -1.82402</y-m>
+            <z-m> 1.44961</z-m>
+	    <pitch-deg>0</pitch-deg>
+	</offsets>
+    </model>
+
+    <model>
+	<path>Aircraft/S-300/Models/smoke.xml</path>
+	<offsets>
+            <x-m> -4.26653</x-m>
+            <y-m> 1.82402</y-m>
+            <z-m> 1.44961</z-m>
+	    <pitch-deg>0</pitch-deg>
+	</offsets>
+    </model>
+
+    <model>
+	<path>Aircraft/S-300/Models/fire.xml</path>
+	<offsets>
+            <x-m> -4.26653</x-m>
+            <y-m> 1.82402</y-m>
+            <z-m> 1.44961</z-m>
+	    <pitch-deg>0</pitch-deg>
+	</offsets>
+    </model>
+
+    <model>
+	<path>Aircraft/S-300/Models/smoke.xml</path>
+	<offsets>
+            <x-m> -0.63979</x-m>
+            <y-m> -2.14385</y-m>
+            <z-m> 0.05906</z-m>
+	    <pitch-deg>0</pitch-deg>
+	</offsets>
+    </model>
+
+    <model>
+	<path>Aircraft/S-300/Models/fire.xml</path>
+	<offsets>
+            <x-m> -0.63979</x-m>
+            <y-m> -2.14385</y-m>
+            <z-m> 0.05906</z-m>
+	    <pitch-deg>0</pitch-deg>
+	</offsets>
+    </model>
+
+    <model>
+	<path>Aircraft/S-300/Models/smoke.xml</path>
+	<offsets>
+            <x-m> -0.63979</x-m>
+            <y-m> 2.14385</y-m>
+            <z-m> 0.05906</z-m>
+	    <pitch-deg>0</pitch-deg>
+	</offsets>
+    </model>
+
+    <model>
+	<path>Aircraft/S-300/Models/fire.xml</path>
+	<offsets>
+            <x-m> -0.63979</x-m>
+            <y-m> 2.14385</y-m>
+            <z-m> 0.05906</z-m>
+	    <pitch-deg>0</pitch-deg>
+	</offsets>
+    </model>
+
+</PropertyList>
+
