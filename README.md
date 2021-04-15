@@ -23,4 +23,6 @@ Currently includes the following models:
   • Hunter Water/Ground Target
   
   • A Variety of Vehicle models
+  
+  • ZSU-23 Shilka
 
