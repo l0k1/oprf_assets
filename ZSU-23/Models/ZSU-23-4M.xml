@@ -56,7 +56,7 @@
 	<object-name>muzzle_UR</object-name>
 	<condition>
 	    <property>/sim/rendering/shaders/skydome</property><!-- als -->
-	    <property>sim/multiplay/generic/bool[0]</property><!-- gun firing -->
+	    <property>sim/multiplay/generic/int[1]</property><!-- gun firing -->
 	</condition>
     </animation>
     

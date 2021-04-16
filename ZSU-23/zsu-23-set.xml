@@ -109,11 +109,11 @@
         <multiplay>
             <generic>
                 <int n="0" type="int">0</int>
+		<int n="1" type="int" alias="/controls/armament/trigger"/>
 		<float n="0" type="double">0</float> <!-- Turret azimuth -->
 		<float n="1" type="double">0</float> <!-- gun elevation -->
 		<float n="2" type="double">0</float> <!-- radar azimuth -->
 		<float n="3" type="double">0</float> <!-- radar elevation -->
-		<bool n="0" type="bool" alias="/controls/armament/trigger"/>
             </generic>
         </multiplay>
 
