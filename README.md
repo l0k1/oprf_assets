@@ -24,5 +24,7 @@ Currently includes the following models:
   
   • A Variety of Vehicle models
   
+  • A Variety of Shelter models
+  
   • ZSU-23 Shilka
 
