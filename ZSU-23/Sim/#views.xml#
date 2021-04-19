@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Copyright (C) 2008 Alex (D-HUND)
+    Copyright (C) 2009 Vivian Meazza
+    Copyright (c) 2015 onox
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<PropertyList>
+
+    <current-view>
+        <view-number type="int">1</view-number>
+    </current-view>
+
+    <chase-distance-m type="double">-200.0</chase-distance-m>
+
+    <view n="0">
+        <name>Cockpit View</name>
+        <enabled type="bool">false</enabled>
+    </view>
+
+    <view n="1">
+        <name>Helicopter View</name>
+        <config>
+            <pitch-offset-deg>-5</pitch-offset-deg>
+            <target-y-offset-m type="double">21.925</target-y-offset-m>
+        </config>
+    </view>
+
+    <view n="2">
+        <name>Chase View</name>
+        <enabled type="bool">false</enabled>
+    </view>
+
+    <view n="5">
+        <name>Chase View Without Yaw</name>
+        <enabled type="bool">false</enabled>
+    </view>
+
+    <view n="100">
+        <name>Hangar View</name>
+        <type>lookfrom</type>
+        <internal type="bool">true</internal>
+        <config>
+            <from-model type="bool">true</from-model>
+            <from-model-idx type="int">0</from-model-idx>
+
+            <x-offset-m>2</x-offset-m><!-- right -->
+            <y-offset-m>15</y-offset-m><!-- up -->
+            <z-offset-m>113</z-offset-m><!-- back -->
+
+            <default-field-of-view-deg>60</default-field-of-view-deg>
+            <ground-level-nearplane-m type="double">0.1f</ground-level-nearplane-m>
+        </config>
+    </view>
+
+    <view n="101">
+        <name>Phalanx Forward Left</name>
+        <type>lookfrom</type>
+        <internal type="bool">false</internal>
+        <config>
+            <from-model type="bool">true</from-model>
+            <from-model-idx type="int">0</from-model-idx>
+
+            <x-offset-m>-21.1147</x-offset-m><!-- right -->
+            <y-offset-m>16.8345</y-offset-m><!-- up -->
+            <z-offset-m>-121.2666</z-offset-m><!-- back -->
+
+            <heading-offset-deg>90</heading-offset-deg>
+            <default-field-of-view-deg>60</default-field-of-view-deg>
+            <ground-level-nearplane-m type="double">0.1f</ground-level-nearplane-m>
+        </config>
+    </view>
+
+    <view n="102">
+        <name>Phalanx Forward Right</name>
+        <type>lookfrom</type>
+        <internal type="bool">false</internal>
+        <config>
+            <from-model type="bool">true</from-model>
+            <from-model-idx type="int">0</from-model-idx>
+
+            <x-offset-m>23.1336</x-offset-m><!-- right -->
+            <y-offset-m>16.6478</y-offset-m><!-- up -->
+            <z-offset-m>-112.684</z-offset-m><!-- back -->
+
+            <heading-offset-deg>90</heading-offset-deg>
+            <default-field-of-view-deg>60</default-field-of-view-deg>
+            <ground-level-nearplane-m type="double">0.1f</ground-level-nearplane-m>
+        </config>
+    </view>
+
+    <view n="103">
+        <name>Phalanx Aft</name>
+        <type>lookfrom</type>
+        <internal type="bool">false</internal>
+        <config>
+            <from-model type="bool">true</from-model>
+            <from-model-idx type="int">0</from-model-idx>
+
+            <x-offset-m>23.3165</x-offset-m><!-- right -->
+            <y-offset-m>18.1198</y-offset-m><!-- up -->
+            <z-offset-m>134.344</z-offset-m><!-- back -->
+
+            <heading-offset-deg>90</heading-offset-deg>
+            <default-field-of-view-deg>60</default-field-of-view-deg>
+            <ground-level-nearplane-m type="double">0.1f</ground-level-nearplane-m>
+        </config>
+    </view>
+
+    <view n="104">
+        <name>Landing Signal Officer View</name>
+        <type>lookfrom</type>
+        <internal type="bool">false</internal>
+        <config>
+            <from-model type="bool">true</from-model>
+            <from-model-idx type="int">0</from-model-idx>
+
+            <heading-offset-deg>180</heading-offset-deg>
+            <x-offset-m>-19.7208</x-offset-m><!-- right -->
+            <y-offset-m>21.925</y-offset-m><!-- up -->
+            <z-offset-m>100.307</z-offset-m><!-- back -->
+            <pitch-offset-deg>2.5</pitch-offset-deg>
+            <default-field-of-view-deg>60</default-field-of-view-deg>
+            <ground-level-nearplane-m type="double">0.1f</ground-level-nearplane-m>
+        </config>
+    </view>
+
+    <view n="105">
+        <name>Approach View</name>
+        <type>lookfrom</type>
+        <internal type="bool">false</internal>
+        <config>
+            <!-- All these eye-*-deg-path elements are needed because
+                 eye-heading-deg-path is overridden.
+            -->
+            <eye-lat-deg-path>/position/latitude-deg</eye-lat-deg-path>
+            <eye-lon-deg-path>/position/longitude-deg</eye-lon-deg-path>
+            <eye-alt-ft-path>/position/altitude-ft</eye-alt-ft-path>
+            <eye-heading-deg-path>/orientation/heading-runway-deg</eye-heading-deg-path>
+            <eye-pitch-deg-path>/orientation/pitch-deg</eye-pitch-deg-path>
+            <eye-roll-deg-path>/orientation/roll-deg</eye-roll-deg-path>
+
+            <x-offset-m>-15.4979</x-offset-m><!-- right -->
+            <y-offset-m>21.9</y-offset-m><!-- up -->
+            <z-offset-m>-8.315</z-offset-m><!-- back -->
+
+            <heading-offset-deg>180</heading-offset-deg>
+            <pitch-offset-deg>3</pitch-offset-deg>
+            <default-field-of-view-deg>25</default-field-of-view-deg>
+            <ground-level-nearplane-m type="double">0.1f</ground-level-nearplane-m>
+        </config>
+    </view>
+
+    <view n="106">
+        <name>Flight Deck Aft View</name>
+        <type>lookfrom</type>
+        <internal type="bool">false</internal>
+        <config>
+            <from-model type="bool">true</from-model>
+            <from-model-idx type="int">0</from-model-idx>
+
+            <x-offset-m>10</x-offset-m><!-- right -->
+            <y-offset-m>21.925</y-offset-m><!-- up -->
+            <z-offset-m>42</z-offset-m><!-- back -->
+
+            <heading-offset-deg>163</heading-offset-deg>
+            <pitch-offset-deg>5</pitch-offset-deg>
+            <default-field-of-view-deg>60</default-field-of-view-deg>
+            <ground-level-nearplane-m type="double">0.1f</ground-level-nearplane-m>
+        </config>
+    </view>
+
+    <view n="107">
+        <name>Flight Deck Forward View</name>
+        <type>lookfrom</type>
+        <internal type="bool">false</internal>
+        <config>
+            <from-model type="bool">true</from-model>
+            <from-model-idx type="int">0</from-model-idx>
+
+            <x-offset-m>0</x-offset-m><!-- right -->
+            <y-offset-m>21.925</y-offset-m><!-- up -->
+            <z-offset-m>-35</z-offset-m><!-- back -->
+
+            <heading-offset-deg>180</heading-offset-deg>
+            <pitch-offset-deg>10</pitch-offset-deg>
+            <default-field-of-view-deg>60</default-field-of-view-deg>
+            <ground-level-nearplane-m type="double">0.1f</ground-level-nearplane-m>
+        </config>
+    </view>
+
+    <view n="108">
+        <name>Bubble View</name>
+        <type>lookfrom</type>
+        <internal type="bool">true</internal>
+        <config>
+            <from-model type="bool">true</from-model>
+            <from-model-idx type="int">0</from-model-idx>
+
+            <x-offset-m>4.1</x-offset-m><!-- right -->
+            <y-offset-m>20.325</y-offset-m><!-- up -->
+            <z-offset-m>-93</z-offset-m><!-- back -->
+
+            <heading-offset-deg>180</heading-offset-deg>
+            <pitch-offset-deg>0</pitch-offset-deg>
+            <default-field-of-view-deg>60</default-field-of-view-deg>
+            <ground-level-nearplane-m type="double">0.1f</ground-level-nearplane-m>
+        </config>
+    </view>
+
+    <view n="109">
+        <name>Goofers' View</name>
+        <type>lookfrom</type>
+        <internal type="bool">false</internal>
+        <config>
+            <from-model type="bool">true</from-model>
+            <from-model-idx type="int">0</from-model-idx>
+
+            <x-offset-m>27.074</x-offset-m><!-- right -->
+            <y-offset-m>35.3325</y-offset-m><!-- up -->
+            <z-offset-m>42.67</z-offset-m><!-- back -->
+
+            <heading-offset-deg>136</heading-offset-deg>
+            <pitch-offset-deg>-11</pitch-offset-deg>
+            <default-field-of-view-deg>40</default-field-of-view-deg>
+            <ground-level-nearplane-m type="double">0.1f</ground-level-nearplane-m>
+        </config>
+    </view>
+
+    <view n="110">
+        <name>Primary Flight Control View</name>
+        <type>lookfrom</type>
+        <internal type="bool">true</internal>
+        <config>
+            <from-model type="bool">true</from-model>
+            <from-model-idx type="int">0</from-model-idx>
+
+            <x-offset-m>23.2669</x-offset-m><!-- right -->
+            <y-offset-m>35.082</y-offset-m><!-- up -->
+            <z-offset-m>20.1064</z-offset-m><!-- back -->
+
+            <pitch-offset-deg>-5</pitch-offset-deg>
+            <default-field-of-view-deg>60</default-field-of-view-deg>
+            <ground-level-nearplane-m type="double">0.1f</ground-level-nearplane-m>
+        </config>
+    </view>
+
+    <view n="111">
+        <name>Bridge View</name>
+        <type>lookfrom</type>
+        <internal type="bool">true</internal>
+        <config>
+            <from-model type="bool">true</from-model>
+            <from-model-idx type="int">0</from-model-idx>
+
+            <x-offset-m>29.2083</x-offset-m><!-- right -->
+            <y-offset-m>33.235233</y-offset-m><!-- up -->
+            <z-offset-m>19.45</z-offset-m><!-- back -->
+
+            <pitch-offset-deg>-2</pitch-offset-deg>
+            <default-field-of-view-deg>45</default-field-of-view-deg>
+            <ground-level-nearplane-m type="double">0.1f</ground-level-nearplane-m>
+        </config>
+    </view>
+
+</PropertyList>

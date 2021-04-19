@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+    <name>Vinson HUD</name>
+
+    <enable3d>false</enable3d>
+    
+    <label>
+        <name>Heading</name>
+        <x>-300</x>
+        <y>-225</y>
+        <width>200</width>
+        <height>25</height>
+        <prefix> Heading: </prefix>
+        <postfix> deg</postfix>
+        <halign>left</halign>
+        <format>%03.0f</format>
+        <box>true</box>
+        <input>
+            <property>/orientation/heading-deg</property>
+        </input>
+    </label>
+    
+    <label>
+        <name>Speed</name>
+        <x>0</x>
+        <y>-225</y>
+        <width>125</width>
+        <height>25</height>
+        <prefix> Speed: </prefix>
+        <postfix> kts</postfix>
+        <halign>left</halign>
+        <format>%2.1f</format>
+        <box>true</box>
+        <input>
+            <property>/velocities/groundspeed-kt</property>
+        </input>
+    </label>
+
+    <label>
+        <name>damage</name>
+        <x>-150</x>
+        <y>-175</y>
+        <width>125</width>
+        <height>25</height>
+        <prefix> Integrity: </prefix>
+        <postfix> %%</postfix>
+        <halign>left</halign>
+        <format>%3.1f</format>
+        <box>true</box>
+        <input>
+            <property>/sam/damage</property>
+        </input>
+    </label>
+    
+    <label>
+        <name>cs</name>
+        <x>0</x>
+        <y>-175</y>
+        <width>125</width>
+        <height>25</height>
+        <prefix> Callsign: </prefix>
+        <postfix></postfix>
+        <halign>left</halign>
+        <format>%s</format>
+        <box>true</box>
+        <input>
+            <property>/sim/multiplay/callsign</property>
+        </input>
+    </label>
+
+    <label>
+        <name>tower</name>
+        <x>150</x>
+        <y>-225</y>
+        <width>200</width>
+        <height>25</height>
+        <prefix> Placement near: </prefix>
+        <postfix></postfix>
+        <halign>left</halign>
+        <format>%s</format>
+        <box>true</box>
+        <input>
+            <property>/sim/tower/airport-id</property>
+        </input>
+    </label>
+
+</PropertyList>

@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<PropertyList>
+    <path>muzzle.ac</path>
+    <name>flame</name>
+    
+    <effect>
+	<inherits-from>Aircraft/ZSU-23/Models/Effects/muzzle</inherits-from>
+	<object-name>muzzle</object-name>
+    </effect>
+    
+    <animation>
+	<type>noshadow</type>
+	<object-name>muzzle</object-name>
+    </animation>
+
+<particlesystem>
+   <name>smoke</name>
+   <texture>smoke.png</texture>
+
+   <emissive type="bool">false</emissive>
+   <lighting type="bool">false</lighting>
+
+   <attach>world</attach>
+
+   <placer>
+     <type>point</type> 
+   </placer>
+
+   <shooter>
+     <theta-min-deg>-1.5</theta-min-deg>
+     <theta-max-deg>1.5</theta-max-deg>
+     <phi-min-deg>-1.5</phi-min-deg>
+     <phi-max-deg>1.5</phi-max-deg>
+     <speed-mps>
+       <value>2</value>
+       <spread>2</spread>
+     </speed-mps>
+     <rotation-speed>
+       <x-min-deg-sec>0</x-min-deg-sec>
+       <y-min-deg-sec>0</y-min-deg-sec>
+       <z-min-deg-sec>0</z-min-deg-sec>
+       <x-max-deg-sec>0</x-max-deg-sec>
+       <y-max-deg-sec>0</y-max-deg-sec>
+       <z-max-deg-sec>0</z-max-deg-sec>
+     </rotation-speed>
+   </shooter>
+
+   <counter>
+     <particles-per-sec>
+       <value>1</value>
+       <spread>20</spread>
+     </particles-per-sec>
+   </counter>
+      
+   <align>billboard</align>
+
+   <particle>
+     <start>
+       <color>
+         <red><expression><product><value>1.0</value><property>/rendering/scene/diffuse/red</property></product></expression></red>
+         <green><expression><product><value>1.0</value><property>/rendering/scene/diffuse/red</property></product></expression></green>
+         <blue><expression><product><value>1.0</value><property>/rendering/scene/diffuse/red</property></product></expression></blue>
+         <alpha><value> 0.2 </value></alpha>
+       </color>
+       <size>
+         <value>2.45</value>
+       </size>
+     </start>
+
+     <end>
+       <color>
+         <red><expression><product><value>1.0</value><property>/rendering/scene/diffuse/red</property></product></expression></red>
+         <green><expression><product><value>1.0</value><property>/rendering/scene/diffuse/red</property></product></expression></green>
+         <blue><expression><product><value>1.0</value><property>/rendering/scene/diffuse/red</property></product></expression></blue>
+         <alpha><value> 0.0 </value></alpha>
+       </color>
+       <size>
+         <value>3</value>
+       </size>
+     </end>
+
+     <life-sec>
+       <value>1.2</value>
+     </life-sec>
+        
+     <mass-kg>  0.5 </mass-kg>
+     <radius-m> 0.5 </radius-m>
+   </particle>
+
+   <program>
+     <fluid>               air  </fluid>
+     <gravity type="bool"> true </gravity>
+     <wind typ="bool">     true </wind>
+   </program>
+
+ </particlesystem>
+
+    
+</PropertyList>
