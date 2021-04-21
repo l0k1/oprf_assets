@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+    <environment>
+        <in-to-wind type="bool">false</in-to-wind>
+    </environment>
+
+    <carrier>
+        <fdm>
+            <settings>
+                <!-- The maximum bank angle during full rudder deflection -->
+                <bank-limit type="double">15.0</bank-limit>
+
+                <!-- Frequency and overshoot of the oscillator used to
+                     simulate heeling (roll).
+                -->
+                <heel-frequency type="double">0.5</heel-frequency>
+                <heel-overshoot type="double">4.0</heel-overshoot>
+
+                <!-- Frequency and overshoot of the oscillator used to
+                     simulate trimming (pitch).
+                -->
+                <trim-frequency type="double">0.32</trim-frequency>
+                <trim-overshoot type="double">0.45</trim-overshoot>
+
+                <!-- The speed of the waves plus speed of the ship in knots
+                     which generates the maximum overshoot of the trim
+                     oscillation.
+                -->
+                <max-trim-oscillation-wave-kt type="double">30.0</max-trim-oscillation-wave-kt>
+
+                <!-- The speed of the waves in knots which generates the
+                     maximum overshoot of the heel oscillation.
+                -->
+                <max-heel-oscillation-wave-kt type="double">20.0</max-heel-oscillation-wave-kt>
+
+                <movement type="bool">true</movement>
+            </settings>
+        </fdm>
+    </carrier>
+
+    <sim>
+        <author>pinto</author>
+        <description>MIM-104D</description>
+        <long-description>MIM-104D (PAC-3) is a US self-propelled surface to air missile system.</long-description>
+        <status>alpha</status>
+        <aircraft-version>0.1</aircraft-version>
+
+        <flight-model>null</flight-model>
+
+        <aero>KPN-D</aero>
+        <aircraft-operator>KPN</aircraft-operator>
+
+        <model>
+            <path>Aircraft/MIM-104D/Models/MIM104D.xml</path>
+
+            <!-- Uncloak weather balloons visiting Earth -->
+            <always-show-in-MP type="bool">true</always-show-in-MP>
+        </model>
+
+        <sound>
+            <path>Sounds/sound.xml</path>
+        </sound>
+
+        <presets>
+            <onground>true</onground>
+        </presets>
+
+        <startup>
+            <splash-texture>Aircraft/MIM-104D/splash1.png</splash-texture>
+        </startup>
+
+        <previews>
+            <preview>
+                <type>exterior</type>
+                <splash type="bool">true</splash>
+                <path>gui/1.png</path>
+            </preview>
+        </previews>
+
+        <current-view>
+            <deck-park type="bool">true</deck-park>
+
+            <z-offset-dec-step type="double">0.0</z-offset-dec-step>
+            <z-offset-inc-step type="double">0.0</z-offset-inc-step>
+            <can-change-z-offset type="bool">false</can-change-z-offset>
+
+            <z-offset-min-m type="float">100.0</z-offset-min-m>
+            <z-offset-max-m type="float">2000.0</z-offset-max-m>
+        </current-view>
+        
+        <view n="101">
+            <name>Balcon</name>
+            <type>lookfrom</type>
+            <internal>false</internal>
+            <config>
+                <from-model type="bool">true</from-model>
+                <pitch-offset-deg>-33.0</pitch-offset-deg>
+                <heading-offset-deg>42</heading-offset-deg>
+                <x-offset-m>50</x-offset-m>
+                <y-offset-m>50</y-offset-m>
+                <z-offset-m>50</z-offset-m>
+                <default-field-of-view-deg>70</default-field-of-view-deg>
+                <limits>
+                    <enabled type="bool">false</enabled>
+                </limits>
+            </config>
+        </view>
+        <view n="102">
+            <name>Follow</name>
+            <type>lookat</type>
+            <internal>false</internal>
+            <config>
+                <!--<from-model type="bool">true</from-model>
+                <from-model-idx type="int">0</from-model-idx>-->
+                <eye-fixed type="bool">true</eye-fixed>
+                <target-lat-deg-path>rotors/main/blade[0]/flap-deg</target-lat-deg-path>
+                <target-lon-deg-path>rotors/main/blade[1]/flap-deg</target-lon-deg-path>
+                <target-alt-ft-path>rotors/main/blade[2]/position-deg</target-alt-ft-path>
+                <eye-lat-deg-path>/position/latitude-deg</eye-lat-deg-path>
+                <eye-lon-deg-path>/position/longitude-deg</eye-lon-deg-path>
+                <eye-alt-ft-path>/position/altitude-ft</eye-alt-ft-path>
+                <!--<eye-heading-deg-path>/orientation/heading-deg</eye-heading-deg-path>
+                <eye-pitch-deg-path>/orientation/pitch-deg</eye-pitch-deg-path>
+                <eye-roll-deg-path>/orientation/roll-deg</eye-roll-deg-path>-->
+                <eye-heading-deg-path>/orientation/heading-deg</eye-heading-deg-path>
+                <eye-pitch-deg>0</eye-pitch-deg>
+                <eye-roll-deg>0</eye-roll-deg>
+                <x-offset-m>50</x-offset-m>
+                <y-offset-m>50</y-offset-m>
+                <z-offset-m>25</z-offset-m>
+                <default-field-of-view-deg>70</default-field-of-view-deg>
+                <limits>
+                    <enabled type="bool">false</enabled>
+                </limits>
+            </config>
+        </view>
+        
+        <chase-distance-m type="double" archive="y">-350.0</chase-distance-m>
+
+        <hud>
+            <path n="1">Aircraft/MIM-104D/Hud/hud.xml</path>
+            <visibility n="1">true</visibility>
+            <font>
+                <size type="float">11.0</size>
+            </font>
+        </hud>
+
+        <tower>
+            <auto-position type="bool">true</auto-position>
+        </tower>
+
+        <systems>
+            <autopilot>
+                <path>Systems/fbw.xml</path>
+            </autopilot>
+            <autopilot>
+                <path>Systems/fdm.xml</path>
+            </autopilot>
+
+            <property-rule n="100">
+                <path>Systems/views.xml</path>
+            </property-rule>
+        </systems>
+        <multiplay>
+            <visibility-range-nm type="int">500</visibility-range-nm>
+            <generic>
+                <int n="0" type="int">0</int>
+                <int n="2" type="int">0</int>
+                <string n="6" type="string"></string><!-- string 6 used by radar lock RWR warning -->
+            </generic>
+        </multiplay>
+
+        <menubar>
+            <default>
+                <menu n="100">
+                    <label>MIM-104D</label>
+                    <enabled type="bool">true</enabled>
+                    <item>
+                        <label>Reload</label>
+                        <binding>
+                            <command>nasal</command>
+                            <script>
+                                fire_control.reload();
+                            </script>
+                        </binding>
+                    </item>
+                    <item>
+                      <label>Targets</label>
+                      <name>enemies</name>
+                      <binding>
+                        <command>dialog-show</command>
+                        <dialog-name>enemies</dialog-name>
+                      </binding>
+                    </item>
+                    <item>
+                      <label>Priority</label>
+                      <name>enemies</name>
+                      <binding>
+                        <command>dialog-show</command>
+                        <dialog-name>priority</dialog-name>
+                      </binding>
+                    </item>
+                    <item>
+                        <label>Relocate to cursor last click</label>
+                        <binding>
+                            <command>nasal</command>
+                            <script>
+                                setprop("position/latitude-deg",getprop("sim/input/click/latitude-deg"));
+                                setprop("position/longitude-deg",getprop("sim/input/click/longitude-deg"));
+                                setprop("position/altitude-ft",getprop("sim/input/click/elevation-ft"));
+                            </script>
+                        </binding>
+                    </item>
+                    <item>
+                        <label>Print log to console</label>
+                        <binding>
+                            <command>nasal</command>
+                            <script>
+                                damage.printDamageLog();
+                            </script>
+                        </binding>
+                    </item>
+                    <item>
+                        <label>Event Log</label>
+                        <binding>
+                            <command>dialog-show</command>
+                            <dialog-name>flightlog</dialog-name>
+                        </binding>
+                    </item>
+                </menu>
+            </default>
+        </menubar>
+
+        <aircraft-data>
+            <!-- Properties that get saved to persist locally between FG sessions -->
+            <path>enemies/e1</path>
+            <path>enemies/e2</path>
+            <path>enemies/e3</path>
+            <path>enemies/e4</path>
+            <path>enemies/e5</path>
+            <path>enemies/e6</path>
+            <path>enemies/e7</path>
+            <path>enemies/e8</path>
+            <path>enemies/e9</path>
+            <path>enemies/e10</path>
+            <path>enemies/e11</path>
+            <path>enemies/e12</path>
+        </aircraft-data>
+    </sim>
+	
+	<controls>
+        <armament>
+            <station-select type="int">0</station-select>
+            <trigger type="bool">false</trigger>
+            <station n="1">
+                <offsets>
+                    <x-m type="double">  13</x-m>
+                    <y-m type="double">   0</y-m>
+                    <z-m type="double">   2.5</z-m>
+                </offsets>
+                <trigger type="bool">false</trigger>
+            </station>
+            <station n="2">
+                <offsets>
+                    <x-m type="double">  13</x-m>
+                    <y-m type="double">   0</y-m>
+                    <z-m type="double">   2.5</z-m>
+                </offsets>
+                <trigger type="bool">false</trigger>
+            </station>
+            <station n="3">
+                <offsets>
+                    <x-m type="double">  13</x-m>
+                    <y-m type="double">   0</y-m>
+                    <z-m type="double">   2.5</z-m>
+                </offsets>
+                <trigger type="bool">false</trigger>
+            </station>
+            <station n="4">
+                <offsets>
+                    <x-m type="double">  13</x-m>
+                    <y-m type="double">   0</y-m>
+                    <z-m type="double">   2.5</z-m>
+                </offsets>
+                <trigger type="bool">false</trigger>
+            </station>
+        </armament>
+	</controls>
+	
+	<payload>
+        <weight n="0">
+            <name>Main Store</name>
+            <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[1]"/>
+            <selected>none</selected>
+			<opt>
+                <name>M317</name>
+                <lbs>50</lbs>
+            </opt>
+        </weight>
+	
+        <armament>
+				<models type="string">Aircraft/MIM-104D/Models/Armament/Weapons/</models>
+                <modelsUseCase type="bool">true</modelsUseCase>
+                <modelsUpperCase type="bool">true</modelsUpperCase>
+                <MP-lat type="string">rotors/main/blade[0]/flap-deg</MP-lat>
+                <MP-lon type="string">rotors/main/blade[1]/flap-deg</MP-lon>
+                <MP-alt type="string">rotors/main/blade[2]/flap-deg</MP-alt>
+                <MP-alt-ft type="string">rotors/main/blade[2]/position-deg</MP-alt-ft>
+                <gnd-launch type="bool">true</gnd-launch>
+                <pylon-offset type="int">1</pylon-offset>
+                <pylon-stations>controls/armament</pylon-stations>
+                <station-name type="string">station</station-name>
+				<msg type="bool">true</msg>
+				<damage type="bool">true</damage>
+                <enable-craters type="bool">true</enable-craters>
+                <MLW-bearing type="double">0</MLW-bearing>
+                <MLW-count type="int">0</MLW-count>
+                <MLW-launcher type="string"></MLW-launcher>
+                <MAW-bearing type="double">0</MAW-bearing>
+                <MAW-active type="bool">false</MAW-active>
+                <spike type="bool">false</spike>
+            </armament>
+    </payload>
+
+    <rotors>
+        <main>
+            <blade n="0">
+                <flap-deg type="double">0</flap-deg>
+            </blade>
+            <blade n="1">
+                <flap-deg type="double">0</flap-deg>
+            </blade>
+            <blade n="2">
+                <flap-deg type="double">0</flap-deg>
+                <position-deg type="double">0</position-deg>
+            </blade>
+            <blade n="3">
+                <flap-deg type="double">0</flap-deg>
+            </blade>
+        </main>
+    </rotors>
+
+    <sam>
+        <impact0 type="double">-1</impact0>
+        <impact1 type="double">-1</impact1>
+        <impact2 type="double">-1</impact2>
+        <impact3 type="double">-1</impact3>
+        <hit0 type="double">-1</hit0>
+        <hit1 type="double">-1</hit1>
+        <hit2 type="double">-1</hit2>
+        <hit3 type="double">-1</hit3>
+        <missiles type="double">4</missiles>
+        <timeleft type="double">600</timeleft>
+        <damage type="double">100</damage>
+    </sam>
+
+    <enemies>
+        <e1 userarchive="y" type="string">Leto</e1>
+        <e2 userarchive="y" type="string">swamp</e2>
+        <e3 userarchive="y" type="string">pinto</e3>
+        <e4 userarchive="y" type="string">fb237</e4>
+        <e5 userarchive="y" type="string">Wilco-1</e5>
+        <e6 userarchive="y" type="string">Kokos</e6>
+        <e7 userarchive="y" type="string">J-Mav16</e7>
+        <e8 userarchive="y" type="string">S</e8>
+        <e9 userarchive="y" type="string">Raider1</e9>
+        <e10 userarchive="y" type="string">Slobb</e10>
+        <e11 userarchive="y" type="string">5H1N0B1</e11>
+        <e12 userarchive="y" type="string">SNOWY1</e12>
+    </enemies>
+
+    <priority type="int">0</priority>
+    <priority0 type="int">1</priority0>
+	
+    <nasal>
+        <!--emesary><file>Aircraft/S-300/Nasal/emesary.nas</file></emesary>
+        <emesary_mp_bridge><file>Aircraft/S-300/Nasal/emesary_mp_bridge.nas</file></emesary_mp_bridge-->
+        <notifications>
+            <file>Aircraft/MIM-104D/Nasal/ArmamentNotification.nas</file>
+            <file>Aircraft/MIM-104D/Nasal/GeoBridgedTransmitter.nas</file>
+        </notifications>
+        <carrier>
+            <file>Aircraft/MIM-104D/Nasal/fdm.nas</file>
+        </carrier>
+		<damage>
+			<file>Aircraft/MIM-104D/Nasal/damage.nas</file>
+		</damage>
+		<radar_logic>
+            <file>Aircraft/MIM-104D/Nasal/radar-logic.nas</file>
+        </radar_logic>
+        <vector>
+            <file>Aircraft/MIM-104D/Nasal/vector.nas</file><!-- needed by the guided-missiles -->
+        </vector>
+        <armament>
+            <file>Aircraft/MIM-104D/Nasal/guided-missiles.nas</file>
+        </armament>
+		<fire_control>
+			<file>Aircraft/MIM-104D/Nasal/fire-control.nas</file>
+		</fire_control>
+    </nasal>
+
+</PropertyList>
