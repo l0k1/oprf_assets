@@ -36,6 +36,16 @@
   </axis>
  </animation>
 
+ <animation>
+  <type>select</type>
+  <object-name>stabilizers</object-name>
+  <condition>
+    <greater-than>
+      <property>sim/multiplay/generic/float[5]</property>
+      <value>30</value>
+    </greater-than>
+  </condition>
+ </animation>  
  
 
  <model>
