@@ -2,6 +2,9 @@
 <PropertyList>
     <path>Aircraft/ZSU-23/Models/zsu-23.ac</path>
 
+    <sound>
+        <path>Aircraft/ZSU-23/Sounds/sound.xml</path>
+    </sound>
     
     <!-- muzzle fire -->
     <model>
@@ -412,6 +415,8 @@
 	    <pitch-deg>0</pitch-deg>
 	</offsets>
     </model>
+
+
 
 </PropertyList>
 

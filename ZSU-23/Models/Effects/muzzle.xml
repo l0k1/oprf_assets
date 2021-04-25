@@ -4,13 +4,14 @@
     <name>flame</name>
     
     <effect>
-	<inherits-from>Aircraft/ZSU-23/Models/Effects/muzzle</inherits-from>
-	<object-name>muzzle</object-name>
+        <inherits-from>Aircraft/ZSU-23/Models/Effects/muzzle</inherits-from>
+        
+        <object-name>muzzle</object-name>
     </effect>
     
     <animation>
-	<type>noshadow</type>
-	<object-name>muzzle</object-name>
+        <type>noshadow</type>
+        <object-name>muzzle</object-name>
     </animation>
 
 <particlesystem>
