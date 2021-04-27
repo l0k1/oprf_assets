@@ -28,6 +28,9 @@ var heading_ps = 0.5;
 time_last = 0;
 sim_speed = 1;
 
+var speed = 25;
+var last_type = 0;
+
 setprop("/carrier/pitch-deg",0);
 setprop("/carrier/pitch-offset",0);
 setprop("/carrier/roll-deg",0);
@@ -60,7 +63,7 @@ var PositionUpdater = func () {
 	if ( getprop("/carrier/sunk") == 0 and getprop("/autopilot/route-manager/active") == 1 ) {
 	
 		#for event
-		var speed = 25;
+		
 		var cur_waypoint = getprop("/autopilot/route-manager/current-wp");
 		var cur_wp_lon = getprop("/autopilot/route-manager/route/wp[" ~ cur_waypoint ~ "]/longitude-deg");
 		var cur_wp_lat = getprop("/autopilot/route-manager/route/wp[" ~ cur_waypoint ~ "]/latitude-deg");
@@ -94,6 +97,19 @@ var PositionUpdater = func () {
 	
 	#set roll
 	setprop("/orientation/roll-deg",getprop("/carrier/roll-deg") + getprop("/carrier/roll-offset"));	
+
+
+	var type = getprop("sim/multiplay/generic/int[17]");
+	if (type != last_type) {
+		if (damage.hp_max == damage.hp) {
+			if (type == 0) {damage.hp_max=5;damage.hp=5;speed=25;}
+			if (type == 1) {damage.hp_max=100;damage.hp=100;speed=15;}
+			last_type = type;
+		} else {
+			print("Can only switch type when not damaged!!");
+			setprop("sim/multiplay/generic/int[17]", last_type);
+		}
+	}
 	
 };
 

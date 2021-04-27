@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<PropertyList>
+
+    <name>type</name>
+    <layout>vbox</layout>
+    <width>250</width>
+    <resizable>false</resizable>
+
+    <group>
+        <layout>hbox</layout>
+
+        <empty><stretch>true</stretch></empty>
+        <text>
+            <label>Type</label>
+        </text>
+        <empty><stretch>true</stretch></empty>
+
+        <button>
+            <legend/>
+            <keynum>27</keynum>
+            <pref-width>16</pref-width>
+            <pref-height>16</pref-height>
+            <border>2</border>
+            <binding>
+                <command>dialog-close</command>
+            </binding>
+        </button>
+    </group>
+
+    <hrule/>
+
+    <group>
+        <layout>hbox</layout>
+        <group>
+            <layout>vbox</layout>
+            <default-padding>6</default-padding>
+
+            <empty><stretch>true</stretch></empty>
+
+            <button>
+                <legend>Humvee</legend>
+                <binding>
+                    <command>property-assign</command>
+                    <property>sim/multiplay/generic/int[17]</property>
+                    <value>0</value>
+                </binding>
+            </button>
+            <button>
+                <legend>Tank</legend>
+                <binding>
+                    <command>property-assign</command>
+                    <property>sim/multiplay/generic/int[17]</property>
+                    <value>1</value>
+                </binding>
+            </button>
+            
+            
+        </group>
+        
+        <group>
+            <layout>vbox</layout>
+            <default-padding>6</default-padding>
+
+            <empty><stretch>true</stretch></empty>
+
+            
+        </group>
+        
+    </group>
+
+</PropertyList>

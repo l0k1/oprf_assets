@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+	<path>m1a.ac</path>
+
+	<offsets>
+	   <x-m> 0 </x-m><!--x-m>-4.456</x-m-->
+	   <y-m> 0 </y-m>
+	   <z-m> 1 </z-m><!--z-m> 0.200</z-m-->
+    </offsets>
+
+</PropertyList>

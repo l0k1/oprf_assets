@@ -2,7 +2,37 @@
 
 <PropertyList>
 
- <path>hummer.ac</path>
+ 
+
+ 	<model>
+ 		<path>hummer.ac</path>
+ 		<name>humvee</name>
+ 	</model>
+ 	<animation>
+	  	<type>select</type>
+	  	<object-name>humvee</object-name>
+	  	<condition>
+	      	<equals>
+	        	<property>sim/multiplay/generic/int[17]</property>
+	        	<value>0</value>
+	      	</equals>
+	  	</condition>
+	</animation>
+
+	<model>
+ 		<path>M1/m1.xml</path>
+ 		<name>tank</name>
+ 	</model>
+ 	<animation>
+	  	<type>select</type>
+	  	<object-name>tank</object-name>
+	  	<condition>
+	      	<equals>
+	        	<property>sim/multiplay/generic/int[17]</property>
+	        	<value>1</value>
+	      	</equals>
+	  	</condition>
+	</animation>
 
  <model>
     <path>Aircraft/BUK-M2/Models/smoke.xml</path>

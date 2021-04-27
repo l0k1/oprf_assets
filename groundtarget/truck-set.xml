@@ -106,11 +106,12 @@
             </font>
         </hud>
 
-        <menubar include="Dialogs/menu.xml"/>
+        <!--menubar include="Dialogs/menu.xml"/-->
 
         <multiplay>
             <generic>
                 <int n="0" type="int">0</int>
+                <int n="17" type="int">0</int>
             </generic>
         </multiplay>
 
@@ -132,6 +133,13 @@
                 <menu n="100">
                     <label>Truck</label>
                     <enabled type="bool">true</enabled>
+                    <item>
+                        <label>Type</label>
+                        <binding>
+                            <command>dialog-show</command>
+                            <dialog-name>type</dialog-name>
+                        </binding>
+                    </item>
                     <item>
                         <label>Event Log</label>
                         <binding>
