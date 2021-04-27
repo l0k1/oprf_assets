@@ -5,7 +5,7 @@
 
     <name>type</name>
     <layout>vbox</layout>
-    <width>250</width>
+    <width>400</width>
     <resizable>false</resizable>
 
     <group>
@@ -55,7 +55,14 @@
                     <value>1</value>
                 </binding>
             </button>
-            
+            <button>
+                <legend>Rocket launcher</legend>
+                <binding>
+                    <command>property-assign</command>
+                    <property>sim/multiplay/generic/int[17]</property>
+                    <value>2</value>
+                </binding>
+            </button>
             
         </group>
         
@@ -65,7 +72,30 @@
 
             <empty><stretch>true</stretch></empty>
 
-            
+            <button>
+                <legend>Tracked fighting vehicle</legend>
+                <binding>
+                    <command>property-assign</command>
+                    <property>sim/multiplay/generic/int[17]</property>
+                    <value>3</value>
+                </binding>
+            </button>
+            <button>
+                <legend>Mine protected Vehicle</legend>
+                <binding>
+                    <command>property-assign</command>
+                    <property>sim/multiplay/generic/int[17]</property>
+                    <value>4</value>
+                </binding>
+            </button>
+            <button>
+                <legend>Armoured personal Carrier</legend>
+                <binding>
+                    <command>property-assign</command>
+                    <property>sim/multiplay/generic/int[17]</property>
+                    <value>5</value>
+                </binding>
+            </button>
         </group>
         
     </group>

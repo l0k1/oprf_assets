@@ -1,64 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--
-    Copyright (c) 2015 onox
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
--->
-
 <PropertyList>
 
-    <environment>
-        <in-to-wind type="bool">false</in-to-wind>
-    </environment>
-
-    <carrier>
-        <fdm>
-            <settings>
-                <!-- The maximum bank angle during full rudder deflection -->
-                <bank-limit type="double">15.0</bank-limit>
-
-                <!-- Frequency and overshoot of the oscillator used to
-                     simulate heeling (roll).
-                -->
-                <heel-frequency type="double">0.5</heel-frequency>
-                <heel-overshoot type="double">4.0</heel-overshoot>
-
-                <!-- Frequency and overshoot of the oscillator used to
-                     simulate trimming (pitch).
-                -->
-                <trim-frequency type="double">0.32</trim-frequency>
-                <trim-overshoot type="double">0.45</trim-overshoot>
-
-                <!-- The speed of the waves plus speed of the ship in knots
-                     which generates the maximum overshoot of the trim
-                     oscillation.
-                -->
-                <max-trim-oscillation-wave-kt type="double">30.0</max-trim-oscillation-wave-kt>
-
-                <!-- The speed of the waves in knots which generates the
-                     maximum overshoot of the heel oscillation.
-                -->
-                <max-heel-oscillation-wave-kt type="double">20.0</max-heel-oscillation-wave-kt>
-
-                <movement type="bool">true</movement>
-            </settings>
-        </fdm>
-    </carrier>
-
-    <sim include="Sim/views.xml">
-        <author>pinto and onox</author>
+    <sim>
+        <author>pinto, Nikolai V. Chr., FGUK, onox</author>
         <description>groundtarget</description>
         <status>alpha</status>
         <aircraft-version>0.1</aircraft-version>
@@ -87,17 +32,6 @@
             <splash-texture>Aircraft/groundtarget/splash1.png</splash-texture>
         </startup>
 
-        <current-view>
-            <deck-park type="bool">true</deck-park>
-
-            <z-offset-dec-step type="double">0.0</z-offset-dec-step>
-            <z-offset-inc-step type="double">0.0</z-offset-inc-step>
-            <can-change-z-offset type="bool">false</can-change-z-offset>
-
-            <z-offset-min-m type="float">100.0</z-offset-min-m>
-            <z-offset-max-m type="float">2000.0</z-offset-max-m>
-        </current-view>
-
         <hud>
             <path n="1">Aircraft/groundtarget/Hud/hud.xml</path>
             <visibility n="1">true</visibility>
@@ -115,18 +49,6 @@
             </generic>
         </multiplay>
 
-        <systems>
-            <autopilot>
-                <path>Systems/fbw.xml</path>
-            </autopilot>
-            <autopilot>
-                <path>Systems/fdm.xml</path>
-            </autopilot>
-
-            <property-rule n="100">
-                <path>Systems/views.xml</path>
-            </property-rule>
-        </systems>
         
         <menubar>
             <default>
@@ -157,12 +79,12 @@
             <models type="string">Aircraft/groundtarget/Models/emesary/</models>
             <msg type="bool">true</msg>
             <enable-craters type="bool">true</enable-craters>
-                <MLW-bearing type="double">0</MLW-bearing>
-                <MLW-count type="int">0</MLW-count>
-                <MLW-launcher type="string"></MLW-launcher>
-                <MAW-bearing type="double">0</MAW-bearing>
-                <MAW-active type="bool">false</MAW-active>
-                <spike type="bool">false</spike>
+            <MLW-bearing type="double">0</MLW-bearing>
+            <MLW-count type="int">0</MLW-count>
+            <MLW-launcher type="string"></MLW-launcher>
+            <MAW-bearing type="double">0</MAW-bearing>
+            <MAW-active type="bool">false</MAW-active>
+            <spike type="bool">false</spike>
         </armament>
     </payload>
 	
@@ -179,9 +101,5 @@
 			<file>Aircraft/groundtarget/Nasal/damage.nas</file>
 		</damage>
     </nasal>
-
-    <input>
-        <mice include="Sim/mice.xml"/>
-    </input>
 
 </PropertyList>

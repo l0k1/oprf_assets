@@ -34,6 +34,66 @@
 	  	</condition>
 	</animation>
 
+	<model>
+ 		<path>MLRS/MLRS.ac</path>
+ 		<name>mlrs</name>
+ 	</model>
+ 	<animation>
+	  	<type>select</type>
+	  	<object-name>mlrs</object-name>
+	  	<condition>
+	      	<equals>
+	        	<property>sim/multiplay/generic/int[17]</property>
+	        	<value>2</value>
+	      	</equals>
+	  	</condition>
+	</animation>
+
+	<model>
+ 		<path>Bradle/Bradle.ac</path>
+ 		<name>brad</name>
+ 	</model>
+ 	<animation>
+	  	<type>select</type>
+	  	<object-name>brad</object-name>
+	  	<condition>
+	      	<equals>
+	        	<property>sim/multiplay/generic/int[17]</property>
+	        	<value>3</value>
+	      	</equals>
+	  	</condition>
+	</animation>
+
+	<model>
+ 		<path>Buffalo/buffalo.ac</path>
+ 		<name>buf</name>
+ 	</model>
+ 	<animation>
+	  	<type>select</type>
+	  	<object-name>buf</object-name>
+	  	<condition>
+	      	<equals>
+	        	<property>sim/multiplay/generic/int[17]</property>
+	        	<value>4</value>
+	      	</equals>
+	  	</condition>
+	</animation>
+
+	<model>
+ 		<path>Stryker/stryker.ac</path>
+ 		<name>stry</name>
+ 	</model>
+ 	<animation>
+	  	<type>select</type>
+	  	<object-name>stry</object-name>
+	  	<condition>
+	      	<equals>
+	        	<property>sim/multiplay/generic/int[17]</property>
+	        	<value>5</value>
+	      	</equals>
+	  	</condition>
+	</animation>
+
  <model>
     <path>Aircraft/BUK-M2/Models/smoke.xml</path>
     <offsets>

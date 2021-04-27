@@ -102,8 +102,12 @@ var PositionUpdater = func () {
 	var type = getprop("sim/multiplay/generic/int[17]");
 	if (type != last_type) {
 		if (damage.hp_max == damage.hp) {
-			if (type == 0) {damage.hp_max=5;damage.hp=5;speed=25;}
-			if (type == 1) {damage.hp_max=100;damage.hp=100;speed=15;}
+			if (type == 0) {damage.hp_max=5;damage.hp=5;speed=25;}#humvee
+			if (type == 1) {damage.hp_max=100;damage.hp=100;speed=15;}#tank
+			if (type == 2) {damage.hp_max=75;damage.hp=75;speed=10;}#rocket launcher
+			if (type == 3) {damage.hp_max=85;damage.hp=85;speed=20;}#small tank
+			if (type == 4) {damage.hp_max=80;damage.hp=80;speed=20;}#APC (mine proected)
+			if (type == 5) {damage.hp_max=75;damage.hp=75;speed=20;}#APC
 			last_type = type;
 		} else {
 			print("Can only switch type when not damaged!!");
