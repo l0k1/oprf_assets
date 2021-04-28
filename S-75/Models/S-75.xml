@@ -1,0 +1,241 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+  <model>
+    <path>s75a.xml</path>
+    <name>one</name>
+    <offsets>
+        <x-m> 0</x-m>
+        <y-m> 40</y-m>
+        <z-m> 0</z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <path>s75b.xml</path>
+    <name>two</name>
+    <offsets>
+        <x-m> 0</x-m>
+        <y-m>-40</y-m>
+        <z-m> 0</z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <path>s75c.xml</path>
+    <name>three</name>
+    <offsets>
+        <x-m> 40</x-m>
+        <y-m> 0</y-m>
+        <z-m> 0</z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <path>s75d.xml</path>
+    <name>four</name>
+    <offsets>
+        <x-m> -40</x-m>
+        <y-m> 0</y-m>
+        <z-m> 0</z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <path>s75e.xml</path>
+    <name>five</name>
+    <offsets>
+        <x-m> 0</x-m>
+        <y-m> 0</y-m>
+        <z-m> 0</z-m>
+    </offsets>
+  </model>
+
+<animation>
+  <type>rotate</type>
+  <object-name>one</object-name>
+  <property>sim/multiplay/generic/float[6]</property>
+  <factor>1.0</factor>
+  <axis>   
+   <x1-m> 0 </x1-m>
+   <y1-m> 40 </y1-m>
+   <z1-m> 0 </z1-m>
+   <x2-m> 0 </x2-m>
+   <y2-m> 40 </y2-m>
+   <z2-m> -1 </z2-m>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>two</object-name>
+  <property>sim/multiplay/generic/float[6]</property>
+  <factor>1.0</factor>
+  <axis>   
+   <x1-m> 0 </x1-m>
+   <y1-m> -40 </y1-m>
+   <z1-m> 0 </z1-m>
+   <x2-m> 0 </x2-m>
+   <y2-m> -40 </y2-m>
+   <z2-m> -1 </z2-m>
+  </axis>
+ </animation>
+
+  <animation>
+  <type>rotate</type>
+  <object-name>three</object-name>
+  <property>sim/multiplay/generic/float[6]</property>
+  <factor>1.0</factor>
+  <axis>   
+   <x1-m> 40 </x1-m>
+   <y1-m> 0 </y1-m>
+   <z1-m> 0 </z1-m>
+   <x2-m> 40 </x2-m>
+   <y2-m> 0 </y2-m>
+   <z2-m> -1 </z2-m>
+  </axis>
+ </animation>
+
+  <animation>
+  <type>rotate</type>
+  <object-name>four</object-name>
+  <property>sim/multiplay/generic/float[6]</property>
+  <factor>1.0</factor>
+  <axis>   
+   <x1-m> -40 </x1-m>
+   <y1-m> 0 </y1-m>
+   <z1-m> 0 </z1-m>
+   <x2-m> -40 </x2-m>
+   <y2-m> 0 </y2-m>
+   <z2-m> -1 </z2-m>
+  </axis>
+ </animation>
+
+  <animation>
+  <type>rotate</type>
+  <object-name>five</object-name>
+  <property>sim/multiplay/generic/float[6]</property>
+  <factor>1.0</factor>
+  <axis>   
+   <x1-m> 0 </x1-m>
+   <y1-m> 0 </y1-m>
+   <z1-m> 0 </z1-m>
+   <x2-m> 0 </x2-m>
+   <y2-m> 0 </y2-m>
+   <z2-m> -1 </z2-m>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>one</object-name>
+  <property>sam/a</property>
+  <offset-m>0.0</offset-m>
+  <factor>1.0</factor>
+  <axis>
+   <x>0</x>
+   <y>0</y>
+   <z>1</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>two</object-name>
+  <property>sam/b</property>
+  <offset-m>0.0</offset-m>
+  <factor>1.0</factor>
+  <axis>
+   <x>0</x>
+   <y>0</y>
+   <z>1</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>three</object-name>
+  <property>sam/c</property>
+  <offset-m>0.0</offset-m>
+  <factor>1.0</factor>
+  <axis>
+   <x>0</x>
+   <y>0</y>
+   <z>1</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>four</object-name>
+  <property>sam/d</property>
+  <offset-m>0.0</offset-m>
+  <factor>1.0</factor>
+  <axis>
+   <x>0</x>
+   <y>0</y>
+   <z>1</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>five</object-name>
+  <property>sam/e</property>
+  <offset-m>0.0</offset-m>
+  <factor>1.0</factor>
+  <axis>
+   <x>0</x>
+   <y>0</y>
+   <z>1</z>
+  </axis>
+ </animation>
+
+ <model>
+    <path>Aircraft/S-75/Models/smoke.xml</path>
+    <offsets>
+            <x-m> 3.26307</x-m>
+            <y-m>-0.84611</y-m>
+            <z-m> 2.85616</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+ <model>
+    <path>Aircraft/S-75/Models/fire.xml</path>
+    <offsets>
+            <x-m> 3.26307</x-m>
+            <y-m>-0.84611</y-m>
+            <z-m> 2.85616</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+ <model>
+    <path>Aircraft/S-75/Models/smoke.xml</path>
+    <offsets>
+            <x-m> 3.26307</x-m>
+            <y-m> 0.84611</y-m>
+            <z-m> 2.85616</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+ <model>
+    <path>Aircraft/S-75/Models/fire.xml</path>
+    <offsets>
+            <x-m> 3.26307</x-m>
+            <y-m> 0.84611</y-m>
+            <z-m> 2.85616</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+  <nasal>
+      <load><![CDATA[
+        ]]>
+      </load>
+  </nasal>
+
+</PropertyList>

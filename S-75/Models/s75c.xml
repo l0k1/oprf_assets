@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+    <path>S-75.ac</path>
+
+   <animation>
+    <type>select</type>
+    <object-name>Missile</object-name>
+    <condition>
+        <less-than>
+          <property>active</property>
+          <value>3</value>
+        </less-than>
+    </condition>
+  </animation>
+
+</PropertyList>

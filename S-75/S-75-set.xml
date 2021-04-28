@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+    <sim>
+        <author>pinto, Leto</author>
+        <description>S-75</description>
+        <long-description>S-75 (SA-2) is a Soviet-designed, high-altitude surface to air missile system.</long-description>
+        <status>alpha</status>
+        <aircraft-version>0.1</aircraft-version>
+
+        <flight-model>null</flight-model>
+
+        <aero>KPN-D</aero>
+        <aircraft-operator>KPN</aircraft-operator>
+        
+        <chase-distance-m type="double" archive="y">-250.0</chase-distance-m>
+        
+        <model>
+            <path>Aircraft/S-75/Models/S-75.xml</path>
+        </model>
+
+        <sound>
+            <path>Sounds/sound.xml</path>
+        </sound>
+
+        <presets>
+            <onground>true</onground>
+        </presets>
+
+        <startup>
+            <splash-texture>Aircraft/S-75/splash1.png</splash-texture>
+        </startup>
+
+        <previews>
+            <preview>
+                <type>exterior</type>
+                <splash type="bool">true</splash>
+                <path>gui/1.png</path>
+            </preview>
+            <preview>
+                <type>exterior</type>
+                <splash type="bool">true</splash>
+                <path>gui/2.png</path>
+            </preview>
+        </previews>
+
+        <current-view>
+            <deck-park type="bool">true</deck-park>
+
+            <z-offset-dec-step type="double">0.0</z-offset-dec-step>
+            <z-offset-inc-step type="double">0.0</z-offset-inc-step>
+            <can-change-z-offset type="bool">false</can-change-z-offset>
+
+            <z-offset-min-m type="float">100.0</z-offset-min-m>
+            <z-offset-max-m type="float">2000.0</z-offset-max-m>
+        </current-view>
+
+        <view n="200">
+            <name>Follow</name>
+            <type>lookat</type>
+            <internal>false</internal>
+            <config>
+                <!--<from-model type="bool">true</from-model>
+                <from-model-idx type="int">0</from-model-idx>-->
+                <eye-fixed type="bool">true</eye-fixed>
+                <target-lat-deg-path>rotors/main/blade[0]/flap-deg</target-lat-deg-path>
+                <target-lon-deg-path>rotors/main/blade[1]/flap-deg</target-lon-deg-path>
+                <target-alt-ft-path>rotors/main/blade[2]/position-deg</target-alt-ft-path>
+                <eye-lat-deg-path>/position/latitude-deg</eye-lat-deg-path>
+                <eye-lon-deg-path>/position/longitude-deg</eye-lon-deg-path>
+                <eye-alt-ft-path>/position/altitude-ft</eye-alt-ft-path>
+                <!--<eye-heading-deg-path>/orientation/heading-deg</eye-heading-deg-path>
+                <eye-pitch-deg-path>/orientation/pitch-deg</eye-pitch-deg-path>
+                <eye-roll-deg-path>/orientation/roll-deg</eye-roll-deg-path>-->
+                <eye-heading-deg-path>/orientation/heading-deg</eye-heading-deg-path>
+                <eye-pitch-deg>0</eye-pitch-deg>
+                <eye-roll-deg>0</eye-roll-deg>
+                <x-offset-m>50</x-offset-m>
+                <y-offset-m>50</y-offset-m>
+                <z-offset-m>25</z-offset-m>
+                <default-field-of-view-deg>70</default-field-of-view-deg>
+                <limits>
+                    <enabled type="bool">false</enabled>
+                </limits>
+            </config>
+        </view>
+
+        <hud>
+            <path n="1">Aircraft/S-75/Hud/hud.xml</path>
+            <visibility n="1">true</visibility>
+            <font>
+                <size type="float">11.0</size>
+            </font>
+        </hud>
+
+        <tower>
+            <auto-position type="bool">true</auto-position>
+        </tower>
+
+        <multiplay>
+            <visibility-range-nm type="int">500</visibility-range-nm>
+            <generic>
+                <int n="0" type="int">0</int>
+                <int n="2" type="int">0</int>
+                <string n="6" type="string"></string><!-- string 6 used by radar lock RWR warning -->
+            </generic>
+        </multiplay>
+
+        <menubar>
+            <default>
+                <menu n="100">
+                    <label>S-75</label>
+                    <enabled type="bool">true</enabled>
+                    
+                    <item>
+                        <label>Event Log</label>
+                        <binding>
+                            <command>dialog-show</command>
+                            <dialog-name>flightlog</dialog-name>
+                        </binding>
+                    </item>
+                </menu>
+            </default>
+        </menubar>
+
+        <aircraft-data>
+            <!-- Properties that get saved to persist locally between FG sessions -->
+            <path>enemies/e1</path>
+            <path>enemies/e2</path>
+            <path>enemies/e3</path>
+            <path>enemies/e4</path>
+            <path>enemies/e5</path>
+            <path>enemies/e6</path>
+            <path>enemies/e7</path>
+            <path>enemies/e8</path>
+            <path>enemies/e9</path>
+            <path>enemies/e10</path>
+            <path>enemies/e11</path>
+            <path>enemies/e12</path>
+        </aircraft-data>
+    </sim>
+	
+	<payload>
+	
+        <armament>
+				<models type="string">Aircraft/S-75/Models/Armament/Weapons/</models>
+                <modelsUseCase type="bool">true</modelsUseCase>
+                <modelsUpperCase type="bool">true</modelsUpperCase>
+                <MP-lat type="string">rotors/main/blade[0]/flap-deg</MP-lat>
+                <MP-lon type="string">rotors/main/blade[1]/flap-deg</MP-lon>
+                <MP-alt type="string">rotors/main/blade[2]/flap-deg</MP-alt>
+                <MP-alt-ft type="string">rotors/main/blade[2]/position-deg</MP-alt-ft>
+                <hit-interpolation type="bool">true</hit-interpolation>
+                <gnd-launch type="bool">true</gnd-launch>
+                <pylon-offset type="int">1</pylon-offset>
+                <pylon-stations>controls/armament</pylon-stations>
+                <station-name type="string">station</station-name>
+				<msg type="bool">true</msg>
+				<damage type="bool">true</damage>
+                <enable-craters type="bool">true</enable-craters>
+                <MLW-bearing type="double">0</MLW-bearing>
+                <MLW-count type="int">0</MLW-count>
+                <MLW-launcher type="string"></MLW-launcher>
+                <MAW-bearing type="double">0</MAW-bearing>
+                <MAW-active type="bool">false</MAW-active>
+                <spike type="bool">false</spike>
+                <!-- speed: Mach 4.5   length: 10.60m -->
+				
+            </armament>
+    </payload>
+
+    <rotors>
+        <main>
+            <blade n="0">
+                <flap-deg type="double">0</flap-deg>
+            </blade>
+            <blade n="1">
+                <flap-deg type="double">0</flap-deg>
+            </blade>
+            <blade n="2">
+                <flap-deg type="double">0</flap-deg>
+                <position-deg type="double">0</position-deg>
+            </blade>
+        </main>
+    </rotors>
+
+    <sam>
+        <impact0 type="double">-1</impact0>
+        <impact1 type="double">-1</impact1>
+        <impact2 type="double">-1</impact2>
+        <impact3 type="double">-1</impact3>
+        <hit0 type="double">-1</hit0>
+        <hit1 type="double">-1</hit1>
+        <hit2 type="double">-1</hit2>
+        <hit3 type="double">-1</hit3>
+        <missiles type="double">1</missiles>
+        <timeleft type="double">600</timeleft>
+        <damage type="double">100</damage>
+    </sam>
+
+    <enemies>
+        <e1 userarchive="y" type="string">Leto</e1>
+        <e2 userarchive="y" type="string">swamp</e2>
+        <e3 userarchive="y" type="string">pinto</e3>
+        <e4 userarchive="y" type="string">fb237</e4>
+        <e5 userarchive="y" type="string">Wilco-1</e5>
+        <e6 userarchive="y" type="string">Kokos</e6>
+        <e7 userarchive="y" type="string">J-Mav16</e7>
+        <e8 userarchive="y" type="string">S</e8>
+        <e9 userarchive="y" type="string">Raider1</e9>
+        <e10 userarchive="y" type="string">Slobb</e10>
+        <e11 userarchive="y" type="string">5H1N0B1</e11>
+        <e12 userarchive="y" type="string">SNOWY1</e12>
+    </enemies>
+
+    <priority type="int">1</priority>
+    <priority1 type="int">1</priority1>
+	
+    <nasal>
+        <notifications>
+            <file>Aircraft/S-75/Nasal/ArmamentNotification.nas</file>
+            <file>Aircraft/S-75/Nasal/GeoBridgedTransmitter.nas</file>
+        </notifications>
+        <fdm>
+            <file>Aircraft/S-75/Nasal/fdm.nas</file>
+        </fdm>
+		<damage>
+			<file>Aircraft/S-75/Nasal/damage.nas</file>
+		</damage>
+		<radar_logic>
+            <file>Aircraft/S-75/Nasal/radar-logic.nas</file>
+        </radar_logic>
+        <vector>
+            <file>Aircraft/S-75/Nasal/vector.nas</file><!-- needed by the guided-missiles -->
+        </vector>
+        <armament>
+            <file>Aircraft/S-75/Nasal/guided-missiles.nas</file>
+        </armament>
+		<fire_control>
+			<file>Aircraft/S-75/Nasal/fire-control.nas</file>
+		</fire_control>
+    </nasal>
+
+</PropertyList>
