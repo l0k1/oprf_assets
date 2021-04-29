@@ -130,7 +130,7 @@
  <animation>
   <type>translate</type>
   <object-name>one</object-name>
-  <property>sam/a</property>
+  <property>sim/multiplay/generic/float[11]</property>
   <offset-m>0.0</offset-m>
   <factor>1.0</factor>
   <axis>
@@ -143,7 +143,7 @@
  <animation>
   <type>translate</type>
   <object-name>two</object-name>
-  <property>sam/b</property>
+  <property>sim/multiplay/generic/float[12]</property>
   <offset-m>0.0</offset-m>
   <factor>1.0</factor>
   <axis>
@@ -156,7 +156,7 @@
  <animation>
   <type>translate</type>
   <object-name>three</object-name>
-  <property>sam/c</property>
+  <property>sim/multiplay/generic/float[13]</property>
   <offset-m>0.0</offset-m>
   <factor>1.0</factor>
   <axis>
@@ -169,7 +169,7 @@
  <animation>
   <type>translate</type>
   <object-name>four</object-name>
-  <property>sam/d</property>
+  <property>sim/multiplay/generic/float[14]</property>
   <offset-m>0.0</offset-m>
   <factor>1.0</factor>
   <axis>
@@ -182,7 +182,7 @@
  <animation>
   <type>translate</type>
   <object-name>five</object-name>
-  <property>sam/e</property>
+  <property>sim/multiplay/generic/float[15]</property>
   <offset-m>0.0</offset-m>
   <factor>1.0</factor>
   <axis>
