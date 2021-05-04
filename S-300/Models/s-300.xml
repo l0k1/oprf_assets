@@ -49,7 +49,7 @@
   </axis>
  </animation>
 
- <model>
+ <!--model>
     <path>BigBird.ac</path>
     <name>bigbird</name>
     <offsets>
@@ -70,7 +70,7 @@
    <y>0</y>
    <z>1</z>
   </axis>
- </animation>
+ </animation-->
 
  <model>
     <path>BigBird_Tractor.ac</path>
@@ -95,7 +95,7 @@
   </axis>
  </animation>
 
- <model>
+ <!--model>
     <path>FlapLid_tractor.ac</path>
     <name>flaplidT</name>
     <offsets>
@@ -116,7 +116,7 @@
    <y>0</y>
    <z>1</z>
   </axis>
- </animation>
+ </animation-->
 
  <model>
     <path>FlapLid_mast.ac</path>
