@@ -2,23 +2,148 @@
 
 <PropertyList>
 
- <path>S-300_TEL_master.ac</path>
+   <model>
+     <path>S-300_TEL_master.xml</path>
+    <name>tel</name>
+    <offsets>
+        <x-m> 0</x-m>
+        <y-m> 50</y-m>
+        <z-m> 0</z-m>
+    </offsets>
+  </model>
 
  <animation>
-  <type>rotate</type>
-  <object-name>holder</object-name>
-  <object-name>launcher</object-name>
-  <property>sim/multiplay/generic/float[5]</property>
+  <type>translate</type>
+  <object-name>tel</object-name>
+  <property>sim/multiplay/generic/float[10]</property>
+  <offset-m>0.0</offset-m>
   <factor>1.0</factor>
-  <axis>   
-   <x1-m> -5.0437 </x1-m>
-   <y1-m> 1.54585 </y1-m>
-   <z1-m> 1.45415 </z1-m>
-   <x2-m> -5.0437 </x2-m>
-   <y2-m> -1.54585 </y2-m>
-   <z2-m> 1.45415 </z2-m>
+  <axis>
+   <x>0</x>
+   <y>0</y>
+   <z>1</z>
   </axis>
  </animation>
+
+
+ <model>
+    <path>ClamShell.xml</path>
+    <name>clamshell</name>
+    <offsets>
+        <x-m> -40</x-m>
+        <y-m> -40</y-m>
+        <z-m> 0</z-m>
+    </offsets>
+  </model>
+
+ <animation>
+  <type>translate</type>
+  <object-name>clamshell</object-name>
+  <property>sim/multiplay/generic/float[11]</property>
+  <offset-m>0.0</offset-m>
+  <factor>1.0</factor>
+  <axis>
+   <x>0</x>
+   <y>0</y>
+   <z>1</z>
+  </axis>
+ </animation>
+
+ <model>
+    <path>BigBird.ac</path>
+    <name>bigbird</name>
+    <offsets>
+        <x-m> 0</x-m>
+        <y-m> -40</y-m>
+        <z-m> 0</z-m>
+    </offsets>
+  </model>
+
+ <animation>
+  <type>translate</type>
+  <object-name>bigbird</object-name>
+  <property>sim/multiplay/generic/float[12]</property>
+  <offset-m>0.0</offset-m>
+  <factor>1.0</factor>
+  <axis>
+   <x>0</x>
+   <y>0</y>
+   <z>1</z>
+  </axis>
+ </animation>
+
+ <model>
+    <path>BigBird_Tractor.ac</path>
+    <name>bigbirdT</name>
+    <offsets>
+        <x-m>  40</x-m>
+        <y-m> -40</y-m>
+        <z-m> 0</z-m>
+    </offsets>
+  </model>
+
+ <animation>
+  <type>translate</type>
+  <object-name>bigbirdT</object-name>
+  <property>sim/multiplay/generic/float[13]</property>
+  <offset-m>0.0</offset-m>
+  <factor>1.0</factor>
+  <axis>
+   <x>0</x>
+   <y>0</y>
+   <z>1</z>
+  </axis>
+ </animation>
+
+ <model>
+    <path>FlapLid_tractor.ac</path>
+    <name>flaplidT</name>
+    <offsets>
+        <x-m> -40</x-m>
+        <y-m> 40</y-m>
+        <z-m> 0</z-m>
+    </offsets>
+  </model>
+
+ <animation>
+  <type>translate</type>
+  <object-name>flaplidT</object-name>
+  <property>sim/multiplay/generic/float[14]</property>
+  <offset-m>0.0</offset-m>
+  <factor>1.0</factor>
+  <axis>
+   <x>0</x>
+   <y>0</y>
+   <z>1</z>
+  </axis>
+ </animation>
+
+ <model>
+    <path>FlapLid_mast.ac</path>
+    <name>flaplid</name>
+    <offsets>
+        <x-m> 0</x-m>
+        <y-m> 0</y-m>
+        <z-m> 0</z-m>
+    </offsets>
+  </model>
+
+ <animation>
+  <type>translate</type>
+  <object-name>flaplid</object-name>
+  <property>sim/multiplay/generic/float[15]</property>
+  <offset-m>0.0</offset-m>
+  <factor>1.0</factor>
+  <axis>
+   <x>0</x>
+   <y>0</y>
+   <z>1</z>
+  </axis>
+ </animation>
+
+
+
+
 
  <model>
     <path>Aircraft/S-300/Models/smoke.xml</path>
@@ -182,90 +307,7 @@
 
   <nasal>
       <load><![CDATA[
-        return;
-        var self = cmdarg();
-
-
-        var skip = 0;
-        var lat = self.getNode("rotors/main/blade[0]/flap-deg");
-        var lon = self.getNode("rotors/main/blade[1]/flap-deg");
-        var alt = self.getNode("rotors/main/blade[2]/flap-deg");
-        if (alt == nil or alt.getValue() == nil) {
-          skip = 1;
-        }
-
-        var objs = {};
-
-        var loop = func () {          
-
-          if(alt.getValue() != 0) {
-            var objModel = objs["first"];
-            if (objModel == nil) {
-              # create model
-              #print("creating missile");
-              var n = props.globals.getNode("models", 1);
-              var i = 0;
-              for (i = 0; 1==1; i += 1) {
-                if (n.getChild("model", i, 0) == nil) {
-                  break;
-                }
-              }
-              objModel = n.getChild("model", i, 1);
-
-              objModel.getNode("elevation",1).setDoubleValue(0);
-              objModel.getNode("latitude",1).setDoubleValue(0);
-              objModel.getNode("longitude",1).setDoubleValue(0);
-              objModel.getNode("elevation-ft-prop",1).setValue(objModel.getPath()~"/elevation");
-              objModel.getNode("latitude-deg-prop",1).setValue(objModel.getPath()~"/latitude");
-              objModel.getNode("longitude-deg-prop",1).setValue(objModel.getPath()~"/longitude");
-              objModel.getNode("heading-deg",1).setDoubleValue(0);
-              objModel.getNode("pitch-deg",1).setDoubleValue(0);
-              objModel.getNode("roll-deg",1).setDoubleValue(0);
-              objModel.getNode("path",1).setValue("Aircraft/JA37/Models/Armament/Weapons/MP_missile/mp_missile.xml");
-
-              var loadNode = objModel.getNode("load", 1);
-              loadNode.setBoolValue(1);
-
-              objs["first"] = objModel;
-              loadNode.remove();
-            }
-          }
-          var exist = 0;
-          if(alt.getValue() != 0) {
-            exist = 1;
-
-            var objModel = objs["first"];
-            if (objModel == nil) {
-              print("error: did not find mp missile.");
-              return;
-            }# else {
-            #  print("found a missile!");
-            #}
-            objModel.getNode("latitude").setDoubleValue(lat.getValue());
-            objModel.getNode("longitude").setDoubleValue(lon.getValue());
-            objModel.getNode("elevation").setDoubleValue(alt.getValue()*M2FT);
-
-          }
-          if (exist == 0) {
-            # remove model
-            var objModel = objs["first"];
-            if (objModel != nil) {
-              objModel.remove();
-              delete(objs, "first");
-            }
-          }
-
-          if (self.getNode("valid") == 0 or self.getNode("valid") == nil) {
-            return;
-          }
-          settimer(loop, 0.05);
-        }
-
-        if (skip == 0) {
-            loop();
-        }
-
-      ]]>
+            ]]>
       </load>
   </nasal>
 
