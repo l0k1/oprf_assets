@@ -161,7 +161,7 @@ var warheads = {
 var id2warhead = [];
 var launched = {};# callsign: elapsed-sec
 var approached = {};# callsign: uniqueID
-var heavy_smoke = [61,62,92];
+var heavy_smoke = [61,62,63,65,92];
 
 var k = keys(warheads);
 
