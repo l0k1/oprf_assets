@@ -10,7 +10,7 @@
     <condition>
         <less-than>
           <property>active</property>
-          <value>1</value>
+          <value>6</value>
         </less-than>
     </condition>
   </animation>
