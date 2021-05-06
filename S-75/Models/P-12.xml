@@ -7,7 +7,7 @@
  <animation>
   <type>spin</type>
   <object-name>Array</object-name>
-  <property>sim/multiplay/online</property>
+  <property>/sim/multiplay/online</property>
   <factor>-15.0</factor>
   <center>
    <x-m>0</x-m>

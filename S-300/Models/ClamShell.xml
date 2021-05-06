@@ -7,7 +7,7 @@
 <animation>
   <type>spin</type>
   <object-name>Cube</object-name>
-  <property>sim/multiplay/online</property>
+  <property>/sim/multiplay/online</property>
   <factor>5.0</factor>
   <axis>   
    <x1-m> 3.95612 </x1-m>
