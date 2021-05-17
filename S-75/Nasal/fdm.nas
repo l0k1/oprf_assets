@@ -40,56 +40,66 @@ var PositionUpdater = func () {
 
 	if (elev0 == nil) return;
 
-	var geodPos = aircraftToCart({x:0, y:40, z: 0});
+	var geodPos = aircraftToCart({x:-25, y:-50, z: 0});
 	var co = geo.Coord.new();
 	co.set_xyz(geodPos.x, geodPos.y, geodPos.z);
 	var elev = geo.elevation(co.lat(),co.lon());
 	if (elev != nil) {
-		setprop("sam/a", elev-elev0);
+		setprop("sim/multiplay/generic/float[11]", elev-elev0);
 		setprop("controls/armament/station[1]/offsets/z-m", elev-elev0+3.4);
 	} else {
-		setprop("sam/a", 0);
+		setprop("sim/multiplay/generic/float[11]", 0);
 		setprop("controls/armament/station[1]/offsets/z-m", 3.4);
 	}
-	geodPos = aircraftToCart({x:0, y:-40, z: 0});
+	geodPos = aircraftToCart({x:25, y:-50, z: 0});
 	co.set_xyz(geodPos.x, geodPos.y, geodPos.z);
 	elev = geo.elevation(co.lat(),co.lon());
 	if (elev != nil) {
-		setprop("sam/b", elev-elev0);
+		setprop("sim/multiplay/generic/float[12]", elev-elev0);
 		setprop("controls/armament/station[2]/offsets/z-m", elev-elev0+3.4);
 	} else {
-		setprop("sam/b", 0);
+		setprop("sim/multiplay/generic/float[12]", 0);
 		setprop("controls/armament/station[2]/offsets/z-m", 3.4);
 	}
-	geodPos = aircraftToCart({x:-40, y:0, z: 0});
+	geodPos = aircraftToCart({x:50, y:0, z: 0});
 	co.set_xyz(geodPos.x, geodPos.y, geodPos.z);
 	elev = geo.elevation(co.lat(),co.lon());
 	if (elev != nil) {
-		setprop("sam/c", elev-elev0);
+		setprop("sim/multiplay/generic/float[13]", elev-elev0);
 		setprop("controls/armament/station[3]/offsets/z-m", elev-elev0+3.4);
 	} else {
-		setprop("sam/c", 0);
+		setprop("sim/multiplay/generic/float[13]", 0);
 		setprop("controls/armament/station[3]/offsets/z-m", 3.4);
 	}
-	geodPos = aircraftToCart({x:40, y:0, z: 0});
+	geodPos = aircraftToCart({x:25, y:50, z: 0});
 	co.set_xyz(geodPos.x, geodPos.y, geodPos.z);
 	elev = geo.elevation(co.lat(),co.lon());
 	if (elev != nil) {
-		setprop("sam/d", elev-elev0);
+		setprop("sim/multiplay/generic/float[14]", elev-elev0);
 		setprop("controls/armament/station[4]/offsets/z-m", elev-elev0+3.4);
 	} else {
-		setprop("sam/d", 0);
+		setprop("sim/multiplay/generic/float[14]", 0);
 		setprop("controls/armament/station[4]/offsets/z-m", 3.4);
 	}
-	geodPos = aircraftToCart({x:0, y:0, z: 0});
+	geodPos = aircraftToCart({x:-25, y:50, z: 0});
 	co.set_xyz(geodPos.x, geodPos.y, geodPos.z);
 	elev = geo.elevation(co.lat(),co.lon());
 	if (elev != nil) {
-		setprop("sam/e", elev-elev0);
+		setprop("sim/multiplay/generic/float[15]", elev-elev0);
 		setprop("controls/armament/station[5]/offsets/z-m", elev-elev0+3.4);
 	} else {
-		setprop("sam/e", 0);
+		setprop("sim/multiplay/generic/float[15]", 0);
 		setprop("controls/armament/station[5]/offsets/z-m", 3.4);
+	}
+	geodPos = aircraftToCart({x:-50, y:0, z: 0});
+	co.set_xyz(geodPos.x, geodPos.y, geodPos.z);
+	elev = geo.elevation(co.lat(),co.lon());
+	if (elev != nil) {
+		setprop("sim/multiplay/generic/float[16]", elev-elev0);
+		setprop("controls/armament/station[6]/offsets/z-m", elev-elev0+3.4);
+	} else {
+		setprop("sim/multiplay/generic/float[16]", 0);
+		setprop("controls/armament/station[6]/offsets/z-m", 3.4);
 	}
 };
 

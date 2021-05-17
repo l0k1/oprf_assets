@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+    <fx>
+        <launch>
+            <name>missile</name>
+            <path>Aircraft/S-75/Sounds/launch.wav</path>
+            <mode>once</mode>
+            <condition>
+                <property>payload/armament/volga-m/sound-fire-on-off</property>
+            </condition>
+            <reference-dist>50</reference-dist>
+            <max-dist>15000</max-dist>
+            <position>
+                <x> 0.01 </x>
+                <y> 0.01 </y>
+                <z> 0.01 </z>
+            </position>
+            <volume>
+                <factor>1</factor>
+                <max>1</max>
+            </volume>
+        </launch>
+    </fx>
+</PropertyList>

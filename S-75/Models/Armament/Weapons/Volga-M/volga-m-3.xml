@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+
+
+
+<PropertyList>
+
+	<name>aim-120</name>
+	<path>volga.ac</path>
+
+	<animation>
+		<type>select</type>
+		<object-name>volga</object-name>
+		<condition>
+			<property>payload/armament/volga-m/flags/msl-id-3</property>
+		</condition>
+	</animation>
+
+	<model>
+		<path>Aircraft/S-75/Models/Armament/Weapons/volga-m/motor-smoke-3.xml</path>
+		<offsets>
+			<x-m>3.06</x-m>
+			<y-m>0</y-m>
+			<z-m>0</z-m>
+		</offsets>
+	</model>
+
+	<model>
+		<name>explosion</name>
+		<path>Aircraft/S-75/Models/Armament/Weapons/volga-m/explosion-3.xml</path>
+		<offsets>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+			<z-m>0</z-m>
+		</offsets>
+	</model>
+
+	<animation>
+  		<object-name>volga</object-name>
+  		<enable-hot type="bool">false</enable-hot>
+ 	</animation>
+
+</PropertyList>

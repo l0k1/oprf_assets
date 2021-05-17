@@ -3,9 +3,9 @@
 <PropertyList>
 
     <sim>
-        <author>pinto, Leto</author>
+        <author>pinto, Leto, J Maverick 16</author>
         <description>S-75</description>
-        <long-description>S-75 (SA-2) is a Soviet-designed, high-altitude surface to air missile system.</long-description>
+        <long-description>S-75 Volga-M (SA-2) is a Soviet-designed, high-altitude surface to air missile system.</long-description>
         <status>alpha</status>
         <aircraft-version>0.1</aircraft-version>
 
@@ -104,6 +104,7 @@
                 <int n="0" type="int">0</int>
                 <int n="2" type="int">0</int>
                 <string n="6" type="string"></string><!-- string 6 used by radar lock RWR warning -->
+                <string n="7" type="string"></string><!-- datalink -->
             </generic>
         </multiplay>
 
@@ -112,7 +113,57 @@
                 <menu n="100">
                     <label>S-75</label>
                     <enabled type="bool">true</enabled>
-                    
+                    <item>
+                        <label>Reload</label>
+                        <binding>
+                            <command>nasal</command>
+                            <script>
+                                fire_control.reload();
+                            </script>
+                        </binding>
+                    </item>
+                    <item>
+                      <label>Targets</label>
+                      <name>enemies</name>
+                      <binding>
+                        <command>dialog-show</command>
+                        <dialog-name>enemies</dialog-name>
+                      </binding>
+                    </item>
+                    <item>
+                      <label>Priority</label>
+                      <name>enemies</name>
+                      <binding>
+                        <command>dialog-show</command>
+                        <dialog-name>priority</dialog-name>
+                      </binding>
+                    </item>
+                    <item>
+                        <label>Relocate to cursor last click</label>
+                        <binding>
+                            <command>nasal</command>
+                            <script>
+                                setprop("position/latitude-deg",getprop("sim/input/click/latitude-deg"));
+                                setprop("position/longitude-deg",getprop("sim/input/click/longitude-deg"));
+                                setprop("position/altitude-ft",getprop("sim/input/click/elevation-ft"));
+                                var h = geo.elevation(getprop("sim/input/click/latitude-deg"),getprop("sim/input/click/longitude-deg"));
+                                if (h!=nil)
+                                    setprop("position/altitude-ft",h*M2FT+0.030);
+                                fire_control.start_time = systime();
+                            </script>
+                        </binding>
+                    </item>
+                    <item>
+                        <label>Print log to console</label>
+                        <binding>
+                            <command>nasal</command>
+                            <script>
+                                setprop("payload/armament/msg",0);
+                                damage.printDamageLog();
+                                setprop("payload/armament/msg",1);
+                            </script>
+                        </binding>
+                    </item>
                     <item>
                         <label>Event Log</label>
                         <binding>
@@ -141,6 +192,53 @@
         </aircraft-data>
     </sim>
 	
+	<controls>
+        <armament>
+            <station n="1">
+                <offsets>
+                    <x-m type="double">  25</x-m>
+                    <y-m type="double"> -50</y-m>
+                    <z-m type="double">  3.4</z-m>
+                </offsets>
+            </station>
+            <station n="2">
+                <offsets>
+                    <x-m type="double">  -25</x-m>
+                    <y-m type="double">  -50</y-m>
+                    <z-m type="double">  3.4</z-m>
+                </offsets>
+            </station>
+            <station n="3">
+                <offsets>
+                    <x-m type="double">  -50</x-m>
+                    <y-m type="double">  0</y-m>
+                    <z-m type="double">  3.4</z-m>
+                </offsets>
+            </station>
+            <station n="4">
+                <offsets>
+                    <x-m type="double">  -25</x-m>
+                    <y-m type="double">  50</y-m>
+                    <z-m type="double">  3.4</z-m>
+                </offsets>
+            </station>
+            <station n="5">
+                <offsets>
+                    <x-m type="double">   25</x-m>
+                    <y-m type="double">   50</y-m>
+                    <z-m type="double">  3.4</z-m>
+                </offsets>
+            </station>
+            <station n="6">
+                <offsets>
+                    <x-m type="double">   50</x-m>
+                    <y-m type="double">   0</y-m>
+                    <z-m type="double">  3.4</z-m>
+                </offsets>
+            </station>
+        </armament>
+	</controls>
+	
 	<payload>
 	
         <armament>
@@ -166,7 +264,48 @@
                 <MAW-active type="bool">false</MAW-active>
                 <spike type="bool">false</spike>
                 <!-- speed: Mach 4.5   length: 10.60m -->
-				
+				<volga-m>
+                    <type-id type="int">65</type-id>
+                    <short-name type="string">5Ya23</short-name>
+                    <long-name type="string">Volga-M</long-name>
+					<vol-search type="double">0.00</vol-search>
+                    <vol-track type="double">0.00</vol-track>
+					<guidance type="string">semi-radar</guidance>
+                    <navigation type="string">PN1010</navigation>                   <!-- horizontal APN, vertical aim 5 degrees above for 6 seconds -->
+					<max-fire-range-nm type="int">36</max-fire-range-nm>      <!--  -->
+					<FCS-field-deg type="int">360</FCS-field-deg>
+					<seeker-field-deg type="int">360</seeker-field-deg>
+                    <weight-warhead-lbs>414</weight-warhead-lbs>                   <!--  -->
+                    <min-fire-range-nm type="double">3.5</min-fire-range-nm>     <!-- authentic -->
+                    <rail-length-m type="double">10.60</rail-length-m>             <!-- authentic length-->
+                    <stage-1-duration-sec type="double">4</stage-1-duration-sec> 
+                    <weight-launch-lbs>5340</weight-launch-lbs>                      <!--  -->                  
+                    <drag-coeff type="double">0.20</drag-coeff>                 <!-- was 0.40 in older versions -->
+                    <thrust-lbf-stage-1 type="double">110000</thrust-lbf-stage-1> <!-- source -->
+                    <rail type="bool">true</rail>                                <!--  -->                  
+                    <rail-point-forward type="bool">false</rail-point-forward>
+                    <cross-section-sqft type="double">4.14243818</cross-section-sqft>                <!-- authentic (0.7m diameter) -->
+                    <class type="string">A</class>
+                    <fire-msg>Bird away</fire-msg>
+                    <telemetry type="bool">true</telemetry> 
+                    <proportionality-constant type="double">3</proportionality-constant>
+                    <!--  -->
+                    <max-g type="int">19</max-g>                                <!-- wikipedia -->
+                    <thrust-lbf-stage-2 type="double"> 20000</thrust-lbf-stage-2>  <!-- 6834 according to source, but is too low for 5Ya23 -->
+					<stage-2-duration-sec type="double">15</stage-2-duration-sec><!--  -->					
+                    <weight-fuel-lbm>2750</weight-fuel-lbm>                       <!--  -->									
+					<arming-time-sec type="double">1</arming-time-sec> 
+					<min-speed-for-guiding-mach type="double">0.65</min-speed-for-guiding-mach> 
+					<self-destruct-time-sec type="double">60</self-destruct-time-sec> 
+					<loft-altitude type="int">0</loft-altitude>					
+                    <max-report-distance type="double">200</max-report-distance> <!--  -->					
+                    <rail-pitch-deg type="double">35</rail-pitch-deg>          <!-- matching mount -->
+                    <ready-time type="int">1</ready-time>					
+                    <FCS-at-origin type="bool">false</FCS-at-origin>         
+                    <FCS-x type="double">0</FCS-x>
+                    <FCS-y type="double">0</FCS-y>
+                    <FCS-z type="double">25</FCS-z>
+                </volga-m>
             </armament>
     </payload>
 
@@ -200,18 +339,18 @@
     </sam>
 
     <enemies>
-        <e1 userarchive="y" type="string">Leto</e1>
-        <e2 userarchive="y" type="string">swamp</e2>
-        <e3 userarchive="y" type="string">pinto</e3>
-        <e4 userarchive="y" type="string">fb237</e4>
-        <e5 userarchive="y" type="string">Wilco-1</e5>
-        <e6 userarchive="y" type="string">Kokos</e6>
-        <e7 userarchive="y" type="string">J-Mav16</e7>
-        <e8 userarchive="y" type="string">S</e8>
-        <e9 userarchive="y" type="string">Raider1</e9>
-        <e10 userarchive="y" type="string">Slobb</e10>
-        <e11 userarchive="y" type="string">5H1N0B1</e11>
-        <e12 userarchive="y" type="string">SNOWY1</e12>
+        <e1 userarchive="y" type="string">target1</e1>
+        <e2 userarchive="y" type="string">target2</e2>
+        <e3 userarchive="y" type="string">target3</e3>
+        <e4 userarchive="y" type="string">target4</e4>
+        <e5 userarchive="y" type="string">target5</e5>
+        <e6 userarchive="y" type="string">target6</e6>
+        <e7 userarchive="y" type="string">target7</e7>
+        <e8 userarchive="y" type="string">target8</e8>
+        <e9 userarchive="y" type="string">target9</e9>
+        <e10 userarchive="y" type="string">targetA</e10>
+        <e11 userarchive="y" type="string">targetB</e11>
+        <e12 userarchive="y" type="string">targetC</e12>
     </enemies>
 
     <priority type="int">1</priority>
