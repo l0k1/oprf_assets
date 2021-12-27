@@ -4,6 +4,26 @@
 
  <path>MIM-104D.ac</path>
 
+ <!--animation>
+      <object-name>cockpit</object-name>
+      <object-name>Cylinder</object-name>
+      <object-name>Cylinder.001</object-name>
+      <object-name>Cylinder.004</object-name>
+      <object-name>Cylinder.005</object-name>
+      <object-name>Cylinder.006</object-name>
+      <object-name>Cylinder.007</object-name>
+      <object-name>Cylinder.008</object-name>
+      <object-name>Cylinder.009</object-name>
+      <object-name>CylinderA</object-name>
+      <object-name>CylinderB</object-name>
+      <object-name>Launcher</object-name>
+      <object-name>platform</object-name>
+      <object-name>platform_struct</object-name>
+      <object-name>stabilizers</object-name>
+      <object-name>Vehicle</object-name>
+      <enable-hot type="bool">false</enable-hot>
+  </animation-->
+
 <animation>
   <type>rotate</type>
   <object-name>Launcher</object-name>

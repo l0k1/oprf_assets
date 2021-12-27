@@ -37,24 +37,30 @@ var shells = {
     # 0.20 means a direct hit will disable 20% of the failure modes on average.
     # or, 0.20 also means a direct hit can do 20 hitpoints damage.
     #
-    "M70 rocket":        [0,0.250], #135mm
-    "S-5 rocket":        [1,0.200], # 55mm
-    "M55 shell":         [2,0.100], # 30mm
-    "KCA shell":         [3,0.100], # 30mm
-    "GSh-30":            [4,0.100], # 30mm mig29/su27
-    "GAU-8/A":           [5,0.100], # 30mm
-    "Mk3Z":              [6,0.100], # 30mm Jaguar
-    "BK27":              [7,0.070], # 27mm
-    "GSh-23":            [8,0.065], # 23mm
-    "M61A1 shell":       [9,0.050], # 20mm F14, F15, F16
-    "50 BMG":            [10,0.015], # 12.7mm (non-explosive)    
+    # Damage roughly proportional to projectile weight.
+    # If weight isn't listed here, it was estimated from dimensions (proportional to diameter^2 * length).
+    # Approximate formulae for cannons:
+    # damage ~ weight / 3.6 (in g)
+    # or damage ~ diameter^2 * length / 1.6e6 (in mm)
+    #
+    "M70 rocket":        [0,0.500], # 135mm, ~5kg warhead
+    "S-5 rocket":        [1,0.200], # 55mm, ~1-2kg warhead
+    "M55 shell":         [2,0.060], # 30x113mm, 220g
+    "KCA shell":         [3,0.100], # 30x173mm, 360g
+    "GSh-30":            [4,0.095], # 30x165mm mig29/su27
+    "GAU-8/A":           [5,0.100], # 30x173mm, 360g
+    "Mk3Z":              [6,0.060], # 30x113mm Jaguar, 220g
+    "BK27":              [7,0.070], # 27x145mm, 270g
+    "GSh-23":            [8,0.040], # 23x115mm,
+    "M61A1 shell":       [9,0.030], # 20x102mm F14, F15, F16, 100g
+    "50 BMG":            [10,0.015], # 12.7mm (non-explosive)
     "7.62":              [11,0.005], # 7.62mm (non-explosive)
-    "Hydra-70":          [12,0.250], # F-16/A-6 LAU-68 and LAU-61
-    "SNEB":              [13,0.250], # Jaguar   
-    "DEFA 554":          [14,0.100], # 30mm Mirage
-    "20mm APDS":         [15,0.050], # CIWS
-    "LAU-10":            [16,0.225], # 127mm
-};    
+    "Hydra-70":          [12,0.500], # 70mm, F-16/A-6 LAU-68 and LAU-61, ~4-6kg warhead
+    "SNEB":              [13,0.500], # 68mm, Jaguar
+    "DEFA 554":          [14,0.060], # 30x113mm Mirage, 220g
+    "20mm APDS":         [15,0.030], # CIWS
+    "LAU-10":            [16,0.500], # 127mm, ~4-7kg warhead
+};
 
 # lbs of warheads is explosive+fragmentation+fuse, so total warhead mass.
 
@@ -82,7 +88,7 @@ var warheads = {
     "GBU-24":            [19,  945.00,1,0],
     "GBU-31":            [20,  945.00,1,0],
     "GBU-54":            [21,  190.00,1,0],
-    "GBU-10":            [22, 2000.00,1,0],
+    "GBU-10":            [22,  945.00,1,0],
     "GBU-16":            [23,  450.00,1,0],
     "HVAR":              [24,    7.50,1,0],#P51
     "KAB-500":           [25,  564.38,1,0],
@@ -123,9 +129,9 @@ var warheads = {
     "Apache AP":         [60,  110.23,0,1],# Real mass of bomblet. (x 10). Anti runway.
     "KN-06":             [61,  315.00,0,0],
     "9M317":             [62,  145.00,0,0],
-    "GEM":               [63,  185.00,0,0],#MIM-104D
+    "GEM":               [63,  185.00,0,0],#MIM-104D 
     "R.550 Magic":       [64,   26.45,0,0],# also called majic
-    "d-0":               [65,   30.00,0,0],#deprecated
+    "5Ya23":             [65,  414.00,0,0],#Volga-M
     "R.550 Magic 2":     [66,   27.00,0,0],
     "R.530":             [67,   55.00,0,0],
     "MK-82AIR":          [68,  192.00,1,0],
@@ -1167,7 +1173,7 @@ var code_ct = func () {
   if (getprop("payload/armament/msg")) {
       setprop("sim/rendering/redout/enabled", TRUE);
       #call(func{fgcommand('dialog-close', multiplayer.dialog.dialog.prop())},nil,var err= []);# props.Node.new({"dialog-name": "location-in-air"}));
-      call(func{multiplayer.dialog.del();},nil,var err= []);
+      #call(func{multiplayer.dialog.del();},nil,var err= []);
       if (!getprop("gear/gear[0]/wow")) {
         call(func{fgcommand('dialog-close', props.Node.new({"dialog-name": "WeightAndFuel"}))},nil,var err2 = []);
         call(func{fgcommand('dialog-close', props.Node.new({"dialog-name": "system-failures"}))},nil,var err2 = []);

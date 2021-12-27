@@ -4,10 +4,10 @@
     <fx>
         <launch>
             <name>missile</name>
-            <path>Aircraft/MIM-104D/Sounds/launch.wav</path>
+            <path>Aircraft/MIM-104D/Sounds/launch-gem.wav</path>
             <mode>once</mode>
             <condition>
-                <property>payload/armament/ged/sound-fire-on-off</property>
+                <property>payload/armament/gem/sound-fire-on-off</property>
             </condition>
             <reference-dist>50</reference-dist>
             <max-dist>15000</max-dist>
@@ -21,5 +21,73 @@
                 <max>1</max>
             </volume>
         </launch>
+        <missile-hit>
+            <!-- multiple of these so the sound can be played over each other -->
+            <name>missile-hit0</name>
+            <path>Aircraft/MIM-104D/Sounds/missile-explo.wav</path>
+            <mode>once</mode>
+            <type>avionics</type>
+            <condition>
+                <equals>
+                    <property>payload/armament/flags/explode-sound-on-0</property>
+                    <value>1</value>
+                </equals>
+            </condition>
+            <volume>
+                <property>payload/armament/flags/explode-sound-vol-0</property>
+                <factor>1</factor>
+            </volume>
+        </missile-hit>
+        <missile-hit>
+            <!-- multiple of these so the sound can be played over each other -->
+            <name>missile-hit1</name>
+            <path>Aircraft/MIM-104D/Sounds/missile-explo.wav</path>
+            <mode>once</mode>
+            <type>avionics</type>
+            <condition>
+                <equals>
+                    <property>payload/armament/flags/explode-sound-on-1</property>
+                    <value>1</value>
+                </equals>
+            </condition>
+            <volume>
+                <property>payload/armament/flags/explode-sound-vol-1</property>
+                <factor>1</factor>
+            </volume>
+        </missile-hit>
+        <missile-hit>
+            <!-- multiple of these so the sound can be played over each other -->
+            <name>missile-hit2</name>
+            <path>Aircraft/MIM-104D/Sounds/missile-explo.wav</path>
+            <mode>once</mode>
+            <type>avionics</type>
+            <condition>
+                <equals>
+                    <property>payload/armament/flags/explode-sound-on-2</property>
+                    <value>1</value>
+                </equals>
+            </condition>
+            <volume>
+                <property>payload/armament/flags/explode-sound-vol-2</property>
+                <factor>1</factor>
+            </volume>
+        </missile-hit>
+        <missile-hit>
+            <!-- multiple of these so the sound can be played over each other -->
+            <name>missile-hit3</name>
+            <path>Aircraft/MIM-104D/Sounds/missile-explo.wav</path>
+            <mode>once</mode>
+            <type>avionics</type>
+            <condition>
+                <equals>
+                    <property>payload/armament/flags/explode-sound-on-3</property>
+                    <value>1</value>
+                </equals>
+            </condition>
+            <volume>
+                <property>payload/armament/flags/explode-sound-vol-3</property>
+                <factor>1</factor>
+            </volume>
+        </missile-hit>
     </fx>
 </PropertyList>
