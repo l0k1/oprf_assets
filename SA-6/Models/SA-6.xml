@@ -35,6 +35,38 @@
   </axis>
  </animation>
 
+ <animation>
+  <type>rotate</type>
+  <object-name>launcher</object-name>
+  <property>sim/multiplay/generic/float[5]</property>
+  <factor>1.0</factor>
+  <offset-deg>-33</offset-deg>
+  <axis>   
+   <x1-m> 1.30999 </x1-m>
+   <y1-m> -0.949105 </y1-m>
+   <z1-m> 2.1287 </z1-m>
+   <x2-m> 1.30999 </x2-m>
+   <y2-m> 0.949105 </y2-m>
+   <z2-m> 2.1287 </z2-m>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>launcherBase</object-name>
+  <property>sim/multiplay/generic/float[5]</property>
+  <factor>-1.0</factor>
+  <offset-deg>33</offset-deg>
+  <axis>   
+   <x1-m> 1.30999 </x1-m>
+   <y1-m> -0.949105 </y1-m>
+   <z1-m> 2.1287 </z1-m>
+   <x2-m> 1.30999 </x2-m>
+   <y2-m> 0.949105 </y2-m>
+   <z2-m> 2.1287 </z2-m>
+  </axis>
+ </animation>
+
 <animation>
   <type>select</type>
   <object-name>MissileL</object-name>

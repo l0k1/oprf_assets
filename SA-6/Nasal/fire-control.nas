@@ -24,7 +24,7 @@ var mutexLock = thread.newlock();
 
 var setupTime = 300;#minimum 'launcher_tilt_time' secs no matter what, due to anim and stuff.
 var reload_time = 600;
-var launcher_final_tilt_deg  = 45;
+var launcher_final_tilt_deg  = 33;
 var launcher_start_tilt_deg  =  0;
 var launcher_tilt_time       = 15;
 var sam_align_to_target      =  0;
