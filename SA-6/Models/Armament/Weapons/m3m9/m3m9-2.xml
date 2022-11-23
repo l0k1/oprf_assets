@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+	<name>aim-120</name>
+	<path>3m9.ac</path>
+
+	<animation>
+		<type>select</type>
+		<object-name>missile</object-name>
+		<condition>
+			<property>payload/armament/m3m9/flags/msl-id-2</property>
+		</condition>
+	</animation>
+
+	<model>
+		<path>Aircraft/SA-6/Models/Armament/Weapons/m3m9/motor-smoke-2.xml</path>
+		<offsets>
+			<x-m>2.764</x-m>
+			<y-m>0</y-m>
+			<z-m>0</z-m>
+		</offsets>
+	</model>
+
+	<model>
+		<name>explosion</name>
+		<path>Aircraft/SA-6/Models/Armament/Weapons/m3m9/explosion-2.xml</path>
+		<offsets>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+			<z-m>0</z-m>
+		</offsets>
+	</model>
+
+	<animation>
+  		<object-name>missile</object-name>
+  		<enable-hot type="bool">false</enable-hot>
+ 	</animation>
+
+</PropertyList>

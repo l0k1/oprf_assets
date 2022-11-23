@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+
+    <sim>
+        <author>pinto, Leto</author>
+        <description>SA-6</description>
+        <long-description>SA-6 (Ky6) is a Soviet low to medium-level air defence system designed to protect ground forces from air attack.</long-description>
+        <status>alpha</status>
+        <aircraft-version>0.1</aircraft-version>
+        <!--Model Source:https://sketchfab.com/3d-models/2k12-kub-4e2e8506c9e546b3b7da1554db8185bc-->
+
+        <flight-model>null</flight-model>
+
+        <aero>KPN-D</aero>
+        <aircraft-operator>KPN</aircraft-operator>
+
+        <model>
+            <path>Aircraft/SA-6/Models/SA-6.xml</path>
+
+            <!-- Uncloak weather balloons visiting Earth -->
+            <always-show-in-MP type="bool">true</always-show-in-MP>
+        </model>
+
+        <sound>
+            <path>Sounds/sound.xml</path>
+        </sound>
+
+        <presets>
+            <onground>true</onground>
+        </presets>
+
+        <current-view>
+            <deck-park type="bool">true</deck-park>
+
+            <z-offset-dec-step type="double">0.0</z-offset-dec-step>
+            <z-offset-inc-step type="double">0.0</z-offset-inc-step>
+            <can-change-z-offset type="bool">false</can-change-z-offset>
+
+            <z-offset-min-m type="float">100.0</z-offset-min-m>
+            <z-offset-max-m type="float">2000.0</z-offset-max-m>
+        </current-view>
+        
+        <view n="101">
+            <name>Balcon</name>
+            <type>lookfrom</type>
+            <internal>false</internal>
+            <config>
+                <from-model type="bool">true</from-model>
+                <pitch-offset-deg>-33.0</pitch-offset-deg>
+                <heading-offset-deg>42</heading-offset-deg>
+                <x-offset-m>50</x-offset-m>
+                <y-offset-m>50</y-offset-m>
+                <z-offset-m>50</z-offset-m>
+                <default-field-of-view-deg>70</default-field-of-view-deg>
+                <limits>
+                    <enabled type="bool">false</enabled>
+                </limits>
+            </config>
+        </view>
+        <view n="200">
+            <name>Follow</name>
+            <type>lookat</type>
+            <internal>false</internal>
+            <config>
+                <!--<from-model type="bool">true</from-model>
+                <from-model-idx type="int">0</from-model-idx>-->
+                <eye-fixed type="bool">true</eye-fixed>
+                <target-lat-deg-path>rotors/main/blade[0]/flap-deg</target-lat-deg-path>
+                <target-lon-deg-path>rotors/main/blade[1]/flap-deg</target-lon-deg-path>
+                <target-alt-ft-path>rotors/main/blade[2]/position-deg</target-alt-ft-path>
+                <eye-lat-deg-path>/position/latitude-deg</eye-lat-deg-path>
+                <eye-lon-deg-path>/position/longitude-deg</eye-lon-deg-path>
+                <eye-alt-ft-path>/position/altitude-ft</eye-alt-ft-path>
+                <!--<eye-heading-deg-path>/orientation/heading-deg</eye-heading-deg-path>
+                <eye-pitch-deg-path>/orientation/pitch-deg</eye-pitch-deg-path>
+                <eye-roll-deg-path>/orientation/roll-deg</eye-roll-deg-path>-->
+                <eye-heading-deg-path>/orientation/heading-deg</eye-heading-deg-path>
+                <eye-pitch-deg>0</eye-pitch-deg>
+                <eye-roll-deg>0</eye-roll-deg>
+                <x-offset-m>50</x-offset-m>
+                <y-offset-m>50</y-offset-m>
+                <z-offset-m>25</z-offset-m>
+                <default-field-of-view-deg>70</default-field-of-view-deg>
+                <limits>
+                    <enabled type="bool">false</enabled>
+                </limits>
+            </config>
+        </view>
+        
+        <chase-distance-m type="double" archive="y">-350.0</chase-distance-m>
+
+        <hud>
+            <path n="1">Aircraft/SA-6/Hud/hud.xml</path>
+            <visibility n="1">true</visibility>
+            <font>
+                <size type="float">11.0</size>
+            </font>
+        </hud>
+
+        <tower>
+            <auto-position type="bool">true</auto-position>
+        </tower>
+
+        <multiplay>
+            <visibility-range-nm type="int">500</visibility-range-nm>
+            <generic>
+                <int n="0" type="int">0</int>
+                <int n="2" type="int">0</int>
+                <string n="6" type="string"></string><!-- string 6 used by radar lock RWR warning -->
+                <string n="7" type="string"></string><!-- datalink -->
+            </generic>
+        </multiplay>
+
+        <menubar>
+            <default>
+                <menu n="100">
+                    <label>SA-6</label>
+                    <enabled type="bool">true</enabled>
+                    <item>
+                        <label>Reload</label>
+                        <binding>
+                            <command>nasal</command>
+                            <script>
+                                fire_control.reload();
+                            </script>
+                        </binding>
+                    </item>
+                    <item>
+                      <label>Targets</label>
+                      <name>enemies</name>
+                      <binding>
+                        <command>dialog-show</command>
+                        <dialog-name>enemies</dialog-name>
+                      </binding>
+                    </item>
+                    <item>
+                      <label>Priority</label>
+                      <name>enemies</name>
+                      <binding>
+                        <command>dialog-show</command>
+                        <dialog-name>priority</dialog-name>
+                      </binding>
+                    </item>
+                    <item>
+                        <label>Relocate to cursor last click</label>
+                        <binding>
+                            <command>nasal</command>
+                            <script>
+                                setprop("position/latitude-deg",getprop("sim/input/click/latitude-deg"));
+                                setprop("position/longitude-deg",getprop("sim/input/click/longitude-deg"));
+                                setprop("position/altitude-ft",getprop("sim/input/click/elevation-ft"));
+                                var h = geo.elevation(getprop("sim/input/click/latitude-deg"),getprop("sim/input/click/longitude-deg"));
+                                if (h!=nil)
+                                    setprop("position/altitude-ft",h*M2FT+0.010);
+                                fire_control.start_time = systime();
+                            </script>
+                        </binding>
+                    </item>
+                    <item>
+                        <label>Print log to console</label>
+                        <binding>
+                            <command>nasal</command>
+                            <script>
+                                setprop("payload/armament/msg",0);
+                                damage.printDamageLog();
+                                setprop("payload/armament/msg",1);
+                            </script>
+                        </binding>
+                    </item>
+                    <item>
+                        <label>Event Log</label>
+                        <binding>
+                            <command>dialog-show</command>
+                            <dialog-name>flightlog</dialog-name>
+                        </binding>
+                    </item>
+                </menu>
+            </default>
+        </menubar>
+
+        <aircraft-data>
+            <!-- Properties that get saved to persist locally between FG sessions -->
+            <path>enemies/e1</path>
+            <path>enemies/e2</path>
+            <path>enemies/e3</path>
+            <path>enemies/e4</path>
+            <path>enemies/e5</path>
+            <path>enemies/e6</path>
+            <path>enemies/e7</path>
+            <path>enemies/e8</path>
+            <path>enemies/e9</path>
+            <path>enemies/e10</path>
+            <path>enemies/e11</path>
+            <path>enemies/e12</path>
+        </aircraft-data>
+    </sim>
+	
+	<controls>
+        <armament>
+            <station-select type="int">0</station-select>
+            <trigger type="bool">false</trigger>
+            <station n="1">
+                <offsets>
+                    <x-m type="double">  12</x-m>
+                    <y-m type="double">   0</y-m>
+                    <z-m type="double">   3</z-m>
+                </offsets>
+                <trigger type="bool">false</trigger>
+            </station>
+            <station n="2">
+                <offsets>
+                    <x-m type="double">  12</x-m>
+                    <y-m type="double">   0</y-m>
+                    <z-m type="double">   3</z-m>
+                </offsets>
+                <trigger type="bool">false</trigger>
+            </station>
+            <station n="3">
+                <offsets>
+                    <x-m type="double">  12</x-m>
+                    <y-m type="double">   0</y-m>
+                    <z-m type="double">   3</z-m>
+                </offsets>
+                <trigger type="bool">false</trigger>
+            </station>
+        </armament>
+    </controls>
+
+	<payload>
+        <weight n="0">
+            <name>Main Store</name>
+            <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[1]"/>
+            <selected>none</selected>
+			<opt>
+                <name>M317</name>
+                <lbs>50</lbs>
+            </opt>
+        </weight>
+	
+        <armament>
+				<models type="string">Aircraft/SA-6/Models/Armament/Weapons/</models>
+                <modelsUseCase type="bool">true</modelsUseCase>
+                <modelsUpperCase type="bool">true</modelsUpperCase>
+                <MP-lat type="string">rotors/main/blade[0]/flap-deg</MP-lat>
+                <MP-lon type="string">rotors/main/blade[1]/flap-deg</MP-lon>
+                <MP-alt type="string">rotors/main/blade[2]/flap-deg</MP-alt>
+                <MP-alt-ft type="string">rotors/main/blade[2]/position-deg</MP-alt-ft>
+                <gnd-launch type="bool">true</gnd-launch>
+                <pylon-offset type="int">1</pylon-offset>
+                <pylon-stations>controls/armament</pylon-stations>
+                <station-name type="string">station</station-name>
+				<msg type="bool">true</msg>
+				<damage type="bool">true</damage>
+                <enable-craters type="bool">true</enable-craters>
+                <MLW-bearing type="double">0</MLW-bearing>
+                <MLW-count type="int">0</MLW-count>
+                <MLW-launcher type="string"></MLW-launcher>
+                <MAW-bearing type="double">0</MAW-bearing>
+                <MAW-active type="bool">false</MAW-active>
+                <spike type="bool">false</spike>
+                <m3m9>        
+                    <type-id type="int">96</type-id>
+                    <short-name type="string">3M9</short-name>
+                    <long-name type="string">Anti Aircraft Guided Missile</long-name>
+                    <max-fire-range-nm type="int">18</max-fire-range-nm>
+                    <cross-section-sqft type="double">1.42</cross-section-sqft>
+                    <weight-launch-lbs>1333</weight-launch-lbs><!-- https://missilery.info/missile/kub -->
+
+                    <vol-search type="double">0.00</vol-search>
+                    <vol-track type="double">0.15</vol-track>                      <!--  -->
+                    <vol-track-weak type="double">0.1</vol-track-weak>           <!--  -->
+                    <guidance type="string">semi-radar</guidance>
+                    <navigation type="string">PN3502</navigation>                   <!--  -->
+                    <all-aspect type="bool">true</all-aspect>
+                    
+                    <FCS-field-deg type="int">360</FCS-field-deg>
+                    <seeker-field-deg type="int">400</seeker-field-deg><!-- since launched vertical, it cannot be too small -->
+                    <max-g type="int">25</max-g>
+                    <thrust-lbf-stage-1 type="double">8025</thrust-lbf-stage-1>
+                    <thrust-lbf-stage-2 type="double">7525</thrust-lbf-stage-2> <!-- max 960 m/s speed, 93 NM range -->
+                    <stage-1-duration-sec type="double">12</stage-1-duration-sec>
+                    <stage-gap-duration-sec type="double">1</stage-gap-duration-sec>
+                    <stage-2-duration-sec type="double">7</stage-2-duration-sec>
+                    
+                    <weight-warhead-lbs>125</weight-warhead-lbs>
+                    <weight-fuel-lbm>147</weight-fuel-lbm>                       <!--  -->
+                    <drag-coeff type="double">0.10</drag-coeff>                  <!-- max 2000 m/s speed, 93 NM range -->
+                    
+                    <arming-time-sec type="double">2</arming-time-sec> 
+                    <min-speed-for-guiding-mach type="double">0.45</min-speed-for-guiding-mach> 
+                    <self-destruct-time-sec type="double">75</self-destruct-time-sec> 
+                    <self-destruct-at-lock-lost type="bool">true</self-destruct-at-lock-lost>
+                    <seeker-angular-speed-dps type="double">3000</seeker-angular-speed-dps>
+                    <loft-altitude type="int">0</loft-altitude>
+                    <min-fire-range-nm type="double">0.40</min-fire-range-nm>
+                    <max-report-distance type="double">200</max-report-distance> <!--  -->
+                    <rail type="bool">true</rail>
+                    <rail-length-m type="double">7.5</rail-length-m>
+                    <rail-point-forward type="bool">false</rail-point-forward>
+                    <rail-pitch-deg type="double">45</rail-pitch-deg>
+                    <rail-heading-deg type="double">0</rail-heading-deg>
+                    <proportionality-constant type="double">3</proportionality-constant>
+                    <class type="string">A</class>
+                    <fire-msg>Bird away</fire-msg>
+                    <telemetry type="bool">true</telemetry>
+                    <FCS-at-origin type="bool">false</FCS-at-origin>         
+                    <FCS-x type="double">0</FCS-x>
+                    <FCS-y type="double">0</FCS-y>
+                    <FCS-z type="double">25</FCS-z> 
+                </m3m9>
+            </armament>
+    </payload>
+
+    <rotors>
+        <main>
+            <blade n="0">
+                <flap-deg type="double">0</flap-deg>
+            </blade>
+            <blade n="1">
+                <flap-deg type="double">0</flap-deg>
+            </blade>
+            <blade n="2">
+                <flap-deg type="double">0</flap-deg>
+                <position-deg type="double">0</position-deg>
+            </blade>
+            <blade n="3">
+                <flap-deg type="double">0</flap-deg>
+            </blade>
+        </main>
+    </rotors>
+
+    <sam>
+        <impact0 type="double">-1</impact0>
+        <impact1 type="double">-1</impact1>
+        <impact2 type="double">-1</impact2>
+        <hit0 type="double">-1</hit0>
+        <hit1 type="double">-1</hit1>
+        <hit2 type="double">-1</hit2>
+        <missiles type="double">3</missiles>
+        <timeleft type="double">600</timeleft>
+        <damage type="double">100</damage>
+    </sam>
+
+    <enemies>
+        <e1 userarchive="y" type="string">Leto</e1>
+        <e2 userarchive="y" type="string">swamp</e2>
+        <e3 userarchive="y" type="string">pinto</e3>
+        <e4 userarchive="y" type="string">fb237</e4>
+        <e5 userarchive="y" type="string">Wilco-1</e5>
+        <e6 userarchive="y" type="string">Kokos</e6>
+        <e7 userarchive="y" type="string">J-Mav16</e7>
+        <e8 userarchive="y" type="string">S</e8>
+        <e9 userarchive="y" type="string">Raider1</e9>
+        <e10 userarchive="y" type="string">Slobb</e10>
+        <e11 userarchive="y" type="string">5H1N0B1</e11>
+        <e12 userarchive="y" type="string">SNOWY1</e12>
+    </enemies>
+
+    <priority type="int">0</priority>
+    <priority0 type="int">1</priority0>
+	
+    <nasal>
+        <notifications>
+            <file>Aircraft/SA-6/Nasal/ArmamentNotification.nas</file>
+            <file>Aircraft/SA-6/Nasal/GeoBridgedTransmitter.nas</file>
+        </notifications>
+        <carrier>
+            <file>Aircraft/SA-6/Nasal/fdm.nas</file>
+        </carrier>
+		<damage>
+			<file>Aircraft/SA-6/Nasal/damage.nas</file>
+		</damage>
+		<radar_logic>
+            <file>Aircraft/SA-6/Nasal/radar-logic.nas</file>
+        </radar_logic>
+        <vector>
+            <file>Aircraft/SA-6/Nasal/vector.nas</file><!-- needed by the guided-missiles -->
+        </vector>
+        <armament>
+            <file>Aircraft/SA-6/Nasal/guided-missiles.nas</file>
+        </armament>
+		<fire_control>
+			<file>Aircraft/SA-6/Nasal/fire-control.nas</file>
+		</fire_control>
+    </nasal>
+
+</PropertyList>

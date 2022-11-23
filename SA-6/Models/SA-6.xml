@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+ <path>SA-6.ac</path>
+
+ <!--animation>
+    <object-name>hatchR</object-name>
+    <object-name>launcher</object-name>
+    <object-name>launcherBase</object-name>
+    <object-name>launcherSupports</object-name>
+    <object-name>MissileC</object-name>
+    <object-name>MissileL</object-name>
+    <object-name>MissileR</object-name>
+    <object-name>support</object-name>
+    <object-name>tank</object-name>
+    <object-name>topWheels</object-name>
+    <object-name>tracks</object-name>
+    <object-name>wheels</object-name>
+    <enable-hot type="bool">false</enable-hot>
+ </animation-->
+
+<animation>
+  <type>rotate</type>
+  <object-name>launcher</object-name>
+  <property>sim/multiplay/generic/float[6]</property>
+  <factor>1.0</factor>
+  <axis>   
+   <x1-m> -0.053422 </x1-m>
+   <y1-m> 0.008531 </y1-m>
+   <z1-m> 1 </z1-m>
+   <x2-m> -0.053422 </x2-m>
+   <y2-m> 0.008531 </y2-m>
+   <z2-m> 0 </z2-m>
+  </axis>
+ </animation>
+
+<animation>
+  <type>select</type>
+  <object-name>MissileL</object-name>
+  <condition>
+      <less-than>
+        <property>active</property>
+        <value>1</value>
+      </less-than>
+  </condition>
+</animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>MissileC</object-name>
+  <condition>
+      <less-than>
+        <property>active</property>
+        <value>2</value>
+      </less-than>
+  </condition>
+</animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>MissileR</object-name>
+  <condition>
+      <less-than>
+        <property>active</property>
+        <value>3</value>
+      </less-than>
+  </condition>
+</animation>
+
+ <model>
+    <path>Aircraft/SA-6/Models/smoke.xml</path>
+    <offsets>
+      <x-m>-0.053422</x-m>
+      <y-m>0.008531</y-m>
+      <z-m>1</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+ <model>
+    <path>Aircraft/SA-6/Models/fire.xml</path>
+    <offsets>
+      <x-m>-0.053422</x-m>
+      <y-m>0.008531</y-m>
+      <z-m>1</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+ <model>
+    <path>Aircraft/SA-6/Models/smoke.xml</path>
+    <offsets>
+      <x-m>-0.053422</x-m>
+      <y-m>0.008531</y-m>
+      <z-m>1</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+ <model>
+    <path>Aircraft/SA-6/Models/fire.xml</path>
+    <offsets>
+      <x-m>-0.053422</x-m>
+      <y-m>0.008531</y-m>
+      <z-m>1</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+ <model>
+    <path>Aircraft/SA-6/Models/smoke.xml</path>
+    <offsets>
+      <x-m>-0.053422</x-m>
+      <y-m>0.008531</y-m>
+      <z-m>1</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+ <model>
+    <path>Aircraft/SA-6/Models/fire.xml</path>
+    <offsets>
+      <x-m>-0.053422</x-m>
+      <y-m>0.008531</y-m>
+      <z-m>1</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+  <nasal>
+      <load><![CDATA[
+        
+      ]]>
+      </load>
+  </nasal>
+
+</PropertyList>
