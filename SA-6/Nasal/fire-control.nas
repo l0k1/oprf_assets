@@ -30,7 +30,7 @@ var launcher_tilt_time       = 15;
 var sam_align_to_target      =  0;
 var launcher_align_to_target =  1;
 var align_speed_dps          = 20;
-var radar_elevation_above_terrain_m = 5;#estimate
+var radar_elevation_above_terrain_m = 10;#estimate
 var radar_lowest_pitch       = 0.1;# 0.5 degs = roughly 925 feet at 20 nm, 25 feet at half a nm. # 0.35 = roughly 925 feet at 20 nm, 25 feet at half a nm.
 
 #reaction tme for s-300p is 28 secs acording to http://www.astronautix.com/s/s-300p.html
