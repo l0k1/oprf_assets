@@ -53,7 +53,7 @@ var missile_name = "m3m9";
 var missile_brevity = "3M9";
 var missile_max_distance = 18; #max distance of target in nm when it will fire
 var missile_min_distance = 0.5; #minimum distance in nm when it will fire
-var lockon_time = 28; #time in seconds it takes to lock on and get a firing solution on a target
+var lockon_time = 24; #time in seconds it takes to lock on and get a firing solution on a target
 var fire_minimum_interval = 7;# time since last track was initiated till a new can be initiated
 var same_target_max_missiles = 2;# max number of missiles in air against same target
 

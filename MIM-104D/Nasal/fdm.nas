@@ -52,7 +52,8 @@ var PositionUpdater = func () {
 	# Set new position
 	setprop("/position/latitude-deg", position.lat());
 	setprop("/position/longitude-deg", position.lon());
-	setprop("/position/altitude-ft", getprop("/position/ground-elev-ft"));
+	var elev = geo.elevation(position.lat(),position.lon());
+	if (elev != nil) setprop("/position/altitude-ft", elev*M2FT);
 
 	
 	if ( getprop("/carrier/sunk") == 0 ) {

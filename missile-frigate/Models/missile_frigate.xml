@@ -2,8 +2,8 @@
 
 <PropertyList>
 <description>USS SanAntonio</description>
-  <author>Naval Postgraduate School SAVAGE project, Vivian Meazza, Heiko Schulz</author>
-  <status>early-production</status>
+	<author>Naval Postgraduate School SAVAGE project, Vivian Meazza, Heiko Schulz</author>
+	<status>early-production</status>
  <path>LPD17.ac</path>
  <nasal>
     <load><![CDATA[
@@ -92,15 +92,15 @@
 <property>surface-positions/elevators-pos-norm</property>
 <factor>-90.0</factor>
 <center>
-      <x-m>94.936</x-m>
-      <y-m>0.00</y-m>
-      <z-m>3.968</z-m>
-    </center>
-    <axis>
-      <x>0</x>
-      <y>1</y>
-      <z>0</z>
-    </axis>
+			<x-m>94.936</x-m>
+			<y-m>0.00</y-m>
+			<z-m>3.968</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
 </animation>
 
 <animation>
@@ -109,15 +109,15 @@
 <property>surface-positions/elevators-pos-norm</property>
 <factor>90.0</factor>
 <center>
-      <x-m>93.243</x-m>
-      <y-m>0.00</y-m>
-      <z-m>-6.464</z-m>
-    </center>
-    <axis>
-      <x>0</x>
-      <y>1</y>
-      <z>0</z>
-    </axis>
+			<x-m>93.243</x-m>
+			<y-m>0.00</y-m>
+			<z-m>-6.464</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
 </animation>
  
  <model>

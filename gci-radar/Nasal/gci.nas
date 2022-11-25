@@ -26,6 +26,7 @@ var prop_watch = {
     "JA37Di-Viggen": [20,21,22],
     "AJ37-Viggen": [20,21,22],
     "AJS37-Viggen": [20,21,22],
+    "Jaguar-GR1":  [20,21,22],
 };
 
 var radar_stations = [

@@ -58,7 +58,7 @@
     </carrier>
 
     <sim include="Sim/views.xml">
-        <author>pinto and onox</author>
+        <author>pinto, Nikolai V. Chr., onox</author>
         <description>Frigate</description>
         <status>alpha</status>
         <aircraft-version>0.1</aircraft-version>
@@ -123,6 +123,7 @@
         <multiplay>
             <generic>
                 <int n="0" type="int">0</int>
+                <string n="7" type="string"></string><!-- datalink -->
             </generic>
         </multiplay>
         
@@ -227,7 +228,20 @@
                 <lbs>50</lbs>
             </opt>
         </weight>
-
+        <d-config>
+            <full_damage_dist_m type="double">20</full_damage_dist_m>
+            <use_hitpoints_instead_of_failure_modes_bool type="bool">true</use_hitpoints_instead_of_failure_modes_bool>
+            <hp_max type="double">200</hp_max>
+            <hitable_by_air_munitions type="bool">false</hitable_by_air_munitions>
+            <hitable_by_cannon type="bool">true</hitable_by_cannon>
+            <is_fleet type="bool">false</is_fleet>
+            <rwr_to_screen type="bool">false</rwr_to_screen>
+            <rwr_audio_extended type="bool">false</rwr_audio_extended>
+            <tacview_supported type="bool">false</tacview_supported>
+            <m28_auto type="bool">false</m28_auto>
+            <mlw_max type="double">2.25</mlw_max>
+            <auto_flare_caller type="bool">false</auto_flare_caller>
+        </d-config>
         <armament>
 				<models type="string">Aircraft/Frigate/Models/emesary/</models>
 				<msg type="bool">true</msg>
@@ -239,6 +253,7 @@
                 <MAW-bearing type="double">0</MAW-bearing>
                 <MAW-active type="bool">false</MAW-active>
                 <spike type="bool">false</spike>
+				
             </armament>
     </payload>
 	
@@ -258,9 +273,5 @@
             <file>Aircraft/Frigate/Nasal/gci.nas</file>
         </gci>
     </nasal>
-
-    <input>
-        <mice include="Sim/mice.xml"/>
-    </input>
 
 </PropertyList>

@@ -119,7 +119,7 @@
  </animation-->
 
  <model>
-    <path>FlapLid_mast.ac</path>
+    <path>FlapLid_mast.xml</path>
     <name>flaplid</name>
     <offsets>
         <x-m> 0</x-m>

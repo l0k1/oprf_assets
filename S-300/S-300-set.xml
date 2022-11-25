@@ -1,64 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--
-    Copyright (c) 2015 onox
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
--->
-
 <PropertyList>
 
-    <environment>
-        <in-to-wind type="bool">false</in-to-wind>
-    </environment>
-
-    <carrier>
-        <fdm>
-            <settings>
-                <!-- The maximum bank angle during full rudder deflection -->
-                <bank-limit type="double">15.0</bank-limit>
-
-                <!-- Frequency and overshoot of the oscillator used to
-                     simulate heeling (roll).
-                -->
-                <heel-frequency type="double">0.5</heel-frequency>
-                <heel-overshoot type="double">4.0</heel-overshoot>
-
-                <!-- Frequency and overshoot of the oscillator used to
-                     simulate trimming (pitch).
-                -->
-                <trim-frequency type="double">0.32</trim-frequency>
-                <trim-overshoot type="double">0.45</trim-overshoot>
-
-                <!-- The speed of the waves plus speed of the ship in knots
-                     which generates the maximum overshoot of the trim
-                     oscillation.
-                -->
-                <max-trim-oscillation-wave-kt type="double">30.0</max-trim-oscillation-wave-kt>
-
-                <!-- The speed of the waves in knots which generates the
-                     maximum overshoot of the heel oscillation.
-                -->
-                <max-heel-oscillation-wave-kt type="double">20.0</max-heel-oscillation-wave-kt>
-
-                <movement type="bool">true</movement>
-            </settings>
-        </fdm>
-    </carrier>
-
     <sim>
-        <author>pinto</author>
+        <author>pinto, Nikolai V. Chr., onox</author>
         <description>S-300</description>
         <long-description>S-300 (SA-10) is a Russian self-propelled surface to air missile system.</long-description>
         <status>alpha</status>
@@ -94,11 +39,6 @@
                 <splash type="bool">true</splash>
                 <path>gui/1.png</path>
             </preview>
-            <preview>
-                <type>exterior</type>
-                <splash type="bool">true</splash>
-                <path>gui/2.png</path>
-            </preview>
         </previews>
 
         <current-view>
@@ -129,7 +69,7 @@
                 </limits>
             </config>
         </view>
-        <view n="102">
+        <view n="200">
             <name>Follow</name>
             <type>lookat</type>
             <internal>false</internal>
@@ -173,24 +113,13 @@
             <auto-position type="bool">true</auto-position>
         </tower>
 
-        <systems>
-            <autopilot>
-                <path>Systems/fbw.xml</path>
-            </autopilot>
-            <autopilot>
-                <path>Systems/fdm.xml</path>
-            </autopilot>
-
-            <property-rule n="100">
-                <path>Systems/views.xml</path>
-            </property-rule>
-        </systems>
         <multiplay>
             <visibility-range-nm type="int">500</visibility-range-nm>
             <generic>
                 <int n="0" type="int">0</int>
                 <int n="2" type="int">0</int>
                 <string n="6" type="string"></string><!-- string 6 used by radar lock RWR warning -->
+                <string n="7" type="string"></string><!-- datalink -->
             </generic>
         </multiplay>
 
@@ -199,51 +128,7 @@
                 <menu n="100">
                     <label>S-300</label>
                     <enabled type="bool">true</enabled>
-                    <item>
-                        <label>Reload</label>
-                        <binding>
-                            <command>nasal</command>
-                            <script>
-                                fire_control.reload();
-                            </script>
-                        </binding>
-                    </item>
-                    <item>
-                      <label>Targets</label>
-                      <name>enemies</name>
-                      <binding>
-                        <command>dialog-show</command>
-                        <dialog-name>enemies</dialog-name>
-                      </binding>
-                    </item>
-                    <item>
-                      <label>Priority</label>
-                      <name>enemies</name>
-                      <binding>
-                        <command>dialog-show</command>
-                        <dialog-name>priority</dialog-name>
-                      </binding>
-                    </item>
-                    <item>
-                        <label>Relocate to cursor last click</label>
-                        <binding>
-                            <command>nasal</command>
-                            <script>
-                                setprop("position/latitude-deg",getprop("sim/input/click/latitude-deg"));
-                                setprop("position/longitude-deg",getprop("sim/input/click/longitude-deg"));
-                                setprop("position/altitude-ft",getprop("sim/input/click/elevation-ft"));
-                            </script>
-                        </binding>
-                    </item>
-                    <item>
-                        <label>Print log to console</label>
-                        <binding>
-                            <command>nasal</command>
-                            <script>
-                                damage.printDamageLog();
-                            </script>
-                        </binding>
-                    </item>
+                    
                     <item>
                         <label>Event Log</label>
                         <binding>
@@ -274,39 +159,33 @@
 	
 	<controls>
         <armament>
-            <station-select type="int">0</station-select>
-            <trigger type="bool">false</trigger>
             <station n="1">
                 <offsets>
                     <x-m type="double">  -5.63782</x-m>
-                    <y-m type="double"> -1.1407</y-m>
+                    <y-m type="double"> 48.8593</y-m>
                     <z-m type="double">  3.8</z-m>
                 </offsets>
-                <trigger type="bool">false</trigger>
             </station>
             <station n="2">
                 <offsets>
                     <x-m type="double">  -6.53782</x-m>
-                    <y-m type="double"> -0.540702</y-m>
+                    <y-m type="double"> 49.4593</y-m>
                     <z-m type="double">  3.8</z-m>
                 </offsets>
-                <trigger type="bool">false</trigger>
             </station>
             <station n="3">
                 <offsets>
                     <x-m type="double">  -5.63782</x-m>
-                    <y-m type="double"> 1.1407</y-m>
+                    <y-m type="double"> 51.1407</y-m>
                     <z-m type="double">  3.8</z-m>
                 </offsets>
-                <trigger type="bool">false</trigger>
             </station>
             <station n="4">
                 <offsets>
                     <x-m type="double">  -6.53782</x-m>
-                    <y-m type="double"> 0.540702</y-m>
+                    <y-m type="double"> 50.540702</y-m>
                     <z-m type="double">  3.8</z-m>
                 </offsets>
-                <trigger type="bool">false</trigger>
             </station>
         </armament>
 	</controls>
@@ -321,9 +200,32 @@
                 <lbs>50</lbs>
             </opt>
         </weight>
-	
+        <d-config>
+            <full_damage_dist_m type="double">3</full_damage_dist_m>
+            <use_hitpoints_instead_of_failure_modes_bool type="bool">true</use_hitpoints_instead_of_failure_modes_bool>
+            <hp_max type="double">80</hp_max>
+            <hitable_by_air_munitions type="bool">false</hitable_by_air_munitions>
+            <hitable_by_cannon type="bool">true</hitable_by_cannon>
+            <is_fleet type="bool">false</is_fleet>
+            <rwr_to_screen type="bool">false</rwr_to_screen>
+            <rwr_audio_extended type="bool">false</rwr_audio_extended>
+            <tacview_supported type="bool">false</tacview_supported>
+            <m28_auto type="bool">false</m28_auto>
+            <mlw_max type="double">2.25</mlw_max>
+            <auto_flare_caller type="bool">false</auto_flare_caller>
+        </d-config>	
         <armament>
 				<models type="string">Aircraft/S-300/Models/Armament/Weapons/</models>
+                <modelsUseCase type="bool">true</modelsUseCase>
+                <modelsUpperCase type="bool">true</modelsUpperCase>
+                <MP-lat type="string">rotors/main/blade[0]/flap-deg</MP-lat>
+                <MP-lon type="string">rotors/main/blade[1]/flap-deg</MP-lon>
+                <MP-alt type="string">rotors/main/blade[2]/flap-deg</MP-alt>
+                <MP-alt-ft type="string">rotors/main/blade[2]/position-deg</MP-alt-ft>
+                <gnd-launch type="bool">true</gnd-launch>
+                <pylon-offset type="int">1</pylon-offset>
+                <pylon-stations>controls/armament</pylon-stations>
+                <station-name type="string">station</station-name>
 				<msg type="bool">true</msg>
 				<damage type="bool">true</damage>
                 <enable-craters type="bool">true</enable-craters>
@@ -368,19 +270,19 @@
         <damage type="double">100</damage>
     </sam>
 
-    <enemies>
-        <e1 userarchive="y" type="string">Leto</e1>
-        <e2 userarchive="y" type="string">swamp</e2>
-        <e3 userarchive="y" type="string">pinto</e3>
-        <e4 userarchive="y" type="string">fb237</e4>
-        <e5 userarchive="y" type="string">Wilco-1</e5>
-        <e6 userarchive="y" type="string">Kokos</e6>
-        <e7 userarchive="y" type="string">J-Mav16</e7>
-        <e8 userarchive="y" type="string">S</e8>
-        <e9 userarchive="y" type="string">Raider1</e9>
-        <e10 userarchive="y" type="string">Slobb</e10>
-        <e11 userarchive="y" type="string">5H1N0B1</e11>
-        <e12 userarchive="y" type="string">SNOWY1</e12>
+        <enemies>
+        <e1 userarchive="y" type="string">target1</e1>
+        <e2 userarchive="y" type="string">target2</e2>
+        <e3 userarchive="y" type="string">target3</e3>
+        <e4 userarchive="y" type="string">target4</e4>
+        <e5 userarchive="y" type="string">target5</e5>
+        <e6 userarchive="y" type="string">target6</e6>
+        <e7 userarchive="y" type="string">target7</e7>
+        <e8 userarchive="y" type="string">target8</e8>
+        <e9 userarchive="y" type="string">target9</e9>
+        <e10 userarchive="y" type="string">targetA</e10>
+        <e11 userarchive="y" type="string">targetB</e11>
+        <e12 userarchive="y" type="string">targetC</e12>
     </enemies>
 
     <priority type="int">0</priority>

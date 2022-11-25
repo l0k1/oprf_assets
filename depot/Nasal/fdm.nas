@@ -42,26 +42,26 @@ var PositionUpdater = func () {
 	var type = getprop("sim/multiplay/generic/int[17]");
 	if (type != last_type) {
 		if (damage.hp_max == damage.hp) {
-			if (type == 0) {damage.hp_max=900;damage.hp=900;}
-			if (type == 1) {damage.hp_max=500;damage.hp=500;}
-			if (type == 2) {damage.hp_max=200;damage.hp=200;}
-			if (type == 3) {damage.hp_max=300;damage.hp=300;}
-			if (type == 4) {damage.hp_max=900;damage.hp=900;}
-			if (type == 5) {damage.hp_max=1500;damage.hp=1500;}
-			if (type == 6) {damage.hp_max=450;damage.hp=450;}
-			if (type == 7) {damage.hp_max=0;damage.hp=0;}
-			if (type == 8) {damage.hp_max=300;damage.hp=300;}
-			if (type == 9) {damage.hp_max=300;damage.hp=300;}
-			if (type == 10) {damage.hp_max=500;damage.hp=500;}
-			if (type == 11) {damage.hp_max=200;damage.hp=200;}
-			if (type == 12) {damage.hp_max=0;damage.hp=0;}
-			if (type == 14) {damage.hp_max=600;damage.hp=600;}
-			if (type == 15) {damage.hp_max=1400;damage.hp=1400;}
-			if (type == 16) {damage.hp_max=100;damage.hp=100;}
-			if (type == 17) {damage.hp_max=300;damage.hp=300;}
-			if (type == 18) {damage.hp_max=50;damage.hp=50;}
-			if (type == 19) {damage.hp_max=2500;damage.hp=2500;}
-			if (type == 20) {damage.hp_max=300;damage.hp=300;}
+			if (type == 0) {damage.hp_max=900;damage.hp=damage.hp_max;}
+			if (type == 1) {damage.hp_max=500;damage.hp=damage.hp_max;}
+			if (type == 2) {damage.hp_max=200;damage.hp=damage.hp_max;}
+			if (type == 3) {damage.hp_max=300;damage.hp=damage.hp_max;}
+			if (type == 4) {damage.hp_max=900;damage.hp=damage.hp_max;}
+			if (type == 5) {damage.hp_max=1500;damage.hp=damage.hp_max;}
+			if (type == 6) {damage.hp_max=450;damage.hp=damage.hp_max;}
+			if (type == 7) {damage.hp_max=0;damage.hp=damage.hp_max;}
+			if (type == 8) {damage.hp_max=300;damage.hp=damage.hp_max;}
+			if (type == 9) {damage.hp_max=300;damage.hp=damage.hp_max;}
+			if (type == 10) {damage.hp_max=500;damage.hp=damage.hp_max;}
+			if (type == 11) {damage.hp_max=200;damage.hp=damage.hp_max;}
+			if (type == 12) {damage.hp_max=0;damage.hp=damage.hp_max;}
+			if (type == 14) {damage.hp_max=600;damage.hp=damage.hp_max;}
+			if (type == 15) {damage.hp_max=1400;damage.hp=damage.hp_max;}
+			if (type == 16) {damage.hp_max=100;damage.hp=damage.hp_max;}
+			if (type == 17) {damage.hp_max=300;damage.hp=damage.hp_max;}
+			if (type == 18) {damage.hp_max=50;damage.hp=damage.hp_max;}
+			if (type == 19) {damage.hp_max=2500;damage.hp=damage.hp_max;}
+			if (type == 20) {damage.hp_max=300;damage.hp=damage.hp_max;}
 			last_type = type;
 		} else {
 			print("Can only switch type when not damaged!!");

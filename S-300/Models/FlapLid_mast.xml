@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+ <path>FlapLid_mast.ac</path>
+
+<animation>
+    <type>rotate</type>
+    <object-name>FlapLid.001</object-name>
+    <property>sim/multiplay/generic/float[8]</property>
+    <factor>-1.0</factor>
+    <offset-deg>180</offset-deg>
+    <axis>   
+     <x1-m> 3.95612 </x1-m>
+     <y1-m> -0.000003 </y1-m>
+     <z1-m> 19.88614 </z1-m>
+     <x2-m> 3.95612 </x2-m>
+     <y2-m> -0.000003 </y2-m>
+     <z2-m> 20.88614 </z2-m>
+    </axis>
+ </animation>
+
+  <nasal>
+      <load><![CDATA[
+            ]]>
+      </load>
+  </nasal>
+
+</PropertyList>

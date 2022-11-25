@@ -238,7 +238,20 @@
                 <lbs>50</lbs>
             </opt>
         </weight>
-	
+        <d-config>
+            <full_damage_dist_m type="double">4</full_damage_dist_m>
+            <use_hitpoints_instead_of_failure_modes_bool type="bool">true</use_hitpoints_instead_of_failure_modes_bool>
+            <hp_max type="double">80</hp_max>
+            <hitable_by_air_munitions type="bool">false</hitable_by_air_munitions>
+            <hitable_by_cannon type="bool">true</hitable_by_cannon>
+            <is_fleet type="bool">false</is_fleet>
+            <rwr_to_screen type="bool">false</rwr_to_screen>
+            <rwr_audio_extended type="bool">false</rwr_audio_extended>
+            <tacview_supported type="bool">false</tacview_supported>
+            <m28_auto type="bool">false</m28_auto>
+            <mlw_max type="double">2.25</mlw_max>
+            <auto_flare_caller type="bool">false</auto_flare_caller>
+        </d-config>	
         <armament>
 				<models type="string">Aircraft/SA-6/Models/Armament/Weapons/</models>
                 <modelsUseCase type="bool">true</modelsUseCase>
@@ -263,7 +276,7 @@
                 <m3m9>        
                     <type-id type="int">96</type-id>
                     <short-name type="string">3M9</short-name>
-                    <long-name type="string">Anti Aircraft Guided Missile</long-name>
+                    <long-name type="string">3M9M3 Surface to Air Missile</long-name>
                     <max-fire-range-nm type="int">18</max-fire-range-nm>
                     <cross-section-sqft type="double">1.42</cross-section-sqft>
                     <weight-launch-lbs>1333</weight-launch-lbs><!-- https://missilery.info/missile/kub -->
@@ -343,19 +356,19 @@
         <damage type="double">100</damage>
     </sam>
 
-    <enemies>
-        <e1 userarchive="y" type="string">Leto</e1>
-        <e2 userarchive="y" type="string">swamp</e2>
-        <e3 userarchive="y" type="string">pinto</e3>
-        <e4 userarchive="y" type="string">fb237</e4>
-        <e5 userarchive="y" type="string">Wilco-1</e5>
-        <e6 userarchive="y" type="string">Kokos</e6>
-        <e7 userarchive="y" type="string">J-Mav16</e7>
-        <e8 userarchive="y" type="string">S</e8>
-        <e9 userarchive="y" type="string">Raider1</e9>
-        <e10 userarchive="y" type="string">Slobb</e10>
-        <e11 userarchive="y" type="string">5H1N0B1</e11>
-        <e12 userarchive="y" type="string">SNOWY1</e12>
+        <enemies>
+        <e1 userarchive="y" type="string">target1</e1>
+        <e2 userarchive="y" type="string">target2</e2>
+        <e3 userarchive="y" type="string">target3</e3>
+        <e4 userarchive="y" type="string">target4</e4>
+        <e5 userarchive="y" type="string">target5</e5>
+        <e6 userarchive="y" type="string">target6</e6>
+        <e7 userarchive="y" type="string">target7</e7>
+        <e8 userarchive="y" type="string">target8</e8>
+        <e9 userarchive="y" type="string">target9</e9>
+        <e10 userarchive="y" type="string">targetA</e10>
+        <e11 userarchive="y" type="string">targetB</e11>
+        <e12 userarchive="y" type="string">targetC</e12>
     </enemies>
 
     <priority type="int">0</priority>

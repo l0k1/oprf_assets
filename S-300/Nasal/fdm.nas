@@ -18,7 +18,7 @@
 #with("updateloop");
 
 # Number of iterations per second
-var frequency = 60.0;
+var frequency = 10.0;
 
 # Change in heading per second at full rudder deflection
 var heading_ps = 0.5;
@@ -33,6 +33,75 @@ setprop("/carrier/roll-offset",0);
 setprop("/carrier/sunk",0);
 
 var PositionUpdater = func () {
+	var position = geo.aircraft_position();
+	var elev0 = geo.elevation(position.lat(),position.lon());
+
+	if (elev0 == nil) elev0 = 0;
+
+	var geodPos = aircraftToCart({x:0, y:50, z: 0});
+	var co = geo.Coord.new();
+	co.set_xyz(geodPos.x, geodPos.y, geodPos.z);
+	var elev = geo.elevation(co.lat(),co.lon());
+	if (elev != nil) {
+		setprop("sim/multiplay/generic/float[10]", elev-elev0);
+		setprop("controls/armament/station[1]/offsets/z-m", elev-elev0+3.8);
+		setprop("controls/armament/station[2]/offsets/z-m", elev-elev0+3.8);
+		setprop("controls/armament/station[3]/offsets/z-m", elev-elev0+3.8);
+		setprop("controls/armament/station[4]/offsets/z-m", elev-elev0+3.8);
+	} else {
+		setprop("sim/multiplay/generic/float[10]", 0);
+		setprop("controls/armament/station[1]/offsets/z-m", 3.8);
+		setprop("controls/armament/station[2]/offsets/z-m", 3.8);
+		setprop("controls/armament/station[3]/offsets/z-m", 3.8);
+		setprop("controls/armament/station[4]/offsets/z-m", 3.8);
+	}
+
+	geodPos = aircraftToCart({x:40, y:-40, z: 0});
+	co = geo.Coord.new();
+	co.set_xyz(geodPos.x, geodPos.y, geodPos.z);
+	elev = geo.elevation(co.lat(),co.lon());
+	if (elev != nil) {
+		setprop("sim/multiplay/generic/float[11]", elev-elev0);
+	} else {
+		setprop("sim/multiplay/generic/float[11]", 0);
+	}
+
+	# not used:
+	geodPos = aircraftToCart({x:0, y:-40, z: 0});
+	co = geo.Coord.new();
+	co.set_xyz(geodPos.x, geodPos.y, geodPos.z);
+	elev = geo.elevation(co.lat(),co.lon());
+	if (elev != nil) {
+		setprop("sim/multiplay/generic/float[12]", elev-elev0);
+	} else {
+		setprop("sim/multiplay/generic/float[12]", 0);
+	}
+
+	geodPos = aircraftToCart({x:-40, y:-40, z: 0});
+	co = geo.Coord.new();
+	co.set_xyz(geodPos.x, geodPos.y, geodPos.z);
+	elev = geo.elevation(co.lat(),co.lon());
+	if (elev != nil) {
+		setprop("sim/multiplay/generic/float[13]", elev-elev0);
+	} else {
+		setprop("sim/multiplay/generic/float[13]", 0);
+	}
+
+	# not used:
+	geodPos = aircraftToCart({x:40, y:40, z: 0});
+	co = geo.Coord.new();
+	co.set_xyz(geodPos.x, geodPos.y, geodPos.z);
+	elev = geo.elevation(co.lat(),co.lon());
+	if (elev != nil) {
+		setprop("sim/multiplay/generic/float[14]", elev-elev0);
+	} else {
+		setprop("sim/multiplay/generic/float[14]", 0);
+	}
+
+
+	settimer( PositionUpdater, 1/frequency );
+	return;
+
 	
 	var position = geo.aircraft_position();
 	
@@ -75,4 +144,4 @@ var PositionUpdater = func () {
 	
 };
 
-#PositionUpdater();
+PositionUpdater();

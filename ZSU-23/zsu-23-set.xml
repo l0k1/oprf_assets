@@ -1,65 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-    systems adapted from truck by onox
+    
     model by Jüttner Domokos aka Rudolf
 
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
 <PropertyList>
 
-    <environment>
-        <in-to-wind type="bool">false</in-to-wind>
-    </environment>
 
-    <carrier>
-        <fdm>
-            <settings>
-                <!-- The maximum bank angle during full rudder deflection -->
-                <bank-limit type="double">15.0</bank-limit>
-
-                <!-- Frequency and overshoot of the oscillator used to
-                     simulate heeling (roll).
-                -->
-                <heel-frequency type="double">0.5</heel-frequency>
-                <heel-overshoot type="double">4.0</heel-overshoot>
-
-                <!-- Frequency and overshoot of the oscillator used to
-                     simulate trimming (pitch).
-                -->
-                <trim-frequency type="double">0.32</trim-frequency>
-                <trim-overshoot type="double">0.45</trim-overshoot>
-
-                <!-- The speed of the waves plus speed of the ship in knots
-                     which generates the maximum overshoot of the trim
-                     oscillation.
-                -->
-                <max-trim-oscillation-wave-kt type="double">30.0</max-trim-oscillation-wave-kt>
-
-                <!-- The speed of the waves in knots which generates the
-                     maximum overshoot of the heel oscillation.
-                -->
-                <max-heel-oscillation-wave-kt type="double">20.0</max-heel-oscillation-wave-kt>
-
-                <movement type="bool">true</movement>
-            </settings>
-        </fdm>
-    </carrier>
-
-    <sim> <!-- include="Sim/views.xml"> -->
-        <author>pinto, onox, Rudolf</author>
+    <sim>
+        <author>Rudolf, pinto, Nikolai V. Chr., onox</author>
         <description>ZSU-23-4M "Shilka" AAA defence system</description>
         <status>alpha</status>
         <aircraft-version>0.1</aircraft-version>
@@ -104,37 +55,34 @@
             </font>
         </hud>
 
-        <menubar include="Dialogs/menu.xml"/>
+        <!--menubar include="Dialogs/menu.xml"/-->
 
         <multiplay>
             <generic>
-                <int n="0" type="int">0</int>
-		<int n="1" type="int" alias="/controls/armament/trigger"/>
-		<float n="0" type="double">0</float> <!-- Turret azimuth -->
-		<float n="1" type="double">0</float> <!-- gun elevation -->
-		<float n="2" type="double">0</float> <!-- radar azimuth -->
-		<float n="3" type="double">0</float> <!-- radar elevation -->
+                    <int n="0" type="int">0</int>
+                    <int n="1" type="int" alias="/sim/multiplay/generic/bool[0]"/>
+            		<float n="0" type="double">0</float> <!-- Turret azimuth -->
+            		<float n="1" type="double">0</float> <!-- gun elevation -->
+            		<float n="2" type="double">0</float> <!-- radar azimuth -->
+                    <float n="3" type="double">0</float> <!-- radar elevation -->
+                    <bool n="0" type="bool">false</bool>
+                    <string n="7" type="string"></string><!-- datalink -->
             </generic>
         </multiplay>
 
         <systems>
-            <autopilot>
-                <path>Systems/fbw.xml</path>
-            </autopilot>
-            <autopilot>
-                <path>Systems/fdm.xml</path>
-            </autopilot>
-	    <property-rule>
-		<path>Systems/radar-pos.xml</path>\
-	    </property-rule>
+	       <property-rule>
+		      <path>Systems/radar-pos.xml</path>\
+	       </property-rule>
 	    
         </systems>
-        
+
         <menubar>
             <default>
                 <menu n="100">
-                    <label>Truck</label>
+                    <label>ZSU-23</label>
                     <enabled type="bool">true</enabled>
+                    
                     <item>
                         <label>Event Log</label>
                         <binding>
@@ -242,9 +190,45 @@
 	    <trigger type="bool">0</trigger>
 	</armament>
     </controls>
+
+        <enemies>
+        <e1 userarchive="y" type="string">target1</e1>
+        <e2 userarchive="y" type="string">target2</e2>
+        <e3 userarchive="y" type="string">target3</e3>
+        <e4 userarchive="y" type="string">target4</e4>
+        <e5 userarchive="y" type="string">target5</e5>
+        <e6 userarchive="y" type="string">target6</e6>
+        <e7 userarchive="y" type="string">target7</e7>
+        <e8 userarchive="y" type="string">target8</e8>
+        <e9 userarchive="y" type="string">target9</e9>
+        <e10 userarchive="y" type="string">targetA</e10>
+        <e11 userarchive="y" type="string">targetB</e11>
+        <e12 userarchive="y" type="string">targetC</e12>
+    </enemies>
+
+    <priority type="int">0</priority>
+    <priority0 type="int">1</priority0>
     
     <payload>
+        <d-config>
+            <full_damage_dist_m type="double">2</full_damage_dist_m>
+            <use_hitpoints_instead_of_failure_modes_bool type="bool">true</use_hitpoints_instead_of_failure_modes_bool>
+            <hp_max type="double">5</hp_max>
+            <hitable_by_air_munitions type="bool">false</hitable_by_air_munitions>
+            <hitable_by_cannon type="bool">true</hitable_by_cannon>
+            <is_fleet type="bool">false</is_fleet>
+            <rwr_to_screen type="bool">false</rwr_to_screen>
+            <rwr_audio_extended type="bool">false</rwr_audio_extended>
+            <tacview_supported type="bool">false</tacview_supported>
+            <m28_auto type="bool">false</m28_auto>
+            <mlw_max type="double">2.25</mlw_max>
+            <auto_flare_caller type="bool">false</auto_flare_caller>
+        </d-config>
         <armament>
+            <MP-lat type="string">rotors/main/blade[0]/flap-deg</MP-lat>
+            <MP-lon type="string">rotors/main/blade[1]/flap-deg</MP-lon>
+            <MP-alt type="string">rotors/main/blade[2]/flap-deg</MP-alt>
+            <MP-alt-ft type="string">rotors/main/blade[2]/position-deg</MP-alt-ft>
             <models type="string">Aircraft/ZSU-23/Models/emesary/</models>
             <msg type="bool">true</msg>
             <enable-craters type="bool">true</enable-craters>
@@ -265,14 +249,19 @@
         <carrier>
             <file>Aircraft/ZSU-23/Nasal/fdm.nas</file>
         </carrier>
-
-	<damage>
-	    <file>Aircraft/ZSU-23/Nasal/damage.nas</file>
-	</damage>
+        <vector>
+            <file>Aircraft/ZSU-23/Nasal/vector.nas</file>
+        </vector>
+        <radar_logic>
+            <file>Aircraft/ZSU-23/Nasal/radar-logic.nas</file>
+        </radar_logic>
+    	<damage>
+    	    <file>Aircraft/ZSU-23/Nasal/damage.nas</file>
+    	</damage>
+        <fire_control>
+            <file>Aircraft/ZSU-23/Nasal/fire-control.nas</file>
+        </fire_control>
     </nasal>
 
-    <input>
-        <mice include="Sim/mice.xml"/>
-    </input>
 
 </PropertyList>

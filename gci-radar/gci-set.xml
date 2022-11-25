@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <PropertyList>
-
-    <environment>
-        <in-to-wind type="bool">false</in-to-wind>
-    </environment>
-
     <sim>
         <author>pinto</author>
         <description>gci</description>
@@ -111,6 +106,7 @@
             <generic>
                 <int n="0" type="int">0</int>
                 <int n="2" type="int">0</int>
+                <string n="7" type="string"></string><!-- datalink -->
             </generic>
             <!--<visibility-range-nm type="int">500</visibility-range-nm>-->
         </multiplay>
@@ -121,6 +117,20 @@
     </carrier>
     
     <payload>
+        <d-config>
+            <full_damage_dist_m type="double">10</full_damage_dist_m>
+            <use_hitpoints_instead_of_failure_modes_bool type="bool">true</use_hitpoints_instead_of_failure_modes_bool>
+            <hp_max type="double">80</hp_max>
+            <hitable_by_air_munitions type="bool">false</hitable_by_air_munitions>
+            <hitable_by_cannon type="bool">true</hitable_by_cannon>
+            <is_fleet type="bool">false</is_fleet>
+            <rwr_to_screen type="bool">false</rwr_to_screen>
+            <rwr_audio_extended type="bool">false</rwr_audio_extended>
+            <tacview_supported type="bool">false</tacview_supported>
+            <m28_auto type="bool">false</m28_auto>
+            <mlw_max type="double">2.25</mlw_max>
+            <auto_flare_caller type="bool">false</auto_flare_caller>
+        </d-config>
         <armament>
             <models type="string">Aircraft/gci-radar/Models/emesary/</models>
             <msg type="bool">true</msg>

@@ -60,7 +60,7 @@
         <disabled type="bool">false</disabled>
     </carrier>
 
-    <sim include="Sim/views.xml">
+    <sim>
         <author>pinto, onox, Nikolai V. Chr., Alexis Bory, Detlef Faber, T. Henkel</author>
         <description>Fleet</description>
         <long-description>
@@ -143,6 +143,7 @@
                 <bool n="44" type="bool">false</bool>
                 <bool n="45" type="bool">false</bool>
                 <bool n="46" type="bool">false</bool>
+                <string n="7" type="string"></string><!-- datalink -->
         	</generic>
         </multiplay>
         <menubar>
@@ -150,23 +151,7 @@
                 <menu n="100">
                     <label>Missile-frigate</label>
                     <enabled type="bool">true</enabled>
-                    <item>
-                        <label>Reload</label>
-                        <binding>
-                            <command>nasal</command>
-                            <script>
-                                fire_control.reload();
-                            </script>
-                        </binding>
-                    </item>
-                    <item>
-                      <label>Targets</label>
-                      <name>enemies</name>
-                      <binding>
-                        <command>dialog-show</command>
-                        <dialog-name>enemies</dialog-name>
-                      </binding>
-                    </item>
+                    
                     <item>
                         <label>Event Log</label>
                         <binding>
@@ -193,6 +178,36 @@
             <path>enemies/e11</path>
             <path>enemies/e12</path>
         </aircraft-data>
+
+        <view n="200">
+            <name>Follow</name>
+            <type>lookat</type>
+            <internal>false</internal>
+            <config>
+                <!--<from-model type="bool">true</from-model>
+                <from-model-idx type="int">0</from-model-idx>-->
+                <eye-fixed type="bool">true</eye-fixed>
+                <target-lat-deg-path>rotors/main/blade[0]/flap-deg</target-lat-deg-path>
+                <target-lon-deg-path>rotors/main/blade[1]/flap-deg</target-lon-deg-path>
+                <target-alt-ft-path>rotors/main/blade[2]/position-deg</target-alt-ft-path>
+                <eye-lat-deg-path>/position/latitude-deg</eye-lat-deg-path>
+                <eye-lon-deg-path>/position/longitude-deg</eye-lon-deg-path>
+                <eye-alt-ft-path>/position/altitude-ft</eye-alt-ft-path>
+                <!--<eye-heading-deg-path>/orientation/heading-deg</eye-heading-deg-path>
+                <eye-pitch-deg-path>/orientation/pitch-deg</eye-pitch-deg-path>
+                <eye-roll-deg-path>/orientation/roll-deg</eye-roll-deg-path>-->
+                <eye-heading-deg-path>/orientation/heading-deg</eye-heading-deg-path>
+                <eye-pitch-deg>0</eye-pitch-deg>
+                <eye-roll-deg>0</eye-roll-deg>
+                <x-offset-m>50</x-offset-m>
+                <y-offset-m>50</y-offset-m>
+                <z-offset-m>25</z-offset-m>
+                <default-field-of-view-deg>120</default-field-of-view-deg>
+                <limits>
+                    <enabled type="bool">false</enabled>
+                </limits>
+            </config>
+        </view>
 
     </sim>
 	
@@ -344,9 +359,33 @@
                 <lbs>50</lbs>
             </opt>
         </weight>
-
+        <d-config>
+            <full_damage_dist_m type="double">20</full_damage_dist_m>
+            <use_hitpoints_instead_of_failure_modes_bool type="bool">true</use_hitpoints_instead_of_failure_modes_bool>
+            <hp_max type="double">200</hp_max>
+            <hitable_by_air_munitions type="bool">false</hitable_by_air_munitions>
+            <hitable_by_cannon type="bool">true</hitable_by_cannon>
+            <is_fleet type="bool">true</is_fleet>
+            <rwr_to_screen type="bool">false</rwr_to_screen>
+            <rwr_audio_extended type="bool">false</rwr_audio_extended>
+            <tacview_supported type="bool">false</tacview_supported>
+            <m28_auto type="bool">false</m28_auto>
+            <mlw_max type="double">2.25</mlw_max>
+            <auto_flare_caller type="bool">false</auto_flare_caller>
+        </d-config>
         <armament>
 				<models type="string">Aircraft/fleet/Models/Armament/Weapons/</models>
+                <modelsUseCase type="bool">true</modelsUseCase>
+                <modelsUpperCase type="bool">true</modelsUpperCase>
+                <MP-lat type="string">rotors/main/blade[0]/flap-deg</MP-lat>
+                <MP-lon type="string">rotors/main/blade[1]/flap-deg</MP-lon>
+                <MP-alt type="string">rotors/main/blade[2]/flap-deg</MP-alt>
+                <MP-alt-ft type="string">rotors/main/blade[2]/position-deg</MP-alt-ft>
+                <hit-interpolation type="bool">true</hit-interpolation>
+                <gnd-launch type="bool">true</gnd-launch>
+                <pylon-offset type="int">1</pylon-offset>
+                <pylon-stations>controls/armament</pylon-stations>
+                <station-name type="string">station</station-name>
 				<msg type="bool">true</msg>
 				<damage type="bool">true</damage>
                 <enable-craters type="bool">true</enable-craters>
@@ -373,19 +412,22 @@
         </main>
     </rotors>
 
-    <enemies>
-        <e1 userarchive="y" type="string">Leto</e1>
-        <e2 userarchive="y" type="string">swamp</e2>
-        <e3 userarchive="y" type="string">pinto</e3>
-        <e4 userarchive="y" type="string">fb237</e4>
-        <e5 userarchive="y" type="string">Wilco-1</e5>
-        <e6 userarchive="y" type="string">Kokos</e6>
-        <e7 userarchive="y" type="string">J-Mav16</e7>
-        <e8 userarchive="y" type="string">S</e8>
-        <e9 userarchive="y" type="string">Raider1</e9>
-        <e10 userarchive="y" type="string">Slobb</e10>
-        <e11 userarchive="y" type="string">5H1N0B1</e11>
-        <e12 userarchive="y" type="string">SNOWY1</e12>
+    <priority type="int">0</priority>
+    <priority0 type="int">1</priority0>
+
+        <enemies>
+        <e1 userarchive="y" type="string">target1</e1>
+        <e2 userarchive="y" type="string">target2</e2>
+        <e3 userarchive="y" type="string">target3</e3>
+        <e4 userarchive="y" type="string">target4</e4>
+        <e5 userarchive="y" type="string">target5</e5>
+        <e6 userarchive="y" type="string">target6</e6>
+        <e7 userarchive="y" type="string">target7</e7>
+        <e8 userarchive="y" type="string">target8</e8>
+        <e9 userarchive="y" type="string">target9</e9>
+        <e10 userarchive="y" type="string">targetA</e10>
+        <e11 userarchive="y" type="string">targetB</e11>
+        <e12 userarchive="y" type="string">targetC</e12>
     </enemies>
 	
     <nasal>
@@ -412,9 +454,5 @@
 			<file>Aircraft/fleet/Nasal/fire-control.nas</file>
 		</fire_control>
     </nasal>
-
-    <input>
-        <mice include="Sim/mice.xml"/>
-    </input>
 
 </PropertyList>

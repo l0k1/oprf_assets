@@ -257,7 +257,20 @@
                 <lbs>50</lbs>
             </opt>
         </weight>
-	
+        <d-config>
+            <full_damage_dist_m type="double">5</full_damage_dist_m>
+            <use_hitpoints_instead_of_failure_modes_bool type="bool">true</use_hitpoints_instead_of_failure_modes_bool>
+            <hp_max type="double">80</hp_max>
+            <hitable_by_air_munitions type="bool">false</hitable_by_air_munitions>
+            <hitable_by_cannon type="bool">true</hitable_by_cannon>
+            <is_fleet type="bool">false</is_fleet>
+            <rwr_to_screen type="bool">false</rwr_to_screen>
+            <rwr_audio_extended type="bool">false</rwr_audio_extended>
+            <tacview_supported type="bool">false</tacview_supported>
+            <m28_auto type="bool">false</m28_auto>
+            <mlw_max type="double">2.25</mlw_max>
+            <auto_flare_caller type="bool">false</auto_flare_caller>
+        </d-config>	
         <armament>
 				<models type="string">Aircraft/MIM-104D/Models/Armament/Weapons/</models>
                 <modelsUseCase type="bool">true</modelsUseCase>
@@ -295,17 +308,17 @@
                     <all-aspect type="bool">true</all-aspect>
                     
                     <FCS-field-deg type="int">360</FCS-field-deg>
-                    <seeker-field-deg type="int">400</seeker-field-deg><!-- since launched vertical, it cannot be too small -->
+                    <seeker-field-deg type="int">400</seeker-field-deg>
                     <max-g type="int">25</max-g>
                     <thrust-lbf-stage-1 type="double">15000</thrust-lbf-stage-1>
-                    <thrust-lbf-stage-2 type="double">0</thrust-lbf-stage-2> <!-- max 2000 m/s speed, 93 NM range -->
+                    <thrust-lbf-stage-2 type="double">0</thrust-lbf-stage-2> <!--  -->
                     <stage-1-duration-sec type="double">12</stage-1-duration-sec>
                     <stage-gap-duration-sec type="double">0</stage-gap-duration-sec>
                     <stage-2-duration-sec type="double">0</stage-2-duration-sec>
                     
                     <weight-warhead-lbs>185</weight-warhead-lbs>
                     <weight-fuel-lbm>1000</weight-fuel-lbm>                       <!--  -->
-                    <drag-coeff type="double">0.10</drag-coeff>                  <!-- max 2000 m/s speed, 93 NM range -->
+                    <drag-coeff type="double">0.10</drag-coeff>                  <!--  -->
                     
                     <arming-time-sec type="double">2</arming-time-sec> 
                     <min-speed-for-guiding-mach type="double">0.45</min-speed-for-guiding-mach> 
@@ -365,19 +378,19 @@
         <damage type="double">100</damage>
     </sam>
 
-    <enemies>
-        <e1 userarchive="y" type="string">Leto</e1>
-        <e2 userarchive="y" type="string">swamp</e2>
-        <e3 userarchive="y" type="string">pinto</e3>
-        <e4 userarchive="y" type="string">fb237</e4>
-        <e5 userarchive="y" type="string">Wilco-1</e5>
-        <e6 userarchive="y" type="string">Kokos</e6>
-        <e7 userarchive="y" type="string">J-Mav16</e7>
-        <e8 userarchive="y" type="string">S</e8>
-        <e9 userarchive="y" type="string">Raider1</e9>
-        <e10 userarchive="y" type="string">Slobb</e10>
-        <e11 userarchive="y" type="string">5H1N0B1</e11>
-        <e12 userarchive="y" type="string">SNOWY1</e12>
+        <enemies>
+        <e1 userarchive="y" type="string">target1</e1>
+        <e2 userarchive="y" type="string">target2</e2>
+        <e3 userarchive="y" type="string">target3</e3>
+        <e4 userarchive="y" type="string">target4</e4>
+        <e5 userarchive="y" type="string">target5</e5>
+        <e6 userarchive="y" type="string">target6</e6>
+        <e7 userarchive="y" type="string">target7</e7>
+        <e8 userarchive="y" type="string">target8</e8>
+        <e9 userarchive="y" type="string">target9</e9>
+        <e10 userarchive="y" type="string">targetA</e10>
+        <e11 userarchive="y" type="string">targetB</e11>
+        <e12 userarchive="y" type="string">targetC</e12>
     </enemies>
 
     <priority type="int">0</priority>

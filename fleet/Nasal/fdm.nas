@@ -77,7 +77,7 @@ var PositionUpdater = func () {
 		# Set new position
 		setprop("/position/latitude-deg", position.lat());
 		setprop("/position/longitude-deg", position.lon());
-		var g_alt = getprop("/position/ground-elev-ft")+1;
+		var g_alt = getprop("/position/ground-elev-ft");
 		setprop("/position/altitude-ft",g_alt);	
 
 		# Update heading
