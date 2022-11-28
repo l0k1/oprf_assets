@@ -1,0 +1,635 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+    <name>Vinson HUD</name>
+
+    <enable3d>false</enable3d>
+
+    <!-- <tape>
+        <name>Rel Brg</name>
+        <x>-100</x>
+        <y>190</y>
+        <width>200</width>
+        <height>28</height>
+
+        <input>
+            <property>/sim/current-view/heading-offset-rel-deg</property>
+        </input>
+        <display-span>25.0</display-span>
+
+        <option>top</option>
+
+        <major-divisions>5</major-divisions>
+        <minor-divisions>1</minor-divisions>
+        <tick-bottom>false</tick-bottom>
+        <tick-top>false</tick-top>
+        <tick-right>true</tick-right>
+        <tick-left>true</tick-left>
+        <cap-bottom>true</cap-bottom>
+        <cap-top>false</cap-top>
+        <cap-right>false</cap-right>
+        <cap-left>false</cap-left>
+        <marker-offset>0.0</marker-offset>
+        <enable-pointer>true</enable-pointer>
+        <pointer-type>fixed</pointer-type>
+        <tick-type>line</tick-type>
+        <tick-length>variable</tick-length>
+    </tape> -->
+
+    <ladder>
+        <name>Ladder</name>
+        <type>pitch</type>
+        <x>-60</x>
+        <y>-90</y>
+        <width>120</width>
+        <height>180</height>
+
+        <condition>
+            <equals>
+                <property>/sim/current-view/name</property>
+                <value>Approach View</value>
+            </equals>
+        </condition>
+
+        <roll-input>
+            <property>/orientation/roll-deg</property>
+            <factor>-1.0</factor>
+        </roll-input>
+
+        <pitch-input>
+            <property>/orientation/pitch-deg</property>
+            <factor>-1.0</factor>
+        </pitch-input>
+
+        <compression-factor>30</compression-factor>
+        <display-span>8</display-span>
+        <divisions>1.0</divisions>
+        <screen-hole>100</screen-hole>
+        <lbl-pos>0</lbl-pos>
+        <glide-slope>0.0</glide-slope>
+        <enable-fuselage-ref-line>false</enable-fuselage-ref-line>
+        <enable-target-spot>false</enable-target-spot>
+        <enable-target-markers>true</enable-target-markers>
+        <enable-velocity-vector>false</enable-velocity-vector>
+        <enable-drift-marker>false</enable-drift-marker>
+        <enable-alpha-bracket>false</enable-alpha-bracket>
+        <enable-energy-marker>false</enable-energy-marker>
+        <enable-climb-dive-marker>false</enable-climb-dive-marker>
+        <enable-glide-slope-marker>false</enable-glide-slope-marker>
+        <enable-energy-worm>false</enable-energy-worm>
+        <enable-waypoint-marker>false</enable-waypoint-marker>
+        <enable-zenith>false</enable-zenith>
+        <enable-nadir>false</enable-nadir>
+        <enable-hat>false</enable-hat>
+    </ladder>
+
+    <!--<label>
+        <name>Wind Angle Runway</name>
+        <x>-300</x>
+        <y>190</y>
+        <width>200</width>
+        <height>25</height>
+        <prefix> Wind Angle Runway: </prefix>
+        <postfix> deg</postfix>
+        <halign>left</halign>
+        <format>%03.0f</format>
+        <box>true</box>
+        <input>
+            <property>/orientation/relative-wind-deg</property>
+        </input>
+    </label>-->
+
+    <label>
+        <name>Height</name>
+        <x>-300</x>
+        <y>80</y>
+        <width>200</width>
+        <height>25</height>
+
+        <condition>
+            <or>
+                <equals>
+                    <property>/sim/current-view/name</property>
+                    <value>Landing Signal Officer View</value>
+                </equals>
+                <equals>
+                    <property>/sim/current-view/name</property>
+                    <value>Approach View</value>
+                </equals>
+            </or>
+        </condition>
+
+        <box>false</box>
+        <prefix>HEIGHT: </prefix>
+        <halign>left</halign>
+
+        <input>
+            <property>/sim/current-view/height</property>
+        </input>
+
+        <blinking>
+            <interval>0.25</interval>
+            <condition>
+                <and>
+                    <equals>
+                        <property>/sim/current-view/height</property>
+                        <value>VERY LOW</value>
+                    </equals>
+                    <less-than>
+                        <property>/sim/current-view/distance</property>
+                        <value>1</value>
+                    </less-than>
+                </and>
+            </condition>
+        </blinking>
+    </label>
+
+    <label>
+        <name>Gear</name>
+        <x>-300</x>
+        <y>60</y>
+        <width>200</width>
+        <height>25</height>
+
+        <condition>
+            <or>
+                <equals>
+                    <property>/sim/current-view/name</property>
+                    <value>Landing Signal Officer View</value>
+                </equals>
+                <equals>
+                    <property>/sim/current-view/name</property>
+                    <value>Approach View</value>
+                </equals>
+            </or>
+        </condition>
+
+        <box>false</box>
+        <prefix>GEAR: </prefix>
+        <halign>left</halign>
+
+        <input>
+            <property>/sim/current-view/gear</property>
+        </input>
+
+        <blinking>
+            <interval>0.25</interval>
+            <condition>
+                <and>
+                    <less-than>
+                        <property>/sim/current-view/gear</property>
+                        <value>1</value>
+                    </less-than>
+                    <less-than>
+                        <property>/sim/current-view/distance</property>
+                        <value>1</value>
+                    </less-than>
+                </and>
+            </condition>
+        </blinking>
+    </label>
+
+    <label>
+        <name>Flap</name>
+        <x>-300</x>
+        <y>40</y>
+        <width>200</width>
+        <height>25</height>
+
+        <condition>
+            <or>
+                <equals>
+                    <property>/sim/current-view/name</property>
+                    <value>Landing Signal Officer View</value>
+                </equals>
+                <equals>
+                    <property>/sim/current-view/name</property>
+                    <value>Approach View</value>
+                </equals>
+            </or>
+        </condition>
+
+        <box>false</box>
+        <prefix>FLAPS: </prefix>
+        <halign>left</halign>
+
+        <input>
+            <property>/sim/current-view/flap</property>
+        </input>
+
+        <blinking>
+            <interval>0.25</interval>
+            <condition>
+                <and>
+                    <less-than>
+                        <property>/sim/current-view/flap</property>
+                        <value>1</value>
+                    </less-than>
+                    <less-than>
+                        <property>/sim/current-view/distance</property>
+                        <value>1</value>
+                    </less-than>
+                </and>
+            </condition>
+        </blinking>
+    </label>
+
+    <label>
+        <name>Hook</name>
+        <x>-300</x>
+        <y>20</y>
+        <width>200</width>
+        <height>25</height>
+
+        <condition>
+            <or>
+                <equals>
+                    <property>/sim/current-view/name</property>
+                    <value>Landing Signal Officer View</value>
+                </equals>
+                <equals>
+                    <property>/sim/current-view/name</property>
+                    <value>Approach View</value>
+                </equals>
+            </or>
+        </condition>
+
+        <box>false</box>
+        <prefix>HOOK: </prefix>
+        <halign>left</halign>
+
+        <input>
+            <property>/sim/current-view/hook</property>
+        </input>
+    </label>
+
+    <!--<label>
+        <name>Magnetic Heading</name>
+        <x>-300</x>
+        <y>-225</y>
+        <width>200</width>
+        <height>25</height>
+        <prefix> Mag. Heading: </prefix>
+        <postfix> deg</postfix>
+        <halign>left</halign>
+        <format>%03.0f</format>
+        <box>true</box>
+        <input>
+            <property>/orientation/heading-magnetic-deg</property>
+        </input>
+    </label>
+
+    <label>
+        <name>Magnetic Heading Runway</name>
+        <x>-300</x>
+        <y>-200</y>
+        <width>200</width>
+        <height>25</height>
+        <prefix> Mag. Heading Runway: </prefix>
+        <postfix> deg</postfix>
+        <halign>left</halign>
+        <format>%03.0f</format>
+        <box>true</box>
+        <input>
+            <property>/orientation/heading-runway-magnetic-deg</property>
+        </input>
+    </label>
+
+    <label>
+        <name>Wind Speed Runway</name>
+        <x>100</x>
+        <y>190</y>
+        <width>200</width>
+        <height>25</height>
+        <prefix> Wind Speed Runway: </prefix>
+        <postfix> kts</postfix>
+        <halign>left</halign>
+        <format>%2.0f</format>
+        <box>true</box>
+        <input>
+            <property>/velocities/wind-speed-runway-kt</property>
+        </input>
+    </label>-->
+
+    <!--<label>
+        <name>Speed</name>
+        <x>100</x>
+        <y>-225</y>
+        <width>200</width>
+        <height>25</height>
+        <prefix> My speed: </prefix>
+        <postfix> kts</postfix>
+        <halign>left</halign>
+        <format>%2.1f</format>
+        <box>true</box>
+        <input>
+            <property>/velocities/groundspeed-kt</property>
+        </input>
+    </label>-->
+
+    <!--<label>
+        <name>Target Speed</name>
+        <x>100</x>
+        <y>-200</y>
+        <width>200</width>
+        <height>25</height>
+        <prefix> Target Speed: </prefix>
+        <postfix> kts</postfix>
+        <halign>left</halign>
+        <format>%2.1f</format>
+        <box>true</box>
+        <input>
+            <property>/carrier/fbw/target/groundspeed-kt</property>
+        </input>
+    </label>-->
+
+    <label>
+        <name>Time to impact</name>
+        <x>150</x>
+        <y>150</y>
+        <width>200</width>
+        <height>25</height>
+        <prefix>1st Time to impact: </prefix>
+        <postfix> sec</postfix>
+        <halign>left</halign>
+        <format>%2.1f</format>
+        <box>true</box>
+        <input>
+            <property>sam/impact0</property>
+        </input>
+    </label>
+
+    <label>
+        <name>Time to impact</name>
+        <x>150</x>
+        <y>100</y>
+        <width>200</width>
+        <height>25</height>
+        <prefix>2nd Time to impact: </prefix>
+        <postfix> sec</postfix>
+        <halign>left</halign>
+        <format>%2.1f</format>
+        <box>true</box>
+        <input>
+            <property>sam/impact1</property>
+        </input>
+    </label>
+
+    <label>
+        <name>Time to impact</name>
+        <x>150</x>
+        <y>50</y>
+        <width>200</width>
+        <height>25</height>
+        <prefix>3rd Time to impact: </prefix>
+        <postfix> sec</postfix>
+        <halign>left</halign>
+        <format>%2.1f</format>
+        <box>true</box>
+        <input>
+            <property>sam/impact2</property>
+        </input>
+    </label>
+
+    <label>
+        <name>Time to impact</name>
+        <x>150</x>
+        <y>0</y>
+        <width>200</width>
+        <height>25</height>
+        <prefix>4th Time to impact: </prefix>
+        <postfix> sec</postfix>
+        <halign>left</halign>
+        <format>%2.1f</format>
+        <box>true</box>
+        <input>
+            <property>sam/impact3</property>
+        </input>
+    </label>
+
+    <label>
+        <name>Time to impact</name>
+        <x>150</x>
+        <y>-50</y>
+        <width>200</width>
+        <height>25</height>
+        <prefix>5th Time to impact: </prefix>
+        <postfix> sec</postfix>
+        <halign>left</halign>
+        <format>%2.1f</format>
+        <box>true</box>
+        <input>
+            <property>sam/impact4</property>
+        </input>
+    </label>
+
+    <label>
+        <name>Time to impact</name>
+        <x>150</x>
+        <y>-100</y>
+        <width>200</width>
+        <height>25</height>
+        <prefix>6th Time to impact: </prefix>
+        <postfix> sec</postfix>
+        <halign>left</halign>
+        <format>%2.1f</format>
+        <box>true</box>
+        <input>
+            <property>sam/impact5</property>
+        </input>
+    </label>
+
+    <label>
+        <name>Hit chance</name>
+        <x>150</x>
+        <y>125</y>
+        <width>200</width>
+        <height>25</height>
+        <prefix>1st Hit chance: </prefix>
+        <postfix> %%</postfix>
+        <halign>left</halign>
+        <format>%d</format>
+        <box>true</box>
+        <input>
+            <property>sam/hit0</property>
+        </input>
+    </label>
+
+    <label>
+        <name>Hit chance</name>
+        <x>150</x>
+        <y>75</y>
+        <width>200</width>
+        <height>25</height>
+        <prefix>2nd Hit chance: </prefix>
+        <postfix> %%</postfix>
+        <halign>left</halign>
+        <format>%d</format>
+        <box>true</box>
+        <input>
+            <property>sam/hit1</property>
+        </input>
+    </label>
+
+    <label>
+        <name>Hit chance</name>
+        <x>150</x>
+        <y>25</y>
+        <width>200</width>
+        <height>25</height>
+        <prefix>3rd Hit chance: </prefix>
+        <postfix> %%</postfix>
+        <halign>left</halign>
+        <format>%d</format>
+        <box>true</box>
+        <input>
+            <property>sam/hit2</property>
+        </input>
+    </label>
+
+    <label>
+        <name>Hit chance</name>
+        <x>150</x>
+        <y>-25</y>
+        <width>200</width>
+        <height>25</height>
+        <prefix>4th Hit chance: </prefix>
+        <postfix> %%</postfix>
+        <halign>left</halign>
+        <format>%d</format>
+        <box>true</box>
+        <input>
+            <property>sam/hit3</property>
+        </input>
+    </label>
+
+    <label>
+        <name>Hit chance</name>
+        <x>150</x>
+        <y>-75</y>
+        <width>200</width>
+        <height>25</height>
+        <prefix>5th Hit chance: </prefix>
+        <postfix> %%</postfix>
+        <halign>left</halign>
+        <format>%d</format>
+        <box>true</box>
+        <input>
+            <property>sam/hit4</property>
+        </input>
+    </label>
+
+    <label>
+        <name>Hit chance</name>
+        <x>150</x>
+        <y>-125</y>
+        <width>200</width>
+        <height>25</height>
+        <prefix>6th Hit chance: </prefix>
+        <postfix> %%</postfix>
+        <halign>left</halign>
+        <format>%d</format>
+        <box>true</box>
+        <input>
+            <property>sam/hit5</property>
+        </input>
+    </label>
+
+    <label>
+        <name>ETA</name>
+        <x>150</x>
+        <y>-175</y>
+        <width>200</width>
+        <height>25</height>
+        <prefix>Time before operational: </prefix>
+        <postfix> sec</postfix>
+        <halign>left</halign>
+        <format>%d</format>
+        <box>true</box>
+        <input>
+            <property>sam/timeleft</property>
+        </input>
+    </label>
+
+    <label>
+        <name>stores</name>
+        <x>-300</x>
+        <y>-175</y>
+        <width>125</width>
+        <height>25</height>
+        <prefix> Missiles ready: </prefix>
+        <postfix></postfix>
+        <halign>left</halign>
+        <format>%d</format>
+        <box>true</box>
+        <input>
+            <property>/sam/missiles</property>
+        </input>
+    </label>
+
+    <label>
+        <name>damage</name>
+        <x>-150</x>
+        <y>-175</y>
+        <width>125</width>
+        <height>25</height>
+        <prefix> Integrity: </prefix>
+        <postfix> %%</postfix>
+        <halign>left</halign>
+        <format>%3.1f</format>
+        <box>true</box>
+        <input>
+            <property>/sam/damage</property>
+        </input>
+    </label>
+    
+    <label>
+        <name>cs</name>
+        <x>0</x>
+        <y>-175</y>
+        <width>125</width>
+        <height>25</height>
+        <prefix> Callsign: </prefix>
+        <postfix></postfix>
+        <halign>left</halign>
+        <format>%s</format>
+        <box>true</box>
+        <input>
+            <property>/sim/multiplay/callsign</property>
+        </input>
+    </label>
+
+    <label>
+        <name>Target info</name>
+        <x>-300</x>
+        <y>-225</y>
+        <width>375</width>
+        <height>25</height>
+        <prefix> Next target: </prefix>
+        <postfix></postfix>
+        <halign>left</halign>
+        <format>%s</format>
+        <box>true</box>
+        <input>
+            <property>/sam/info</property>
+        </input>
+    </label>
+
+    <label>
+        <name>tower</name>
+        <x>100</x>
+        <y>-225</y>
+        <width>200</width>
+        <height>25</height>
+        <prefix> Placement near: </prefix>
+        <postfix></postfix>
+        <halign>left</halign>
+        <format>%s</format>
+        <box>true</box>
+        <input>
+            <property>/sim/tower/airport-id</property>
+        </input>
+    </label>
+
+</PropertyList>

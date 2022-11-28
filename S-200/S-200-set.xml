@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+    <sim>
+        <author>pinto, Leto, J Maverick 16</author>
+        <description>S-200D</description>
+        <long-description>S-200D Dubna (SA-5) is a Soviet-designed, long-distance surface to air missile system.</long-description>
+        <status>alpha</status>
+        <aircraft-version>0.1</aircraft-version>
+
+        <flight-model>null</flight-model>
+
+        <aero>KPN-D</aero>
+        <aircraft-operator>KPN</aircraft-operator>
+        
+        <chase-distance-m type="double" archive="y">-250.0</chase-distance-m>
+        
+        <model>
+            <path>Aircraft/S-200/Models/s-200.xml</path>
+        </model>
+
+        <sound>
+            <path>Sounds/sound.xml</path>
+        </sound>
+
+        <presets>
+            <onground>true</onground>
+        </presets>
+
+        <startup>
+            <splash-texture>Aircraft/S-200/splash1.png</splash-texture>
+        </startup>
+
+        <previews>
+            <preview>
+                <type>exterior</type>
+                <splash type="bool">true</splash>
+                <path>gui/1.png</path>
+            </preview>
+            <preview>
+                <type>exterior</type>
+                <splash type="bool">true</splash>
+                <path>gui/2.png</path>
+            </preview>
+        </previews>
+
+        <current-view>
+            <deck-park type="bool">true</deck-park>
+
+            <z-offset-dec-step type="double">0.0</z-offset-dec-step>
+            <z-offset-inc-step type="double">0.0</z-offset-inc-step>
+            <can-change-z-offset type="bool">false</can-change-z-offset>
+
+            <z-offset-min-m type="float">100.0</z-offset-min-m>
+            <z-offset-max-m type="float">2000.0</z-offset-max-m>
+        </current-view>
+
+        <view n="200">
+            <name>Follow</name>
+            <type>lookat</type>
+            <internal>false</internal>
+            <config>
+                <!--<from-model type="bool">true</from-model>
+                <from-model-idx type="int">0</from-model-idx>-->
+                <eye-fixed type="bool">true</eye-fixed>
+                <target-lat-deg-path>rotors/main/blade[0]/flap-deg</target-lat-deg-path>
+                <target-lon-deg-path>rotors/main/blade[1]/flap-deg</target-lon-deg-path>
+                <target-alt-ft-path>rotors/main/blade[2]/position-deg</target-alt-ft-path>
+                <eye-lat-deg-path>/position/latitude-deg</eye-lat-deg-path>
+                <eye-lon-deg-path>/position/longitude-deg</eye-lon-deg-path>
+                <eye-alt-ft-path>/position/altitude-ft</eye-alt-ft-path>
+                <!--<eye-heading-deg-path>/orientation/heading-deg</eye-heading-deg-path>
+                <eye-pitch-deg-path>/orientation/pitch-deg</eye-pitch-deg-path>
+                <eye-roll-deg-path>/orientation/roll-deg</eye-roll-deg-path>-->
+                <eye-heading-deg-path>/orientation/heading-deg</eye-heading-deg-path>
+                <eye-pitch-deg>0</eye-pitch-deg>
+                <eye-roll-deg>0</eye-roll-deg>
+                <x-offset-m>50</x-offset-m>
+                <y-offset-m>50</y-offset-m>
+                <z-offset-m>25</z-offset-m>
+                <default-field-of-view-deg>70</default-field-of-view-deg>
+                <limits>
+                    <enabled type="bool">false</enabled>
+                </limits>
+            </config>
+        </view>
+
+        <hud>
+            <path n="1">Aircraft/S-200/Hud/hud.xml</path>
+            <visibility n="1">true</visibility>
+            <font>
+                <size type="float">11.0</size>
+            </font>
+        </hud>
+
+        <tower>
+            <auto-position type="bool">true</auto-position>
+        </tower>
+
+        <multiplay>
+            <visibility-range-nm type="int">500</visibility-range-nm>
+            <generic>
+                <int n="0" type="int">0</int>
+                <int n="2" type="int">0</int>
+                <string n="6" type="string"></string><!-- string 6 used by radar lock RWR warning -->
+                <string n="7" type="string"></string><!-- datalink -->
+            </generic>
+        </multiplay>
+
+        <menubar>
+            <default>
+                <menu n="100">
+                    <label>S-200D</label>
+                    <enabled type="bool">true</enabled>
+                    
+                    <item>
+                        <label>Event Log</label>
+                        <binding>
+                            <command>dialog-show</command>
+                            <dialog-name>flightlog</dialog-name>
+                        </binding>
+                    </item>
+                </menu>
+            </default>
+        </menubar>
+
+        <aircraft-data>
+            <!-- Properties that get saved to persist locally between FG sessions -->
+            <path>enemies/e1</path>
+            <path>enemies/e2</path>
+            <path>enemies/e3</path>
+            <path>enemies/e4</path>
+            <path>enemies/e5</path>
+            <path>enemies/e6</path>
+            <path>enemies/e7</path>
+            <path>enemies/e8</path>
+            <path>enemies/e9</path>
+            <path>enemies/e10</path>
+            <path>enemies/e11</path>
+            <path>enemies/e12</path>
+        </aircraft-data>
+    </sim>
+	
+	<controls>
+        <armament>
+            <station n="1">
+                <offsets>
+                    <x-m type="double">  25</x-m>
+                    <y-m type="double"> -50</y-m>
+                    <z-m type="double">  5.5</z-m>
+                </offsets>
+            </station>
+            <station n="2">
+                <offsets>
+                    <x-m type="double">  -25</x-m>
+                    <y-m type="double">  -50</y-m>
+                    <z-m type="double">  5.5</z-m>
+                </offsets>
+            </station>
+            <station n="3">
+                <offsets>
+                    <x-m type="double">  -50</x-m>
+                    <y-m type="double">  0</y-m>
+                    <z-m type="double">  5.5</z-m>
+                </offsets>
+            </station>
+            <station n="4">
+                <offsets>
+                    <x-m type="double">  -25</x-m>
+                    <y-m type="double">  50</y-m>
+                    <z-m type="double">  5.5</z-m>
+                </offsets>
+            </station>
+            <station n="5">
+                <offsets>
+                    <x-m type="double">   25</x-m>
+                    <y-m type="double">   50</y-m>
+                    <z-m type="double">  5.5</z-m>
+                </offsets>
+            </station>
+            <station n="6">
+                <offsets>
+                    <x-m type="double">   50</x-m>
+                    <y-m type="double">   0</y-m>
+                    <z-m type="double">  5.5</z-m>
+                </offsets>
+            </station>
+        </armament>
+	</controls>
+	
+	<payload>
+    <d-config>
+            <full_damage_dist_m type="double">2.25</full_damage_dist_m>
+            <use_hitpoints_instead_of_failure_modes_bool type="bool">true</use_hitpoints_instead_of_failure_modes_bool>
+            <hp_max type="double">80</hp_max>
+            <hitable_by_air_munitions type="bool">false</hitable_by_air_munitions>
+            <hitable_by_cannon type="bool">true</hitable_by_cannon>
+            <is_fleet type="bool">false</is_fleet>
+            <rwr_to_screen type="bool">false</rwr_to_screen>
+            <rwr_audio_extended type="bool">false</rwr_audio_extended>
+            <tacview_supported type="bool">false</tacview_supported>
+            <m28_auto type="bool">false</m28_auto>
+            <mlw_max type="double">2.25</mlw_max>
+            <auto_flare_caller type="bool">false</auto_flare_caller>
+        </d-config> 	
+        <armament>
+				<models type="string">Aircraft/S-200/Models/Armament/Weapons/</models>
+                <modelsUseCase type="bool">true</modelsUseCase>
+                <modelsUpperCase type="bool">true</modelsUpperCase>
+                <MP-lat type="string">rotors/main/blade[0]/flap-deg</MP-lat>
+                <MP-lon type="string">rotors/main/blade[1]/flap-deg</MP-lon>
+                <MP-alt type="string">rotors/main/blade[2]/flap-deg</MP-alt>
+                <MP-alt-ft type="string">rotors/main/blade[2]/position-deg</MP-alt-ft>
+                <hit-interpolation type="bool">true</hit-interpolation>
+                <gnd-launch type="bool">true</gnd-launch>
+                <pylon-offset type="int">1</pylon-offset>
+                <pylon-stations>controls/armament</pylon-stations>
+                <station-name type="string">station</station-name>
+				<msg type="bool">true</msg>
+				<damage type="bool">true</damage>
+                <enable-craters type="bool">true</enable-craters>
+                <MLW-bearing type="double">0</MLW-bearing>
+                <MLW-count type="int">0</MLW-count>
+                <MLW-launcher type="string"></MLW-launcher>
+                <MAW-bearing type="double">0</MAW-bearing>
+                <MAW-active type="bool">false</MAW-active>
+                <spike type="bool">false</spike>
+            </armament>
+    </payload>
+
+    <rotors>
+        <main>
+            <blade n="0">
+                <flap-deg type="double">0</flap-deg>
+            </blade>
+            <blade n="1">
+                <flap-deg type="double">0</flap-deg>
+            </blade>
+            <blade n="2">
+                <flap-deg type="double">0</flap-deg>
+                <position-deg type="double">0</position-deg>
+            </blade>
+        </main>
+    </rotors>
+
+    <sam>
+        <impact0 type="double">-1</impact0>
+        <impact1 type="double">-1</impact1>
+        <impact2 type="double">-1</impact2>
+        <impact3 type="double">-1</impact3>
+        <hit0 type="double">-1</hit0>
+        <hit1 type="double">-1</hit1>
+        <hit2 type="double">-1</hit2>
+        <hit3 type="double">-1</hit3>
+        <missiles type="double">1</missiles>
+        <timeleft type="double">600</timeleft>
+        <damage type="double">100</damage>
+    </sam>
+
+    <enemies>
+        <e1 userarchive="y" type="string">target1</e1>
+        <e2 userarchive="y" type="string">target2</e2>
+        <e3 userarchive="y" type="string">target3</e3>
+        <e4 userarchive="y" type="string">target4</e4>
+        <e5 userarchive="y" type="string">target5</e5>
+        <e6 userarchive="y" type="string">target6</e6>
+        <e7 userarchive="y" type="string">target7</e7>
+        <e8 userarchive="y" type="string">target8</e8>
+        <e9 userarchive="y" type="string">target9</e9>
+        <e10 userarchive="y" type="string">targetA</e10>
+        <e11 userarchive="y" type="string">targetB</e11>
+        <e12 userarchive="y" type="string">targetC</e12>
+    </enemies>
+
+    <priority type="int">1</priority>
+    <priority1 type="int">1</priority1>
+	
+    <nasal>
+        <notifications>
+            <file>Aircraft/S-200/Nasal/ArmamentNotification.nas</file>
+            <file>Aircraft/S-200/Nasal/GeoBridgedTransmitter.nas</file>
+        </notifications>
+        <fdm>
+            <file>Aircraft/S-200/Nasal/fdm.nas</file>
+        </fdm>
+		<damage>
+			<file>Aircraft/S-200/Nasal/damage.nas</file>
+		</damage>
+		<radar_logic>
+            <file>Aircraft/S-200/Nasal/radar-logic.nas</file>
+        </radar_logic>
+        <vector>
+            <file>Aircraft/S-200/Nasal/vector.nas</file><!-- needed by the guided-missiles -->
+        </vector>
+        <armament>
+            <file>Aircraft/S-200/Nasal/guided-missiles.nas</file>
+        </armament>
+		<fire_control>
+			<file>Aircraft/S-200/Nasal/fire-control.nas</file>
+		</fire_control>
+    </nasal>
+
+</PropertyList>

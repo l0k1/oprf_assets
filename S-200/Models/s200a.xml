@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+    <path>s-200.ac</path>
+
+   <animation>
+    <type>select</type>
+    <object-name>dubna</object-name>
+    <condition>
+        <less-than>
+          <property>active</property>
+          <value>1</value>
+        </less-than>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>Mount</object-name>
+    <object-name>Body</object-name>
+    <object-name>Boom</object-name>
+    <object-name>dubna</object-name>
+    <property>sim/multiplay/generic/float[6]</property>
+    <factor>1.0</factor>
+    <axis>   
+     <x1-m> 0 </x1-m>
+     <y1-m> 0 </y1-m>
+     <z1-m> 0 </z1-m>
+     <x2-m> 0 </x2-m>
+     <y2-m> 0 </y2-m>
+     <z2-m> -1 </z2-m>
+    </axis>
+ </animation>
+
+</PropertyList>

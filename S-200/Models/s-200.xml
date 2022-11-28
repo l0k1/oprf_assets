@@ -1,0 +1,200 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+  <model>
+    <path>s200a.xml</path>
+    <name>one</name>
+    <offsets>
+        <x-m> 25</x-m>
+        <y-m> -50</y-m>
+        <z-m> 0</z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <path>s200b.xml</path>
+    <name>two</name>
+    <offsets>
+        <x-m> -25</x-m>
+        <y-m> -50</y-m>
+        <z-m> 0</z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <path>s200c.xml</path>
+    <name>three</name>
+    <offsets>
+        <x-m> -50</x-m>
+        <y-m> 0</y-m>
+        <z-m> 0</z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <path>s200d.xml</path>
+    <name>four</name>
+    <offsets>
+        <x-m> -25</x-m>
+        <y-m> 50</y-m>
+        <z-m> 0</z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <path>s200e.xml</path>
+    <name>five</name>
+    <offsets>
+        <x-m> 25</x-m>
+        <y-m> 50</y-m>
+        <z-m> 0</z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <path>s200f.xml</path>
+    <name>six</name>
+    <offsets>
+        <x-m> 50</x-m>
+        <y-m> 0</y-m>
+        <z-m> 0</z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <path>P-12.xml</path>
+    <name>radar</name>
+    <offsets>
+        <x-m> 0</x-m>
+        <y-m> 0</y-m>
+        <z-m> 0</z-m>
+    </offsets>
+  </model>
+
+
+ <animation>
+  <type>translate</type>
+  <object-name>one</object-name>
+  <property>sim/multiplay/generic/float[11]</property>
+  <offset-m>0.0</offset-m>
+  <factor>1.0</factor>
+  <axis>
+   <x>0</x>
+   <y>0</y>
+   <z>1</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>two</object-name>
+  <property>sim/multiplay/generic/float[12]</property>
+  <offset-m>0.0</offset-m>
+  <factor>1.0</factor>
+  <axis>
+   <x>0</x>
+   <y>0</y>
+   <z>1</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>three</object-name>
+  <property>sim/multiplay/generic/float[13]</property>
+  <offset-m>0.0</offset-m>
+  <factor>1.0</factor>
+  <axis>
+   <x>0</x>
+   <y>0</y>
+   <z>1</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>four</object-name>
+  <property>sim/multiplay/generic/float[14]</property>
+  <offset-m>0.0</offset-m>
+  <factor>1.0</factor>
+  <axis>
+   <x>0</x>
+   <y>0</y>
+   <z>1</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>five</object-name>
+  <property>sim/multiplay/generic/float[15]</property>
+  <offset-m>0.0</offset-m>
+  <factor>1.0</factor>
+  <axis>
+   <x>0</x>
+   <y>0</y>
+   <z>1</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>six</object-name>
+  <property>sim/multiplay/generic/float[16]</property>
+  <offset-m>0.0</offset-m>
+  <factor>1.0</factor>
+  <axis>
+   <x>0</x>
+   <y>0</y>
+   <z>1</z>
+  </axis>
+ </animation>
+
+ <model>
+    <path>Aircraft/S-200/Models/smoke.xml</path>
+    <offsets>
+            <x-m> 3.26307</x-m>
+            <y-m>-0.84611</y-m>
+            <z-m> 2.85616</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+ <model>
+    <path>Aircraft/S-200/Models/fire.xml</path>
+    <offsets>
+            <x-m> 3.26307</x-m>
+            <y-m>-0.84611</y-m>
+            <z-m> 2.85616</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+ <model>
+    <path>Aircraft/S-200/Models/smoke.xml</path>
+    <offsets>
+            <x-m> 3.26307</x-m>
+            <y-m> 0.84611</y-m>
+            <z-m> 2.85616</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+ <model>
+    <path>Aircraft/S-200/Models/fire.xml</path>
+    <offsets>
+            <x-m> 3.26307</x-m>
+            <y-m> 0.84611</y-m>
+            <z-m> 2.85616</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+  <nasal>
+      <load><![CDATA[
+        ]]>
+      </load>
+  </nasal>
+
+</PropertyList>

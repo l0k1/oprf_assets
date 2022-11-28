@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+ <path>P-12.ac</path>
+
+ <animation>
+  <type>spin</type>
+  <object-name>Array</object-name>
+  <property>/sim/multiplay/online</property>
+  <factor>-15.0</factor>
+  <center>
+   <x-m>0</x-m>
+   <y-m>0</y-m>
+   <z-m>10.3</z-m>
+  </center>
+  <axis>
+   <x>0</x>
+   <y>0</y>
+   <z>1</z>
+  </axis>
+ </animation>
+
+
+</PropertyList>
