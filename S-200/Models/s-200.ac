@@ -1,9 +1,9 @@
 AC3Db
-MATERIAL "DefaultWhite" rgb 1.000 1.000 1.000  amb 1.000 1.000 1.000  emis 0.000 0.000 0.000  spec 0.500 0.500 0.500  shi 064 trans 0.000
-MATERIAL "Metal"        rgb 0.314 0.314 0.314  amb 1.000 1.000 1.000  emis 0.000 0.000 0.000  spec 1.000 1.000 1.000  shi 128 trans 0.000
-MATERIAL "Van_auv.001"  rgb 1.000 1.000 1.000  amb 1.000 1.000 1.000  emis 0.000 0.000 0.000  spec 1.000 1.000 1.000  shi 128 trans 0.000
-MATERIAL "sand"         rgb 0.886 0.635 0.412  amb 0.043 0.043 0.043  emis 0.000 0.000 0.000  spec 0.031 0.031 0.031  shi 128 trans 0.000
-MATERIAL "Van_auv"      rgb 1.000 1.000 1.000  amb 1.000 1.000 1.000  emis 0.000 0.000 0.000  spec 1.000 1.000 1.000  shi 128 trans 0.000
+MATERIAL "Sand1"          rgb 1.000 1.000 1.000  amb 1.000 1.000 1.000  emis 0.000 0.000 0.000  spec 0.500 0.500 0.500  shi 064 trans 0.000
+MATERIAL "Launcher.Metal" rgb 0.314 0.314 0.314  amb 1.000 1.000 1.000  emis 0.000 0.000 0.000  spec 1.000 1.000 1.000  shi 128 trans 0.000
+MATERIAL "Launcher.Van_auv"  rgb 1.000 1.000 1.000  amb 1.000 1.000 1.000  emis 0.000 0.000 0.000  spec 1.000 1.000 1.000  shi 128 trans 0.000
+MATERIAL "Sand2"          rgb 0.886 0.635 0.412  amb 0.043 0.043 0.043  emis 0.000 0.000 0.000  spec 0.031 0.031 0.031  shi 128 trans 0.000
+MATERIAL "Missile"        rgb 1.000 1.000 1.000  amb 1.000 1.000 1.000  emis 0.000 0.000 0.000  spec 0.500 0.500 0.500  shi 064 trans 0.000
 OBJECT world
 name "Blender_exporter_v2.27__s-200.ac"
 kids 7
