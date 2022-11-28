@@ -61,7 +61,16 @@ var isInEngagementEnvelope = func (target_radial_airspeed, target_ground_distanc
 	return 1;
 }
 
-var midflight = nil;
+var midflight = func (struct) {
+	if (struct.guidance == "semi-radar") {
+		# This makes the SAM system keep lock on target when missile in-flight and no longer tracking the target.
+		# Usage is to make the RWR lock sound go off in targets cockpit.
+		thread.lock(mutexLock);
+		semi_active_track = struct.callsign;
+		thread.unlock(mutexLock);
+	}
+	return {};
+};
 
 
 ##########################################################################
