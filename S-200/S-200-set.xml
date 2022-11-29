@@ -38,11 +38,6 @@
                 <splash type="bool">true</splash>
                 <path>gui/1.png</path>
             </preview>
-            <preview>
-                <type>exterior</type>
-                <splash type="bool">true</splash>
-                <path>gui/2.png</path>
-            </preview>
         </previews>
 
         <current-view>
@@ -226,6 +221,8 @@
                 <MAW-bearing type="double">0</MAW-bearing>
                 <MAW-active type="bool">false</MAW-active>
                 <spike type="bool">false</spike>
+				
+                
             </armament>
     </payload>
 
@@ -275,6 +272,17 @@
 
     <priority type="int">1</priority>
     <priority1 type="int">1</priority1>
+
+    <instrumentation>
+        <datalink>
+            <data type="int">0</data>
+            <power type="bool">true</power>
+            <channel type="int">1212</channel>
+            <power_prop type="string">/instrumentation/datalink/power</power_prop>
+            <channel_prop type="string">instrumentation/datalink/channel</channel_prop>
+            <receive_period type="double">1</receive_period>
+        </datalink>
+    </instrumentation>
 	
     <nasal>
         <notifications>
@@ -296,7 +304,11 @@
         <armament>
             <file>Aircraft/S-200/Nasal/guided-missiles.nas</file>
         </armament>
+        <datalink>
+            <file>Aircraft/S-200/Nasal/datalink.nas</file>
+        </datalink>
 		<fire_control>
+            <file>Aircraft/S-200/Nasal/fire-control-custom.nas</file>
 			<file>Aircraft/S-200/Nasal/fire-control.nas</file>
 		</fire_control>
     </nasal>

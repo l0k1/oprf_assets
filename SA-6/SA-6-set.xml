@@ -356,7 +356,7 @@
         <damage type="double">100</damage>
     </sam>
 
-        <enemies>
+    <enemies>
         <e1 userarchive="y" type="string">target1</e1>
         <e2 userarchive="y" type="string">target2</e2>
         <e3 userarchive="y" type="string">target3</e3>
@@ -373,6 +373,17 @@
 
     <priority type="int">0</priority>
     <priority0 type="int">1</priority0>
+
+    <instrumentation>
+        <datalink>
+            <data type="int">0</data>
+            <power type="bool">true</power>
+            <channel type="int">1212</channel>
+            <power_prop type="string">/instrumentation/datalink/power</power_prop>
+            <channel_prop type="string">instrumentation/datalink/channel</channel_prop>
+            <receive_period type="double">1</receive_period>
+        </datalink>
+    </instrumentation>
 	
     <nasal>
         <notifications>
@@ -394,7 +405,11 @@
         <armament>
             <file>Aircraft/SA-6/Nasal/guided-missiles.nas</file>
         </armament>
+        <datalink>
+            <file>Aircraft/SA-6/Nasal/datalink.nas</file>
+        </datalink>
 		<fire_control>
+            <file>Aircraft/SA-6/Nasal/fire-control-custom.nas</file>
 			<file>Aircraft/SA-6/Nasal/fire-control.nas</file>
 		</fire_control>
     </nasal>

@@ -20,58 +20,6 @@ var ACTIVE_MISSILE = 0;
 var semi_active_track = nil;# with multiple missiles flying in semi-active-radar mode, this can change rather fast. Which means pilots wont get a steady tone, but disrupted tones. (tradeoff)
 var mutexLock = thread.newlock();
 
-################### SAM INFO
-
-var setupTime = 300;#minimum 'launcher_tilt_time' secs no matter what, due to anim and stuff.
-var reload_time = 400;
-var launcher_final_tilt_deg  = 35;
-var launcher_start_tilt_deg  = 35;
-var launcher_tilt_time       =  0;
-var sam_align_to_target      =  0;
-var launcher_align_to_target =  1;
-var align_speed_dps          = 20;
-var radar_elevation_above_terrain_m = 25;
-var radar_lowest_pitch       = 3.5;# 0.5 degs = roughly 925 feet at 20 nm, 25 feet at half a nm. # 0.35 = roughly 925 feet at 20 nm, 25 feet at half a nm.
-
-#reaction tme for s-300p is 28 secs acording to http://www.astronautix.com/s/s-300p.html
-# sounds a bit high for pmu, as its 4 secs for s-400
-
-################### CIWS INFO
-
-var ciws_installed =   0;
-var ciws_domain_nm = 1.50; #range where it can kill
-var ciws_chance    = 0.20; #chance to get a kill at 0nm distance
-var ciws_burst_rounds = 60;#how many rounds in a burst
-var ciws_shell = 15;#from lookup table in damage.nas
-var ROUNDS_init       = 30;
-var ROUNDS = ROUNDS_init;#CIWS bursts remaining
-
-################### MISSILE INFO
-
-var NUM_MISSILES = 5; # total carried minus 1
-var missile_name = "Volga-M";
-var missile_brevity = "5Ya23";
-var missile_max_distance = 36; #max distance of target in nm when it will fire
-var missile_min_distance = 3.5; #minimum distance in nm when it will fire
-var lockon_time = 12; #time in seconds it takes to lock on and get a firing solution on a target
-var fire_minimum_interval = 7;# time since last track was initiated till a new can be initiated
-var same_target_max_missiles = 2;# max number of missiles in air against same target
-
-var isInEngagementEnvelope = func (target_radial_airspeed, target_ground_distance, target_relative_altitude) {
-	return 1;
-}
-
-var midflight = func (struct) {
-	if (struct.guidance == "semi-radar") {
-		# This makes the SAM system keep lock on target when missile in-flight and no longer tracking the target.
-		# Usage is to make the RWR lock sound go off in targets cockpit.
-		thread.lock(mutexLock);
-		semi_active_track = struct.callsign;
-		thread.unlock(mutexLock);
-	}
-	return {};
-};
-
 
 ##########################################################################
 ######################## Common SAM code       ###########################
@@ -79,6 +27,8 @@ var midflight = func (struct) {
 
 ################### VARIOUS
 
+setprop("sim/multiplay/generic/float[7]", 0);# tracking radar vert rotation
+setprop("sim/multiplay/generic/float[8]", 0);# tracking radar horiz rotation
 setprop("sim/multiplay/generic/float[5]", 0);# launcher vert rotation
 setprop("sim/multiplay/generic/float[6]", 0);# launcher horiz rotation
 var start_time = systime();
@@ -139,7 +89,7 @@ var buildTargetList = func {
 };
 
 var lookup = func (sign) {
-	
+
 	foreach (tgt ; targetsV2.vector) {
 		if (tgt.callsign == sign) {
 			return tgt;
@@ -177,9 +127,11 @@ var scan = func() {
 	buildTargetList();
 
 	if ( getprop("/carrier/sunk") == 1 or getprop("/carrier/disabled") == 1) {
+		setprop("sim/multiplay/generic/string[6]", "");
+		datalink.clear_data();
 		return;
 	}
-	
+
 	if (systime() - start_time < setupTime ) {
 		printf("Seconds till activation: %.1f", setupTime - (systime() - start_time));
 		setprop("sam/timeleft", setupTime - (systime() - start_time));
@@ -193,8 +145,11 @@ var scan = func() {
 			setprop("sim/multiplay/generic/float[5]", launcher_final_tilt_deg);
 		}
 		setprop("sim/multiplay/generic/float[6]", 0);
+		setprop("sim/multiplay/generic/float[7]", 0);
+		setprop("sim/multiplay/generic/float[8]", 0);
 		setprop("sim/multiplay/generic/string[6]", "");
 		setprop("/sim/multiplay/generic/int[2]", 1);
+		datalink.clear_data();
 		return;
 	}
 	setprop("sim/multiplay/generic/float[5]", launcher_final_tilt_deg);
@@ -223,12 +178,12 @@ var scan = func() {
 	}
 	prio_vector = sort(prio_vector, func (a,b) {if (a[2]>b[2]){return -1;} elsif (a[2]<b[2]) {return 1;} else {return 0;}});
 	foreach(var mp; prio_vector) {
-		
+
 		#### DO WE HAVE FIRING SOLUTION... ####
 		# is plane in range, do we still have missiles, and is a missile already inbound, and has it been 4 seconds since the last missile launch?
 		var trigger = mp[1];
 		#print("dist to target = " ~ dist_to_target);
-		
+
 		var lu = lookup(mp[0].getNode("callsign").getValue());
 		if ( launch_in_progress == 0 and trigger == true and lu != nil and lu.in_air < same_target_max_missiles and !lu.tracking and ACTIVE_MISSILE <= NUM_MISSILES and ( systime() - missile_delay_time > fire_minimum_interval ) ) { #
 			#### ... FOR THE MISSILE ####
@@ -238,7 +193,7 @@ var scan = func() {
 			armament.contact = radar_logic.Contact.new(mp[0], AIR);
 			launch_in_progress = 1;
 			missile_launch(mp[0], systime(), my_pos);
-			
+
 		} elsif ( ciws_installed and trigger == -1 and ROUNDS > 0 and ( systime() - ciws_delay_time > 1.0 ) and lu != nil) {
 			#### ... FOR THE CIWS ####
 			var contact = radar_logic.Contact.new(mp[0], AIR);
@@ -272,7 +227,7 @@ var scan = func() {
 				reloading = 1;
 				reload_starting = systime();
 			}
-		} 
+		}
 		if (lu != nil and lu.tracking) {
 			radarOn = 1;
 		}
@@ -318,8 +273,10 @@ var clearSingleLock = func () {
 	thread.lock(mutexLock);
 	if (semi_active_track == nil) {
 		setprop("sim/multiplay/generic/string[6]", "");
+		datalink.clear_data();
 	} else {
 		setprop("sim/multiplay/generic/string[6]", left(md5(semi_active_track), 4));
+		datalink.send_data({"contacts":[{"callsign":semi_active_track,"iff":0}]});
 	}
 	thread.unlock(mutexLock);
 }
@@ -335,7 +292,7 @@ var fire_control = func(mp, my_pos) {
 	var ufo_pos = geo.Coord.new().set_latlon(mp.getNode("position/latitude-deg").getValue(),mp.getNode("position/longitude-deg").getValue(),(mp.getNode("position/altitude-ft").getValue() * FT2M));
 	var target_distance = my_pos.direct_distance_to(ufo_pos);
 	var target_altitude = mp.getNode("position/altitude-ft").getValue();
-	
+
 	# is this plane a friend or foe?
 	var lu = lookup(mp.getNode("callsign").getValue());
 	if ( lu == nil ) { return [mp,false,0,0]; }
@@ -344,11 +301,11 @@ var fire_control = func(mp, my_pos) {
 	var target_ground_distance = my_pos.distance_to(ufo_pos);
 	var target_heading = mp.getNode("orientation/true-heading-deg").getValue();
 	var relative_bearing = math.abs(geo.normdeg180(ufo_pos.course_to(my_pos) - target_heading));
-	
+
 	var target_relative_altitude = target_altitude - my_pos.alt()*M2FT;
 	var target_radial_airspeed = math.abs(math.abs(((relative_bearing / 90 ) - 1) * target_airspeed));#200kt against us = 200kt, 200kt at angle of us = 0kt, 200kt away from us = 200kt
 	var target_relative_pitch = vector.Math.getPitch(my_pos, ufo_pos);
-	
+
 
 	# can the radar see it?
 	var data_link_match = false;
@@ -358,7 +315,7 @@ var fire_control = func(mp, my_pos) {
 #			#print('tgt confirmed via datalink');
 #		}
 #	}
-	
+
 	var visible = radar_logic.isNotBehindTerrain(mp);
 
 
@@ -367,9 +324,10 @@ var fire_control = func(mp, my_pos) {
 		var radarSeeTarget = 1;
 		if ( data_link_match == false ) {
 			if ( visible[0] == false ) {radarSeeTarget = 0 }
-			if ( target_relative_pitch < radar_lowest_pitch ) { radarSeeTarget = 0 } # 
+			if ( target_relative_pitch < radar_lowest_pitch ) { radarSeeTarget = 0 } #
 			if ( target_distance*M2NM > 1.0 and visible[1] and math.abs(target_radial_airspeed) < 20 ) {radarSeeTarget = 0 } # i.e. notching with terrain behind
 		}
+
 		if (radarSeeTarget and rand() > target_distance*M2NM / ciws_domain_nm) {
 			var score = 0;
 			var priority = getprop("priority");
@@ -395,26 +353,26 @@ var fire_control = func(mp, my_pos) {
 	if ( data_link_match == false ) {
 		if (target_airspeed < 60) {return [mp,false,0,0];}
 		if ( visible[0] == false ) { return [mp,false,0,0]; }
-		if ( target_relative_pitch < radar_lowest_pitch ) { return [mp,false,0,0]; } # 
+		if ( target_relative_pitch < radar_lowest_pitch ) { return [mp,false,0,0]; } #
 		if ( visible[1] and math.abs(target_radial_airspeed) < 20 ) { return [mp,false,0,0]; } # i.e. notching, landed aircraft
 	}
-	
+
 	if ( target_distance * M2NM > missile_max_distance ) { return [mp,false,0,0]; }
 
-	
-	
-	
+
+
+
 	# is the plane within the engagement envelope?
 	# the numbers after target_radial_airspeed are ( offset_of_engagement_envelope / speed_to_apply_that_offset )
 	# larger offset means it wont fire until the plane is closer.
 	# for visualization: https://www.desmos.com/calculator/gw570fa9km
-	
-	if (!isInEngagementEnvelope(target_radial_airspeed, target_ground_distance, target_relative_altitude) ) { return [mp,false,0,0]; }	
 
-	
+	if (!isInEngagementEnvelope(target_radial_airspeed, target_ground_distance, target_relative_altitude) ) { return [mp,false,0,0]; }
+
+
 
 	var the_dice = rand();
-	
+
 	if ( the_dice > 0.20 ) {
 		var score = 0;
 		var priority = getprop("priority");
@@ -461,7 +419,7 @@ var reload = func(force = 1) {
 	if (ROUNDS == 0 or force == 1) {
 		ROUNDS = ROUNDS_init;
 		print("Reloaded with "~(ROUNDS)~" bursts.");
-	}	
+	}
 	setprop("sam/missiles",(NUM_MISSILES+1-ACTIVE_MISSILE));
 	setprop("sam/bursts", ROUNDS);
 	reloading = 0;
@@ -493,6 +451,7 @@ var missile_launch = func(mp, launchtime, my_pos) {
 	}
 	var ufo_pos = geo.Coord.new().set_latlon(mp.getNode("position/latitude-deg").getValue(),mp.getNode("position/longitude-deg").getValue(),(mp.getNode("position/altitude-ft").getValue() * 0.3048));
 	var target_bearing = my_pos.course_to(ufo_pos);
+	var target_pitch   = vector.Math.getPitch(my_pos, ufo_pos);
 	var info = mp.getNode("callsign").getValue();
 	var lu = lookup(mp.getNode("callsign").getValue());
 	if (getprop("sam/timeleft") != 0) {
@@ -510,6 +469,8 @@ var missile_launch = func(mp, launchtime, my_pos) {
 			setprop("sim/multiplay/generic/float[6]", target_bearing-getprop("orientation/heading-deg"));
 			theMissile.rail_head_deg = getprop("sim/multiplay/generic/float[6]");
 		}
+		setprop("sim/multiplay/generic/float[7]", target_pitch);
+		setprop("sim/multiplay/generic/float[8]", target_bearing-getprop("orientation/heading-deg"));
 		if (sam_align_to_target) {
 			setprop("/orientation/heading-deg",target_bearing);
 		}
@@ -524,7 +485,7 @@ var missile_launch = func(mp, launchtime, my_pos) {
 			settimer(autoreload, reload_time);
 			reloading = 1;
 			reload_starting = systime();
-		}		
+		}
 		if (lu != nil) {
 			append(lu.missiles, theMissile);
 			lu.in_air += 1;
@@ -551,15 +512,19 @@ var missile_launch = func(mp, launchtime, my_pos) {
 	} else {
 		info = info~" (tracking)";
 		if (systime()-missile_release_time > 1.5) {
+			var tgt_dir = target_bearing-getprop("orientation/heading-deg");
+			var max_dir = launch_update_time*align_speed_dps;
 			if (launcher_align_to_target) {
 				# now smoothly rotate launcher:
-				var tgt_dir = target_bearing-getprop("orientation/heading-deg");
 				var cur_dir = getprop("sim/multiplay/generic/float[6]");
 				var move_dir = geo.normdeg180(tgt_dir-cur_dir);
-				var max_dir = launch_update_time*align_speed_dps;
 				move_dir = math.clamp(move_dir, -max_dir, max_dir);
 				setprop("sim/multiplay/generic/float[6]", cur_dir+move_dir);
 			}
+			var cur_dir2 = getprop("sim/multiplay/generic/float[8]");
+			var move_dir2 = geo.normdeg180(tgt_dir-cur_dir2);
+			move_dir2 = math.clamp(move_dir2, -max_dir, max_dir);
+			setprop("sim/multiplay/generic/float[8]", cur_dir2+move_dir2);
 			if (sam_align_to_target) {
 				var tgt_dir = target_bearing;
 				var cur_dir = getprop("orientation/heading-deg");
@@ -573,6 +538,7 @@ var missile_launch = func(mp, launchtime, my_pos) {
 		setprop("sam/info", info);
 		if (mp.getNode("callsign") != nil and mp.getNode("callsign").getValue() != nil and mp.getNode("callsign").getValue() != "") {
 	        setprop("sim/multiplay/generic/string[6]", left(md5(mp.getNode("callsign").getValue()), 4));
+	        datalink.send_data({"contacts":[{"callsign":mp.getNode("callsign").getValue(),"iff":0}]});
 	    } else {
 	        clearSingleLock();
 	    }
@@ -580,6 +546,7 @@ var missile_launch = func(mp, launchtime, my_pos) {
 			lu.tracking = 1;
 		}
 	}
+
 	settimer( func { missile_launch(mp, launchtime, my_pos); },launch_update_time);
 }
 

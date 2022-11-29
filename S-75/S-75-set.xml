@@ -368,6 +368,17 @@
 
     <priority type="int">1</priority>
     <priority1 type="int">1</priority1>
+
+    <instrumentation>
+        <datalink>
+            <data type="int">0</data>
+            <power type="bool">true</power>
+            <channel type="int">1212</channel>
+            <power_prop type="string">/instrumentation/datalink/power</power_prop>
+            <channel_prop type="string">instrumentation/datalink/channel</channel_prop>
+            <receive_period type="double">1</receive_period>
+        </datalink>
+    </instrumentation>
 	
     <nasal>
         <notifications>
@@ -389,7 +400,11 @@
         <armament>
             <file>Aircraft/S-75/Nasal/guided-missiles.nas</file>
         </armament>
+        <datalink>
+            <file>Aircraft/S-75/Nasal/datalink.nas</file>
+        </datalink>
 		<fire_control>
+            <file>Aircraft/S-75/Nasal/fire-control-custom.nas</file>
 			<file>Aircraft/S-75/Nasal/fire-control.nas</file>
 		</fire_control>
     </nasal>

@@ -5,8 +5,8 @@
   	<layout>vbox</layout>
   	<draggable>true</draggable>
     <resizable>false</resizable>
-    <width>125</width>
-    <height>200</height>
+    <width>150</width>
+    <height>250</height>
 
     <group>
     	<empty><stretch>1</stretch></empty>
@@ -144,5 +144,23 @@
                 <script>setprop("priority",6);setprop("priority6",1);setprop("priority0",0);setprop("priority1",0);setprop("priority2",0);setprop("priority3",0);setprop("priority4",0);setprop("priority5",0);</script>
             </binding>
         </radio>
+        <input>
+            <row>7</row>
+            <col>0</col>
+            <width>75</width>
+            <height>25</height>
+            <label>DLNK</label>
+            <property>instrumentation/datalink/channel</property>
+            <live>true</live>
+            <halign>right</halign>
+            <binding>
+                <command>dialog-apply</command>
+            </binding>
+            <color>
+                <red>0.75</red>
+                <green>0.75</green>
+                <blue>1.0</blue>
+            </color>
+        </input>
     </group>
 </PropertyList>
