@@ -2,17 +2,17 @@
 
 <PropertyList>
 
- <path>P-12.ac</path>
+ <path>P-14.ac</path>
 
  <animation>
   <type>spin</type>
   <object-name>Array</object-name>
   <property>/sim/multiplay/online</property>
-  <factor>-15.0</factor>
+  <factor>-10.0</factor>
   <center>
-   <x-m>0</x-m>
-   <y-m>0</y-m>
-   <z-m>10.3</z-m>
+   <x-m>0.008537</x-m>
+   <y-m>-0.464651</y-m>
+   <z-m>17.3389</z-m>
   </center>
   <axis>
    <x>0</x>
