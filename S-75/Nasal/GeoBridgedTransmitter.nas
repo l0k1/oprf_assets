@@ -31,7 +31,7 @@ var geooutgoingBridge = emesary_mp_bridge.OutgoingMPBridge.new("sa2mp.geo",geoRo
 
 # bridge should be tuned to be around 90% of the packet size full.
 geooutgoingBridge.TransmitFrequencySeconds = 0.75;
-geooutgoingBridge.MPStringMaxLen = 150;
+geooutgoingBridge.MPStringMaxLen = 225;
 emesary_mp_bridge.IncomingMPBridge.startMPBridge(geoRoutedNotifications, 18, emesary.GlobalTransmitter);
 
 

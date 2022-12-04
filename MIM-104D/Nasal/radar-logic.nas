@@ -139,6 +139,13 @@ var Contact = {
       return isNotBehindTerrain(me.node)[0];
     },
 
+    isCommandActive: func {
+      if (getprop("/carrier/sunk") == 1) {
+        return 0;
+      }
+      return isNotBehindTerrain(me.node)[0];
+    },
+
     getUnique: func () {
       if (me.unique == nil) {
         me.unique = me.node.getNode("unique");

@@ -332,7 +332,7 @@ var fire_control = func(mp, my_pos) {
 			var score = 0;
 			var priority = getprop("priority");
 			if (priority==PRIO_NORM) {
-				# nop
+				score = rand()-0.5;
 			} elsif (priority==PRIO_HIGH) {
 				score = target_altitude;
 			} elsif (priority==PRIO_LOW) {
@@ -358,6 +358,7 @@ var fire_control = func(mp, my_pos) {
 	}
 
 	if ( target_distance * M2NM > missile_max_distance ) { return [mp,false,0,0]; }
+	if ( target_distance * M2NM < missile_min_distance ) { return [mp,false,0,0]; }
 
 
 
@@ -377,7 +378,7 @@ var fire_control = func(mp, my_pos) {
 		var score = 0;
 		var priority = getprop("priority");
 		if (priority==PRIO_NORM) {
-			# nop
+			score = rand()-0.5;
 		} elsif (priority==PRIO_HIGH) {
 			score = target_altitude;
 		} elsif (priority==PRIO_LOW) {
@@ -409,6 +410,7 @@ var reload = func(force = 1) {
 
 			if (armament.AIM.new(i,missile_name,missile_brevity, midflight) != -1) {
 				#if statement just in case reload was called before all missiles were fired. Cause avoid calling search() on same missile twice.
+				armament.AIM.active[i].radarZ = radar_elevation_above_terrain_m;
 				armament.AIM.active[i].start();
 			}
 		}
@@ -426,6 +428,9 @@ var reload = func(force = 1) {
 }
 
 var autoreload = func() {
+	if ( getprop("/carrier/sunk") == 1 or getprop("/carrier/disabled") == 1) {
+		return;
+	}
 	if (reloading) {
 		reloading = 0;
 		if (ACTIVE_MISSILE > NUM_MISSILES or ROUNDS == 0) {
@@ -497,7 +502,7 @@ var missile_launch = func(mp, launchtime, my_pos) {
 		setprop("sam/missiles",(NUM_MISSILES+1-ACTIVE_MISSILE));
 		clearSingleLock();
 		return;
-	} elsif ((systime() - launchtime) > (lockon_time*2) or radar_logic.isNotBehindTerrain(mp)[0] == 0) {
+	} elsif ((systime() - launchtime) > (lockon_time*1.5) or radar_logic.isNotBehindTerrain(mp)[0] == 0) {
 		# launch cancelled so it dont forever goes in this loop and dont allow for other firings.
 		if (lu != nil) {
 			lu.tracking = 0;
@@ -510,7 +515,7 @@ var missile_launch = func(mp, launchtime, my_pos) {
 		clearSingleLock();
 		return;
 	} else {
-		info = info~" (tracking)";
+		info = sprintf("%s (tracking %d nm at %d ft)", info, armament.contact.get_range(), armament.contact.get_altitude());
 		if (systime()-missile_release_time > 1.5) {
 			var tgt_dir = target_bearing-getprop("orientation/heading-deg");
 			var max_dir = launch_update_time*align_speed_dps;
