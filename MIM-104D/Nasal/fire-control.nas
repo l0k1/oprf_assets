@@ -232,7 +232,14 @@ var scan = func() {
 			radarOn = 1;
 		}
 	}
-
+	if (getprop("payload/armament/"~string.lc(missile_name)~"/guidance") == "tvm" and !radarOn) {
+		foreach(var tgt ; targetsV2.vector) {
+			if (tgt.in_air > 0) {
+				radarOn = 1;
+				break;
+			}
+		}
+	}
 	setprop("/sim/multiplay/generic/int[2]",!radarOn);
 
 	if (launcher_align_to_target and ACTIVE_MISSILE > NUM_MISSILES and systime()-missile_release_time > 2) {
@@ -542,7 +549,7 @@ var missile_launch = func(mp, launchtime, my_pos) {
 
 		setprop("sam/info", info);
 		if (mp.getNode("callsign") != nil and mp.getNode("callsign").getValue() != nil and mp.getNode("callsign").getValue() != "") {
-	        setprop("sim/multiplay/generic/string[6]", left(md5(mp.getNode("callsign").getValue()), 4));
+	        if (getprop("payload/armament/"~string.lc(missile_name)~"/guidance") != "tvm") setprop("sim/multiplay/generic/string[6]", left(md5(mp.getNode("callsign").getValue()), 4));
 	        datalink.send_data({"contacts":[{"callsign":mp.getNode("callsign").getValue(),"iff":0}]});
 	    } else {
 	        clearSingleLock();

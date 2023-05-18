@@ -303,7 +303,7 @@
                     <vol-search type="double">0.00</vol-search>
                     <vol-track type="double">0.15</vol-track>                      <!--  -->
                     <vol-track-weak type="double">0.1</vol-track-weak>           <!--  -->
-                    <guidance type="string">radar</guidance>
+                    <guidance type="string">tvm</guidance>
                     <navigation type="string">APN3003</navigation>                   <!--  -->
                     <all-aspect type="bool">true</all-aspect>
                     
@@ -333,7 +333,7 @@
                     <rail-point-forward type="bool">false</rail-point-forward>
                     <rail-pitch-deg type="double">45</rail-pitch-deg>
                     <rail-heading-deg type="double">0</rail-heading-deg>
-                    <chaff-resistance type="double">0.96</chaff-resistance>
+                    <chaff-resistance type="double">0.93</chaff-resistance>
                     <proportionality-constant type="double">3</proportionality-constant>
                     <class type="string">A</class>
                     <fire-msg>Bird away</fire-msg>
