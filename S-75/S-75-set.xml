@@ -293,7 +293,7 @@
                     <rail-length-m type="double">10.60</rail-length-m>             <!-- authentic length-->
                     <stage-1-duration-sec type="double">4</stage-1-duration-sec> 
                     <weight-launch-lbs>5340</weight-launch-lbs>                      <!--  -->                  
-                    <drag-coeff type="double">0.20</drag-coeff>                 <!-- was 0.40 in older versions -->
+                    <drag-coeff type="double">0.10</drag-coeff>                 <!-- was 0.40 in older versions -->
                     <thrust-lbf-stage-1 type="double">110000</thrust-lbf-stage-1> <!-- source -->
                     <rail type="bool">true</rail>                                <!--  -->                  
                     <rail-point-forward type="bool">false</rail-point-forward>
@@ -308,7 +308,8 @@
 					<stage-2-duration-sec type="double">15</stage-2-duration-sec><!--  -->					
                     <weight-fuel-lbm>2750</weight-fuel-lbm>                       <!--  -->									
 					<arming-time-sec type="double">1</arming-time-sec> 
-					<min-speed-for-guiding-mach type="double">0.65</min-speed-for-guiding-mach> 
+					<min-speed-for-guiding-mach type="double">0.6</min-speed-for-guiding-mach> 
+                    <chaff-resistance type="double">0.87</chaff-resistance>
 					<self-destruct-time-sec type="double">60</self-destruct-time-sec> 
 					<loft-altitude type="int">0</loft-altitude>					
                     <max-report-distance type="double">200</max-report-distance> <!--  -->					

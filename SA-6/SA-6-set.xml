@@ -304,6 +304,7 @@
                     <arming-time-sec type="double">2</arming-time-sec> 
                     <min-speed-for-guiding-mach type="double">0.45</min-speed-for-guiding-mach> 
                     <self-destruct-time-sec type="double">75</self-destruct-time-sec> 
+                    <chaff-resistance type="double">0.89</chaff-resistance>
                     <self-destruct-at-lock-lost type="bool">true</self-destruct-at-lock-lost>
                     <seeker-angular-speed-dps type="double">3000</seeker-angular-speed-dps>
                     <loft-altitude type="int">0</loft-altitude>

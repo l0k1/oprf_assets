@@ -12,6 +12,11 @@ var launcher_align_to_target =  1;
 var align_speed_dps          = 20;
 var radar_elevation_above_terrain_m = 10;#estimate
 var radar_lowest_pitch       = 0.1;# 0.5 degs = roughly 925 feet at 20 nm, 25 feet at half a nm. # 0.35 = roughly 925 feet at 20 nm, 25 feet at half a nm.
+var radar_off_time_min         = 0;# When turning off to lure enemies into engagement zone, and to not make the SAM too easy to find, minimum turn off this duration.
+var radar_off_time_max         = 0;# Bigger missile_max_distance give crew incentive to keep this a bit longer
+var radar_on_time              = 45;# Minimum the time it would take to scan whole sky
+var radar_on_after_detect_time = 180;# Crew is alert after spotting an aircraft, how long should they stay that way?
+var can_detect_anti_rad        = 0.05;# 0.5 very good, 0 not at all.
 
 #reaction tme for s-300p is 28 secs acording to http://www.astronautix.com/s/s-300p.html
 # sounds a bit high for pmu, as its 4 secs for s-400

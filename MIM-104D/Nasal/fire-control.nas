@@ -19,7 +19,11 @@ var reload_starting = 0;
 var ACTIVE_MISSILE = 0;
 var semi_active_track = nil;# with multiple missiles flying in semi-active-radar mode, this can change rather fast. Which means pilots wont get a steady tone, but disrupted tones. (tradeoff)
 var mutexLock = thread.newlock();
-
+var radarStatus = 0;# Current radar status.
+var radarOnTimestamp = -500;# Last timestamp of when the radar was online
+var radarOffTimestamp = -500;# Last timestamp of when the radar was offline
+var radarOffDuration = radar_off_time_min;
+var radarTrackTime = 0;# Last time stamp where any enemy aircraft has been spotted.
 
 ##########################################################################
 ######################## Common SAM code       ###########################
@@ -132,7 +136,7 @@ var scan = func() {
 		return;
 	}
 
-	if (systime() - start_time < setupTime ) {
+	if (isSetup() ) {
 		printf("Seconds till activation: %.1f", setupTime - (systime() - start_time));
 		setprop("sam/timeleft", setupTime - (systime() - start_time));
 		setprop("sam/missiles",(NUM_MISSILES+1-ACTIVE_MISSILE));
@@ -154,94 +158,86 @@ var scan = func() {
 	}
 	setprop("sim/multiplay/generic/float[5]", launcher_final_tilt_deg);
 	#### ITERATE THROUGH MP LIST ####
-	var radarOn = 0;
-	var my_pos = geo.aircraft_position();
-	var radarAlt = my_pos.alt()+radar_elevation_above_terrain_m;
-	my_pos.set_alt(radarAlt);
-	var mvec = props.globals.getNode("/ai/models").getChildren("multiplayer");
-	var tvec = props.globals.getNode("/ai/models").getChildren("tanker");
-	var avec = props.globals.getNode("/ai/models").getChildren("aircraft");
-	if (mvec!=nil and tvec != nil) {
-		mvec = mvec ~ tvec;
-	}
-	if (mvec!=nil and avec != nil) {
-		mvec = mvec ~ avec;
-	}
-	var prio_vector = [];#0:node,1:trigger,2:prio value
-	foreach(var mp; mvec){
-		if (mp.getNode("valid") == nil or mp.getNode("valid").getValue() != 1) continue;
-		var prio = fire_control(mp, my_pos);
-		append(prio_vector, prio);
-		if (prio[3] == 1) {
-			radarOn = 1;#this target is within envelope, we turn on radar.
+	if (radarStatus == 1) {
+		var my_pos = geo.aircraft_position();
+		var radarAlt = my_pos.alt()+radar_elevation_above_terrain_m;
+		my_pos.set_alt(radarAlt);
+		var mvec = props.globals.getNode("/ai/models").getChildren("multiplayer");
+		var tvec = props.globals.getNode("/ai/models").getChildren("tanker");
+		var avec = props.globals.getNode("/ai/models").getChildren("aircraft");
+		if (mvec!=nil and tvec != nil) {
+			mvec = mvec ~ tvec;
 		}
-	}
-	prio_vector = sort(prio_vector, func (a,b) {if (a[2]>b[2]){return -1;} elsif (a[2]<b[2]) {return 1;} else {return 0;}});
-	foreach(var mp; prio_vector) {
-
-		#### DO WE HAVE FIRING SOLUTION... ####
-		# is plane in range, do we still have missiles, and is a missile already inbound, and has it been 4 seconds since the last missile launch?
-		var trigger = mp[1];
-		#print("dist to target = " ~ dist_to_target);
-
-		var lu = lookup(mp[0].getNode("callsign").getValue());
-		if ( launch_in_progress == 0 and trigger == true and lu != nil and lu.in_air < same_target_max_missiles and !lu.tracking and ACTIVE_MISSILE <= NUM_MISSILES and ( systime() - missile_delay_time > fire_minimum_interval ) ) { #
-			#### ... FOR THE MISSILE ####
-			#print("callsign " ~ cs ~ " found at " ~ dist_to_target);
-			missile_delay_time = systime();
-			mp[0].getNode("unique",1).setValue(rand());
-			armament.contact = radar_logic.Contact.new(mp[0], AIR);
-			launch_in_progress = 1;
-			missile_launch(mp[0], systime(), my_pos);
-
-		} elsif ( ciws_installed and trigger == -1 and ROUNDS > 0 and ( systime() - ciws_delay_time > 1.0 ) and lu != nil) {
-			#### ... FOR THE CIWS ####
-			var contact = radar_logic.Contact.new(mp[0], AIR);
-			var cord = contact.get_Coord();
-			var dist_nm = my_pos.direct_distance_to(cord)*M2NM;
-			var probabilityOfBurstKill = 0.50;
-			if (mp[0].getNode("velocities/true-airspeed-kt").getValue() > 50) {
-				probabilityOfBurstKill = extrapolate(dist_nm, 0, ciws_domain_nm, ciws_chance, 0);
-			}
-			var hits = math.max(0,int(extrapolate(rand(), 0, probabilityOfBurstKill, ciws_burst_rounds, 3)));#3 is a kill approx
-			var target_bearing = my_pos.course_to(cord);
-			setprop("sim/multiplay/generic/float[0]", -(target_bearing-getprop("orientation/heading-deg")));#CIWS horiz (inverted)
-			setprop("sim/multiplay/generic/float[1]", vector.Math.getPitch(my_pos, cord));#CIWS vert
-			setprop("sim/multiplay/generic/bool[0]",1);settimer(func {setprop("sim/multiplay/generic/bool[0]",0);}, 1);# for sound
-			if (hits > 0) {
-				var msg = notifications.ArmamentNotification.new("mhit", 4, -1*(ciws_shell+1));
-	                msg.RelativeAltitude = 0;
-	                msg.Bearing = 0;
-	                msg.Distance = hits;
-	                msg.RemoteCallsign = mp[0].getNode("callsign").getValue();
-		        notifications.hitBridgedTransmitter.NotifyAll(msg);
-	    		damage.damageLog.push("CIWS fired | rounds remaining: " ~ ROUNDS ~ " | hit on: " ~ mp[0].getNode("callsign").getValue());
-	    	}
-			print("CIWS fired | bursts remaining: " ~ ROUNDS ~ " | "~hits~" hits on: " ~ mp[0].getNode("callsign").getValue() ~ " @ "~ sprintf("%.1f",dist_nm) ~" nm");
-			ciws_delay_time = systime();
-			ROUNDS = ROUNDS - 1;
-			setprop("sam/bursts", ROUNDS);
-			if (ROUNDS == 0) {
-				print("Launcher out of shell ammo.");
-				settimer(autoreload, reload_time);
-				reloading = 1;
-				reload_starting = systime();
+		if (mvec!=nil and avec != nil) {
+			mvec = mvec ~ avec;
+		}
+		var prio_vector = [];#0:node,1:trigger,2:prio value
+		foreach(var mp; mvec){
+			if (mp.getNode("valid") == nil or mp.getNode("valid").getValue() != 1) continue;
+			var prio = fire_control(mp, my_pos);
+			append(prio_vector, prio);
+			if (prio[3] == 1) {
+				radarTrackTime = systime();#this target is within envelope, we turn on radar.
 			}
 		}
-		if (lu != nil and lu.tracking) {
-			radarOn = 1;
-		}
-	}
-	if (getprop("payload/armament/"~string.lc(missile_name)~"/guidance") == "tvm" and !radarOn) {
-		foreach(var tgt ; targetsV2.vector) {
-			if (tgt.in_air > 0) {
-				radarOn = 1;
-				break;
+		prio_vector = sort(prio_vector, func (a,b) {if (a[2]>b[2]){return -1;} elsif (a[2]<b[2]) {return 1;} else {return 0;}});
+		foreach(var mp; prio_vector) {
+
+			#### DO WE HAVE FIRING SOLUTION... ####
+			# is plane in range, do we still have missiles, and is a missile already inbound, and has it been 4 seconds since the last missile launch?
+			var trigger = mp[1];
+			#print("dist to target = " ~ dist_to_target);
+
+			var lu = lookup(mp[0].getNode("callsign").getValue());
+			if ( launch_in_progress == 0 and trigger == true and lu != nil and lu.in_air < same_target_max_missiles and !lu.tracking and ACTIVE_MISSILE <= NUM_MISSILES and ( systime() - missile_delay_time > fire_minimum_interval ) ) { #
+				#### ... FOR THE MISSILE ####
+				#print("callsign " ~ cs ~ " found at " ~ dist_to_target);
+				missile_delay_time = systime();
+				mp[0].getNode("unique",1).setValue(rand());
+				armament.contact = radar_logic.Contact.new(mp[0], AIR);
+				launch_in_progress = 1;
+				missile_launch(mp[0], systime(), my_pos);
+
+			} elsif ( ciws_installed and trigger == -1 and ROUNDS > 0 and ( systime() - ciws_delay_time > 1.0 ) and lu != nil) {
+				#### ... FOR THE CIWS ####
+				var contact = radar_logic.Contact.new(mp[0], AIR);
+				var cord = contact.get_Coord();
+				var dist_nm = my_pos.direct_distance_to(cord)*M2NM;
+				var probabilityOfBurstKill = 0.50;
+				if (mp[0].getNode("velocities/true-airspeed-kt").getValue() > 50) {
+					probabilityOfBurstKill = extrapolate(dist_nm, 0, ciws_domain_nm, ciws_chance, 0);
+				}
+				var hits = math.max(0,int(extrapolate(rand(), 0, probabilityOfBurstKill, ciws_burst_rounds, 3)));#3 is a kill approx
+				var target_bearing = my_pos.course_to(cord);
+				setprop("sim/multiplay/generic/float[0]", -(target_bearing-getprop("orientation/heading-deg")));#CIWS horiz (inverted)
+				setprop("sim/multiplay/generic/float[1]", vector.Math.getPitch(my_pos, cord));#CIWS vert
+				setprop("sim/multiplay/generic/bool[0]",1);settimer(func {setprop("sim/multiplay/generic/bool[0]",0);}, 1);# for sound
+				if (hits > 0) {
+					var msg = notifications.ArmamentNotification.new("mhit", 4, -1*(ciws_shell+1));
+		                msg.RelativeAltitude = 0;
+		                msg.Bearing = 0;
+		                msg.Distance = hits;
+		                msg.RemoteCallsign = mp[0].getNode("callsign").getValue();
+			        notifications.hitBridgedTransmitter.NotifyAll(msg);
+		    		damage.damageLog.push("CIWS fired | rounds remaining: " ~ ROUNDS ~ " | hit on: " ~ mp[0].getNode("callsign").getValue());
+		    	}
+				print("CIWS fired | bursts remaining: " ~ ROUNDS ~ " | "~hits~" hits on: " ~ mp[0].getNode("callsign").getValue() ~ " @ "~ sprintf("%.1f",dist_nm) ~" nm");
+				ciws_delay_time = systime();
+				ROUNDS = ROUNDS - 1;
+				setprop("sam/bursts", ROUNDS);
+				if (ROUNDS == 0) {
+					print("Launcher out of shell ammo.");
+					settimer(autoreload, reload_time);
+					reloading = 1;
+					reload_starting = systime();
+				}
+			}
+			if (lu != nil and lu.tracking) {
+				radarTrackTime = systime();
 			}
 		}
 	}
-	setprop("/sim/multiplay/generic/int[2]",!radarOn);
-
+		
 	if (launcher_align_to_target and ACTIVE_MISSILE > NUM_MISSILES and systime()-missile_release_time > 2) {
 		# rotate launcher back to forward:
 		var tgt_dir = 0;
@@ -256,7 +252,7 @@ var scan = func() {
 			setprop("sam/info", "Reloading");
 			setprop("sam/timeleft", reload_time - (systime() - reload_starting));
 		} else {
-			setprop("sam/info", "");
+			setprop("sam/info", "Search radar is "~(radarStatus==1?"ON":"OFF"));
 			setprop("sam/timeleft", 0);
 		}
 		clearSingleLock();
@@ -275,6 +271,45 @@ var scan = func() {
 	setprop("sam/missiles",(NUM_MISSILES+1-ACTIVE_MISSILE));
 	settimer(scan,radar_update_time);
 }
+
+var isSetup = func {
+	return systime() - start_time < setupTime;
+}
+
+var acquisitionRadarLoop = func {
+	if (isSetup() or reloading or getprop("/carrier/sunk") == 1 or getprop("/carrier/disabled") == 1) return;
+	var reason = "";
+	var time = systime();
+	if (time - radarTrackTime < radar_on_after_detect_time) {
+		radarStatus = 1;
+		reason = sprintf("Crew alert for %d seconds", radar_on_after_detect_time - (time - radarTrackTime));
+	} elsif (radarStatus == 0 and time - radarOnTimestamp > radarOffDuration) {
+		radarStatus = 1;
+		reason = sprintf("Periodic check for %d seconds", radar_on_time);
+	} elsif (radarStatus == 1 and time - radarOffTimestamp > radar_on_time) {
+		radarStatus = 0;
+		radarOffDuration = rand()*(radar_off_time_max - radar_off_time_min)+radar_off_time_min;
+		reason = sprintf("Periodic pause for %d seconds", radarOffDuration);
+	}
+
+	if (getprop("payload/armament/"~string.lc(missile_name)~"/guidance") == "tvm" and radarStatus == 0) {
+		foreach(var tgt ; targetsV2.vector) {
+			if (tgt.in_air > 0) {
+				radarTrackTime = time;
+				radarStatus = 1;
+				break;
+			}
+		}
+	}
+	setprop("/sim/multiplay/generic/int[2]", radarStatus != 1);
+	if (radarStatus == 1) radarOnTimestamp = time;
+	else radarOffTimestamp = time;
+	#print("Search radar is "~(radarStatus==1?"ON":"OFF"));
+	if (reason != "") print(reason);
+}
+
+var radTimer = maketimer(0.5, acquisitionRadarLoop);
+radTimer.start();
 
 var clearSingleLock = func () {
 	thread.lock(mutexLock);
@@ -556,6 +591,7 @@ var missile_launch = func(mp, launchtime, my_pos) {
 	    }
 	    if (lu != nil) {
 			lu.tracking = 1;
+			radarTrackTime = systime();
 		}
 	}
 
