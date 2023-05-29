@@ -15,9 +15,6 @@ if ((major == 2017 and minor == 2 and pica >= 1) or (major == 2017 and minor > 2
     pickingMethod = 1;
 }
 
-var FALSE = 0;
-var TRUE  = 1;
-
 var AIR = 0;
 var MARINE = 1;
 var SURFACE = 2;
@@ -124,10 +121,10 @@ var Contact = {
     isValid: func () {
       var valid = me.valid.getValue();
       if (valid == nil) {
-        valid = FALSE;
+        valid = 0;
       }
       if (me.callsign.getValue() != me.orig_callsign) {
-        valid = FALSE;
+        valid = 0;
       }
       return valid;
     },

@@ -34,9 +34,9 @@ var ROUNDS = ROUNDS_init;#CIWS bursts remaining
 
 var NUM_MISSILES = 5; # total carried minus 1
 var missile_name = "Volga-M";
-var missile_brevity = "5Ya23";
-var missile_max_distance = 36; #max distance of target in nm when it will fire
-var missile_min_distance = 3.5; #minimum distance in nm when it will fire
+var missile_brevity = damage.id2warhead[getprop("payload/armament/"~string.lc(missile_name)~"/type-id")][4];
+var missile_max_distance = getprop("payload/armament/"~string.lc(missile_name)~"/max-fire-range-nm"); #max distance of target in nm when it will fire
+var missile_min_distance = getprop("payload/armament/"~string.lc(missile_name)~"/min-fire-range-nm"); #minimum distance in nm when it will fire
 var lockon_time = 12; #time in seconds it takes to lock on and get a firing solution on a target
 var fire_minimum_interval = 7;# time since last track was initiated till a new can be initiated
 var same_target_max_missiles = 2;# max number of missiles in air against same target

@@ -1,8 +1,5 @@
 ################### GLOBALS
 
-var false = 0;
-var true = 1;
-
 var AIR = 0;
 var MARINE = 1;
 var SURFACE = 2;
@@ -189,7 +186,7 @@ var scan = func() {
 			#print("dist to target = " ~ dist_to_target);
 
 			var lu = lookup(mp[0].getNode("callsign").getValue());
-			if ( launch_in_progress == 0 and trigger == true and lu != nil and lu.in_air < same_target_max_missiles and !lu.tracking and ACTIVE_MISSILE <= NUM_MISSILES and ( systime() - missile_delay_time > fire_minimum_interval ) ) { #
+			if ( launch_in_progress == 0 and trigger == 1 and lu != nil and lu.in_air < same_target_max_missiles and !lu.tracking and ACTIVE_MISSILE <= NUM_MISSILES and ( systime() - missile_delay_time > fire_minimum_interval ) ) { #
 				#### ... FOR THE MISSILE ####
 				#print("callsign " ~ cs ~ " found at " ~ dist_to_target);
 				missile_delay_time = systime();
@@ -329,7 +326,7 @@ var clearSingleLock = func () {
 var fire_control = func(mp, my_pos) {
 	# gather some data about the target
 
-	if ( mp.getNode("valid").getValue() == false ) { return [mp,false,0,0]; }
+	if ( mp.getNode("valid").getValue() == 0 ) { return [mp,0,0,0]; }
 
 	var ufo_pos = geo.Coord.new().set_latlon(mp.getNode("position/latitude-deg").getValue(),mp.getNode("position/longitude-deg").getValue(),(mp.getNode("position/altitude-ft").getValue() * FT2M));
 	var target_distance = my_pos.direct_distance_to(ufo_pos);
@@ -337,7 +334,7 @@ var fire_control = func(mp, my_pos) {
 
 	# is this plane a friend or foe?
 	var lu = lookup(mp.getNode("callsign").getValue());
-	if ( lu == nil ) { return [mp,false,0,0]; }
+	if ( lu == nil ) { return [mp,0,0,0]; }
 
 	var target_airspeed = mp.getNode("velocities/true-airspeed-kt").getValue();
 	var target_ground_distance = my_pos.distance_to(ufo_pos);
@@ -350,7 +347,7 @@ var fire_control = func(mp, my_pos) {
 
 
 	# can the radar see it?
-	var data_link_match = false;
+	var data_link_match = 0;
 #	foreach(var cx; gci.data_receive_callsigns) {
 #		if (cx[0] == callsign) {
 #			data_link_match = true;
@@ -364,8 +361,8 @@ var fire_control = func(mp, my_pos) {
 	if (ciws_installed and ROUNDS > 0 and target_distance*M2NM < ciws_domain_nm) {
 		#CIWS
 		var radarSeeTarget = 1;
-		if ( data_link_match == false ) {
-			if ( visible[0] == false ) {radarSeeTarget = 0 }
+		if ( data_link_match == 0 ) {
+			if ( visible[0] == 0 ) {radarSeeTarget = 0 }
 			if ( target_relative_pitch < radar_lowest_pitch ) { radarSeeTarget = 0 } #
 			if ( target_distance*M2NM > 1.0 and visible[1] and math.abs(target_radial_airspeed) < 20 ) {radarSeeTarget = 0 } # i.e. notching with terrain behind
 		}
@@ -392,15 +389,15 @@ var fire_control = func(mp, my_pos) {
 		}
 	}
 
-	if ( data_link_match == false ) {
-		if (target_airspeed < 60) {return [mp,false,0,0];}
-		if ( visible[0] == false ) { return [mp,false,0,0]; }
-		if ( target_relative_pitch < radar_lowest_pitch ) { return [mp,false,0,0]; } #
-		if ( visible[1] and math.abs(target_radial_airspeed) < 20 ) { return [mp,false,0,0]; } # i.e. notching, landed aircraft
+	if ( data_link_match == 0 ) {
+		if (target_airspeed < 60) {return [mp,0,0,0];}
+		if ( visible[0] == 0 ) { return [mp,0,0,0]; }
+		if ( target_relative_pitch < radar_lowest_pitch ) { return [mp,0,0,0]; } #
+		if ( visible[1] and math.abs(target_radial_airspeed) < 20 ) { return [mp,0,0,0]; } # i.e. notching, landed aircraft
 	}
 
-	if ( target_distance * M2NM > missile_max_distance ) { return [mp,false,0,0]; }
-	if ( target_distance * M2NM < missile_min_distance ) { return [mp,false,0,0]; }
+	if ( target_distance * M2NM > missile_max_distance ) { return [mp,0,0,0]; }
+	if ( target_distance * M2NM < missile_min_distance ) { return [mp,0,0,0]; }
 
 
 
@@ -410,7 +407,7 @@ var fire_control = func(mp, my_pos) {
 	# larger offset means it wont fire until the plane is closer.
 	# for visualization: https://www.desmos.com/calculator/gw570fa9km
 
-	if (!isInEngagementEnvelope(target_radial_airspeed, target_ground_distance, target_relative_altitude) ) { return [mp,false,0,0]; }
+	if (!isInEngagementEnvelope(target_radial_airspeed, target_ground_distance, target_relative_altitude) ) { return [mp,0,0,0]; }
 
 
 
@@ -434,9 +431,9 @@ var fire_control = func(mp, my_pos) {
 		} elsif (priority==PRIO_FAR) {
 			score = target_distance;
 		}
-		return [mp,true,score,1];
+		return [mp,1,score,1];
 	} else {
-		return [mp,false,0,1];
+		return [mp,0,0,1];
 	}
 }
 
