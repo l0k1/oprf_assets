@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+
+
+
+<PropertyList>
+
+	<name>aim-120</name>
+	<path>9M317.ac</path>
+
+	<animation>
+		<type>select</type>
+		<object-name>missile1</object-name>
+		<condition>
+			<property>payload/armament/m317/flags/msl-id-3</property>
+		</condition>
+	</animation>
+
+	<model>
+		<path>Aircraft/BUK-M2/Models/Armament/Weapons/M317/motor-smoke-3.xml</path>
+		<offsets>
+			<x-m>1.83937</x-m>
+			<y-m>0</y-m>
+			<z-m>0</z-m>
+		</offsets>
+	</model>
+
+	<model>
+		<name>explosion</name>
+		<path>Aircraft/BUK-M2/Models/Armament/Weapons/M317/explosion-3.xml</path>
+		<offsets>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+			<z-m>0</z-m>
+		</offsets>
+	</model>
+
+	<animation>
+  		<object-name>missile1</object-name>
+  		<enable-hot type="bool">false</enable-hot>
+ 	</animation>
+
+</PropertyList>
