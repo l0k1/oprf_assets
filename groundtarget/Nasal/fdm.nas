@@ -12,7 +12,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
+srand();# seed the random generator with systime
 #io.include("Aircraft/ExpansionPack/Nasal/init.nas");
 
 #with("updateloop");

@@ -1,6 +1,6 @@
 # (c) 2018 pinto
 # license: gplv2+
-
+srand();# seed the random generator with systime
 # v0.2b
 # will only report the closest bad guy, does no threat assessment.
 # todo:

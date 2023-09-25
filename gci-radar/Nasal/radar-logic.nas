@@ -15,9 +15,6 @@ if ((major == 2017 and minor == 2 and pica >= 1) or (major == 2017 and minor > 2
     pickingMethod = 1;
 }
 
-var FALSE = 0;
-var TRUE  = 1;
-
 var AIR = 0;
 var MARINE = 1;
 var SURFACE = 2;
@@ -73,6 +70,9 @@ var Contact = {
         obj.range           = obj.rdrProp.getNode("range-nm");
         obj.bearing         = obj.rdrProp.getNode("bearing-deg");
         obj.elevation       = obj.rdrProp.getNode("elevation-deg");
+        obj.ubody           = obj.rdrProp.getNode("velocities/uBody-fps");
+        obj.vbody           = obj.rdrProp.getNode("velocities/vBody-fps");
+        obj.wbody           = obj.rdrProp.getNode("velocities/wBody-fps");
 #});        
         obj.deviation       = nil;
 
@@ -84,27 +84,63 @@ var Contact = {
         
         return obj;
     },
+    
+    get_uBody: func {
+      var body = nil;
+      if (me.ubody != nil) {
+        body = me.ubody.getValue();
+      }
+      if(body == nil) {
+        body = me.get_Speed()*KT2FPS;
+      }
+      return body;
+    },  
+      
+    get_vBody: func {
+      var body = nil;
+      if (me.ubody != nil) {
+        body = me.vbody.getValue();
+      }
+      if(body == nil) {
+        body = 0;
+      }
+      return body;
+    },  
+      
+    get_wBody: func {
+      var body = nil;
+      if (me.ubody != nil) {
+        body = me.wbody.getValue();
+      }
+      if(body == nil) {
+        body = 0;
+      }
+      return body;
+    },
 
     isValid: func () {
       var valid = me.valid.getValue();
       if (valid == nil) {
-        valid = FALSE;
+        valid = 0;
       }
       if (me.callsign.getValue() != me.orig_callsign) {
-        valid = FALSE;
+        valid = 0;
       }
       return valid;
     },
 
     isPainted: func () {
-      if (me.painted == nil) {
-        me.painted = me.node.getNode("painted");
+      if (getprop("/carrier/sunk") == 1) {
+        return 0;
       }
-      if (me.painted == nil) {
-        return nil;
+      return isNotBehindTerrain(me.node)[0];
+    },
+
+    isCommandActive: func {
+      if (getprop("/carrier/sunk") == 1) {
+        return 0;
       }
-      var p = me.painted.getValue();
-      return p;
+      return isNotBehindTerrain(me.node)[0];
     },
 
     getUnique: func () {
@@ -124,6 +160,7 @@ var Contact = {
         if(e == nil or e == 0) {
             # AI/MP has no radar properties
             var self = geo.aircraft_position();
+            self.set_alt(self.alt()+fire_control.radar_elevation_above_terrain_m);
             me.get_Coord();
             var angleInv = clamp(self.distance_to(me.coord)/self.direct_distance_to(me.coord), -1, 1);
             e = (self.alt()>me.coord.alt()?-1:1)*math.acos(angleInv)*R2D;
@@ -343,108 +380,48 @@ var Contact = {
 };
 
 var isNotBehindTerrain = func( mp ) {
+  var pos = mp.getNode("position");
+  var alt = pos.getNode("altitude-ft").getValue();
+  var lat = pos.getNode("latitude-deg").getValue();
+  var lon = pos.getNode("longitude-deg").getValue();
+  if(alt == nil or lat == nil or lon == nil) {
+    return [0,0]; # invisible and not in front of terrain
+  }
+  var aircraftPos = geo.Coord.new().set_latlon(lat, lon, alt*FT2M);
 
-###########
-	var pos = mp.getNode("position");
-	var alt = pos.getNode("altitude-ft").getValue();
-	var lat = pos.getNode("latitude-deg").getValue();
-	var lon = pos.getNode("longitude-deg").getValue();
-	if(alt == nil or lat == nil or lon == nil) {
-		return isVisible = 0;
-	}
-	var aircraftPos = geo.Coord.new().set_latlon(lat, lon, alt*0.3048);
-#################
-    if (pickingMethod == 1) {
-      var myPos = geo.aircraft_position();
-      myPos.set_latlon(myPos.lat(),myPos.lon(),myPos.alt()+50);
-      var xyz = {"x":myPos.x(),                  "y":myPos.y(),                 "z":myPos.z()};
-      var dir = {"x":aircraftPos.x()-myPos.x(),  "y":aircraftPos.y()-myPos.y(), "z":aircraftPos.z()-myPos.z()};
+  var myPos = geo.aircraft_position();
 
-      # Check for terrain between own aircraft and other:
-      v = get_cart_ground_intersection(xyz, dir);
-      if (v == nil) {
-        return 1;
-        #printf("No terrain, planes has clear view of each other");
-      } else {
-          var terrain = geo.Coord.new();
-          terrain.set_latlon(v.lat, v.lon, v.elevation);
-          var maxDist = myPos.direct_distance_to(aircraftPos);
-          var terrainDist = myPos.direct_distance_to(terrain);
-          if (terrainDist < maxDist) {
-            #printf("terrain found between SAM and aircraft %.1f meter away.", terrainDist);
-            return 0;
-          } else {
-              #print("The planes has clear view of each other");
-              return 1;
-          }
+  myPos.set_alt(myPos.alt()+fire_control.radar_elevation_above_terrain_m);
+
+  var target_distance = myPos.direct_distance_to(aircraftPos);
+
+  call(func {
+      if (target_distance*0.001 > 3.57*(math.sqrt(myPos.alt())+math.sqrt(alt*FT2M))) {
+        # behind earth curvature
+        #print("behind earth curvature");
+        return [0,0]; # invisible and not in front of terrain
       }
+  },nil,nil,var err =[]);
+
+  var xyz = {"x":myPos.x(),                  "y":myPos.y(),                 "z":myPos.z()};
+  var dir = {"x":aircraftPos.x()-myPos.x(),  "y":aircraftPos.y()-myPos.y(), "z":aircraftPos.z()-myPos.z()};
+
+  # Check for terrain between own aircraft and other:
+  v = get_cart_ground_intersection(xyz, dir);
+  if (v == nil) {
+    return [1,0]; # visible and not in front of terrain
+    #printf("No terrain, planes has clear view of each other");
+  } else {
+    var terrain = geo.Coord.new();
+    terrain.set_latlon(v.lat, v.lon, v.elevation);
+    var maxDist = myPos.direct_distance_to(aircraftPos);
+    var terrainDist = myPos.direct_distance_to(terrain);
+    if (terrainDist < maxDist-1) {
+      #printf("terrain found between me and aircraft %.1f meter away.", terrainDist);
+      return [0,0]; # visible and not in front of terrain
     } else {
-        var isVisible = 0;
-        var MyCoord = geo.aircraft_position();
-        
-        # Because there is no terrain on earth that can be between these 2
-        if(MyCoord.alt() < 8900 and aircraftPos.alt() < 8900)
-        {
-            # Temporary variable
-            # A (our plane) coord in meters
-            var a = MyCoord.x();
-            var b = MyCoord.y();
-            var c = MyCoord.z();
-            # B (target) coord in meters
-            var d = aircraftPos.x();
-            var e = aircraftPos.y();
-            var f = aircraftPos.z();
-            var difa = d - a;
-            var difb = e - b;
-            var difc = f - c;
-            # direct Distance in meters
-            var myDistance = math.sqrt( math.pow((d-a),2) + math.pow((e-b),2) + math.pow((f-c),2)); #calculating distance ourselves to avoid another call to geo.nas (read: speed, probably).
-            var Aprime = geo.Coord.new();
-            
-            # Here is to limit FPS drop on very long distance
-            var L = 500;
-            if(myDistance > 50000)
-            {
-                L = myDistance / 15;
-            }
-            var step = L;
-            var maxLoops = int(myDistance / L);
-            
-            isVisible = 1;
-            # This loop will make travel a point between us and the target and check if there is terrain
-            for(var i = 1 ; i <= maxLoops ; i += 1)
-            {
-              #calculate intermediate step
-              #basically dividing the line into maxLoops number of steps, and checking at each step
-              #to ascii-art explain it:
-              #  |us|----------|step 1|-----------|step 2|--------|step 3|----------|them|
-              #there will be as many steps as there is i
-              #every step will be equidistant
-
-              #also, if i == 0 then the first step will be our plane
-
-              var x = ((difa/(maxLoops+1))*i)+a;
-              var y = ((difb/(maxLoops+1))*i)+b;
-              var z = ((difc/(maxLoops+1))*i)+c;
-              #print("i:" ~ i ~ "|x,y,z | " ~ x ~ "," ~ y ~ "," ~ z);
-              Aprime.set_xyz(x,y,z);
-              var AprimeTerrainAlt = geo.elevation(Aprime.lat(), Aprime.lon());
-              if(AprimeTerrainAlt == nil)
-              {
-                AprimeTerrainAlt = 0;
-              }
-
-              if(AprimeTerrainAlt > Aprime.alt())
-              {
-                #print("behind terrain");
-                return 0;
-              }
-            }
-        }
-        else
-        {
-            isVisible = 1;
-        }
-        return isVisible;
+        #print("The planes has clear view of each other");
+        return [1,1]; # visible and in front of terrain
     }
+  }
 }

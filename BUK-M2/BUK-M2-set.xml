@@ -19,7 +19,7 @@
     <sim>
         <author>pinto, Nikolai V. Chr.</author>
         <description>BUK-M2</description>
-        <long-description>BUK-M2 is a modern Russian self-propelled surface to air missile system.</long-description>
+        <long-description>BUK-M2 (SA-17) is a modern Russian self-propelled surface to air missile system.</long-description>
         <status>alpha</status>
         <aircraft-version>0.1</aircraft-version>
 

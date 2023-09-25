@@ -14,7 +14,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #io.include("Aircraft/ExpansionPack/Nasal/init.nas");
-
+srand();# seed the random generator with systime
 #with("updateloop");
 
 # Number of iterations per second
