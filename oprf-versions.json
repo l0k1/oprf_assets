@@ -1,313 +1,313 @@
 {
   "vector": [
     {
-      "version": null,
+      "version": "2.0.3",
       "path": "BUK-M2/Nasal/vector.nas"
     },
     {
-      "version": null,
+      "version": "2.0.3",
       "path": "depot/Nasal/vector.nas"
     },
     {
-      "version": null,
+      "version": "2.0.3",
       "path": "fleet/Nasal/vector.nas"
     },
     {
-      "version": null,
+      "version": "2.0.3",
       "path": "Frigate/Nasal/vector.nas"
     },
     {
-      "version": null,
+      "version": "2.0.3",
       "path": "gci-radar/Nasal/vector.nas"
     },
     {
-      "version": null,
+      "version": "2.0.3",
       "path": "groundtarget/Nasal/vector.nas"
     },
     {
-      "version": null,
+      "version": "2.0.3",
       "path": "MIM-104D/Nasal/vector.nas"
     },
     {
-      "version": null,
+      "version": "2.0.3",
       "path": "missile-frigate/Nasal/vector.nas"
     },
     {
-      "version": null,
+      "version": "2.0.3",
       "path": "S-200/Nasal/vector.nas"
     },
     {
-      "version": null,
+      "version": "2.0.3",
       "path": "S-300/Nasal/vector.nas"
     },
     {
-      "version": null,
+      "version": "2.0.3",
       "path": "S-75/Nasal/vector.nas"
     },
     {
-      "version": null,
+      "version": "2.0.3",
       "path": "SA-6/Nasal/vector.nas"
     },
     {
-      "version": null,
+      "version": "2.0.3",
       "path": "ZSU-23/Nasal/vector.nas"
     }
   ],
   "missile-code": [
     {
-      "version": null,
+      "version": "1.1.1",
       "path": "BUK-M2/Nasal/guided-missiles.nas"
     },
     {
-      "version": null,
+      "version": "1.1.1",
       "path": "MIM-104D/Nasal/guided-missiles.nas"
     },
     {
-      "version": null,
+      "version": "1.1.1",
       "path": "S-75/Nasal/guided-missiles.nas"
     },
     {
-      "version": null,
+      "version": "1.1.1",
       "path": "SA-6/Nasal/guided-missiles.nas"
     }
   ],
   "damage": [
     {
-      "version": null,
+      "version": "1.2.1",
       "path": "BUK-M2/Nasal/damage.nas"
     },
     {
-      "version": null,
+      "version": "1.2.1",
       "path": "depot/Nasal/damage.nas"
     },
     {
-      "version": null,
+      "version": "1.2.1",
       "path": "fleet/Nasal/damage.nas"
     },
     {
-      "version": null,
+      "version": "1.2.1",
       "path": "Frigate/Nasal/damage.nas"
     },
     {
-      "version": null,
+      "version": "1.2.1",
       "path": "gci-radar/Nasal/damage.nas"
     },
     {
-      "version": null,
+      "version": "1.2.1",
       "path": "groundtarget/Nasal/damage.nas"
     },
     {
-      "version": null,
+      "version": "1.2.1",
       "path": "MIM-104D/Nasal/damage.nas"
     },
     {
-      "version": null,
+      "version": "1.2.1",
       "path": "missile-frigate/Nasal/damage.nas"
     },
     {
-      "version": null,
+      "version": "1.2.1",
       "path": "S-200/Nasal/damage.nas"
     },
     {
-      "version": null,
+      "version": "1.2.1",
       "path": "S-300/Nasal/damage.nas"
     },
     {
-      "version": null,
+      "version": "1.2.1",
       "path": "S-75/Nasal/damage.nas"
     },
     {
-      "version": null,
+      "version": "1.2.1",
       "path": "SA-6/Nasal/damage.nas"
     },
     {
-      "version": null,
+      "version": "1.2.1",
       "path": "ZSU-23/Nasal/damage.nas"
     }
   ],
   "datalink": [
     {
-      "version": null,
+      "version": "1.1.0",
       "path": "BUK-M2/Nasal/datalink.nas"
     },
     {
-      "version": null,
+      "version": "1.1.0",
       "path": "fleet/Nasal/datalink.nas"
     },
     {
-      "version": null,
+      "version": "1.1.0",
       "path": "MIM-104D/Nasal/datalink.nas"
     },
     {
-      "version": null,
+      "version": "1.1.0",
       "path": "missile-frigate/Nasal/datalink.nas"
     },
     {
-      "version": null,
+      "version": "1.1.0",
       "path": "S-200/Nasal/datalink.nas"
     },
     {
-      "version": null,
+      "version": "1.1.0",
       "path": "S-300/Nasal/datalink.nas"
     },
     {
-      "version": null,
+      "version": "1.1.0",
       "path": "S-75/Nasal/datalink.nas"
     },
     {
-      "version": null,
+      "version": "1.1.0",
       "path": "SA-6/Nasal/datalink.nas"
     },
     {
-      "version": null,
+      "version": "1.1.0",
       "path": "ZSU-23/Nasal/datalink.nas"
     }
   ],
   "armament-notification": [
     {
-      "version": null,
+      "version": "1.1.0",
       "path": "BUK-M2/Nasal/ArmamentNotification.nas"
     },
     {
-      "version": null,
+      "version": "1.1.0",
       "path": "depot/Nasal/ArmamentNotification.nas"
     },
     {
-      "version": null,
+      "version": "1.1.0",
       "path": "fleet/Nasal/ArmamentNotification.nas"
     },
     {
-      "version": null,
+      "version": "1.1.0",
       "path": "Frigate/Nasal/ArmamentNotification.nas"
     },
     {
-      "version": null,
+      "version": "1.1.0",
       "path": "gci-radar/Nasal/ArmamentNotification.nas"
     },
     {
-      "version": null,
+      "version": "1.1.0",
       "path": "groundtarget/Nasal/ArmamentNotification.nas"
     },
     {
-      "version": null,
+      "version": "1.1.0",
       "path": "MIM-104D/Nasal/ArmamentNotification.nas"
     },
     {
-      "version": null,
+      "version": "1.1.0",
       "path": "missile-frigate/Nasal/ArmamentNotification.nas"
     },
     {
-      "version": null,
+      "version": "1.1.0",
       "path": "S-200/Nasal/ArmamentNotification.nas"
     },
     {
-      "version": null,
+      "version": "1.1.0",
       "path": "S-300/Nasal/ArmamentNotification.nas"
     },
     {
-      "version": null,
+      "version": "1.1.0",
       "path": "S-75/Nasal/ArmamentNotification.nas"
     },
     {
-      "version": null,
+      "version": "1.1.0",
       "path": "SA-6/Nasal/ArmamentNotification.nas"
     },
     {
-      "version": null,
+      "version": "1.1.0",
       "path": "ZSU-23/Nasal/ArmamentNotification.nas"
     }
   ],
   "geo-bridged-transmitter": [
     {
-      "version": null,
+      "version": "1.0.1",
       "path": "BUK-M2/Nasal/GeoBridgedTransmitter.nas"
     },
     {
-      "version": null,
+      "version": "1.0.1",
       "path": "depot/Nasal/GeoBridgedTransmitter.nas"
     },
     {
-      "version": null,
+      "version": "1.0.1",
       "path": "fleet/Nasal/GeoBridgedTransmitter.nas"
     },
     {
-      "version": null,
+      "version": "1.0.1",
       "path": "Frigate/Nasal/GeoBridgedTransmitter.nas"
     },
     {
-      "version": null,
+      "version": "1.0.1",
       "path": "gci-radar/Nasal/GeoBridgedTransmitter.nas"
     },
     {
-      "version": null,
+      "version": "1.0.1",
       "path": "groundtarget/Nasal/GeoBridgedTransmitter.nas"
     },
     {
-      "version": null,
+      "version": "1.0.1",
       "path": "MIM-104D/Nasal/GeoBridgedTransmitter.nas"
     },
     {
-      "version": null,
+      "version": "1.0.1",
       "path": "missile-frigate/Nasal/GeoBridgedTransmitter.nas"
     },
     {
-      "version": null,
+      "version": "1.0.1",
       "path": "S-200/Nasal/GeoBridgedTransmitter.nas"
     },
     {
-      "version": null,
+      "version": "1.0.1",
       "path": "S-300/Nasal/GeoBridgedTransmitter.nas"
     },
     {
-      "version": null,
+      "version": "1.0.1",
       "path": "S-75/Nasal/GeoBridgedTransmitter.nas"
     },
     {
-      "version": null,
+      "version": "1.0.1",
       "path": "SA-6/Nasal/GeoBridgedTransmitter.nas"
     },
     {
-      "version": null,
+      "version": "1.0.1",
       "path": "ZSU-23/Nasal/GeoBridgedTransmitter.nas"
     }
   ],
   "asset-fire-control": [
     {
-      "version": null,
+      "version": "1.0.0",
       "path": "BUK-M2/Nasal/fire-control.nas"
     },
     {
-      "version": null,
+      "version": "1.0.0",
       "path": "MIM-104D/Nasal/fire-control.nas"
     },
     {
-      "version": null,
+      "version": "1.0.0",
       "path": "S-75/Nasal/fire-control.nas"
     },
     {
-      "version": null,
+      "version": "1.0.0",
       "path": "SA-6/Nasal/fire-control.nas"
     }
   ],
   "asset-radar-logic": [
     {
-      "version": null,
+      "version": "1.1.0",
       "path": "BUK-M2/Nasal/radar-logic.nas"
     },
     {
-      "version": null,
+      "version": "1.1.0",
       "path": "MIM-104D/Nasal/radar-logic.nas"
     },
     {
-      "version": null,
+      "version": "1.1.0",
       "path": "S-75/Nasal/radar-logic.nas"
     },
     {
-      "version": null,
+      "version": "1.1.0",
       "path": "SA-6/Nasal/radar-logic.nas"
     },
     {
-      "version": null,
+      "version": "1.1.0",
       "path": "gci-radar/Nasal/radar-logic.nas"
     }
   ]

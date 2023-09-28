@@ -160,7 +160,9 @@ var Contact = {
         if(e == nil or e == 0) {
             # AI/MP has no radar properties
             var self = geo.aircraft_position();
-            self.set_alt(self.alt()+fire_control.radar_elevation_above_terrain_m);
+            var elev = 0;
+            call(func {elev = fire_control.radar_elevation_above_terrain_m;},[],nil,nil, var err = []);
+            self.set_alt(self.alt()+elev);
             me.get_Coord();
             var angleInv = clamp(self.distance_to(me.coord)/self.direct_distance_to(me.coord), -1, 1);
             e = (self.alt()>me.coord.alt()?-1:1)*math.acos(angleInv)*R2D;
@@ -391,7 +393,9 @@ var isNotBehindTerrain = func( mp ) {
 
   var myPos = geo.aircraft_position();
 
-  myPos.set_alt(myPos.alt()+fire_control.radar_elevation_above_terrain_m);
+  var elev = 0;
+  call(func {elev = fire_control.radar_elevation_above_terrain_m;},[],nil,nil, var err = []);
+  myPos.set_alt(myPos.alt()+elev);
 
   var target_distance = myPos.direct_distance_to(aircraftPos);
 
