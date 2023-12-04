@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+	<name>aim-120</name>
+	<path>V-601.ac</path>
+
+	<animation>
+		<type>select</type>
+		<object-name>missile</object-name>
+		<condition>
+			<property>payload/armament/V601/flags/msl-id-0</property>
+		</condition>
+	</animation>
+
+	<model>
+		<path>Aircraft/SA-3/Models/Armament/Weapons/V601/motor-smoke-0.xml</path>
+		<offsets>
+			<x-m>2.764</x-m>
+			<y-m>0</y-m>
+			<z-m>0</z-m>
+		</offsets>
+	</model>
+
+	<model>
+		<name>explosion</name>
+		<path>Aircraft/SA-3/Models/Armament/Weapons/V601/explosion-0.xml</path>
+		<offsets>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+			<z-m>0</z-m>
+		</offsets>
+	</model>
+
+	<animation>
+  		<object-name>missile</object-name>
+  		<enable-hot type="bool">false</enable-hot>
+ 	</animation>
+
+</PropertyList>
