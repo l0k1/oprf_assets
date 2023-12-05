@@ -45,7 +45,7 @@
       "path": "S-75/Nasal/vector.nas"
     },
     {
-      "version": null,
+      "version": "2.0.3",
       "path": "SA-3/Nasal/vector.nas"
     },
     {
@@ -71,7 +71,7 @@
       "path": "S-75/Nasal/guided-missiles.nas"
     },
     {
-      "version": null,
+      "version": "1.1.2",
       "path": "SA-3/Nasal/guided-missiles.nas"
     },
     {
@@ -125,7 +125,7 @@
       "path": "S-75/Nasal/damage.nas"
     },
     {
-      "version": null,
+      "version": "1.4.3",
       "path": "SA-3/Nasal/damage.nas"
     },
     {
@@ -167,7 +167,7 @@
       "path": "S-75/Nasal/datalink.nas"
     },
     {
-      "version": null,
+      "version": "1.1.0",
       "path": "SA-3/Nasal/datalink.nas"
     },
     {
@@ -225,7 +225,7 @@
       "path": "S-75/Nasal/ArmamentNotification.nas"
     },
     {
-      "version": null,
+      "version": "1.1.0",
       "path": "SA-3/Nasal/ArmamentNotification.nas"
     },
     {
@@ -283,7 +283,7 @@
       "path": "S-75/Nasal/GeoBridgedTransmitter.nas"
     },
     {
-      "version": null,
+      "version": "1.0.1",
       "path": "SA-3/Nasal/GeoBridgedTransmitter.nas"
     },
     {
@@ -309,7 +309,7 @@
       "path": "S-75/Nasal/fire-control.nas"
     },
     {
-      "version": null,
+      "version": "1.0.0",
       "path": "SA-3/Nasal/fire-control.nas"
     },
     {
@@ -331,7 +331,7 @@
       "path": "S-75/Nasal/radar-logic.nas"
     },
     {
-      "version": null,
+      "version": "1.1.0",
       "path": "SA-3/Nasal/radar-logic.nas"
     },
     {
