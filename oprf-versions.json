@@ -81,59 +81,59 @@
   ],
   "damage": [
     {
-      "version": "1.4.3",
+      "version": "1.4.4",
       "path": "BUK-M2/Nasal/damage.nas"
     },
     {
-      "version": "1.4.3",
+      "version": "1.4.4",
       "path": "depot/Nasal/damage.nas"
     },
     {
-      "version": "1.4.3",
+      "version": "1.4.4",
       "path": "fleet/Nasal/damage.nas"
     },
     {
-      "version": "1.4.3",
+      "version": "1.4.4",
       "path": "Frigate/Nasal/damage.nas"
     },
     {
-      "version": "1.4.3",
+      "version": "1.4.4",
       "path": "gci-radar/Nasal/damage.nas"
     },
     {
-      "version": "1.4.3",
+      "version": "1.4.4",
       "path": "groundtarget/Nasal/damage.nas"
     },
     {
-      "version": "1.4.3",
+      "version": "1.4.4",
       "path": "MIM-104D/Nasal/damage.nas"
     },
     {
-      "version": "1.4.3",
+      "version": "1.4.4",
       "path": "missile-frigate/Nasal/damage.nas"
     },
     {
-      "version": "1.4.3",
+      "version": "1.4.4",
       "path": "S-200/Nasal/damage.nas"
     },
     {
-      "version": "1.4.3",
+      "version": "1.4.4",
       "path": "S-300/Nasal/damage.nas"
     },
     {
-      "version": "1.4.3",
+      "version": "1.4.4",
       "path": "S-75/Nasal/damage.nas"
     },
     {
-      "version": "1.4.3",
+      "version": "1.4.4",
       "path": "SA-3/Nasal/damage.nas"
     },
     {
-      "version": "1.4.3",
+      "version": "1.4.4",
       "path": "SA-6/Nasal/damage.nas"
     },
     {
-      "version": "1.4.3",
+      "version": "1.4.4",
       "path": "ZSU-23/Nasal/damage.nas"
     }
   ],
