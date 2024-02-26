@@ -305,8 +305,7 @@ var acquisitionRadarLoop = func {
 	if (reason != "") print(reason);
 }
 
-var radTimer = maketimer(0.5, acquisitionRadarLoop);
-radTimer.start();
+var radTimer = nil;
 
 var clearSingleLock = func () {
 	thread.lock(mutexLock);
@@ -623,6 +622,8 @@ var extrapolate = func (x, x1, x2, y1, y2) {
 var main_init_listener = setlistener("sim/signals/fdm-initialized", func {
 	print("fdm-initialized");
 	targetsV2 = std.Vector.new();# OO vector (to make removing item easier)
+	radTimer = maketimer(0.5, acquisitionRadarLoop);
+	radTimer.start();
 	reload();
 	scan();
 	aircraft.data.save(0.5);# save the target list every 30 seconds

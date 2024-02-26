@@ -297,23 +297,23 @@
   ],
   "asset-fire-control": [
     {
-      "version": "1.0.0",
+      "version": "1.0.1",
       "path": "BUK-M2/Nasal/fire-control.nas"
     },
     {
-      "version": "1.0.0",
+      "version": "1.0.1",
       "path": "MIM-104D/Nasal/fire-control.nas"
     },
     {
-      "version": "1.0.0",
+      "version": "1.0.1",
       "path": "S-75/Nasal/fire-control.nas"
     },
     {
-      "version": "1.0.0",
+      "version": "1.0.1",
       "path": "SA-3/Nasal/fire-control.nas"
     },
     {
-      "version": "1.0.0",
+      "version": "1.0.1",
       "path": "SA-6/Nasal/fire-control.nas"
     }
   ],
