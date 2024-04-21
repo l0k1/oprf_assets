@@ -161,6 +161,21 @@
 	      	</equals>
 	  	</condition>
 	</animation>
+
+	<model>
+ 		<path>Comm-Tower/Comm-Tower.ac</path>
+ 		<name>commT</name>
+ 	</model>
+ 	<animation>
+	  	<type>select</type>
+	  	<object-name>commT</object-name>
+	  	<condition>
+	      	<equals>
+	        	<property>sim/multiplay/generic/int[17]</property>
+	        	<value>21</value>
+	      	</equals>
+	  	</condition>
+	</animation>
 	
 	
 	

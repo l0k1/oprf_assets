@@ -135,6 +135,14 @@
                     <value>16</value>
                 </binding>
             </button>
+            <button>
+                <legend>CommTower</legend>
+                <binding>
+                    <command>property-assign</command>
+                    <property>sim/multiplay/generic/int[17]</property>
+                    <value>21</value>
+                </binding>
+            </button>
             
         </group>
         
