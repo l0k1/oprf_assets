@@ -24,11 +24,7 @@ Currently includes the following models:
 
   • Frigate
   
-  • Variety of mil/airbase structures.
-
-  • Oilrig
-
-  • Checkpoint
+  • Variety of mil/airbase structures. Oilrig. Checkpoint.
   
   • Fleet
   
