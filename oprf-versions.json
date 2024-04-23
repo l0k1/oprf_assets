@@ -59,23 +59,23 @@
   ],
   "missile-code": [
     {
-      "version": "1.1.3",
+      "version": "1.1.4",
       "path": "BUK-M2/Nasal/guided-missiles.nas"
     },
     {
-      "version": "1.1.3",
+      "version": "1.1.4",
       "path": "MIM-104D/Nasal/guided-missiles.nas"
     },
     {
-      "version": "1.1.3",
+      "version": "1.1.4",
       "path": "S-75/Nasal/guided-missiles.nas"
     },
     {
-      "version": "1.1.3",
+      "version": "1.1.4",
       "path": "SA-3/Nasal/guided-missiles.nas"
     },
     {
-      "version": "1.1.3",
+      "version": "1.1.4",
       "path": "SA-6/Nasal/guided-missiles.nas"
     }
   ],
