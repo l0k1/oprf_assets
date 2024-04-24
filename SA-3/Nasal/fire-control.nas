@@ -171,6 +171,8 @@ var scan = func() {
 		var prio_vector = [];#0:node,1:trigger,2:prio value
 		foreach(var mp; mvec){
 			if (mp.getNode("valid") == nil or mp.getNode("valid").getValue() != 1) continue;
+			if (mp.getNode("callsign") == nil or mp.getNode("callsign").getValue() == nil
+			 or multiplayer.ignore[mp.getNode("callsign").getValue()] == 1) continue;
 			var prio = fire_control(mp, my_pos);
 			append(prio_vector, prio);
 			if (prio[3] == 1) {

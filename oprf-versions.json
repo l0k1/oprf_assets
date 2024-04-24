@@ -59,123 +59,123 @@
   ],
   "missile-code": [
     {
-      "version": "1.1.4",
+      "version": "1.1.5",
       "path": "BUK-M2/Nasal/guided-missiles.nas"
     },
     {
-      "version": "1.1.4",
+      "version": "1.1.5",
       "path": "MIM-104D/Nasal/guided-missiles.nas"
     },
     {
-      "version": "1.1.4",
+      "version": "1.1.5",
       "path": "S-75/Nasal/guided-missiles.nas"
     },
     {
-      "version": "1.1.4",
+      "version": "1.1.5",
       "path": "SA-3/Nasal/guided-missiles.nas"
     },
     {
-      "version": "1.1.4",
+      "version": "1.1.5",
       "path": "SA-6/Nasal/guided-missiles.nas"
     }
   ],
   "damage": [
     {
-      "version": "1.4.4",
+      "version": "1.4.5",
       "path": "BUK-M2/Nasal/damage.nas"
     },
     {
-      "version": "1.4.4",
+      "version": "1.4.5",
       "path": "depot/Nasal/damage.nas"
     },
     {
-      "version": "1.4.4",
+      "version": "1.4.5",
       "path": "fleet/Nasal/damage.nas"
     },
     {
-      "version": "1.4.4",
+      "version": "1.4.5",
       "path": "Frigate/Nasal/damage.nas"
     },
     {
-      "version": "1.4.4",
+      "version": "1.4.5",
       "path": "gci-radar/Nasal/damage.nas"
     },
     {
-      "version": "1.4.4",
+      "version": "1.4.5",
       "path": "groundtarget/Nasal/damage.nas"
     },
     {
-      "version": "1.4.4",
+      "version": "1.4.5",
       "path": "MIM-104D/Nasal/damage.nas"
     },
     {
-      "version": "1.4.4",
+      "version": "1.4.5",
       "path": "missile-frigate/Nasal/damage.nas"
     },
     {
-      "version": "1.4.4",
+      "version": "1.4.5",
       "path": "S-200/Nasal/damage.nas"
     },
     {
-      "version": "1.4.4",
+      "version": "1.4.5",
       "path": "S-300/Nasal/damage.nas"
     },
     {
-      "version": "1.4.4",
+      "version": "1.4.5",
       "path": "S-75/Nasal/damage.nas"
     },
     {
-      "version": "1.4.4",
+      "version": "1.4.5",
       "path": "SA-3/Nasal/damage.nas"
     },
     {
-      "version": "1.4.4",
+      "version": "1.4.5",
       "path": "SA-6/Nasal/damage.nas"
     },
     {
-      "version": "1.4.4",
+      "version": "1.4.5",
       "path": "ZSU-23/Nasal/damage.nas"
     }
   ],
   "datalink": [
     {
-      "version": "1.1.0",
+      "version": "1.1.1",
       "path": "BUK-M2/Nasal/datalink.nas"
     },
     {
-      "version": "1.1.0",
+      "version": "1.1.1",
       "path": "fleet/Nasal/datalink.nas"
     },
     {
-      "version": "1.1.0",
+      "version": "1.1.1",
       "path": "MIM-104D/Nasal/datalink.nas"
     },
     {
-      "version": "1.1.0",
+      "version": "1.1.1",
       "path": "missile-frigate/Nasal/datalink.nas"
     },
     {
-      "version": "1.1.0",
+      "version": "1.1.1",
       "path": "S-200/Nasal/datalink.nas"
     },
     {
-      "version": "1.1.0",
+      "version": "1.1.1",
       "path": "S-300/Nasal/datalink.nas"
     },
     {
-      "version": "1.1.0",
+      "version": "1.1.1",
       "path": "S-75/Nasal/datalink.nas"
     },
     {
-      "version": "1.1.0",
+      "version": "1.1.1",
       "path": "SA-3/Nasal/datalink.nas"
     },
     {
-      "version": "1.1.0",
+      "version": "1.1.1",
       "path": "SA-6/Nasal/datalink.nas"
     },
     {
-      "version": "1.1.0",
+      "version": "1.1.1",
       "path": "ZSU-23/Nasal/datalink.nas"
     }
   ],
@@ -297,23 +297,23 @@
   ],
   "asset-fire-control": [
     {
-      "version": "1.0.1",
+      "version": "1.0.2",
       "path": "BUK-M2/Nasal/fire-control.nas"
     },
     {
-      "version": "1.0.1",
+      "version": "1.0.2",
       "path": "MIM-104D/Nasal/fire-control.nas"
     },
     {
-      "version": "1.0.1",
+      "version": "1.0.2",
       "path": "S-75/Nasal/fire-control.nas"
     },
     {
-      "version": "1.0.1",
+      "version": "1.0.2",
       "path": "SA-3/Nasal/fire-control.nas"
     },
     {
-      "version": "1.0.1",
+      "version": "1.0.2",
       "path": "SA-6/Nasal/fire-control.nas"
     }
   ],
