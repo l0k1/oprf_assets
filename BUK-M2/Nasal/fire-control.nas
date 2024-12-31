@@ -450,8 +450,8 @@ var reload = func(force = 1) {
 
 			if (armament.AIM.new(i,missile_name,missile_brevity, midflight) != -1) {
 				#if statement just in case reload was called before all missiles were fired. Cause avoid calling search() on same missile twice.
-				armament.AIM.active[i].radarZ = radar_elevation_above_terrain_m;
-				armament.AIM.active[i].start();
+				armament.AIM.active[armament.preAlphaKey~i].radarZ = radar_elevation_above_terrain_m;
+				armament.AIM.active[armament.preAlphaKey~i].start();
 			}
 		}
 		ACTIVE_MISSILE = 0;setprop("active", 0);
@@ -505,8 +505,8 @@ var missile_launch = func(mp, launchtime, my_pos) {
 			lu.tracking = 0;
 		}
 		return;
-	} elsif ( armament.AIM.active[ACTIVE_MISSILE].status == 1 and systime() - launchtime > lockon_time and radar_logic.isNotBehindTerrain(mp)[0] == 1 ) {
-		var theMissile = armament.AIM.active[ACTIVE_MISSILE];
+	} elsif ( armament.AIM.active[armament.preAlphaKey~ACTIVE_MISSILE].status == 1 and systime() - launchtime > lockon_time and radar_logic.isNotBehindTerrain(mp)[0] == 1 ) {
+		var theMissile = armament.AIM.active[armament.preAlphaKey~ACTIVE_MISSILE];
 		var brevity = theMissile.brevity;
 		#armament.defeatSpamFilter(brevity ~ " at: " ~ mp.getNode("callsign").getValue());
 		damage.damageLog.push(brevity ~ " at: " ~ mp.getNode("callsign").getValue());
